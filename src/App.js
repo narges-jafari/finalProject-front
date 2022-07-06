@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div>hello
 
-      <HotelSearch/>
+      <HotelSearch />
     </div>
   )
 }
