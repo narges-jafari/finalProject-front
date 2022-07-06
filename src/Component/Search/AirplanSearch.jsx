@@ -4,7 +4,7 @@ import persian_fa from 'react-date-object/locales/persian_fa'
 import styles from '../../assets/styles/css/hotelSearch.module.css'
 import DatePicker from 'react-multi-date-picker'
 
-const TrainSearch= () => {
+const AirplanSearch= () => {
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
   const [startDate,setStartDate] =useState(new Date())
@@ -17,7 +17,7 @@ const TrainSearch= () => {
         <div className='mx-2 my-1' style={{width:'300px'}}>
           <input
             type='text'
-            placeholder='مبدا'
+            placeholder='پرواز از'
             onChange={e => setOriginName(e.target.value)}
             className='border border-1 border-secondary w-100  rounded-3 '
             style={{padding:'3px'}}
@@ -29,7 +29,7 @@ const TrainSearch= () => {
         <div className='mx-2 my-1' style={{width:'300px'}}>
           <input
             type='text'
-            placeholder ='مقصد'
+            placeholder='پرواز به'
             onChange={e => setDestinationName(e.target.value)}
             className='border border-1 border-secondary w-100  rounded-3 '
             style={{padding:'3px'}}
@@ -64,4 +64,4 @@ const TrainSearch= () => {
   )
 }
 
-export default TrainSearch
+export default AirplanSearch
