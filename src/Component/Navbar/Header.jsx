@@ -9,7 +9,7 @@ const Header =() =>{
     return (
         <>
         <div className='d-flex flex-row flex-wrap justify-content-center  border border-primary py-2 bg-soft bg-warning' >
-      <div className='d-flex flex-row flex-wrap justify-content-center  mx-4'>
+      <div   className='d-flex flex-row flex-wrap justify-content-center  mx-4'>
         <div className='mx-2 '>خرید بلیط</div>
         <div className='mx-2 '>رزرو هتل</div>
         <div className='mx-2 '>تفریح گردی</div>

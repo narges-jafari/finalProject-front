@@ -6,6 +6,9 @@ import React from 'react'
 import Search from './Component/Search/Search'
 import Navbar from './Component/Navbar/Navbar'
 import Header from './Component/Navbar/Header'
+import DiscountHotel from './Component/Hotel/DiscountHotel'
+import BusyRoutes from './Component/Airplan/BusyRoutes'
+
 
 // import Search from './Component/Search/Search/Search'
 
@@ -22,6 +25,10 @@ const App = () => {
     <Navbar/>
     <Header/>
     <Search/>
+    <br/>
+    <hr/>
+    <DiscountHotel />
+    <BusyRoutes/>
     </div>
   )
 }
