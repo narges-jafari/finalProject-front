@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import persian from 'react-date-object/calendars/persian'
-import persian_fa from 'react-date-object/locales/persian_fa'
-import styles from '../../assets/styles/css/hotelSearch.module.css'
+import persianfa from 'react-date-object/locales/persian_fa'
+// import styles from '../../assets/styles/css/hotelSearch.module.css'
 import DatePicker from 'react-multi-date-picker'
 import { stayDate } from '../../constants/search.js'
 import {
@@ -20,24 +20,29 @@ const HotelSearch = () => {
   return (
     <>
       <div className='d-flex flex-row flex-wrap'>
-        <div className='mx-2 my-1' style={{width:'300px'}}>
+        <div className='mx-2 my-1' style={{ width: '300px' }}>
+          <i
+            className=' fa fa-hotel   my-2 mx-2 fa-lg '
+            style={{ position: 'absolute', color: '#d0cbcbb0' }}
+          />
+
           <input
             type='text'
-            placeholder='نام هتل را وارد کنید'
+            placeholder='نام هتل'
             onChange={e => setHotelName(e.target.value)}
-            className='border border-1 border-secondary w-100  rounded-3 '
-            style={{padding:'3px'}}
+            className='border border-1 border-secondary w-100    rounded-3 '
+            style={{ padding: '3px ', paddingRight: '40px' }}
           />
-                            {/* <i className ={' fa fa-hotel ' + styles.hotelIconCss}/> */}
 
           {hotelName}
         </div>
-        <div className='mx-2 my-1 ' >
+        <div className='mx-2 my-1 '>
+          <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <DatePicker
             calendar={persian}
-            locale={persian_fa}
+            locale={persianfa}
             calendarPosition='bottom-right'
-            style={{ padding :'15px', width:'100px'}}
+            style={{ paddingTop: '15px', paddingBottom: '15px', width: '130px', paddingRight: '40px' }}
           />
         </div>
         <div className='mx-2 my-1'>
@@ -52,7 +57,7 @@ const HotelSearch = () => {
               marginLeft: '0.5rem'
             }}
           >
-            <Button id='caret' style={{width:'70px'}} color='white' className='px-1 py-1'>
+            <Button id='caret' style={{ width: '70px' }} color='white' className='px-1 py-1'>
               {stayDateValue}
             </Button>
             <DropdownToggle
@@ -66,12 +71,9 @@ const HotelSearch = () => {
                 backgroundColor: '#8f989e'
               }}
             >
-              {
-              !stayDateDropDown ? <i className='mdi mdi-chevron-down' />: 
-              <i className='mdi mdi-chevron-up'/>
-            }
+              {!stayDateDropDown ? <i className='mdi mdi-chevron-down' /> : <i className='mdi mdi-chevron-up' />}
             </DropdownToggle>
-            <DropdownMenu style={{width:'70px'}}>
+            <DropdownMenu style={{ width: '70px' }}>
 
               {
           stayDate.map((date, index) => (

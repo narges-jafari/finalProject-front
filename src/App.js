@@ -18,7 +18,6 @@ const App = () => {
     <TrainSearch/> */}
     {/* <Search/> */}
     <Search/>
-    <index/>
     </div>
   )
 }
