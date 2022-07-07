@@ -1,15 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import img from '../../assets/img/landing/logo.PNG'
-import styles from '../../assets/styles/css/Navbar.module.css'
+// import styles from '../../assets/styles/css/Navbar.module.css'
 
 
 const Navbar =() =>{
-    const today = new Date().toLocaleDateString('fa-IR');
-    // console.log('mmmm',today);
-    let options = { year: 'numeric', month: 'long', day: 'numeric' };
-new Date().toLocaleDateString('fa-IR', options);
-const [dateState, setDateState] = useState(new Date());
-useEffect(() => {
+
+  const [dateState, setDateState] = useState(new Date());
+  useEffect(() => {
        setInterval(() => setDateState(new Date()), 30000);
 }, []);
     return (

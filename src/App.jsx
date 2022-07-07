@@ -5,6 +5,7 @@ import React from 'react'
 // import TrainSearch from './Component/Search/TrainSearch'
 import Search from './Component/Search/Search'
 import Navbar from './Component/Navbar/Navbar'
+import Header from './Component/Navbar/Header'
 
 // import Search from './Component/Search/Search/Search'
 
@@ -19,6 +20,7 @@ const App = () => {
     <TrainSearch/> */}
     {/* <Search/> */}
     <Navbar/>
+    <Header/>
     <Search/>
     </div>
   )
