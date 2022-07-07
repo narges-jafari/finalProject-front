@@ -22,10 +22,10 @@ function Search () {
 
   return (
     <div
-      style={{ display: 'block', width: 700, padding: 30 }}
-      // className={}
+      // style={{ display: 'block', width: 700, padding: 30 }}
+      className='w-50'
     >
-      <Nav tabs  className={styles.tabCss} >
+      <Nav tabs    className={styles.navCss}  >
         <NavItem >
           <NavLink
             className={classnames({
