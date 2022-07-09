@@ -1,35 +1,17 @@
 import React from 'react'
-// import BusSearch from './Component/Search/BusSearch'
-// import HotelSearch from './Component/Search/HotelSearch'
-// import AiplanSearch from './Component/Search/AirplanSearch'
-// import TrainSearch from './Component/Search/TrainSearch'
-import Search from './Component/Search/Search'
-import Navbar from './Component/Navbar/Navbar'
-import Header from './Component/Navbar/Header'
-import DiscountHotel from './Component/Hotel/DiscountHotel'
-import BusyRoutes from './Component/Airplan/BusyRoutes'
-
-
-// import Search from './Component/Search/Search/Search'
-
+import {Route , BrowserRouter as Router, Routes} from 'react-router-dom'
+import HomePage from './pages/Common/HomePage'
+import TransportationPage from './pages/Transport/TransportationPage'
 
 const App = () => {
   return (
-    <div>
+    <Router>
+      <Routes>
+        <Route path='/'  element={<HomePage />}/>
+        <Route path='/ticket'  element={<TransportationPage />}/>
 
-      {/* <HotelSearch />
-      <BusSearch/>
-    <AiplanSearch/>
-    <TrainSearch/> */}
-    {/* <Search/> */}
-    <Navbar/>
-    <Header/>
-    <Search/>
-    <br/>
-    <hr/>
-    <DiscountHotel />
-    <BusyRoutes/>
-    </div>
+      </Routes>
+    </Router>
   )
 }
 export default App

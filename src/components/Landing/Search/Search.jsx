@@ -9,7 +9,7 @@ import HotelSearch from './HotelSearch'
 import AirplanSearch from './AirplanSearch'
 import BusSearch from './BusSearch'
 import TrainSearch from './TrainSearch'
-import styles from '../../assets/styles/css/Search.module.css'
+// import styles from '../../assets/styles/css/Search.module.css'
 
 function Search () {
   // State for current active Tab
@@ -25,7 +25,7 @@ function Search () {
       // style={{ display: 'block', width: 700, padding: 30 }}
       className='w-50'
     >
-      <Nav tabs    className={styles.navCss}  >
+      <Nav tabs     >
         <NavItem >
           <NavLink
             className={classnames({

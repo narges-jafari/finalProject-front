@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
-// import styles from '../../assets/styles/css/hotelSearch.module.css'
 import DatePicker from 'react-multi-date-picker'
 
 const AirplanSearch = () => {
@@ -23,7 +22,6 @@ const AirplanSearch = () => {
             style={{ paddingTop: '3px ', paddingBottom: '4px', paddingRight: '25px' }}
 
           />
-          {/* <i className ={' fa fa-hotel ' + styles.hotelIconCss}/> */}
 
           {originName}
         </div>
@@ -61,6 +59,10 @@ const AirplanSearch = () => {
             calendarPosition='bottom-right'
             style={{ paddingTop: '15px', paddingBottom: '15px', width: '130px', paddingRight: '40px' }}
           />
+        </div>
+        <div>
+          <i className='fa fa-search my-2 mx-2' style={{ position: 'absolute' }} />
+          <button className='ntn btn-sm btn-primary  px-4'>جستجو</button>
         </div>
       </div>
     </>

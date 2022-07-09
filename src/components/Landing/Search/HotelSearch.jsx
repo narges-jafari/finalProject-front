@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
-// import styles from '../../assets/styles/css/hotelSearch.module.css'
+// import styles from '../../../assets/styles/css/hotelSearch.module.css'
 import DatePicker from 'react-multi-date-picker'
-import { stayDate } from '../../constants/search.js'
+import { stayDate } from '../../../constants/search.js'
 import {
   Button,
   ButtonDropdown,
@@ -89,6 +89,10 @@ const HotelSearch = () => {
          }
             </DropdownMenu>
           </ButtonDropdown>
+        </div>
+        <div>
+          <i className='fa fa-search my-2 mx-2' style={{ position: 'absolute' }} />
+          <button className='ntn btn-sm btn-primary  px-4'>جستجو</button>
         </div>
       </div>
     </>

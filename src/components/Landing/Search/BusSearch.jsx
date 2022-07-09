@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
-// import styles from '../../assets/styles/css/hotelSearch.module.css'
 import DatePicker from 'react-multi-date-picker'
 
 const BusSearch = () => {
@@ -14,7 +13,7 @@ const BusSearch = () => {
     <>
       <div className='d-flex flex-row flex-wrap'>
         <div className='mx-2 my-1' style={{ width: '300px' }}>
-        <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+          <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <input
             type='text'
             placeholder='حرکت  از'
@@ -22,12 +21,12 @@ const BusSearch = () => {
             className='border border-1 border-secondary w-100  rounded-3 '
             style={{ paddingTop: '3px ', paddingBottom: '4px', paddingRight: '25px' }}
           />
-          {/* <i className ={' fa fa-hotel ' + styles.hotelIconCss}/> */}
+      
 
           {originName}
         </div>
         <div className='mx-2 my-1' style={{ width: '300px' }}>
-        <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+          <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <input
             type='text'
             placeholder='حرکت به'
@@ -41,7 +40,7 @@ const BusSearch = () => {
         </div>
 
         <div className='mx-2 my-1'>
-        <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+          <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
@@ -52,7 +51,7 @@ const BusSearch = () => {
           />
         </div>
         <div className='mx-2 my-1'>
-        <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+          <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <DatePicker
             selected={endDate}
             onChange={(date) => setEndDate(date)}
@@ -61,6 +60,10 @@ const BusSearch = () => {
             calendarPosition='bottom-right'
             style={{ padding: '15px' }}
           />
+        </div>
+        <div>
+          <i className='fa fa-search my-2 mx-2' style={{ position: 'absolute' }} />
+          <button className='ntn btn-sm btn-primary  px-4'>جستجو</button>
         </div>
       </div>
     </>
