@@ -1,0 +1,9 @@
+.transportInputCss{
+    /* width:200px;  */
+    padding-right: 40px;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-top:-1px;
+    border-radius: 5px;
+    border:1px solid #80808033
+ }

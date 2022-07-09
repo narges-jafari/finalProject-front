@@ -1,0 +1,16 @@
+.hotelInputCss{
+   /* width:130px;  */
+   padding-right: 40px;
+   padding-top:5px;
+   padding-bottom:5px;
+   margin-top:-2px;
+   border-radius: 5px;
+   border:1px solid #80808033
+}
+
+/* @media only screen and (min-width: 550px) {
+   .hotelInputCss {
+    width:100px
+   }
+ } */
+  

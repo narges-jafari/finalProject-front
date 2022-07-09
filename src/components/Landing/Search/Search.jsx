@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import {
   TabContent, TabPane, Nav,
   NavItem, NavLink, Row, Col
@@ -8,8 +8,9 @@ import classnames from 'classnames'
 import HotelSearch from './HotelSearch'
 import AirplanSearch from './AirplanSearch'
 import BusSearch from './BusSearch'
-import TrainSearch from './TrainSearch'
+import TrainSearch from './TrainSearch' 
 // import styles from '../../assets/styles/css/Search.module.css'
+import styles from '../../../assets/styles/Search.module.css'
 
 function Search () {
   // State for current active Tab
@@ -22,16 +23,29 @@ function Search () {
 
   return (
     <div
-      // style={{ display: 'block', width: 700, padding: 30 }}
-      className='w-50'
+    className='w-75'
     >
-      <Nav tabs     >
-        <NavItem >
+      <div 
+        className='w-100' 
+        style={{
+          cursor: 'pointer',
+          backgroundColor: '#EFF2F7',
+          borderRadius: '0.8rem',
+          width: '100%',
+          // padding: '0.9rem 1.25rem',
+          fontSize: '0.8125rem',
+          color: '#405057',
+          boxShadow: '0 0 4px 1px #ddd'
+        }}
+      >
+      <Nav tabs  className='  my-0 ' style={{backgroundColor:'#80808031'}}>
+        <NavItem className=''  style={{border:'none'}}>
           <NavLink
             className={classnames({
               active:
                 currentActiveTab === '1'
             })}
+            // style={{border:'none'}}
             onClick={() => { toggle('1') }}
           > <i className='fa fa-building' /> هتل
           </NavLink>
@@ -69,7 +83,7 @@ function Search () {
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent activeTab={currentActiveTab}>
+      <TabContent activeTab={currentActiveTab} className=' '>
         <TabPane tabId='1'>
           <Row>
             <Col sm='12'>
@@ -100,6 +114,7 @@ function Search () {
           </Row>
         </TabPane>
       </TabContent>
+      </div>
     </div>
   )
 }
