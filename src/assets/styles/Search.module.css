@@ -1,11 +1,19 @@
 
-.navCss{
-background-color:#80808031;
+.divcontent{
+    cursor:pointer;
+    background-color:white;
+    border-radius: 0.8rem;
+    font-size:0.8125rem;
+    width:70%;
+    box-shadow:0 0 4px 1px #ddd ;
+    margin-top: 150px;
 
-cursor: pointer;
 }
 
-.navItemCss{
-    cursor:pointer;
-
+.divCss{
+    background-image: url('../img/Hotel/talab.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height:500px;
 }

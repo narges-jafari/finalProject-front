@@ -28,8 +28,8 @@ function SearchTransport () {
       // style={{ display: 'block', width: 700, padding: 30 }}
       className='w-50'
     >
-      <Nav tabs     >
-        <NavItem >
+      <Nav tabs>
+        <NavItem>
           <NavLink
             className={classnames({
               active:
@@ -66,14 +66,14 @@ function SearchTransport () {
         <TabPane tabId='1'>
           <Row>
             <Col sm='12'>
-            <AirplanSearch />
+              <AirplanSearch />
             </Col>
           </Row>
         </TabPane>
         <TabPane tabId='2'>
           <Row>
             <Col sm='12'>
-             <TrainSearch/>
+              <TrainSearch />
 
             </Col>
           </Row>
@@ -81,7 +81,7 @@ function SearchTransport () {
         <TabPane tabId='3'>
           <Row>
             <Col sm='12'>
-              <BusSearch/>
+              <BusSearch />
             </Col>
           </Row>
         </TabPane>

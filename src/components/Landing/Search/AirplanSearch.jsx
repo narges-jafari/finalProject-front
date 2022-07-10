@@ -5,7 +5,6 @@ import DatePicker from 'react-multi-date-picker'
 
 import styles from '../../../assets/styles/Transport.module.css'
 
-
 const AirplanSearch = () => {
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
@@ -46,7 +45,7 @@ const AirplanSearch = () => {
             calendar={persian}
             locale={persianfa}
             calendarPosition='bottom-right'
-            style={{ paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px' ,border: '1px solid #80808033'}}
+            style={{ paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: '1px solid #80808033' }}
 
           />
         </div>

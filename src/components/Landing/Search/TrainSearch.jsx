@@ -5,7 +5,6 @@ import DatePicker from 'react-multi-date-picker'
 
 import styles from '../../../assets/styles/Transport.module.css'
 
-
 const TrainSearch = () => {
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
@@ -14,7 +13,7 @@ const TrainSearch = () => {
   return (
     <>
       <div className='d-flex flex-row flex-wrap my-5'>
-        <div className='mx-2 my-1' >
+        <div className='mx-2 my-1'>
           <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
 
           <input
@@ -46,7 +45,7 @@ const TrainSearch = () => {
             calendar={persian}
             locale={persianfa}
             calendarPosition='bottom-right'
-            style={{ paddingTop: '15px', paddingBottom: '13px', paddingRight: '40px',border: '1px solid #80808033' }}
+            style={{ paddingTop: '15px', paddingBottom: '13px', paddingRight: '40px', border: '1px solid #80808033' }}
           />
         </div>
         <div>

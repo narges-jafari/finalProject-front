@@ -4,10 +4,7 @@ import Transport from '../../components/Transport'
 const TransportationPage = () => {
   return (
     <>
-  
-          <Transport/>
-     
-
+      <Transport />
     </>
   )
 }

@@ -2,13 +2,10 @@ import React, { useState } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import styles from '../../../assets/styles/HotelSearch.module.css'
-import img from '../../../assets/img/landing/logo.PNG'
 import DatePicker from 'react-multi-date-picker'
 
 const HotelSearch = () => {
   const [hotelName, setHotelName] = useState()
-  // const [stayDateDropDown, setStateDateDropDown] = useState(false)
-  // const [stayDateValue, setStateDateValue] = useState()
 
   return (
     <>
