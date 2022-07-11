@@ -22,10 +22,11 @@
    border-radius: 30px;
    cursor:pointer;
    width: 250px;
-   box-shadow: 0 0 4px 1px #ddd;
-   animation-name: move;
-   animation-duration: 4s;
    background-color: white;
+   box-shadow: 0 0 4px 1px #ddd;
+   margin-top:5px;
+   margin-bottom:5px;
+
 
 }
 .card:hover{

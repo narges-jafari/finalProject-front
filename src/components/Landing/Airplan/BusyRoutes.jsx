@@ -1,14 +1,18 @@
 import React from 'react'
 import img from '../../../assets/img/Hotel/mahan.jpg'
+import imglogo from '../../../assets/img/Hotel/ml.jpg'
+import styles from '../../../assets/styles/Airport.module.css'
 
 const BusyRoutes = () => {
   return (
     <>
-      <div className='d-flex flex-row flex-wrap my-2 justify-content-center mx-3'>
-        <div className='border border-primary mx-4 d-flex flex-column ' style={{ width: '250px' }}>
-          <img src={img} className=' border' />
-          <span>شرکت هواپیمایی ماهان </span>
-          <hr />
+      <div className='d-flex flex-row flex-wrap my-2 mx-4 justify-content-between '>
+        <div className=' d-flex flex-row justify-content-center ' style={{ width: '250px' }}>
+          <img src={imglogo} className={styles.imgLogoCss} />
+        </div>
+        <div className={styles.card}>
+          <img src={img} className={styles.imgCss} />
+
           <div className='d-flex flex-row flex-wrap'>
             <i className='fa fa-map-marker mx-2 my-2 fa-lg  text-primary' />
             <span>مبدا:تهران</span>
@@ -28,10 +32,8 @@ const BusyRoutes = () => {
           </div>
 
         </div>
-        <div className='border border-primary  d-flex flex-column ' style={{ width: '250px' }}>
-          <img src={img} className=' border' />
-          <span>شرکت هواپیمایی ماهان </span>
-          <hr />
+        <div className={styles.card}>
+          <img src={img} className={styles.imgCss} />
           <div className='d-flex flex-row flex-wrap'>
             <i className='fa fa-map-marker mx-2 my-2 fa-lg  text-primary' />
             <span>مبدا:تهران</span>
@@ -51,10 +53,8 @@ const BusyRoutes = () => {
           </div>
 
         </div>
-        <div className='border border-primary mx-4  d-flex flex-column ' style={{ width: '250px' }}>
-          <img src={img} className=' border' />
-          <span>شرکت هواپیمایی ماهان </span>
-          <hr />
+        <div className={styles.card}>
+          <img src={img} className={styles.imgCss} />
           <div className='d-flex flex-row flex-wrap'>
             <i className='fa fa-map-marker mx-2 my-2 fa-lg  text-primary' />
             <span>مبدا:تهران</span>

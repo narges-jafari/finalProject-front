@@ -26,6 +26,7 @@ const HotelSlide = () => {
         onSelect={handleSelect}
         indicators={false}
         controls={false}
+        interval={20000}
         ref={ref}
       >
         <Carousel.Item>
