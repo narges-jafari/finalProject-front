@@ -8,9 +8,29 @@
    border:1px solid #80808033
 }
 
-/* @media only screen and (min-width: 550px) {
-   .hotelInputCss {
-    width:100px
-   }
- } */
+.imgCss{
+   padding:0px
+}
+.imgCss:hover{
+   transform: scale(1.1);
+   animation:infinite
+}
+
+.card{
+   display: flex;
+   flex-direction: column;
+   border-radius: 30px;
+   cursor:pointer;
+   width: 250px;
+   box-shadow: 0 0 4px 1px #ddd;
+   animation-name: move;
+   animation-duration: 4s;
+   background-color: white;
+
+}
+.card:hover{
+   transform: scale(1.02)
+}
+
+
   
