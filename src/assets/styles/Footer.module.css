@@ -13,18 +13,31 @@
  cursor:pointer;
 padding-top:20px;
 padding-bottom:20px;
-background: red;
+animation: move 5s infinite;
+background-color: #ff0000;
+animation-delay: -2s;
+
 
 
 }
 .socialCss:hover{
-
 animation: mymove 5s infinite;
+background-color: #0000ff
 
 }
+@keyframes move {
+    from {background-color: #ff0000;}
+    to {background-color: #0000ff;}
+  }
+  /* @keyframes move {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+  } */
 @keyframes mymove {
-    from {background-color: red;}
-    to {background-color: blue;}
+    from {background-color: #0000ff}
+    to {background-color: #800080;}
   }
 
 .instagram{

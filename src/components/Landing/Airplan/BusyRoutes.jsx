@@ -25,7 +25,7 @@ const BusyRoutes = () => {
             </div>
           </div>
           <div className='d-flex flex-row py-2 bg-danger'>
-            <i className='fa fa-user mx-2 my-2 fa-lg  ' style={{ color: '#e5e5f8' }} />
+            <i className='fa fa-users mx-2 my-2 fa-lg  ' style={{ color: '#e5e5f8' }} />
             <span>ظرفیت:4نفر </span>
             <i className='fa fa-dollar mx-2 my-2 fa-lg ' style={{ color: '#e5e5f8' }} />
             <span>قیمت:35000 </span>
@@ -49,7 +49,7 @@ const BusyRoutes = () => {
             </div>
           </div>
           <div className='d-flex flex-row py-2 bg-danger'>
-            <i className='fa fa-user mx-2 my-2 fa-lg  ' style={{ color: '#e5e5f8' }} />
+            <i className='fa fa-users mx-2 my-2 fa-lg  ' style={{ color: '#e5e5f8' }} />
             <span>ظرفیت:4نفر </span>
             <i className='fa fa-dollar mx-2 my-2 fa-lg ' style={{ color: '#e5e5f8' }} />
             <span>قیمت:35000 </span>
@@ -73,7 +73,7 @@ const BusyRoutes = () => {
             </div>
           </div>
           <div className='d-flex flex-row py-2 bg-danger'>
-            <i className='fa fa-user mx-2 my-2 fa-lg  ' style={{ color: '#e5e5f8' }} />
+            <i className='fa fa-users mx-2 my-2 fa-lg  ' style={{ color: '#e5e5f8' }} />
             <span>ظرفیت:4نفر </span>
             <i className='fa fa-dollar mx-2 my-2 fa-lg ' style={{ color: '#e5e5f8' }} />
             <span>قیمت:35000 </span>
