@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
+import { FaBusAlt, FaSubway, FaHotel, FaPlane } from 'react-icons/fa'
 import {
   TabContent, TabPane, Nav,
   NavItem, NavLink, Row, Col
@@ -37,7 +38,12 @@ function Search () {
                 currentActiveTab === '1'
               })}
               onClick={() => { toggle('1') }}
-            > <i className='fa fa-building ' /> هتل
+            >
+              {
+                 currentActiveTab === '1'
+                   ? <div className='text-danger'><FaHotel className='mx-1 fa-lg ' />هتل </div>
+                   : <div className='text-success'><FaHotel className='mx-1 fa-lg ' />هتل </div>
+              }
             </NavLink>
           </NavItem>
           <NavItem className={styles.navItemCss}>
@@ -48,8 +54,12 @@ function Search () {
                 currentActiveTab === '2'
               })}
               onClick={() => { toggle('2') }}
-            ><i className='fa fa-plane px-1' />
-              هواپیما
+            >
+              {
+                 currentActiveTab === '2'
+                   ? <div className='text-danger'> <FaPlane className='mx-1 fa-lg ' />هواپیما </div>
+                   : <div className='text-success'> <FaPlane className='mx-1 fa-lg ' />هواپیما </div>
+              }
             </NavLink>
           </NavItem>
           <NavItem className={styles.navItemCss}>
@@ -59,7 +69,13 @@ function Search () {
                 currentActiveTab === '3'
               })}
               onClick={() => { toggle('3') }}
-            ><i className='fa fa-train px-1' />قطار
+            >
+
+              {
+                 currentActiveTab === '3'
+                   ? <div className='text-danger'><FaSubway className='mx-1 fa-lg' />قطار </div>
+                   : <div className='text-success'><FaSubway className='mx-1 fa-lg' />قطار </div>
+              }
             </NavLink>
           </NavItem>
           <NavItem className={styles.navItemCss}>
@@ -69,11 +85,16 @@ function Search () {
                 currentActiveTab === '4'
               })}
               onClick={() => { toggle('4') }}
-            ><i className='fa fa-bus px-1' />اتوبوس
+            >
+              {
+                 currentActiveTab === '4'
+                   ? <div className='text-danger'><FaBusAlt className='mx-1 fa-lg' />اتوبوس</div>
+                   : <div className='text-success'><FaBusAlt className='mx-1 fa-lg' />اتوبوس</div>
+              }
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={currentActiveTab} className=' '>
+        <TabContent activeTab={currentActiveTab}>
           <TabPane tabId='1'>
             <Row>
               <Col sm='12'>

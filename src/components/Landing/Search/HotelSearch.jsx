@@ -6,6 +6,7 @@ import DatePicker from 'react-multi-date-picker'
 
 const HotelSearch = () => {
   const [hotelName, setHotelName] = useState()
+  const [startDate, setStartDate] = useState(new Date())
 
   return (
     <>
@@ -28,9 +29,12 @@ const HotelSearch = () => {
         <div className='mx-2 my-1 '>
           <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
             calendar={persian}
             locale={persianfa}
             calendarPosition='bottom-right'
+            placeholder='تاریخ حرکت'
             style={{ paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: '1px solid #80808033' }}
           />
         </div>

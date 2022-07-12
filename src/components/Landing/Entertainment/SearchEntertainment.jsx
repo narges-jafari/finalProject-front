@@ -4,14 +4,7 @@ import {
   TabContent, TabPane, Nav,
   NavItem, NavLink, Row, Col
 } from 'reactstrap'
-import { FcShop } from 'react-icons/fc'
-import { FcLandscape } from 'react-icons/fc'
-
-import { FcBusinesswoman } from 'react-icons/fc'
-
-import { FcSportsMode } from 'react-icons/fc'
-
-import { FcFactory } from 'react-icons/fc'
+import { FcShop, FcLandscape, FcBusinesswoman, FcSportsMode, FcFactory } from 'react-icons/fc'
 
 import classnames from 'classnames'
 // import HotelSearch from './HotelSearch'

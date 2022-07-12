@@ -13,31 +13,37 @@ const BusSearch = () => {
   return (
     <>
       <div className='d-flex flex-row flex-wrap my-5'>
-        <div className='mx-2 my-1'>
-          <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+        <div className='mx-2 my-2'>
+          <i
+            className=' fa fa-map-marker   my-2 mx-2 fa-lg '
+            style={{ position: 'absolute', color: '#d0cbcbb0' }}
+          />
+
           <input
             type='text'
-            placeholder='حرکت  از'
+            placeholder=' حرکت از'
             onChange={e => setOriginName(e.target.value)}
             className={styles.transportInputCss}
-
           />
+
           {originName}
         </div>
-        <div className='mx-2 my-1'>
-          <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+        <div className='mx-2 my-2'>
+          <i
+            className=' fa fa-map-marker   my-2 mx-2 fa-lg '
+            style={{ position: 'absolute', color: '#d0cbcbb0' }}
+          />
+
           <input
             type='text'
-            placeholder='حرکت به'
+            placeholder=' حرکت به'
             onChange={e => setDestinationName(e.target.value)}
             className={styles.transportInputCss}
-
           />
 
           {destinationName}
         </div>
-
-        <div className='mx-2 my-1'>
+        <div className='mx-2 my-1 '>
           <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <DatePicker
             selected={startDate}
@@ -45,12 +51,12 @@ const BusSearch = () => {
             calendar={persian}
             locale={persianfa}
             calendarPosition='bottom-right'
+            placeholder='تاریخ حرکت'
             style={{ paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: '1px solid #80808033' }}
           />
         </div>
-
         <div>
-          <button className='btn btn-sm btn-danger my-1 py-1 mx-2 text- px-4'>جستجو</button>
+          <button className='btn btn-sm btn-danger my-1 py-1 mx-2 px-4'>جستجو</button>
         </div>
       </div>
     </>

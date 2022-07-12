@@ -43,16 +43,14 @@ const Landing = () => {
         <BusyRoutsSlide />
       </div>
       <div>
-
+        <SearchEntertainment />
         <Footer />
-        <SearchEntertainment/>
 
         {/* <AmusementPark/> */}
         {/* <CofeRestaurant/>
         <Shopping/>
         <Trip/>
         <HealthBeauty/> */}
-
 
       </div>
 

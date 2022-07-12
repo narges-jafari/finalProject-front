@@ -83,11 +83,22 @@ FcPlanner */
 
 .tabContentCss{
     width:85%;
-    border :2px solid red;
+    /* border :2px solid red; */
     text-align:center;
     margin-left: auto;
     margin-right: auto;
     margin-top: -90px;
     background-color: white;
+    box-shadow: 0 0 4px 1px #ddd;
+    border-radius:5px
     
 }
+
+/* FaBusAlt
+FaSubway
+FaHotel
+FaPlaneDeparture   jjjj
+
+FaPlaneArrival
+FaPlane
+FaBed */

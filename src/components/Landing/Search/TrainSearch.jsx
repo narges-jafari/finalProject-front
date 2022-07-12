@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
+// import styles from '../../../assets/styles/HotelSearch.module.css'
 
 import styles from '../../../assets/styles/Transport.module.css'
 
@@ -13,20 +14,27 @@ const TrainSearch = () => {
   return (
     <>
       <div className='d-flex flex-row flex-wrap my-5'>
-        <div className='mx-2 my-1'>
-          <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+        <div className='mx-2 my-2'>
+          <i
+            className=' fa fa-map-marker   my-2 mx-2 fa-lg '
+            style={{ position: 'absolute', color: '#d0cbcbb0' }}
+          />
 
           <input
             type='text'
-            placeholder='مبدا '
+            placeholder=' مبدا'
             onChange={e => setOriginName(e.target.value)}
             className={styles.transportInputCss}
           />
 
           {originName}
         </div>
-        <div className='mx-2 my-1'>
-          <i className='fa fa-map-marker mx-2 my-2 fa-lg ' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
+        <div className='mx-2 my-2'>
+          <i
+            className=' fa fa-map-marker   my-2 mx-2 fa-lg '
+            style={{ position: 'absolute', color: '#d0cbcbb0' }}
+          />
+
           <input
             type='text'
             placeholder=' مقصد'
@@ -36,8 +44,7 @@ const TrainSearch = () => {
 
           {destinationName}
         </div>
-
-        <div className='mx-2 my-1'>
+        <div className='mx-2 my-1 '>
           <i className='fa fa-calendar my-2 mx-2' style={{ position: 'absolute', color: '#d0cbcbb0' }} />
           <DatePicker
             selected={startDate}
@@ -45,11 +52,12 @@ const TrainSearch = () => {
             calendar={persian}
             locale={persianfa}
             calendarPosition='bottom-right'
-            style={{ paddingTop: '15px', paddingBottom: '13px', paddingRight: '40px', border: '1px solid #80808033' }}
+            placeholder='تاریخ '
+            style={{ paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: '1px solid #80808033' }}
           />
         </div>
         <div>
-          <button className='btn btn-sm btn-danger my-1 py-1 mx-2 text- px-4'>جستجو</button>
+          <button className='btn btn-sm btn-danger my-1 py-1 mx-2 px-4'>جستجو</button>
         </div>
       </div>
     </>

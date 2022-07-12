@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import img from '../../../assets/img/landing/logo.PNG'
 // import styles from '../../../assets/styles/css/Navbar.module.css'
+import { FcAlarmClock, FcPlanner } from 'react-icons/fc'
 
 const Navbar = () => {
   const [dateState, setDateState] = useState(new Date())
@@ -20,7 +21,7 @@ const Navbar = () => {
         </div>
         <div className='d-flex flex-column mx-5 my-2'>
           <div className='d-flex flex-row'>
-            <i className='fa fa-calendar mx-2 my-2 fa-lg' />
+            <FcPlanner className='fa-2x mx-1' />
             <p>
               {' '}
               {dateState.toLocaleDateString('fa-IR', {
@@ -31,7 +32,7 @@ const Navbar = () => {
             </p>
           </div>
           <div className='d-flex flex-row'>
-            <i className='fa fa-clock-o mx-2 my-2 fa-lg' />
+            <FcAlarmClock className='fa-2x mx-1' />
             <p className=''>
               {dateState.toLocaleString('fa-IR', {
                 hour: 'numeric',
