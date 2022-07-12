@@ -1,0 +1,77 @@
+.logoCss{
+    width:100px;
+    height:100px;
+    margin-top: 10px;
+}
+
+
+.socialCss{
+ display:flex;
+ flex-direction:row;
+ flex-wrap:wrap;
+ justify-content:center;
+ cursor:pointer;
+padding-top:20px;
+padding-bottom:20px;
+background: red;
+
+
+}
+.socialCss:hover{
+
+animation: mymove 5s infinite;
+
+}
+@keyframes mymove {
+    from {background-color: red;}
+    to {background-color: blue;}
+  }
+
+.instagram{
+    color: #fff;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+    width:43px;
+    height:43px;
+    border-radius: 30%;
+}
+
+.instagram:hover{
+    transform:scale(1.06)
+}   
+.whatsapp{
+    background-color:#25d366;
+	color:#FFF;
+    width:43px;
+    height:43px;
+    border-radius:30%;}
+
+.whatsapp:hover{
+    transform:scale(1.06)
+}    
+
+    
+.telegram{
+    width:43px;
+    height:43px;
+    border-radius:50%;  
+    color:#FFF;
+    background-color: #1682FB;
+    padding:7px;
+}
+.telegram:hover{
+    transform:scale(1.06)
+}   
+
+.tweeter{
+    background: #2daae1;
+    width:43px;
+    height:43px;
+    border-radius:50%;  
+    color:#FFF;
+    padding:7px;
+}
+
+.tweeter:hover{
+    transform:scale(1.06)
+}   

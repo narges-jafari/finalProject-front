@@ -44,14 +44,9 @@ const Landing = () => {
       </div>
       <div>
         <SearchEntertainment />
+      </div>
+      <div style={{marginTop:'100px'}}>
         <Footer />
-
-        {/* <AmusementPark/> */}
-        {/* <CofeRestaurant/>
-        <Shopping/>
-        <Trip/>
-        <HealthBeauty/> */}
-
       </div>
 
     </div>
