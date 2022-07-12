@@ -8,6 +8,12 @@ import Footer from './Footer/Footer'
 // import img from '../../assets/img/landing/logo.PNG'
 import styles from '../../assets/styles/Search.module.css'
 import BusyRoutsSlide from './Airplan/BusyRoutsSlide'
+import AmusementPark from './Entertainment/AmusementPark'
+import CofeRestaurant from './Entertainment/CafeRestaurant'
+import Shopping from './Entertainment/Shopping'
+import Trip from './Entertainment/Trip'
+import HealthBeauty from './Entertainment/HealthBeauty'
+import SearchEntertainment from './Entertainment/SearchEntertainment'
 
 const Landing = () => {
   return (
@@ -37,7 +43,16 @@ const Landing = () => {
         <BusyRoutsSlide />
       </div>
       <div>
+
         <Footer />
+        <SearchEntertainment/>
+
+        {/* <AmusementPark/> */}
+        {/* <CofeRestaurant/>
+        <Shopping/>
+        <Trip/>
+        <HealthBeauty/> */}
+
 
       </div>
 

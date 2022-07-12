@@ -22,25 +22,25 @@ function Search () {
 
   return (
     <div
-      className=' d-flex flex-row justify-content-center'
+      className=' d-flex flex-row justify-content-center flex-wrap'
 
     >
       <div
         className={styles.divcontent}
 
       >
-        <Nav tabs className='  my-0 rounded-2 ' style={{ backgroundColor: '#ddd' }}>
-          <NavItem className='' style={{ border: 'none' }}>
+        <Nav tabs className=' my-0 rounded-2  d-flex flex-row flex-wrap' style={{ backgroundColor: '#ddd' }}>
+          <NavItem className={styles.navItemCss} style={{ border: 'none' }}>
             <NavLink
               className={classnames({
                 active:
                 currentActiveTab === '1'
               })}
               onClick={() => { toggle('1') }}
-            > <i className='fa fa-building' /> هتل
+            > <i className='fa fa-building ' /> هتل
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className={styles.navItemCss}>
 
             <NavLink
               className={classnames({
@@ -52,7 +52,7 @@ function Search () {
               هواپیما
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className={styles.navItemCss}>
             <NavLink
               className={classnames({
                 active:
@@ -62,7 +62,7 @@ function Search () {
             ><i className='fa fa-train px-1' />قطار
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className={styles.navItemCss}>
             <NavLink
               className={classnames({
                 active:

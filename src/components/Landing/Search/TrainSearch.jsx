@@ -49,7 +49,7 @@ const TrainSearch = () => {
           />
         </div>
         <div>
-          <button className='btn btn-sm btn-danger my-1 py-1 text- px-4'>جستجو</button>
+          <button className='btn btn-sm btn-danger my-1 py-1 mx-2 text- px-4'>جستجو</button>
         </div>
       </div>
     </>

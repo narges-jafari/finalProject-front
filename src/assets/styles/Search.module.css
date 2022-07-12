@@ -6,7 +6,7 @@
     font-size:0.8125rem;
     width:70%;
     box-shadow:0 0 4px 1px #ddd ;
-    margin-top: 150px;
+    margin-top: 130px;
 
 }
 
@@ -17,6 +17,15 @@
     background-attachment: fixed;
     height:500px;
 }
+
+.navItemCss{
+    width:130px;
+}
+
+.navlink{
+    color:red
+}
+
 
 
   

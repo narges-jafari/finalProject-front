@@ -1,0 +1,93 @@
+.card{
+   display: flex;
+   flex-direction: column;
+   border-radius: 10px;
+   cursor:pointer;
+   width: 250px;
+   background-color: white;
+   box-shadow: 0 0 4px 1px #ddd;
+   margin-top:5px;
+   margin-bottom:5px;
+}
+
+.card:hover{
+    transform: scale(1.02)
+
+}
+
+
+.img{
+    padding:12px;
+    border-radius: 30px;
+    height:150px;
+    width:100%
+}
+
+.img:hover{
+    transform:rotate(6deg)
+
+}
+
+.divcontent{
+    cursor:pointer;
+    background-color:white;
+    border-radius: 0.8rem;
+    font-size:0.8125rem;
+    width:100%;
+    margin-top: 130px;
+
+}
+
+
+/* FcAlarmClock
+FcPlanner */
+
+
+.navCss{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    margin: 0px;
+    background-color: yellow;
+    box-shadow: none;
+    justify-content: center;
+    border:none
+
+}
+
+.divCss1{
+    height:120px;
+    background: rgb(2, 110, 35);
+    box-shadow:none;
+    border-radius: 0px;
+
+}
+
+@media screen and (max-width:815px) {
+    .navCss{
+        justify-content: space-between;
+    }
+
+}
+
+.navDivCss{
+    color:red
+}
+ .navitemCss{
+    width:150px;
+    text-align:center;
+    border:1px solid  light;
+
+ }
+
+
+.tabContentCss{
+    width:85%;
+    border :2px solid red;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -90px;
+    background-color: white;
+    
+}
