@@ -1,0 +1,31 @@
+.selectCss{
+    /* padding:3px;
+    margin:5px 6px; */
+    -webkit-appearance: none;
+    border-radius: 4px;
+    color:red;
+    /* width:30px */
+
+
+}
+
+input:focus {
+    outline: none !important;
+}
+
+select:focus {
+    outline: none !important;
+}
+
+.dropdownCss{
+    border:1px solid red;
+    margin-right: -100px;
+}
+
+
+.selectDivCss{
+    border:2px solid yellow;
+    width:13%;
+    padding:2px;
+    border-radius: 8px
+}

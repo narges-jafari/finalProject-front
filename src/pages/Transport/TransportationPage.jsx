@@ -1,10 +1,12 @@
 import React from 'react'
-import Transport from '../../components/Transport'
+import TrainContent from '../../components/buyTicket/train/TrainContent'
+// import Transport from '../../components/Transport'
 
 const TransportationPage = () => {
   return (
     <>
-      <Transport />
+      {/* <Transport /> */}
+      <TrainContent />
     </>
   )
 }

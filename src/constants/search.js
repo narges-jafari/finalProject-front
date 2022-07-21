@@ -2,7 +2,7 @@ const stayDate = [
   '1',
   '2',
   '3',
-  '4',
+  'kkkkkkk',
   '5'
 ]
 export {
