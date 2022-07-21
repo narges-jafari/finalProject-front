@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Modal} from 'reactstrap'
+import { Modal } from 'reactstrap'
 
 const Passenger = (props) => {
-  const [numbr1,setNumber1] =useState()
-  const [numbr2,setNumber2] =useState()
-  const [numbr3,setNumber3] =useState()
-
+  const [numbr1, setNumber1] = useState()
+  const [numbr2, setNumber2] = useState()
+  const [numbr3, setNumber3] = useState()
 
   return (
     <Modal
@@ -17,7 +16,7 @@ const Passenger = (props) => {
       size='sm'
     >
       <div className='modal-header py-2'>
-        <h6 className='modal-title mt-0'>تعداد مسافران</h6>
+        <h6 className='modal-title mt-0'>انتخاب مسافران</h6>
         <button
           type='button'
           onClick={() => {
@@ -32,7 +31,7 @@ const Passenger = (props) => {
       </div>
       <div className='modal-body'>
         <div className='d-flex flex-column text-dark fw-bold text-center  '>
-          <div className='d-flex flex-row my-2 text-dark justify-content-between text-center' >
+          <div className='d-flex flex-row my-2 text-dark justify-content-between text-center'>
 
             <span className='my-2'> بزرگسال(بالای 12سال)</span>
             <input
@@ -40,7 +39,7 @@ const Passenger = (props) => {
               className='border border-1 border-primary w-25 rounded-3 ms-2 btn btn-sm px-1 py-1'
               defaultValue={1}
               value={numbr1}
-              onChange={e =>setNumber1(e.target.value)}
+              onChange={e => setNumber1(e.target.value)}
             />
           </div>
           <div className='d-flex flex-row my-2 text-dark justify-content-between text-center'>
@@ -50,20 +49,19 @@ const Passenger = (props) => {
               className='border border-1 border-primary w-25 rounded-3 ms-2 btn btn-sm px-1 py-1'
               defaultValue={0}
               value={numbr2}
-              onChange={e=>{setNumber2(e.target.value)}}
+              onChange={e => { setNumber2(e.target.value) }}
 
             />
           </div>
           <div className='d-flex flex-row my-2 text-dark justify-content-between text-center'>
-       
-          <span className='my-2'>    نوزاد(۱۰ روز تا ۲ سال)</span>
+            <span className='my-2'>    نوزاد(۱۰ روز تا ۲ سال)</span>
 
             <input
               type='number'
               className='border border-1 border-primary w-25 rounded-3 ms-2 btn btn-sm px-1 py-1'
               defaultValue={0}
               value={numbr3}
-              onChange={e=>{setNumber3(e.target.value)}}
+              onChange={e => { setNumber3(e.target.value) }}
             />
           </div>
 
