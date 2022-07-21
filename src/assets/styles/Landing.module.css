@@ -65,14 +65,4 @@ color:red;
 @keyframes mymove {
     from {bottom: 100px;}
     to {bottom: 130px;}
-    /* stop{bottom:200px} */
   }
-
-  /* @keyframes mymove {
-    0%   {background: red; bottom: 0px; bottom: 0px;}
-    25%  {background: rgb(19, 2, 2); bottom: 70px; bottom: 110px;}
-    50%  { bottom: 110px; bottom: 150px;}
-    75%  { bottom: 150px; bottom: 200px;} 
-     100% { bottom: 200px; bottom: 200px;} 
-     0%{ bottom: 0px; bottom: 0px;}
-  } */
