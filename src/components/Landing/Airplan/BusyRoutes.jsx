@@ -2,9 +2,6 @@ import React from 'react'
 import img from '../../../assets/img/Hotel/mahan.jpg'
 import imglogo from '../../../assets/img/Hotel/ml.jpg'
 import styles from '../../../assets/styles/Airport.module.css'
-import { FaPlaneDeparture, FaPlaneArrival } from 'react-icons/fa'
-
-
 const BusyRoutes = () => {
   return (
     <>

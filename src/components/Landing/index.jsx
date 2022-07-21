@@ -14,6 +14,7 @@ import Shopping from './Entertainment/Shopping'
 import Trip from './Entertainment/Trip'
 import HealthBeauty from './Entertainment/HealthBeauty'
 import SearchEntertainment from './Entertainment/SearchEntertainment'
+import Magazine from './Magazine/Magazine'
 
 const Landing = () => {
   return (
@@ -42,6 +43,8 @@ const Landing = () => {
         </div>
         <BusyRoutsSlide />
       </div>
+      <Magazine/>
+
       <div>
         <SearchEntertainment />
       </div>

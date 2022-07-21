@@ -1,0 +1,78 @@
+.imgmagezineCss{
+    color:#e5e5f8;
+    box-shadow: 0 0 4px 1px rgb(241, 121, 121);
+    position:relative;
+    margin:20px
+
+}
+
+.card{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width:300px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 2px;
+    box-shadow: 0 0 4px 1px #ddd;
+cursor: pointer;
+
+}
+
+
+.btnCss{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    /* border: 1px solid red; */
+    float:right;
+    margin-top:-30px;
+    position:relative;
+    background:#3fef3f;
+    border:none;
+        box-shadow: 0 0 4px 1px #ddd;
+        margin-right: 210px;
+        margin-bottom: 10px;
+
+
+
+}
+
+.btnCss:hover{
+color:red;
+}
+
+.divCss{
+    color:red;
+    position: relative;
+    /* animation: mymove infinite; */
+    animation: mymove 2s ;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    background: rgb(55, 5, 156);
+    width:300px;
+    margin-right:-213px;
+    border-radius: 5px;
+    
+
+}
+
+/* .divCss:hover{
+    display:block;
+    color: yellow;
+} */
+
+@keyframes mymove {
+    from {bottom: 100px;}
+    to {bottom: 130px;}
+    /* stop{bottom:200px} */
+  }
+
+  /* @keyframes mymove {
+    0%   {background: red; bottom: 0px; bottom: 0px;}
+    25%  {background: rgb(19, 2, 2); bottom: 70px; bottom: 110px;}
+    50%  { bottom: 110px; bottom: 150px;}
+    75%  { bottom: 150px; bottom: 200px;} 
+     100% { bottom: 200px; bottom: 200px;} 
+     0%{ bottom: 0px; bottom: 0px;}
+  } */
