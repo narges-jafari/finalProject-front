@@ -1,0 +1,57 @@
+.headerCss{
+    width:60%;
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    height:40px;
+    background:red;
+    margin:0px auto ;
+    justify-content:space-around;
+    border-radius:6px;
+}
+
+.divFilter{
+    margin-right: -140px;
+}
+.filterDiv{
+    width:25%;
+    border:1px solid red
+}
+.airCss{
+    width: 70%;
+    border:2px solid yellow;
+    margin:0px auto
+}
+.bodyCss{
+    width:70%;
+    border:2px solid yellow;
+    float:left;
+
+}
+
+.content{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:90%;
+    margin: 20px;
+}
+
+@media screen and (max-width: 1208px) {
+
+    .content{
+     flex-direction: column;
+
+    }
+
+    .filterDiv{
+        width:90%;
+        margin:10px auto
+    }
+
+    .airCss{
+      width:90%  
+    }
+
+}
+

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Collapse,Accordion } from 'reactstrap'
+import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
  import AirplaneContent from '../airplane/AirplaneContent.jsx'
  import BusContent from '../bus/BusContent.jsx'
@@ -38,6 +38,7 @@ const BuyTicketAccordion = () => {
 
   }
 
+
   return (
     <>
     <div  className='accordion ' id='accordion'>
@@ -68,8 +69,7 @@ const BuyTicketAccordion = () => {
            {col1?<i className='fa fa-angle-down fa-lg' style={{float:'left'}}/>:<i className='fa fa-angle-up fa-lg' style={{float:'left'}}/>}
           </button>
         </h2>
-        {col1?<div className='border border-primary'><AirplaneContent /></div>:null
-}
+        <Collapse isOpen={col1}><AirplaneContent /></Collapse>
       </div>
 
     <div className='accordion-item mb-2 border-0'>
@@ -97,8 +97,8 @@ const BuyTicketAccordion = () => {
 
           </button>
         </h2>
+           <Collapse isOpen={col2}><TrainContent /></Collapse>
 
-          {col2?<TrainContent />:null}
       
       </div>
       <div className='accordion-item mb-2 border-0'>
@@ -127,9 +127,8 @@ const BuyTicketAccordion = () => {
 
           </button>
         </h2>
+        <Collapse isOpen={col3}> <BusContent /></Collapse>
 
-        
-          {col3?  <BusContent />:null}
       </div>  
     </div>
 

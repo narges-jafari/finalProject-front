@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,use } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
@@ -15,6 +15,7 @@ import styles from '../../../assets/styles/TrainContent.module.css'
 import Passenger from './Pasenger.jsx'
 
 const TrainContent = () => {
+
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
   const [startDate, setStartDate] = useState(new Date())
