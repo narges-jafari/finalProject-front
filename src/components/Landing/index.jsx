@@ -3,16 +3,9 @@ import Search from './Search/Search'
 import Navbar from './Navbar/Navbar'
 import Header from './Navbar/Header'
 import HotelSlide from './Hotel/HotelSlide'
-// import BusyRoutes from './Airplan/BusyRoutes'
 import Footer from './Footer/Footer'
-// import img from '../../assets/img/landing/logo.PNG'
 import styles from '../../assets/styles/Search.module.css'
 import BusyRoutsSlide from './Airplan/BusyRoutsSlide'
-import AmusementPark from './Entertainment/AmusementPark'
-import CofeRestaurant from './Entertainment/CafeRestaurant'
-import Shopping from './Entertainment/Shopping'
-import Trip from './Entertainment/Trip'
-import HealthBeauty from './Entertainment/HealthBeauty'
 import SearchEntertainment from './Entertainment/SearchEntertainment'
 import Magazine from './Magazine/Magazine'
 
@@ -43,12 +36,12 @@ const Landing = () => {
         </div>
         <BusyRoutsSlide />
       </div>
-      <Magazine/>
+      <Magazine />
 
       <div>
         <SearchEntertainment />
       </div>
-      <div style={{marginTop:'100px'}}>
+      <div style={{ marginTop: '100px' }}>
         <Footer />
       </div>
 

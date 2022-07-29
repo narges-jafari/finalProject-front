@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import img from '../../../assets/img/landing/pic.jpg'
-import imglogo from '../../../assets/img/Hotel/ml.jpg'
 import styles from '../../../assets/styles/Landing.module.css'
 // import styles from '../../../assets/styles/Airport.module.css'
 
@@ -21,18 +20,15 @@ const Magazine = () => {
             <span className='mx-1'>نرگس جعفری </span>
             <span className='mx-1'>22تیر 1401</span>
           </div>
-          {!click ?
-          <>
-                      <button className={styles.btnCss} onClick={() => setClick(!click)}><i className='fa fa-angle-double-down fa-2x py-2' />
-                      <div className={styles.divCss}>یکی از علت های اصلی خشکی اب دریاچه ارومیه چاه های عمیقی است که زده شده است</div>
+          {!click
+            ? <>
+              <button className={styles.btnCss} onClick={() => setClick(!click)}><i className='fa fa-angle-double-down fa-2x py-2' />
+                <div className={styles.divCss}>یکی از علت های اصلی خشکی اب دریاچه ارومیه چاه های عمیقی است که زده شده است</div>
 
-                      </button>
+              </button>
 
-          </>
-            :
-            <button className={styles.btnCss} onClick={() => setClick(!click)}><i className='fa fa-angle-double-up fa-2x py-1' /></button>
-
-        }
+            </>
+            : <button className={styles.btnCss} onClick={() => setClick(!click)}><i className='fa fa-angle-double-up fa-2x py-1' /></button>}
         </div>
       </div>
     </>

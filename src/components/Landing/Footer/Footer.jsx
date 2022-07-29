@@ -45,7 +45,7 @@ const Footer = () => {
 
         <div className='d-flex flex-column flex-wrap my-2    '>
           <div className='d-flex flex-row flex-wrap justify-content-center'>
-            <img src={img} className='rounded-circle' style={{width: '70px', height: '70px', padding: '0px' }} />
+            <img src={img} className='rounded-circle' style={{ width: '70px', height: '70px', padding: '0px' }} />
             <span className='my-3'> تریپنو</span>
           </div>
           <div className='d-flex flex-row flex-wrap '>

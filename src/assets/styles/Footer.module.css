@@ -29,12 +29,6 @@ background-color: #0000ff
     from {background-color: #ff0000;}
     to {background-color: #0000ff;}
   }
-  /* @keyframes move {
-    0%   {background-color: red;}
-    25%  {background-color: yellow;}
-    50%  {background-color: blue;}
-    100% {background-color: green;}
-  } */
 @keyframes mymove {
     from {background-color: #0000ff}
     to {background-color: #800080;}

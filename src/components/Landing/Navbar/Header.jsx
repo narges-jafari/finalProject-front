@@ -17,8 +17,13 @@ const Header = () => {
         </div>
         <div>
           <div className='d-flex flex-row flex-wrap justify-content-start '>
-            <button className='mx-2 btn btn-outline-danger btn-sm'>ورود</button>
-            <button className=' btn btn-danger btn-sm mx-2'>عضویت</button>
+            <a href='/login'>
+              <button className='mx-2 btn btn-outline-danger btn-sm'>ورود</button>
+            </a>
+            <a href='/register'>
+              <button className=' btn btn-danger btn-sm mx-2'>عضویت</button>
+
+            </a>
           </div>
         </div>
       </div>

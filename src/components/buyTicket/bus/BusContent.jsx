@@ -15,24 +15,24 @@ const BusContent = () => {
 
   return (
     <>
-       <button
-          type='button'
-          data-toggle='modal'
-          onClick={() => {
-            if (!showPassengerModal) {
-              setShowPassengerModal(true)
-            }
-          }}
-          className='btn h-25  my-2 mx-2 bg-soft bg-warning  text-primary border border-primary rounded-3 text-nowrap '
-        >
-          <i className='fa fa-cog text-danger mx-1' /> مسافران
-        </button>
-        {showPassengerModal && (
-          <Passenger
-            isOpen={showPassengerModal}
-            setIsOpen={setShowPassengerModal}
-          />
-        )}
+      <button
+        type='button'
+        data-toggle='modal'
+        onClick={() => {
+          if (!showPassengerModal) {
+            setShowPassengerModal(true)
+          }
+        }}
+        className='btn  my-2 mx-2 bg-soft  float-left text-primary border border-primary rounded-3 text-nowrap '
+      >
+        <i className='fa fa-cog text-danger mx-1' />  مسافران
+      </button>
+      {showPassengerModal && (
+        <Passenger
+          isOpen={showPassengerModal}
+          setIsOpen={setShowPassengerModal}
+        />
+      )}
       <div className='d-flex flex-row flex-wrap my-2'>
         <div className='mx-2 my-2'>
           <i

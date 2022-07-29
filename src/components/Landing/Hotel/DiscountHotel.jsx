@@ -2,7 +2,6 @@ import React from 'react'
 import img from '../../../assets/img/Hotel/eshotel.jpeg'
 import styles from '../../../assets/styles/HotelSearch.module.css'
 
-
 const DiscountHotel = () => {
   return (
     <>

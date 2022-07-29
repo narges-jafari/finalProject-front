@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className='d-flex flex-row flex-wrap justify-content-between'>
         <div className='d-flex flex-row '>
           <div className='mx-3'>
-            <img src={img} className='rounded-circle' style={{width: '100px', height: '100px', padding: '0px' }} />
+            <img src={img} className='rounded-circle' style={{ width: '100px', height: '100px', padding: '0px' }} />
           </div>
           <div className='my-4'>
             تریپنو

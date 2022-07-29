@@ -9,8 +9,7 @@ select:focus {
 
 .inputcss{
     height:40px;
-    width:180px;
-    border-radius: 30px;
+    width:300px;
     border-radius: 5px;
     border:1px solid #80808033;
     padding-right: 40px;
@@ -35,3 +34,4 @@ select:focus {
   75%  {color:green; left:0px; top:5px;}
   100% {color:red; left:0px; top:0px;}
   }
+
