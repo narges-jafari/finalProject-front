@@ -1,0 +1,8 @@
+.inputcss{
+    width:300px;
+    border-radius: 5px;
+    border:1px solid #cccccc6d;
+    height:40px;
+    /* margin:auto 20px; */
+    padding-right: 30px;
+}

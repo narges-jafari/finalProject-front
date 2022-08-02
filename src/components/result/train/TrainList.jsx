@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react'
-import img from '../../../assets/img/logo1.JPG'
+import img from '../../../assets/img/train/3.JPG'
 import styles from '../../../assets/styles/AirplaneList.module.css'
-import { FaPlane } from 'react-icons/fa'
-import PriceTable from '../airplane/PriceTable'
+import { FaSubway } from 'react-icons/fa'
+import PriceChart from './PriceChart'
 import { FcSalesPerformance } from 'react-icons/fc'
 
-const AirplaneList = (props) => {
+const TrainList = (props) => {
   const [showPriceTableModal, setShowPriceTableModal] = useState(false)
 
   return (
@@ -25,7 +25,7 @@ const AirplaneList = (props) => {
           <FcSalesPerformance className='fa-lg' /> مقایسه قیمت ها
         </button>
         {showPriceTableModal && (
-          <PriceTable
+          <PriceChart
             isOpen={showPriceTableModal}
             setIsOpen={setShowPriceTableModal}
           />
@@ -41,16 +41,16 @@ const AirplaneList = (props) => {
             </div>
             <div className={styles.nameCss}>
 
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
+              <span className={styles.name}>  کوپه ای 4نفره</span>
+              <span className={styles.name}>   4ستاره4تختهامید</span>
+              <span className={styles.name}>رجا</span>
 
             </div>
             <div className={styles.nameCss}>
               <span className={styles.city}>خراسان رضوی
                 <span className={styles.time}>21:00</span>
               </span>
-              <span><FaPlane className={styles.picCss} /></span>
+              <span><FaSubway className={styles.picCss} /></span>
               <span className={styles.city}>تهران
                 <span className={styles.time}>12:00</span>
               </span>
@@ -74,16 +74,16 @@ const AirplaneList = (props) => {
             </div>
             <div className={styles.nameCss}>
 
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
+              <span className={styles.name}>  کوپه ای 4نفره</span>
+              <span className={styles.name}>   4ستاره4تختهامید</span>
+              <span className={styles.name}>رجا</span>
 
             </div>
             <div className={styles.nameCss}>
               <span className={styles.city}>خراسان رضوی
                 <span className={styles.time}>21:00</span>
               </span>
-              <span><FaPlane className={styles.picCss} /></span>
+              <span><FaSubway className={styles.picCss} /></span>
               <span className={styles.city}>تهران
                 <span className={styles.time}>12:00</span>
               </span>
@@ -106,16 +106,16 @@ const AirplaneList = (props) => {
             </div>
             <div className={styles.nameCss}>
 
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
+              <span className={styles.name}>  کوپه ای 4نفره</span>
+              <span className={styles.name}>   4ستاره4تختهامید</span>
+              <span className={styles.name}>رجا</span>
 
             </div>
             <div className={styles.nameCss}>
               <span className={styles.city}>خراسان رضوی
                 <span className={styles.time}>21:00</span>
               </span>
-              <span><FaPlane className={styles.picCss} /></span>
+              <span><FaSubway className={styles.picCss} /></span>
               <span className={styles.city}>تهران
                 <span className={styles.time}>12:00</span>
               </span>
@@ -138,17 +138,16 @@ const AirplaneList = (props) => {
             </div>
             <div className={styles.nameCss}>
 
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
+              <span className={styles.name}>  کوپه ای 4نفره</span>
+              <span className={styles.name}>   4ستاره4تختهامید</span>
+              <span className={styles.name}>رجا</span>
 
             </div>
             <div className={styles.nameCss}>
               <span className={styles.city}>خراسان رضوی
                 <span className={styles.time}>21:00</span>
               </span>
-
-              <span><FaPlane className={styles.picCss} /></span>
+              <span><FaSubway className={styles.picCss} /></span>
               <span className={styles.city}>تهران
                 <span className={styles.time}>12:00</span>
               </span>
@@ -169,4 +168,4 @@ const AirplaneList = (props) => {
   )
 }
 
-export default AirplaneList
+export default TrainList

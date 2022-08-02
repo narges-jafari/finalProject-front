@@ -17,10 +17,20 @@ const Filter = () => {
   const [col1, setCol1] = useState(false)
   const [col2, setCol2] = useState(false)
   const [col3, setCol3] = useState(false)
-  const [value, setValue] = useState('')
-  const handleNameChange = (event) => {
-    setValue(event.target.value)
+  const [money, setMoney] = useState();
+  const [option, setOption] = useState();
+
+
+  // this function will be called when a radio button is checked
+  const handleMoneyChange = (e) => {
+    setMoney(e.target.value);
   }
+  const handleOptionChange = (e) => {
+    setOption(e.target.value);
+  }
+
+
+
 
   // ACCORDION'S TOGGLE FUNCTIONS
   const toggleCol1 = () => {
@@ -44,14 +54,24 @@ const Filter = () => {
       <div className='accordion border border-1 border-secondary rounded-3 ' id='accordion'>
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
-            <span>نمایش 14 از 14 پرواز</span>
+            <span> نتایج33 </span>
             <span>لغو فیلتر ها</span>
           </div>
           <div>
-            <div className='border border-1 border-primary w-75 mx-3 my-2 px-1 rounded-3'>
-              <span>ساعت حرکت 06:00تا24:00</span>
-              <i className='fa fa-close text-danger ' />
-            </div>
+            {money == null?null
+           : <div className='border border-1 border-primary w-75 mx-3 my-2 px-1 rounded-3'>
+           <span>قیمت{money}</span>
+            <i className='fa fa-close text-danger ' />
+          </div>
+            }
+              {option == null?null
+           : <div className='border border-1 border-primary w-75 mx-3 my-2 px-1 rounded-3'>
+           <span>{option}</span>
+            <i className='fa fa-close text-danger ' />
+          </div>
+            }
+
+
           </div>
 
         </div>
@@ -76,14 +96,19 @@ const Filter = () => {
 
               }}
             >
-              ساعت حرکت
+               ستاره هتل
               {col1 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col1}>
-            <input type='text' value={value} className='mx-4 ' style={{ borderRadius: '5px', border: '1px solid #80808026' }} onChange={handleNameChange} />
 
+<div className='d-flex flex-column '>
+  <i className='fa fa-star my-2 mx-2'><span className='mx-2'>کمتر از سه ستاره</span></i>
+  <i className='fa fa-star my-2 mx-2'><span className='mx-2'>چهار ستاره</span></i>
+  <i className='fa fa-star my-2 mx-2'><span className='mx-2'>پنج ستاره</span></i>
+
+</div>
           </Collapse>
           <hr />
           <h2 className='accordion-header' id='headingtwo'>
@@ -106,20 +131,58 @@ const Filter = () => {
 
               }}
             >
-              کلاس پروازی
+              رنج قیمت
               {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col2}>
-            <div className='d-flex flex-column my-1 ' style={{ cursor: 'pointer' }}>
-              <i className='fa fa-star my-1 mx-4 '><span className='mx-2 '>بیزینس</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>اکونومی</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>پریمیوم اکونومی</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>پریمیوم بیزینس</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>فرست</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>پریمیوم فرست</span></i>
-            </div>
+          <div className='mx-3'>
+      <form>
+        <fieldset>
+
+          <input
+            type="radio"
+            name="age"
+            className='mx-2'
+            id='age-range-1'
+            value="0-10000000"
+            onChange={handleMoneyChange}
+            checked={money === '0-10000000'} />
+          <label htmlFor="age-range-1 ">0-10000000</label><br />
+
+          <input
+            type="radio"
+            name="age"
+            id='age-range-2'
+            value="10000000-20000000"
+            onChange={handleMoneyChange}
+            className='mx-2'
+            checked={money === '10000000-20000000'} />
+          <label htmlFor="age-range-2">10000000-20000000</label><br />
+
+          <input
+            type="radio"
+            name="age"
+            id='age-range-3'
+            value="20000000-30000000"
+            onChange={handleMoneyChange}
+            className='mx-2'
+            checked={money === '20000000-30000000'} />
+          <label htmlFor="age-range-3">20000000-30000000</label><br />
+
+          <input
+            type="radio" 
+            name="age"
+            id='age-range-7'
+            value="30000000+"
+            onChange={handleMoneyChange}
+            className='mx-2'
+            checked={money === '30000000+'} />
+          <label htmlFor="age-range-7">30000000+</label><br />
+        </fieldset>
+      </form>
+    </div>
           </Collapse>
           <hr />
           <h2 className='accordion-header' id='headingthree'>
@@ -142,21 +205,58 @@ const Filter = () => {
 
               }}
             >
-              شرکت های هواپیمایی
+              امکانات هتل
               {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col3}>
-            <div className='d-flex flex-column '>
-              <div className='d-flex flex-row my-1 mx-3 '><img src={logo1} className={styles.logoCss} /><span className='mx-1'>ایران ایرتور</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo2} className={styles.logoCss} /><span className='mx-1'>آسمان </span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo3} className={styles.logoCss} /><span className='mx-1'> تابان</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo4} className={styles.logoCss} /><span className='mx-1'>کاسپین</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo5} className={styles.logoCss} /><span className='mx-1'>کیش</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo6} className={styles.logoCss} /><span className='mx-1'>زاگرس</span></div>
-              {/* <div className='d-flex flex-row '><img/><span></span></div> */}
-            </div>
+          <div className='mx-3'>
+      <form>
+        <fieldset>
+
+          <input
+            type="checkbox"
+            name="age"
+            className='mx-2'
+            id='age-range-1'
+            value="امکانات برگزاری جلسات و ضیافت"
+            onChange={handleOptionChange}
+            checked={option =='امکانات برگزاری جلسات و ضیافت'} />
+          <label htmlFor="age-range-1 ">امکانات برگزاری جلسات و ضیافت</label><br />
+
+          <input
+            type="checkbox"
+            name="age"
+            id='age-range-2'
+            value="زمین تنیس"
+            onChange={handleOptionChange}
+            className='mx-2'
+            checked={option=='زمین تنیس'} />
+          <label htmlFor="age-range-2">زمین تنیس</label><br />
+
+          <input
+            type='checkbox'
+            name="age"
+            id='age-range-3'
+            value="سونا"
+            onChange={handleOptionChange}
+            className='mx-2'
+            checked={option === 'سونا'} />
+          <label htmlFor="age-range-3">سونا</label><br />
+
+          <input
+            type="checkbox" 
+            name="age"
+            id='age-range-7'
+            value="محل بازی کودکان"
+            onChange={handleOptionChange}
+            className='mx-2'
+            checked={option === 'محل بازی کودکان'} />
+          <label htmlFor="age-range-7">محل بازی کودکان</label><br />
+        </fieldset>
+      </form>
+    </div>
           </Collapse>
         </div>
 

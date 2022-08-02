@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
-import logo1 from '../../../assets/img/logo6.JPG'
-import logo2 from '../../../assets/img/logo5.JPG'
-import logo3 from '../../../assets/img/logo2.JPG'
-import logo4 from '../../../assets/img/logo3.JPG'
-import logo5 from '../../../assets/img/logo4.JPG'
-import logo6 from '../../../assets/img/logo1.JPG'
+import logo1 from '../../../assets/img/train/1.JPG'
+import logo2 from '../../../assets/img/train/2.JPG'
+import logo3 from '../../../assets/img/train/3.JPG'
+import logo4 from '../../../assets/img/train/4.JPG'
+import logo5 from '../../../assets/img/train/5.JPG'
+import logo6 from '../../../assets/img/train/6.JPG'
 
 import styles from '../../../assets/styles/Filter.module.css'
 
@@ -38,13 +38,14 @@ const Filter = () => {
     setCol3(!col3)
     setCol1(false)
     setCol2(false)
+
   }
   return (
     <>
       <div className='accordion border border-1 border-secondary rounded-3 ' id='accordion'>
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
-            <span>نمایش 14 از 14 پرواز</span>
+            <span>نمایش 14 از 14 اتوبوس</span>
             <span>لغو فیلتر ها</span>
           </div>
           <div>
@@ -102,27 +103,27 @@ const Filter = () => {
                 fontSize: '0.8125rem',
                 color: '#405057',
                 // boxShadow: '0 0 4px 1px #ddd',
-                direction: 'rtl'
+                border: '1px solid red'
 
               }}
             >
-              کلاس پروازی
+          شرکت های اتوبوسرانی
               {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col2}>
-            <div className='d-flex flex-column my-1 ' style={{ cursor: 'pointer' }}>
-              <i className='fa fa-star my-1 mx-4 '><span className='mx-2 '>بیزینس</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>اکونومی</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>پریمیوم اکونومی</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>پریمیوم بیزینس</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>فرست</span></i>
-              <i className='fa fa-star my-1 mx-4'><span className='mx-2'>پریمیوم فرست</span></i>
+            <div className='d-flex flex-column '>
+              <div className='d-flex flex-row my-1 mx-3 '><img src={logo1} className={styles.logoCss} /><span className='mx-1'> راه آهن جمهوری اسلامی ایران</span></div>
+              <div className='d-flex flex-row my-1 mx-3'><img src={logo2} className={styles.logoCss} /><span className='mx-1'>رجا </span></div>
+              <div className='d-flex flex-row my-1 mx-3'><img src={logo3} className={styles.logoCss} /><span className='mx-1'> کوثر</span></div>
+              <div className='d-flex flex-row my-1 mx-3'><img src={logo4} className={styles.logoCss} /><span className='mx-1'>فدک</span></div>
+              <div className='d-flex flex-row my-1 mx-3'><img src={logo5} className={styles.logoCss} /><span className='mx-1'>نور</span></div>
+              <div className='d-flex flex-row my-1 mx-3'><img src={logo6} className={styles.logoCss} /><span className='mx-1'>هستیا</span></div>
             </div>
           </Collapse>
           <hr />
-          <h2 className='accordion-header' id='headingthree'>
+          <h2 className='accordion-header' id='headingtwo'>
             <button
               className={classnames('fw-medium', 'text-end', 'border-0', {
                 collapsed: !col3
@@ -142,21 +143,17 @@ const Filter = () => {
 
               }}
             >
-              شرکت های هواپیمایی
-              {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+              پایانه مبدا
+              {col3 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col3}>
-            <div className='d-flex flex-column '>
-              <div className='d-flex flex-row my-1 mx-3 '><img src={logo1} className={styles.logoCss} /><span className='mx-1'>ایران ایرتور</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo2} className={styles.logoCss} /><span className='mx-1'>آسمان </span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo3} className={styles.logoCss} /><span className='mx-1'> تابان</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo4} className={styles.logoCss} /><span className='mx-1'>کاسپین</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo5} className={styles.logoCss} /><span className='mx-1'>کیش</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo6} className={styles.logoCss} /><span className='mx-1'>زاگرس</span></div>
-              {/* <div className='d-flex flex-row '><img/><span></span></div> */}
-            </div>
+            <div className='d-flex flex-column'>
+          <i className='fa fa-bus my-2 mx-2 '><span className='mx-2'>تهران پایانه بیهقی</span></i>
+          <i className='fa fa-bus my-2 mx-2 '><span className='mx-2'>تهران پایانه جنوب</span></i>
+          <i className='fa fa-bus my-2 mx-2'><span className='mx-2'>تهران پایانه شرق</span></i>
+          </div>
           </Collapse>
         </div>
 

@@ -6,7 +6,7 @@ import { FaPlane } from 'react-icons/fa'
 import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
 
-const AirplaneList = (props) => {
+const HotelList = (props) => {
   const [showPriceTableModal, setShowPriceTableModal] = useState(false)
 
   return (
@@ -169,4 +169,4 @@ const AirplaneList = (props) => {
   )
 }
 
-export default AirplaneList
+export default HotelList
