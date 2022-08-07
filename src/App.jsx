@@ -11,7 +11,6 @@ import BusResultPage from './pages/Result/BusResultPage'
 import HotelReservationPage from './pages/Hotel/HotelSearchPage'
 import HotelResultPage from './pages/Result/HotelResultPage'
 
-
 const App = () => {
   return (
     <Router>

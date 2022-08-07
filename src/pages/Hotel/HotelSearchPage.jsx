@@ -13,7 +13,7 @@ const HotelReservationPage = () => {
       {/* <BuyTicketAccordion/> */}
       <Navbar />
       <Header />
-      <div className=' mx-auto my-5' style={{width:'80%'}}>
+      <div className=' mx-auto my-5' style={{ width: '80%' }}>
         <HotelContent />
 
       </div>

@@ -7,7 +7,6 @@ const Passenger = (props) => {
   const [numbr3, setNumber3] = useState()
   const [numbr4, setNumber4] = useState()
 
-
   return (
     <Modal
       isOpen={props.isOpen}
@@ -55,7 +54,7 @@ const Passenger = (props) => {
 
             />
           </div>
-          <hr/>
+          <hr />
           <span className='text-center'>انتخاب اتاق</span>
           <div className='d-flex flex-row my-2 text-dark justify-content-between text-center'>
             <span className='my-2'>  اتاق تک تختخوابه</span>

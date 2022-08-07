@@ -29,5 +29,3 @@ const HotelResult = () => {
 }
 
 export default HotelResult
-
-

@@ -38,7 +38,6 @@ const Filter = () => {
     setCol3(!col3)
     setCol1(false)
     setCol2(false)
-
   }
   return (
     <>
@@ -107,7 +106,7 @@ const Filter = () => {
 
               }}
             >
-          شرکت های اتوبوسرانی
+              شرکت های اتوبوسرانی
               {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
@@ -150,10 +149,10 @@ const Filter = () => {
 
           <Collapse isOpen={col3}>
             <div className='d-flex flex-column'>
-          <i className='fa fa-bus my-2 mx-2 '><span className='mx-2'>تهران پایانه بیهقی</span></i>
-          <i className='fa fa-bus my-2 mx-2 '><span className='mx-2'>تهران پایانه جنوب</span></i>
-          <i className='fa fa-bus my-2 mx-2'><span className='mx-2'>تهران پایانه شرق</span></i>
-          </div>
+              <i className='fa fa-bus my-2 mx-2 '><span className='mx-2'>تهران پایانه بیهقی</span></i>
+              <i className='fa fa-bus my-2 mx-2 '><span className='mx-2'>تهران پایانه جنوب</span></i>
+              <i className='fa fa-bus my-2 mx-2'><span className='mx-2'>تهران پایانه شرق</span></i>
+            </div>
           </Collapse>
         </div>
 
