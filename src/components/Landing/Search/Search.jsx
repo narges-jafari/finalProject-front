@@ -12,7 +12,7 @@ import BusSearch from './BusSearch'
 import TrainSearch from './TrainSearch'
 import styles from '../../../assets/styles/Search.module.css'
 
-function Search () {
+function Search (props) {
   // State for current active Tab
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
 
@@ -22,9 +22,26 @@ function Search () {
   }
 
   return (
+   <>
+   <div className={styles.fontCss}>
+   {(() => {
+        switch (currentActiveTab) {
+          case '1':
+            return <span>رزرو هتل</span>;
+          case '2':
+            return <span>خرید بلیط هواپیما</span>;
+          case '3':
+            return <span>خرید بلیط قطار</span>;
+            case '4':
+              return <span>خرید بلیط اتوبوس</span>;
+          default:
+            return null;
+        }
+      })()}
+   </div>
     <div
-      className=' d-flex flex-row justify-content-center flex-wrap'
-
+      className=' d-flex flex-row justify-content-center flex-wrap '
+style={{marginTop:'-100px'}}
     >
       <div
         className={styles.divcontent}
@@ -37,7 +54,7 @@ function Search () {
                 active:
                 currentActiveTab === '1'
               })}
-              onClick={() => { toggle('1') }}
+              onClick={() => { toggle('1') ; props.selectTab('1')}}
             >
               {
                  currentActiveTab === '1'
@@ -53,7 +70,7 @@ function Search () {
                 active:
                 currentActiveTab === '2'
               })}
-              onClick={() => { toggle('2') }}
+              onClick={() => { toggle('2') ;props.selectTab('2')}}
             >
               {
                  currentActiveTab === '2'
@@ -68,7 +85,7 @@ function Search () {
                 active:
                 currentActiveTab === '3'
               })}
-              onClick={() => { toggle('3') }}
+              onClick={() => { toggle('3');props.selectTab('3') }}
             >
 
               {
@@ -84,7 +101,7 @@ function Search () {
                 active:
                 currentActiveTab === '4'
               })}
-              onClick={() => { toggle('4') }}
+              onClick={() => { toggle('4') ;props.selectTab('4')}}
             >
               {
                  currentActiveTab === '4'
@@ -127,6 +144,7 @@ function Search () {
         </TabContent>
       </div>
     </div>
+    </>
   )
 }
 

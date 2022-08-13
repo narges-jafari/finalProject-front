@@ -31,138 +31,198 @@ const AirplaneList = (props) => {
           />
         )}
       </div>
-      <div className={styles.content}>
+      <div className='d-flex flex-column '>
 
-        <div className={styles.contentItem}>
-          <div className={styles.information}>
-            <div className={styles.logoDiv}>
-              <img src={img} className={styles.piclogo} />
-              <span className=''>زاگرس</span>
-            </div>
-            <div className={styles.nameCss}>
-
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
+        <div className={styles.content}>
+          <div className={styles.contentItem}>
+            <div>
+            <img src={img} className={styles.imgCss}/>
+            <span> زاگرس </span>
 
             </div>
-            <div className={styles.nameCss}>
-              <span className={styles.city}>خراسان رضوی
-                <span className={styles.time}>21:00</span>
-              </span>
-              <span><FaPlane className={styles.picCss} /></span>
-              <span className={styles.city}>تهران
-                <span className={styles.time}>12:00</span>
-              </span>
-            </div>
+            <div className={styles.chaircss}>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
 
+            </div>
           </div>
-          <div className={styles.buyCss}>
-            <span className='mt-4'>1230000ريال</span>
-            <span>ظرفیت9نفر</span>
-            <button className='btn btn-sm px-3 btn-danger mt-2'>خرید بلیط</button>
+          <div className={styles.contentItem}>
+            <div>
+              <span className={styles.fontCss}>تهران</span>
+              <span className={styles.clockcss}> 14:00</span>
+            </div>
+            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div>
+            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.clockcss}> 15:30</span>
+            </div>
+          </div>
+          <div className={styles.contentItem1}>
+            <div>
+              <span> مهر آباد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+            <div>
+              <span>1ساعت 30 دقیقه</span>
+              </div>
+            <div>
+            <span >مشهد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+          </div>
+          <div className={styles.contentIte3}>
+            <div className='d-flex flex-column'>
+            <span className='mt-1 text-center'>قیمت هر مسافر </span>
+            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+            </div>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
+          </div>
 
+        </div>
+        <div className={styles.content}>
+          <div className={styles.contentItem}>
+            <div>
+            <img src={img} className={styles.imgCss}/>
+            <span> زاگرس </span>
+
+            </div>
+            <div className={styles.chaircss}>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+
+            </div>
+          </div>
+          <div className={styles.contentItem}>
+            <div>
+              <span className={styles.fontCss}>تهران</span>
+              <span className={styles.clockcss}> 14:00</span>
+            </div>
+            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div>
+            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.clockcss}> 15:30</span>
+            </div>
+          </div>
+          <div className={styles.contentItem1}>
+            <div>
+              <span> مهر آباد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+            <div>
+              <span>1ساعت 30 دقیقه</span>
+              </div>
+            <div>
+            <span >مشهد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+          </div>
+          <div className={styles.contentIte3}>
+            <div className='d-flex flex-column'>
+            <span className='mt-1 text-center'>قیمت هر مسافر </span>
+            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+            </div>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
+          </div>
+
+        </div>
+        <div className={styles.content}>
+          <div className={styles.contentItem}>
+            <div>
+            <img src={img} className={styles.imgCss}/>
+            <span> زاگرس </span>
+
+            </div>
+            <div className={styles.chaircss}>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+
+            </div>
+          </div>
+          <div className={styles.contentItem}>
+            <div>
+              <span className={styles.fontCss}>تهران</span>
+              <span className={styles.clockcss}> 14:00</span>
+            </div>
+            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div>
+            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.clockcss}> 15:30</span>
+            </div>
+          </div>
+          <div className={styles.contentItem1}>
+            <div>
+              <span> مهر آباد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+            <div>
+              <span>1ساعت 30 دقیقه</span>
+              </div>
+            <div>
+            <span >مشهد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+          </div>
+          <div className={styles.contentIte3}>
+            <div className='d-flex flex-column'>
+            <span className='mt-1 text-center'>قیمت هر مسافر </span>
+            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+            </div>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
+          </div>
+
+        </div>
+        <div className={styles.content}>
+          <div className={styles.contentItem}>
+            <div>
+            <img src={img} className={styles.imgCss}/>
+            <span> زاگرس </span>
+
+            </div>
+            <div className={styles.chaircss}>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+
+            </div>
+          </div>
+          <div className={styles.contentItem}>
+            <div>
+              <span className={styles.fontCss}>تهران</span>
+              <span className={styles.clockcss}> 14:00</span>
+            </div>
+            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div>
+            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.clockcss}> 15:30</span>
+            </div>
+          </div>
+          <div className={styles.contentItem1}>
+            <div>
+              <span> مهر آباد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+            <div>
+              <span>1ساعت 30 دقیقه</span>
+              </div>
+            <div>
+            <span >مشهد</span>
+              <span > چهارشنبه 21 مرداد </span>
+            </div>
+          </div>
+          <div className={styles.contentIte3}>
+            <div className='d-flex flex-column'>
+            <span className='mt-1 text-center'>قیمت هر مسافر </span>
+            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+            </div>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 
         </div>
 
-        <div className={styles.contentItem}>
-          <div className={styles.information}>
-            <div className={styles.logoDiv}>
-              <img src={img} className={styles.piclogo} />
-              <span className=''>زاگرس</span>
-            </div>
-            <div className={styles.nameCss}>
-
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
-
-            </div>
-            <div className={styles.nameCss}>
-              <span className={styles.city}>خراسان رضوی
-                <span className={styles.time}>21:00</span>
-              </span>
-              <span><FaPlane className={styles.picCss} /></span>
-              <span className={styles.city}>تهران
-                <span className={styles.time}>12:00</span>
-              </span>
-            </div>
-
-          </div>
-          <div className={styles.buyCss}>
-            <span className='mt-4'>1230000ريال</span>
-            <span>ظرفیت9نفر</span>
-            <button className='btn btn-sm px-3 btn-danger mt-2'>خرید بلیط</button>
-
-          </div>
-
-        </div>
-        <div className={styles.contentItem}>
-          <div className={styles.information}>
-            <div className={styles.logoDiv}>
-              <img src={img} className={styles.piclogo} />
-              <span className=''>زاگرس</span>
-            </div>
-            <div className={styles.nameCss}>
-
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
-
-            </div>
-            <div className={styles.nameCss}>
-              <span className={styles.city}>خراسان رضوی
-                <span className={styles.time}>21:00</span>
-              </span>
-              <span><FaPlane className={styles.picCss} /></span>
-              <span className={styles.city}>تهران
-                <span className={styles.time}>12:00</span>
-              </span>
-            </div>
-
-          </div>
-          <div className={styles.buyCss}>
-            <span className='mt-4'>1230000ريال</span>
-            <span>ظرفیت9نفر</span>
-            <button className='btn btn-sm px-3 btn-danger mt-2'>خرید بلیط</button>
-
-          </div>
-
-        </div>
-        <div className={styles.contentItem}>
-          <div className={styles.information}>
-            <div className={styles.logoDiv}>
-              <img src={img} className={styles.piclogo} />
-              <span className=''>زاگرس</span>
-            </div>
-            <div className={styles.nameCss}>
-
-              <span className={styles.name}>  سیستمی</span>
-              <span className={styles.name}>   اکونومی</span>
-              <span className={styles.name}>boeinh737</span>
-
-            </div>
-            <div className={styles.nameCss}>
-              <span className={styles.city}>خراسان رضوی
-                <span className={styles.time}>21:00</span>
-              </span>
-
-              <span><FaPlane className={styles.picCss} /></span>
-              <span className={styles.city}>تهران
-                <span className={styles.time}>12:00</span>
-              </span>
-            </div>
-
-          </div>
-          <div className={styles.buyCss}>
-            <span className='mt-4'>1230000ريال</span>
-            <span>ظرفیت9نفر</span>
-            <button className='btn btn-sm px-3 btn-danger mt-2'>خرید بلیط</button>
-
-          </div>
-
-        </div>
+      
 
       </div>
     </>

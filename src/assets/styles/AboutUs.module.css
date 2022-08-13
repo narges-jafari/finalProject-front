@@ -1,0 +1,172 @@
+
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir.woff2') format('woff2'),
+    url('../fonts/Vazir.woff') format('woff'),
+    url('../fonts/Vazir.ttf') format('truetype');
+    }
+     @font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Bold.woff2') format('woff2'),
+    url('../fonts/Vazir-Bold.woff') format('woff'),
+    url('../fonts/Vazir-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: Yekan;
+       src: url('../fonts/Yekan.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        }
+
+
+.content{
+    width:40%;
+}
+
+.img{
+    width:100%;
+    height: 400px;
+    margin-top: 30px;
+    border-radius: 10px;
+ 
+}
+
+.spanCss{
+    color:#0b68c5;
+    font-family:Vazir;
+    font-weight: bold;
+    font-size: 16px;
+    margin:5px 0px;
+}
+
+.span{
+
+    color:black;
+    font-family:Vazir;
+    font-weight: bold;
+    font-size: 24px;
+    margin:5px 0px;
+
+}
+
+
+.perpos{
+    border-radius:50%;
+    border:1px solid #0c8de9;
+    width:200px;
+    height:200px;
+    margin:10px 3px;
+    display:flex;
+    flex-direction:column;
+    background-color: #0c8de9;
+}
+.perpos1{
+    border-radius:50%;
+    border:1px solid #0c8de9ae;
+    width:200px;
+    height:200px;
+    margin:10px 3px;
+    display:flex;
+    flex-direction:column;
+    background-color: #0c8de9ae;
+    
+}
+.perpos2{
+    border-radius:50%;
+    border:1px solid #0c8de96d;
+    width:200px;
+    height:200px;
+    margin:10px 3px;
+    display:flex;
+    flex-direction:column;
+    background-color: #0c8de96d;
+}
+.perpos3{
+    border-radius:50%;
+    border:1px solid #0c8de933;
+    width:200px;
+    height:200px;
+    margin:10px 3px;
+    display:flex;
+    flex-direction:column;
+    background-color: #0c8de933;
+}
+
+.number{
+    border:1px solid #d1cfcf6b;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    text-align:center;
+    font-family: Yekan;
+    font-weight: bold;
+    font-size:40px;
+    margin-right: 70px;
+    background-color: #d1cfcf6b;
+}
+
+.item{
+    width:170px;
+    text-align:center;
+    margin:30px 20px 5px
+}
+
+.company{
+    font-family: Yekan;
+    padding: 10px 0px;
+    
+}
+
+.phoneCss{
+    height:300px;
+    width:100%;
+    /* border:1px solid red; */
+    /* border-radius-t: 30px; */
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+
+    /* background-color: #e6ebeb90; */
+}
+
+.emailCss{
+    font-family: Yekan;
+    padding: 10px 0px;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .content{
+        width:100%
+    }
+
+
+
+
+
+  
+   
+}
+
+@media screen and (max-width: 720px) {
+
+    .phoneCss{
+        border-top-left-radius: 30px;
+    }
+
+
+
+
+
+  
+   
+}

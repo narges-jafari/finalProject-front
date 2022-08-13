@@ -1,0 +1,85 @@
+
+
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir.woff2') format('woff2'),
+    url('../fonts/Vazir.woff') format('woff'),
+    url('../fonts/Vazir.ttf') format('truetype');
+    }
+     @font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Bold.woff2') format('woff2'),
+    url('../fonts/Vazir-Bold.woff') format('woff'),
+    url('../fonts/Vazir-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: Yekan;
+       src: url('../fonts/Yekan.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        }
+         .item{
+    display: flex;
+    flex-direction:row;
+}
+
+.item span{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(225, 223, 224, 0.363);
+    font-family:Yekan;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.ptext{
+    margin-top: 50px;
+    font-weight:bold;
+    font-family: Vazir;
+    font-size:14px;
+    padding: 0px 10px
+
+}
+
+.img{
+    width:30%;
+
+
+}
+
+.span{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 20px;
+}
+.spanCss{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+@media screen and (max-width: 705px) {
+
+    .img{
+        width:100%
+    }
+
+
+
+  
+   
+}

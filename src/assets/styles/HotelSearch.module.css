@@ -4,8 +4,19 @@
    padding-top:5px;
    padding-bottom:5px;
    margin-top:-2px;
+   width:100%;
+   height:70px;
    border-radius: 5px;
-   border:1px solid #80808033
+   border:none;
+   border-radius: 20px;
+   background-color: #e3e1e154;
+}
+
+.hotelInputCss:hover{
+   background-color: #fff;
+   box-shadow: 0 0 4px 1px #ddd
+ 
+
 }
 
 .imgCss{

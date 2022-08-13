@@ -1,47 +1,155 @@
-import React from 'react'
+import React,{useState,useCallback} from 'react'
 import Search from './Search/Search'
-import Navbar from './Navbar/Navbar'
-import Header from './Navbar/Header'
-import HotelSlide from './Hotel/HotelSlide'
+// import Navbar from './Navbar/Navbar'
+// import Header from './Navbar/Header'
+// import HotelSlide from './Hotel/HotelSlide'
 import Footer from './Footer/Footer'
 import styles from '../../assets/styles/Search.module.css'
-import BusyRoutsSlide from './Airplan/BusyRoutsSlide'
-import SearchEntertainment from './Entertainment/SearchEntertainment'
-import Magazine from './Magazine/Magazine'
+import HeaderLanding from './Navbar/HeaderLanding'
+// import BusyRoutsSlide from './Airplan/BusyRoutsSlide'
+// import SearchEntertainment from './Entertainment/SearchEntertainment'
+// import Magazine from './Magazine/Magazine'
+import  HotelQuestion from '../Question/HotelQuestion'
+import  AirplaneQuestion from '../Question/AirplaneQuestion'
+import  TrainQuestion from '../Question/TrainQuestion'
+import AirplaneFast from './FastSearch/AirplaneFast'
+import HotelFast from './FastSearch/HotelFast'
+import TrainFast from './FastSearch/TrainFast'
+import Necessary from './Necessary/Necessary'
+
+
 
 const Landing = () => {
+  const [showActiveTab,setActiveTab] =useState([])
+
+  const handleTab = useCallback((tab) => {
+    setActiveTab(tab)
+  }, [])
   return (
-    <div>
-      <div>
-        <Navbar />
-      </div>
-      <div>
-        <Header />
-      </div>
-      <div className={styles.divCss}>
-        {/* <div className='my-5'> */}
-        <Search />
+    <div style={{backgroundColor:'#9293921b'}}>
+        {(() => {
+        switch (showActiveTab) {
+          case '1':
+            return (
+              <div className={styles.divhotelCss}>
+              <HeaderLanding/>
+              <Search 
+              selectTab={handleTab}
+              />
+      
+            </div>
+            );
+          case '2':
+            return (
+              <div className={styles.divairplaneCss}>
+              <HeaderLanding/>
+              <Search 
+              selectTab={handleTab}
+              />
+      
+            </div>
+            );
+          case '3':
+            return (
+              <div className={styles.divtrainCss}>
+              <HeaderLanding/>
+              <Search 
+              selectTab={handleTab}
+              />
+      
+            </div>
+            );
+            case '4':
+              return (
+                <div className={styles.divbusCss}>
+                <HeaderLanding/>
+                <Search 
+                selectTab={handleTab}
+                />
+        
+              </div>
+              );
+          default:
+            return (
+              <div className={styles.divhotelCss}>
+              <HeaderLanding/>
+              <Search 
+              selectTab={handleTab}
+              />
+      
+            </div>
+            );
+        }
+      })()}
+          {(() => {
+        switch (showActiveTab) {
+          case '1':
+            return (
+              <div >
+          <HotelFast/>
+      
+            </div>
+            );
+          case '2':
+            return (
+              <div >
+        <AirplaneFast/>
+            
+      
+            </div>
+            );
+          case '3':
+            return (
+              <div >
+             <TrainFast/>
+      
+            </div>
+            );
 
-        {/* </div> */}
-      </div>
-      <div>
-        <div className='d-flex flex-row flex-wrap justify-content-center my-5'>
-          <h6 className=' border-bottom border-2 border-primary py-2 '>هتل های پنج ستاره</h6>
-        </div>
-        <HotelSlide />
-      </div>
-      <div>
-        <div className='d-flex flex-row flex-wrap justify-content-center my-5'>
-          <h6 className=' border-bottom border-2 border-primary py-2 '> مسیر های پر تردد </h6>
-        </div>
-        <BusyRoutsSlide />
-      </div>
-      <Magazine />
+          default:
+            return (
+             null
+            );
+        }
+      })()}
+            <Necessary/>
 
-      <div>
-        <SearchEntertainment />
-      </div>
-      <div style={{ marginTop: '100px' }}>
+
+{(() => {
+        switch (showActiveTab) {
+          case '1':
+            return (
+              <div >
+           <HotelQuestion/>
+      
+            </div>
+            );
+          case '2':
+            return (
+              <div >
+        <AirplaneQuestion/>
+            
+      
+            </div>
+            );
+          case '3':
+            return (
+              <div >
+             <TrainQuestion/>
+      
+            </div>
+            );
+
+          default:
+            return (
+             null
+            );
+        }
+      })()}
+
+  
+    
+      <div style={{ marginTop: '20px' }}>
         <Footer />
       </div>
 

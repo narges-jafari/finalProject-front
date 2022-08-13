@@ -1,4 +1,4 @@
-
+@import url('./Fonts.css');
 .divcontent{
     cursor:pointer;
     background-color:#ffffff;
@@ -7,24 +7,57 @@
     width:70%;
     box-shadow:0 0 4px 1px #ddd ;
     margin-top: 130px;
+    
 
 }
 
-.divCss{
-    background-image: url('../img/Hotel/talab.jpg');
+.divhotelCss{
+    background-image: url('../img/bg/bghotel.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     background-attachment: fixed;
-    height:500px;
+    height:1000px;
+}
+.divairplaneCss{
+    background-image: url('../img/bg/bgairplane.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height:1000px;
+}
+.divtrainCss{
+    background-image: url('../img/bg/rail.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height:1000px;
+}
+.divbusCss{
+    background-image: url('../img/bg/bus.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height:1000px;
 }
 
 .navItemCss{
     width:130px;
 }
 
-.navlink{
-    color:#ff0000
+.fontCss{
+    font-family:Vazir;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 100px 0px 0px 0px;
+    width:60%;
+    margin:0px auto;
+    color:#ffffff;
 }
+
+/* .navlink{
+    color:#ff0000
+} */
+
 
 
 

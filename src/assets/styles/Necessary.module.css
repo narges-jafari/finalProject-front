@@ -1,0 +1,35 @@
+
+@import url('./Fonts.css');
+
+.flexContent{
+    display: flex;
+    flex-direction: row;
+justify-content:space-around;
+width:100%;
+background-color: #ffffff;
+padding:30px 30px;
+margin: 50px 0px;
+flex-wrap:wrap
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    margin:5px;
+    align-items: center;
+    color:#dddddd6b
+
+}
+
+.imgcss{
+    width:150px;
+    height:100px;
+}
+
+.content span{
+    font-size:14px;
+    font-weight: bold;
+    font-family: Vazir;
+    color: #646464;
+    margin:10px 2px
+}

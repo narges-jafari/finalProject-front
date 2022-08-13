@@ -20,9 +20,7 @@ const TrainResult = () => {
         </div>
 
       </div>
-      <div className={styles.accordion}>
-        <Question />
-      </div>
+ 
 
     </>
   )

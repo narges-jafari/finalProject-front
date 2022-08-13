@@ -1,0 +1,54 @@
+
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir.woff2') format('woff2'),
+    url('../fonts/Vazir.woff') format('woff'),
+    url('../fonts/Vazir.ttf') format('truetype');
+    }
+     @font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir-Bold.woff2') format('woff2'),
+    url('../fonts/Vazir-Bold.woff') format('woff'),
+    url('../fonts/Vazir-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: Yekan;
+       src: url('../fonts/Yekan.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        }
+         
+.Question{
+    font-family:Vazir;
+    font-size:16px;
+    color:#abaaaa;
+    margin:50px auto;
+    padding:50px 2px 100px 2px
+}
+
+.headerfont{
+    width:75%;
+    margin:30px auto;
+    font-family: Vazir;
+    font-size:25px;
+    font-weight: bold;
+    color:black
+}
+
+.spanfont{
+    font-family: Vazir;
+    font-size:17px;
+    font-weight: bold;
+    color:black
+
+}
