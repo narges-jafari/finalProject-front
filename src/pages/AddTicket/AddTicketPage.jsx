@@ -1,8 +1,9 @@
-import AddTicket from "../../components/AddTicket"
+import AddTicketAccordion from "../../components/AddTicket"
+
 
 const AddTicketPage =() =>{
 return(
-    <AddTicket/>
+    <AddTicketAccordion/>
 )
 }
 

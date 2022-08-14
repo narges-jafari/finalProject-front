@@ -68,6 +68,24 @@
     color:#ffffff
 }
 
+.numberfont1{
+    font-family:Yekan;
+    font-size: 19px;
+    font-weight:bold;
+    color:#0b0b0b;
+
+}
+.buttonCss1{
+    font-family:Vazir;
+    font-size: 15px;
+    font-weight:bold;
+    padding: 10px 20px;
+    border:none;
+    border-radius: 10px;
+    background-color:#f9a404;
+
+}
+
 .numberfontChange{
     font-family:Yekan;
     font-size: 19px;
@@ -82,7 +100,8 @@
     padding: 10px 20px;
     border:none;
     border-radius: 10px;
-    background-color:#ffffff
+    background-color:#ffffff;
+
 }
 
 .buttonCssChange{
@@ -121,3 +140,10 @@
     }
 
     }
+
+    @media screen and (max-width: 700px) {
+        .numberfont{
+            display:none
+        }
+    }
+    

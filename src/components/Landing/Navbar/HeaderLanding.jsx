@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 import styles from '../../../assets/styles/HeaderLanding.module.css'
 import img from '../../../assets/img/landing/1.JPG'
+import Header from './Header'
 
 const HeaderLanding =() =>{
 
@@ -27,9 +28,13 @@ const HeaderLanding =() =>{
 <img src={img} className={styles.logoCss}/>
 <span className={styles.headerfont}>تریپنو</span>
 </div>
-<div className=' mt-4'>
+<div className=' mt-4 '>
 <span className={styles.numberfont}>021-41502</span>
 <button className={styles.buttonCss}>ورود/ثبت نام</button>
+<Header/>
+
+
+
 </div>
 
 </div>
@@ -47,6 +52,7 @@ const HeaderLanding =() =>{
 <div >
 <span className={styles.numberfontChange}>021-41502</span>
 <button className={styles.buttonCssChange}>ورود/ثبت نام</button>
+<Header/>
 </div>
 
 </div>

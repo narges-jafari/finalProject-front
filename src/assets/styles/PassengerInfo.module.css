@@ -1,0 +1,125 @@
+@import url('./Fonts.css');
+
+.content{
+    margin:10px auto;
+    display: flex;
+    flex-direction:column;
+    background-color: #fff;
+    padding: 10px 30px;
+    border-radius:13px;
+    box-shadow: 1px 0px 2px 4px #dddddd49;
+
+
+}
+
+label{
+    margin:10px 1px;
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 17px;
+    color: #808080be;
+
+}
+
+select{
+    padding:0px 30px;
+    height:43px;
+    border-radius: 10px;
+    background-color: #8080801d;
+    border: none;
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+select:hover{
+    box-shadow: 1px 0px 2px 4px #dddddd49;
+    background-color: #ffff;
+
+}
+
+.contentItem{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width:90%;
+    margin:5px auto;
+    
+
+}
+
+.contentItem11{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width:90%;
+    margin:5px auto;
+
+}
+
+.contentItem1{
+    margin:10px 2px;
+    display: flex;
+    flex-direction:column;
+    /* width:100% */
+    
+}
+
+.contentItem2{
+    margin:10px 2px;
+    display: flex;
+    flex-direction:column; 
+    /* width:150px */
+}
+
+
+
+.inputCss{
+    width:100%;
+    height:43px;
+    border-radius: 10px;
+    background-color: #8080801d;
+    border: none;
+    padding:5px 10px;
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.inputCss:hover{
+    box-shadow: 1px 0px 2px 4px #dddddd49;
+    background-color: #ffff;
+
+}
+
+@media screen and (max-width: 900px) {
+
+  
+    .contentItem{
+        width:100%;
+    }
+    .contentItem11{
+        width:100%;
+
+    }
+
+    .contentItem1{
+        width:100%;
+
+    }
+
+    .contentItem2{
+        width:100%;
+
+    }
+
+    
+
+
+  
+   
+}
+
+

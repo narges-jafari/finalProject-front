@@ -4,13 +4,14 @@ import Footer from '../../components/Landing/Footer/Footer.jsx'
 import Header from '../../components/Landing/Navbar/Header.jsx'
 import Navbar from '../../components/Landing/Navbar/Navbar.jsx'
 import BusResult from '../../components/result/bus/BusResult'
+import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 
 const BusResultPage = () => {
   return (
     <>
 
-      <Navbar />
-      <Header />
+<HeaderLanding/>
+
       <div className=' mx-auto '>
         <BusResult />
 

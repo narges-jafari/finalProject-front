@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
-import AirplaneContent from '../airplane/AirplaneContent.jsx'
+import AirplaneContent from './AirplaneContent.jsx'
 import BusContent from '../bus/BusContent.jsx'
 import TrainContent from '../train/TrainContent.jsx'
 import { FaBusAlt, FaSubway, FaPlane } from 'react-icons/fa'

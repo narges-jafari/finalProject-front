@@ -1,23 +1,27 @@
 import React from 'react'
 // import Filter from '../../components/result/Filter'
 import Footer from '../../components/Landing/Footer/Footer.jsx'
-import Header from '../../components/Landing/Navbar/Header.jsx'
-import Navbar from '../../components/Landing/Navbar/Navbar.jsx'
 import TrainResult from '../../components/result/train/TrainResult'
-
+import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
+import styles from '../../assets/styles/Pages.module.css'
 const TrainResultPage = () => {
   return (
     <>
+    <div className={styles.bodycss}>
+<div className={styles.content}>
+  <HeaderLanding/>
 
-      <Navbar />
-      <Header />
-      <div className=' mx-auto '>
+  </div>
+
+
+      <div className=' mx-auto ' >
         <TrainResult />
 
       </div>
       <div style={{ marginTop: '200px' }}>
         <Footer />
 
+      </div>
       </div>
     </>
   )

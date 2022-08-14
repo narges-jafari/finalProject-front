@@ -1,0 +1,15 @@
+.bodycss{
+    background-color: #dddddd24;
+
+}
+
+.content{
+    background-image: url(../img/p5.jpg);
+   background-repeat: no-repeat;
+     background-size:cover;
+    /* background-attachment: fixed;  */
+    width:100%;
+    position: relative;
+    height: 100px;
+
+}

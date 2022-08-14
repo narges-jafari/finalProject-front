@@ -10,7 +10,9 @@ import TrainResultPage from './pages/Result/TrainResultPage'
 import BusResultPage from './pages/Result/BusResultPage'
 import HotelReservationPage from './pages/Hotel/HotelSearchPage'
 import HotelResultPage from './pages/Result/HotelResultPage'
+import PaymentPage from './pages/Payment/PaymentPage'
 
+import AddTicketPage from './pages/AddTicket/AddTicketPage'
 const App = () => {
   return (
     <Router>
@@ -25,6 +27,10 @@ const App = () => {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/forgetpassword' element={<ForgetPasswordPage />} />
+        <Route path='/airplanepay' element={<PaymentPage />} />
+        <Route path='/addticket' element={<AddTicketPage />} />
+
+
 
       </Routes>
     </Router>

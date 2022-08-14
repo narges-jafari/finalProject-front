@@ -4,13 +4,14 @@ import Footer from '../../components/Landing/Footer/Footer.jsx'
 import Header from '../../components/Landing/Navbar/Header.jsx'
 import Navbar from '../../components/Landing/Navbar/Navbar.jsx'
 import HotelResult from '../../components/result/hotel/HotelResult.jsx'
+import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 
 const HotelResultPage = () => {
   return (
     <>
 
-      <Navbar />
-      <Header />
+<HeaderLanding/>
+
       <div className=' mx-auto '>
         <HotelResult />
 
