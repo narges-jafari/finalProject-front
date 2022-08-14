@@ -9,6 +9,46 @@ select:focus {
     outline: none !important;
 }
 
+textarea:focus{
+    outline: none !important;
+ 
+}
+
+textarea{
+    background-color: red;
+  padding-right: 40px;
+  padding-top:5px;
+  padding-bottom:5px;
+  margin-top:-2px;
+  border-radius: 5px;
+  border:none;
+  border-radius: 5px;
+  background-color: #e3e1e154;
+  font-family:Yekan;
+  font-weight: bold;
+  font-size: 20px;
+  margin:2px
+
+}
+
+.content select{
+  background-color: red;
+  padding-right: 40px;
+  padding-top:5px;
+  padding-bottom:5px;
+  margin-top:-2px;
+  width:230px;
+  height:70px;
+  border-radius: 5px;
+  border:none;
+  border-radius: 20px;
+  background-color: #e3e1e154;
+  font-family:Yekan;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
 .inputcss{
     padding-right: 40px;
     padding-top:5px;
@@ -25,27 +65,18 @@ select:focus {
     font-size: 20px;
 }
 
-.inputcss1{
-    padding-right: 40px;
-    padding-top:5px;
-    padding-bottom:5px;
-    margin-top:-2px;
-    width:70%;
-    height:70px;
-    border-radius: 5px;
-    border:none;
-    border-radius: 20px;
-    background-color: #e3e1e154;
-    font-family:Yekan;
-    font-weight: bold;
-    font-size: 20px;
+.inputcss:hover{
+    background-color: #ffff;
+    box-shadow: 0 0 4px 1px #ddd}
+
+textarea:hover{
+    background-color: #ffff;
+    box-shadow: 0 0 4px 1px #ddd
 
 }
-
 .content{
     display:flex;
     flex-direction: column;
-    margin:10px 
 }
 
 
@@ -67,4 +98,15 @@ select:focus {
   75%  {color:green; left:0px; top:5px;}
   100% {color:red; left:0px; top:0px;}
   }
+
+  @media screen and (max-width: 800px) {
+
+    .content{
+width:100%
+    }
+
+
+  
+   
+}
 

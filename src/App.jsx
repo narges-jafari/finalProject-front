@@ -11,8 +11,9 @@ import BusResultPage from './pages/Result/BusResultPage'
 import HotelReservationPage from './pages/Hotel/HotelSearchPage'
 import HotelResultPage from './pages/Result/HotelResultPage'
 import PaymentPage from './pages/Payment/PaymentPage'
-
 import AddTicketPage from './pages/AddTicket/AddTicketPage'
+import BuyTicketPage from './pages/BuyTicket/BuyTicketPage'
+
 const App = () => {
   return (
     <Router>
@@ -29,6 +30,8 @@ const App = () => {
         <Route path='/forgetpassword' element={<ForgetPasswordPage />} />
         <Route path='/airplanepay' element={<PaymentPage />} />
         <Route path='/addticket' element={<AddTicketPage />} />
+        <Route path='/buyticket' element={<BuyTicketPage />} />
+
 
 
 

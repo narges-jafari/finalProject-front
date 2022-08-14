@@ -3,7 +3,6 @@ import classnames from 'classnames'
 import {
   Card,
   CardBody,
-  Label,
   Nav,
   NavItem,
   NavLink,
@@ -15,12 +14,8 @@ import AirplaneTicket from './AirplaneTicket'
 import TrainTicket from './TrainTicket'
 import BusTicket from './BusTicket'
 
-// import Chart from './Charts/Chart'
-// import AddAccordion from './IndicatorsState/AddAccordion'
-// import AddAlert from './AddAlert'
-// import AlertTable from './MyAlert/AlertTable'
 
-const AddTicket = () => {
+const BuyTicket = () => {
   // STATE VARIABLES
   const [customActiveTab, setCustomActiveTab] = useState('indicators')
 
@@ -54,7 +49,7 @@ const AddTicket = () => {
     }]
 
   return (
-    <Card style={{border:'none', cursor:'pointer'}}>
+    <Card style={{border:'none', cursor:'pointer', backgroundColor:'red',borderRadius:'0px',}}>
       <CardBody >
         <Nav tabs style={{border:'none',color:'black'}} className='nav-tabs-custom nav-justified'>
           {customTabs.map((tab) => (
@@ -62,7 +57,7 @@ const AddTicket = () => {
               <NavLink
                 className={classnames({ active: customActiveTab === tab.id })}
                 onClick={() => { toggleCustom(tab.id) }}
-                style={{border:'none',color:'red'}}
+                style={{border:'none'}}
               >
                 {tab.name}
               </NavLink>
@@ -82,4 +77,4 @@ const AddTicket = () => {
   )
 }
 
-export default AddTicket
+export default BuyTicket

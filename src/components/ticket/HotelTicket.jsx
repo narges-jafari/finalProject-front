@@ -1,8 +1,10 @@
-const HotelTicket =() =>{
+const HotelTicket =() => {
     return(
         <>
         hotel
         </>
-    )
-    }
-    export default HotelTicket
+        )
+
+}
+
+export default HotelTicket

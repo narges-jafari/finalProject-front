@@ -1,8 +1,10 @@
-const TrainTicket =() =>{
+const TrainTicket =() => {
     return(
         <>
         train
         </>
-    )
-    }
-    export default TrainTicket
+        )
+
+}
+
+export default TrainTicket

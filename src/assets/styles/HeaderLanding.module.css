@@ -145,5 +145,8 @@
         .numberfont{
             display:none
         }
+        .numberfontChange{
+            display:none
+        }
     }
     

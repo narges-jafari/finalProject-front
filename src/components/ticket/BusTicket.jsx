@@ -1,8 +1,10 @@
-const BusTicket =() =>{
+const BusTicket =() => {
     return(
         <>
         bus
         </>
-    )
-    }
-    export default BusTicket
+        )
+
+}
+
+export default BusTicket

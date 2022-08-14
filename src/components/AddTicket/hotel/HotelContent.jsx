@@ -14,7 +14,7 @@ import {
   ButtonDropdown
 } from 'reactstrap'
 
-const AirplaneContent = () => {
+const HotelContent = () => {
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
   const [startDate, setStartDate] = useState(new Date())
@@ -49,7 +49,7 @@ const AirplaneContent = () => {
         </div>
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
-           <label>  شهر مبدا</label>
+           <label>   نام هتل</label>
             <input
               type='text'
               value={originName}
@@ -58,7 +58,7 @@ const AirplaneContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label> شهر مقصد</label>
+           <label>  ستاره هتل</label>
             <input
               type='text'
               value={originName}
@@ -67,7 +67,7 @@ const AirplaneContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>فرودگاه مبدا</label>
+           <label>نام استان  </label>
             <input
               type='text'
               value={originName}
@@ -76,7 +76,7 @@ const AirplaneContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>فرودگاه مقصد</label>
+           <label>  آدرس</label>
             <input
               type='text'
               value={originName}
@@ -94,17 +94,8 @@ const AirplaneContent = () => {
             />
           </div>
 
-             <div className={styles.content}>
-           <label>   ساعت حرکت</label>
-            <input
-              type='text'
-              value={originName}
-              onChange={e => setOriginName(e.target.value)}
-              className={styles.inputcss}
-            />
-          </div>
           <div className={styles.content}>
-           <label>   ساعت  رسیدن</label>
+           <label>     مدت اقامت</label>
             <input
               type='text'
               value={originName}
@@ -121,15 +112,7 @@ const AirplaneContent = () => {
               className={styles.inputcss}
             />
           </div>
-          <div className={styles.content}>
-           <label>     شماره پرواز </label>
-            <input
-              type='text'
-              value={originName}
-              onChange={e => setOriginName(e.target.value)}
-              className={styles.inputcss}
-            />
-          </div>
+   
              <div className={styles.content}>
            <label>    ظرفیت</label>
             <input
@@ -140,7 +123,7 @@ const AirplaneContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>    نام شرکت </label>
+           <label> آپلود تصاویر  </label>
             <input
               type='text'
               value={originName}
@@ -148,39 +131,23 @@ const AirplaneContent = () => {
               className={styles.inputcss}
             />
           </div>
-          <div className={styles.content}>
-           <label>    کلاس پرواز</label>
-           <select>
-            <option>
-              پرمیوم
-            </option>
-            <option>
-              فرست
-            </option>
-            <option>
-              بیزینس
-            </option>
-            <option>
-              فرست
-            </option>
-           </select>
-          </div>
+  
         </div>
-        {/* <div className='d-flex flex-row mt-3 flex-wrap justify-content-between'>
-       
-        </div> */}
+
+
         <div className='d-flex flex-column mt-3 flex-wrap justify-content-between'>
           <label>اطلاعات</label>
         <textarea/>
         </div>
+        <div className={styles.content}>
+        <button className='btn btn-sm btn-danger my-4 py-4 rounded-3  px-4 ' style={{fontFamily:'Vazir',fontSize:'18px',fontWeight:'bold'}}>اضافه کردن</button>
 
-        <div>
-          <button className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '>جستجو</button>
-        </div>
+         </div>
+
 
       </div>
     </>
   )
 }
 
-export default AirplaneContent
+export default HotelContent
