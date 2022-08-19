@@ -21,7 +21,6 @@ const AddTicketAccordion = () => {
     setCol2(false)
     setCol3(false)
     setCol4(false)
-
   }
 
   const toggleCol2 = () => {
@@ -29,14 +28,12 @@ const AddTicketAccordion = () => {
     setCol1(false)
     setCol3(false)
     setCol4(false)
-
   }
   const toggleCol3 = () => {
     setCol3(!col3)
     setCol1(false)
     setCol2(false)
     setCol4(false)
-
   }
 
   const toggleCol4 = () => {
@@ -44,13 +41,12 @@ const AddTicketAccordion = () => {
     setCol1(false)
     setCol2(false)
     setCol3(false)
-
   }
 
   return (
     <>
-      <div className='accordion w-75 ' id='accordion' style={{margin:'1px auto'}}>
-      <div className='accordion-item border-0 mb-2'>
+      <div className='accordion w-75 ' id='accordion' style={{ margin: '1px auto' }}>
+        <div className='accordion-item border-0 mb-2'>
           <h2 className='accordion-header' id='headingfour'>
             <button
               className={classnames('fw-bold', 'text-end', 'border-0', {
@@ -67,17 +63,17 @@ const AddTicketAccordion = () => {
                 fontSize: '1.0125rem',
                 color: '#405057',
                 boxShadow: '0 0 4px 1px #ddd',
-                fontFamily:'Vazir'
+                fontFamily: 'Vazir'
 
               }}
             >
               <FaHotel className={styles.iconCss} />
 
-                افزودن بلیط هتل 
+              افزودن بلیط هتل
               {col4 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
-          <Collapse isOpen={col4} style={{width:'80%',margin:'0px auto'}}><HotelContent/></Collapse>
+          <Collapse isOpen={col4} style={{ width: '80%', margin: '0px auto' }}><HotelContent /></Collapse>
         </div>
         <div className='accordion-item border-0 mb-2'>
           <h2 className='accordion-header' id='headingOne'>
@@ -133,7 +129,7 @@ const AddTicketAccordion = () => {
 
             </button>
           </h2>
-          <Collapse isOpen={col2} style={{width:'80%',margin:'0px auto'}}><TrainContent /></Collapse>
+          <Collapse isOpen={col2} style={{ width: '80%', margin: '0px auto' }}><TrainContent /></Collapse>
 
         </div>
         <div className='accordion-item mb-2 border-0'>
@@ -162,7 +158,7 @@ const AddTicketAccordion = () => {
 
             </button>
           </h2>
-          <Collapse isOpen={col3} style={{width:'80%',margin:'0px auto'}}> <BusContent /></Collapse>
+          <Collapse isOpen={col3} style={{ width: '80%', margin: '0px auto' }}> <BusContent /></Collapse>
 
         </div>
       </div>

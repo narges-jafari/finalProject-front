@@ -1,4 +1,4 @@
-import React,{useState,useCallback} from 'react'
+import React, { useState, useCallback } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import styles from '../../../assets/styles/HotelSearch.module.css'
@@ -11,15 +11,12 @@ const HotelSearch = () => {
   const [hotelName, setHotelName] = useState()
   const [startDate, setStartDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
-  const [showPassenger,setShowPassenger] =useState([])
-  const [showRoom,setShowRoom] =useState([])
+  const [showPassenger, setShowPassenger] = useState([])
+  const [showRoom, setShowRoom] = useState([])
 
   const toggleCol1 = () => {
     setCol1(!col1)
   }
-
-
-
 
   const handlePassenger = useCallback((passenger) => {
     setShowPassenger(passenger)
@@ -51,59 +48,59 @@ const HotelSearch = () => {
             locale={persianfa}
             calendarPosition='bottom-right'
             placeholder='تاریخ  رفت'
-            style={{ backgroundColor:'#e3e1e154', height:'70px',paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: 'none' ,borderRadius:'20px'}}
+            style={{ backgroundColor: '#e3e1e154', height: '70px', paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: 'none', borderRadius: '20px' }}
           />
         </div>
         <div className='accordion' id='accordion'>
-      <div className='accordion-item border-0 mb-2'>
-        <h2 className='accordion-header' id='headingOne'>
-          <button
-            className={classnames('fw-medium', 'text-center', 'border-0', {
-              collapsed: !col1
-            })}
-            type='button'
-            onClick={toggleCol1}
-            style={{
-              cursor: 'pointer',
-              backgroundColor: '#e3e1e154',
-              borderRadius: '20px',
-              height:'70px',
-              width: '200px',
-              // padding: '0.9rem 1.25rem',
-              fontSize: '0.8125rem',
-              color: '#405057',
-              margin:'4px 0px 0px 0px'
-            }}
-          >
-           <div className='d-flex flex-column my-2'>
-            <span>مسافران/ اتاق</span>
-            <div className='d-flex flex-row mx-4 px-4' >
-            {showPassenger ==''?<span style={{fontFamily:'Yekan', fontSize:'14px',fontWeight:'bold'}}>  امسافر </span>:<span style={{fontFamily:'Yekan', fontSize:'14px',fontWeight:'bold'}}>  {showPassenger} مسافر</span>}
-            {!showRoom?<span style={{fontFamily:'Yekan', fontSize:'14px',fontWeight:'bold'}}>  ااتاق </span>:<span> {showRoom} اتاق</span>}
-            </div>
-            </div>
+          <div className='accordion-item border-0 mb-2'>
+            <h2 className='accordion-header' id='headingOne'>
+              <button
+                className={classnames('fw-medium', 'text-center', 'border-0', {
+                  collapsed: !col1
+                })}
+                type='button'
+                onClick={toggleCol1}
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor: '#e3e1e154',
+                  borderRadius: '20px',
+                  height: '70px',
+                  width: '200px',
+                  // padding: '0.9rem 1.25rem',
+                  fontSize: '0.8125rem',
+                  color: '#405057',
+                  margin: '4px 0px 0px 0px'
+                }}
+              >
+                <div className='d-flex flex-column my-2'>
+                  <span>مسافران/ اتاق</span>
+                  <div className='d-flex flex-row mx-4 px-4'>
+                    {showPassenger == '' ? <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>  امسافر </span> : <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>  {showPassenger} مسافر</span>}
+                    {!showRoom ? <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>  ااتاق </span> : <span> {showRoom} اتاق</span>}
+                  </div>
+                </div>
 
-          </button>
-        </h2>
+              </button>
+            </h2>
 
-        <Collapse isOpen={col1} className='accordion-collapse '>
-        <HotelPassenger
-        AllPassenger={handlePassenger}
-        AllRoom={handleRoom}
-        />
+            <Collapse isOpen={col1} className='accordion-collapse '>
+              <HotelPassenger
+                AllPassenger={handlePassenger}
+                AllRoom={handleRoom}
+              />
 
-        </Collapse>
-      </div>
+            </Collapse>
+          </div>
 
-    </div>
-        {/* <div 
+        </div>
+        {/* <div
 >
         </div> */}
-     
+
       </div>
-      <div style={{ margin:'30px auto', width:'73%'}}> 
-          <button className='btn btn-sm btn-danger my-1  w-100  py-3' style={{borderRadius:'20px',fontSize:'30px',fontFamily:'Vazir',fontWeight:'bold'}}>جستجو</button>
-        </div>
+      <div style={{ margin: '30px auto', width: '73%' }}>
+        <button className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}>جستجو</button>
+      </div>
 
     </>
   )

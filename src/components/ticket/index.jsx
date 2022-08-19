@@ -14,7 +14,6 @@ import AirplaneTicket from './AirplaneTicket'
 import TrainTicket from './TrainTicket'
 import BusTicket from './BusTicket'
 
-
 const BuyTicket = () => {
   // STATE VARIABLES
   const [customActiveTab, setCustomActiveTab] = useState('indicators')
@@ -30,34 +29,34 @@ const BuyTicket = () => {
     {
       id: 'hotelticket',
       name: 'بلیط هتل',
-      component: <HotelTicket/>
+      component: <HotelTicket />
     },
     {
       id: 'airplaneticket',
       name: 'بلیط هواپیما',
-      component: <AirplaneTicket/>
+      component: <AirplaneTicket />
     },
     {
       id: 'trainticket',
       name: 'بلیط قطار',
-      component: <TrainTicket/>
+      component: <TrainTicket />
     },
     {
       id: 'busticket',
       name: 'بلیط اتوبوس',
-      component: <BusTicket/>
+      component: <BusTicket />
     }]
 
   return (
-    <Card style={{border:'none', cursor:'pointer', backgroundColor:'red',borderRadius:'0px',}}>
-      <CardBody >
-        <Nav tabs style={{border:'none',color:'black'}} className='nav-tabs-custom nav-justified'>
+    <Card style={{ border: 'none', cursor: 'pointer', backgroundColor: 'white', borderRadius: '0px' }}>
+      <CardBody>
+        <Nav tabs style={{ border: 'none', color: 'black' }} className='nav-tabs-custom nav-justified'>
           {customTabs.map((tab) => (
-            <NavItem key={tab.id}  >
+            <NavItem key={tab.id}>
               <NavLink
                 className={classnames({ active: customActiveTab === tab.id })}
                 onClick={() => { toggleCustom(tab.id) }}
-                style={{border:'none'}}
+                style={{ border: 'none' }}
               >
                 {tab.name}
               </NavLink>
@@ -65,9 +64,9 @@ const BuyTicket = () => {
           ))}
         </Nav>
 
-        <TabContent activeTab={customActiveTab} className='p-3 text-muted ' >
+        <TabContent activeTab={customActiveTab} className='p-3 text-muted '>
           {customTabs.map((tab) => (
-            <TabPane tabId={tab.id} key={tab.id} >
+            <TabPane tabId={tab.id} key={tab.id}>
               {tab.component}
             </TabPane>
           ))}

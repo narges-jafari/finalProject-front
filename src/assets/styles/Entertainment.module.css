@@ -1,9 +1,26 @@
+@import url('./Fonts.css');
+
+.contentflex{
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    cursor: pointer;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    font-family: Vazir;
+    font-size: 15px;
+    font-weight: bold;
+    color:#000
+
+
+
+}
 .card{
    display: flex;
    flex-direction: column;
    border-radius: 10px;
    cursor:pointer;
-   width: 250px;
+   width: 300px;
    background-color: white;
    box-shadow: 0 0 4px 1px #ddd;
    margin-top:5px;
@@ -34,7 +51,7 @@
     border-radius: 0.8rem;
     font-size:0.8125rem;
     width:100%;
-    margin-top: 130px;
+    margin-top: 10px;
 
 }
 
@@ -56,10 +73,11 @@ FcPlanner */
 }
 
 .divCss1{
-    height:120px;
+    height:130px;
     background: rgb(2, 110, 35);
     box-shadow:none;
     border-radius: 0px;
+    margin-top: 1px;
 
 }
 
@@ -68,13 +86,22 @@ FcPlanner */
         justify-content: space-between;
     }
 
+    .navitemCss{
+        width:100%
+    }
+
 }
 
 .navDivCss{
-    color:red
+    color:red;
+    width:100%;
+    /* border:1px solid blue; */
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
 }
  .navitemCss{
-    width:150px;
+    width:170px;
     text-align:center;
     border:1px solid  light;
 
@@ -85,20 +112,22 @@ FcPlanner */
     width:85%;
     /* border :2px solid red; */
     text-align:center;
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
-    margin-top: -90px;
+    margin-top: -90px; */
     background-color: white;
     box-shadow: 0 0 4px 1px #ddd;
-    border-radius:5px
+    border-radius:5px;
+    /* background-color: black */
+    padding:30px 10px;
+    margin:-90px auto 50px auto
     
 }
 
-/* FaBusAlt
-FaSubway
-FaHotel
-FaPlaneDeparture   jjjj
-
-FaPlaneArrival
-FaPlane
-FaBed */
+.headercss{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 30px;
+    width:75%;
+    margin:20px auto
+}

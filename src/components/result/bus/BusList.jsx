@@ -36,13 +36,13 @@ const BusList = (props) => {
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
-            <img src={img} className={styles.imgCss}/>
-            <span> رجا </span>
+              <img src={img} className={styles.imgCss} />
+              <span> رجا </span>
 
             </div>
             <div className={styles.chaircss}>
-              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
-              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
             </div>
           </div>
@@ -51,31 +51,31 @@ const BusList = (props) => {
               <span className={styles.fontCss}>تهران</span>
               <span className={styles.clockcss}> 14:00</span>
             </div>
-            <div><i className=' fa fa-train'/></div>
+            <div><i className=' fa fa-train' /></div>
             <div>
-            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.fontCss}>مشهد</span>
               <span className={styles.clockcss}> 15:30</span>
             </div>
           </div>
           <div className={styles.contentItem1}>
             <div>
               <span> مهر آباد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
             <div>
               <span>1ساعت 30 دقیقه</span>
-              </div>
+            </div>
             <div>
-            <span >مشهد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span>مشهد</span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
           </div>
           <div className={styles.contentIte3}>
             <div className='d-flex flex-column'>
-            <span className='mt-1 text-center'>قیمت هر مسافر </span>
-            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+              <span className='mt-1 text-center'>قیمت هر مسافر </span>
+              <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  1200000 تومان</span>
             </div>
-            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
             <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 
@@ -83,13 +83,13 @@ const BusList = (props) => {
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
-            <img src={img} className={styles.imgCss}/>
-            <span> زاگرس </span>
+              <img src={img} className={styles.imgCss} />
+              <span> زاگرس </span>
 
             </div>
             <div className={styles.chaircss}>
-              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
-              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
             </div>
           </div>
@@ -98,31 +98,31 @@ const BusList = (props) => {
               <span className={styles.fontCss}>تهران</span>
               <span className={styles.clockcss}> 14:00</span>
             </div>
-            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div><i className=' fa fa-plane' style={{ transform: 'rotate(226deg)' }} /></div>
             <div>
-            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.fontCss}>مشهد</span>
               <span className={styles.clockcss}> 15:30</span>
             </div>
           </div>
           <div className={styles.contentItem1}>
             <div>
               <span> مهر آباد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
             <div>
               <span>1ساعت 30 دقیقه</span>
-              </div>
+            </div>
             <div>
-            <span >مشهد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span>مشهد</span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
           </div>
           <div className={styles.contentIte3}>
             <div className='d-flex flex-column'>
-            <span className='mt-1 text-center'>قیمت هر مسافر </span>
-            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+              <span className='mt-1 text-center'>قیمت هر مسافر </span>
+              <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  1200000 تومان</span>
             </div>
-            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
             <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 
@@ -130,13 +130,13 @@ const BusList = (props) => {
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
-            <img src={img} className={styles.imgCss}/>
-            <span> زاگرس </span>
+              <img src={img} className={styles.imgCss} />
+              <span> زاگرس </span>
 
             </div>
             <div className={styles.chaircss}>
-              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
-              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
             </div>
           </div>
@@ -145,31 +145,31 @@ const BusList = (props) => {
               <span className={styles.fontCss}>تهران</span>
               <span className={styles.clockcss}> 14:00</span>
             </div>
-            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div><i className=' fa fa-plane' style={{ transform: 'rotate(226deg)' }} /></div>
             <div>
-            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.fontCss}>مشهد</span>
               <span className={styles.clockcss}> 15:30</span>
             </div>
           </div>
           <div className={styles.contentItem1}>
             <div>
               <span> مهر آباد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
             <div>
               <span>1ساعت 30 دقیقه</span>
-              </div>
+            </div>
             <div>
-            <span >مشهد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span>مشهد</span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
           </div>
           <div className={styles.contentIte3}>
             <div className='d-flex flex-column'>
-            <span className='mt-1 text-center'>قیمت هر مسافر </span>
-            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+              <span className='mt-1 text-center'>قیمت هر مسافر </span>
+              <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  1200000 تومان</span>
             </div>
-            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
             <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 
@@ -177,13 +177,13 @@ const BusList = (props) => {
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
-            <img src={img} className={styles.imgCss}/>
-            <span> زاگرس </span>
+              <img src={img} className={styles.imgCss} />
+              <span> زاگرس </span>
 
             </div>
             <div className={styles.chaircss}>
-              <span className='text-danger rounded-3 mx-2 px-2' style={{border:'1px solid #ddd'}}> 6 صندلی مانده</span>
-              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{border:'1px solid #ddd'}}> سیستمی </span>
+              <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> 6 صندلی مانده</span>
+              <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
             </div>
           </div>
@@ -192,37 +192,35 @@ const BusList = (props) => {
               <span className={styles.fontCss}>تهران</span>
               <span className={styles.clockcss}> 14:00</span>
             </div>
-            <div><i className=' fa fa-plane' style={{transform:'rotate(226deg)'}}/></div>
+            <div><i className=' fa fa-plane' style={{ transform: 'rotate(226deg)' }} /></div>
             <div>
-            <span className={styles.fontCss}>مشهد</span>
+              <span className={styles.fontCss}>مشهد</span>
               <span className={styles.clockcss}> 15:30</span>
             </div>
           </div>
           <div className={styles.contentItem1}>
             <div>
               <span> مهر آباد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
             <div>
               <span>1ساعت 30 دقیقه</span>
-              </div>
+            </div>
             <div>
-            <span >مشهد</span>
-              <span > چهارشنبه 21 مرداد </span>
+              <span>مشهد</span>
+              <span> چهارشنبه 21 مرداد </span>
             </div>
           </div>
           <div className={styles.contentIte3}>
             <div className='d-flex flex-column'>
-            <span className='mt-1 text-center'>قیمت هر مسافر </span>
-            <span className='text-primary' style={{fontWeight:'bold',fontSize:'20px'}}>  1200000 تومان</span>
+              <span className='mt-1 text-center'>قیمت هر مسافر </span>
+              <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  1200000 تومان</span>
             </div>
-            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily:'Vazir',backgroundColor:'#1a1a1a0c',fontSize:'17px', height:'47px'}}>جزییات</span>
+            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
             <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 
         </div>
-
-      
 
       </div>
     </>

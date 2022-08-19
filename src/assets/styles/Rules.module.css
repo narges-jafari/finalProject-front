@@ -1,33 +1,5 @@
 
-
-
-@font-face {
-    font-family: Vazir;
-    font-style: normal;
-    font-weight: normal;
-    src: url('../fonts/Vazir.eot');
-    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Vazir.woff2') format('woff2'),
-    url('../fonts/Vazir.woff') format('woff'),
-    url('../fonts/Vazir.ttf') format('truetype');
-    }
-     @font-face {
-    font-family: Vazir;
-    font-style: normal;
-    font-weight: bold;
-    src: url('../fonts/Vazir-Bold.eot');
-    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Vazir-Bold.woff2') format('woff2'),
-    url('../fonts/Vazir-Bold.woff') format('woff'),
-    url('../fonts/Vazir-Bold.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: Yekan;
-       src: url('../fonts/Yekan.ttf') format('truetype');
-        font-weight: bold;
-        font-style: normal;
-        }
+@import url('./Fonts.css');
          .item{
     display: flex;
     flex-direction:row;
@@ -61,15 +33,11 @@
 
 }
 
-.span{
-    font-family: Vazir;
-    font-weight: bold;
-    font-size: 20px;
-}
 .spanCss{
     font-family: Vazir;
     font-weight: bold;
     font-size: 30px;
+    padding:60px 0px 20px 0px
 }
 
 @media screen and (max-width: 705px) {

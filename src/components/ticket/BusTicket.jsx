@@ -1,10 +1,9 @@
-const BusTicket =() => {
-    return(
-        <>
-        bus
-        </>
-        )
-
+const BusTicket = () => {
+  return (
+    <>
+      bus
+    </>
+  )
 }
 
 export default BusTicket

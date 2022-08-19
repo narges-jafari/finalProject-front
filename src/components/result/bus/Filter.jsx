@@ -43,7 +43,7 @@ const Filter = () => {
   }
   return (
     <>
-      <div className='accordion  py-0 rounded-3 ' id='accordion' style={{border:'1px solid #dddddd6b ',backgroundColor:'#dddddd6b', fontFamily:'Yekan'}}>
+      <div className='accordion  py-0 rounded-3 ' id='accordion' style={{ border: '1px solid #dddddd6b ', backgroundColor: '#dddddd6b', fontFamily: 'Yekan' }}>
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span> نتایج33 </span>
@@ -60,7 +60,7 @@ const Filter = () => {
           </div>
 
         </div>
-   
+
         <div className='accordion-item border-0 '>
           <h2 className='accordion-header' id='headingOne'>
             <button
@@ -81,58 +81,58 @@ const Filter = () => {
 
               }}
             >
-               ساعت 
+              ساعت
               {col1 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col1}>
 
-          <div className='d-flex flex-column '>
-            <div className='d-flex flex-row mx-1  my-1 justify-content-around'>
-              <div className='mx-1 px-2 rounded-3' style={{backgroundColor:'#9293921b',width:'35%'}}>
-                <i className='fa fa-sun-o text-warning px-1 mt-2'/>
-                <span >
-                  12 تا 5
-                </span>
-                <br/>
-                <span className='text-secondary mx-3 px-2' style={{fontSize:'12px'}}>صبح زود</span>
+            <div className='d-flex flex-column '>
+              <div className='d-flex flex-row mx-1  my-1 justify-content-around'>
+                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
+                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
+                  <span>
+                    12 تا 5
+                  </span>
+                  <br />
+                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>صبح زود</span>
 
-              </div>
-              <div className='mx-1 px-2 rounded-3' style={{backgroundColor:'#9293921b',width:'35%'}}>
-                <i className='fa fa-sun-o text-warning px-1 mt-2'/>
-                <span >
-                  5 تا 12 
-                </span>
-                <br/>
-                <span className='text-secondary mx-3 px-2' style={{fontSize:'12px'}}>صبح </span>
+                </div>
+                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
+                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
+                  <span>
+                    5 تا 12
+                  </span>
+                  <br />
+                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>صبح </span>
 
+                </div>
               </div>
+              <div className='d-flex flex-row mx-1 my-1 justify-content-around'>
+                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
+                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
+                  <span>
+                    12 تا 5
+                  </span>
+                  <br />
+                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>  بعد از ظهر</span>
+
+                </div>
+                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
+                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
+                  <span>
+                    5تا 12
+                  </span>
+                  <br />
+                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>شب </span>
+
+                </div>
+              </div>
+
             </div>
-            <div className='d-flex flex-row mx-1 my-1 justify-content-around'>
-            <div className='mx-1 px-2 rounded-3' style={{backgroundColor:'#9293921b',width:'35%'}}>
-                <i className='fa fa-sun-o text-warning px-1 mt-2'/>
-                <span >
-                  12 تا 5
-                </span>
-                <br/>
-                <span className='text-secondary mx-3 px-2' style={{fontSize:'12px'}}>  بعد از ظهر</span>
-
-              </div>
-              <div className='mx-1 px-2 rounded-3' style={{backgroundColor:'#9293921b',width:'35%'}}>
-                <i className='fa fa-sun-o text-warning px-1 mt-2'/>
-                <span >
-                  5تا 12 
-                </span>
-                <br/>
-                <span className='text-secondary mx-3 px-2' style={{fontSize:'12px'}}>شب </span>
-
-              </div>
-            </div>
-
-          </div>
           </Collapse>
-         
+
           <h2 className='accordion-header' id='headingtwo'>
             <button
               className={classnames('fw-medium', 'text-end', 'border-0', {
@@ -241,7 +241,7 @@ const Filter = () => {
               }}
             >
               شرکت های اتوبوسرانی
-              {col3? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+              {col3 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 

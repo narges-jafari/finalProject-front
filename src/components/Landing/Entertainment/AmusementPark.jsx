@@ -17,7 +17,7 @@ const AmusementPark = () => {
             </div>
             <div className='mx-2'>
               <span>34</span>
-              <i className='fa fa-heart text-danger' />
+              <i className='fa fa-heart text-danger mt-2' />
             </div>
             <div className='mx-2'>
               <span>123</span>

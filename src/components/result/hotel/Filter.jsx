@@ -23,7 +23,6 @@ const Filter = () => {
     setMoney(e.target.value)
   }
 
-
   // ACCORDION'S TOGGLE FUNCTIONS
   const toggleCol1 = () => {
     setCol1(!col1)
@@ -37,7 +36,7 @@ const Filter = () => {
 
   return (
     <>
-      <div className='accordion  py-0 rounded-3 ' id='accordion' style={{border:'1px solid #dddddd6b ',backgroundColor:'#dddddd6b', fontFamily:'Yekan'}}>
+      <div className='accordion  py-0 rounded-3 ' id='accordion' style={{ border: '1px solid #dddddd6b ', backgroundColor: '#dddddd6b', fontFamily: 'Yekan' }}>
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span> نتایج33 </span>
@@ -54,7 +53,7 @@ const Filter = () => {
           </div>
 
         </div>
-   
+
         <div className='accordion-item border-0 '>
           <h2 className='accordion-header' id='headingOne'>
             <button
@@ -89,7 +88,7 @@ const Filter = () => {
 
             </div>
           </Collapse>
-         
+
           <h2 className='accordion-header' id='headingtwo'>
             <button
               className={classnames('fw-medium', 'text-end', 'border-0', {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Navigate } from 'react-router-dom'
 import { AUTH_USER } from '../constants/auth'
 
 const AuthMiddleware = ({
@@ -14,7 +14,7 @@ const AuthMiddleware = ({
     render={(props) => {
       if (isAuthProtected && !window.localStorage.getItem(AUTH_USER)) {
         return (
-          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+          <Navigate to={{ pathname: '/', state: { from: props.location } }} />
         )
       }
 
@@ -30,8 +30,7 @@ const AuthMiddleware = ({
 AuthMiddleware.propTypes = {
   isAuthProtected: PropTypes.bool,
   component: PropTypes.any,
-  location: PropTypes.object,
-  layout: PropTypes.any
+  location: PropTypes.object
 }
 
 export default AuthMiddleware

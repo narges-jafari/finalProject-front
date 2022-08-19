@@ -10,7 +10,7 @@ const BusResultPage = () => {
   return (
     <>
 
-<HeaderLanding/>
+      <HeaderLanding />
 
       <div className=' mx-auto '>
         <BusResult />

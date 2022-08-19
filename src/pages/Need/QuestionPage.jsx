@@ -8,19 +8,19 @@ import Question from '../../components/Landing/Need/Question.jsx'
 const QuestionPage = () => {
   return (
     <>
-    <div >
-      <Navbar />
-      <div style={{margin:'-100px 0px 0px 0px '}}>
-      <Question/>
+      <div>
+        <Navbar />
+        <div style={{ margin: '-100px 0px 0px 0px ' }}>
+          <Question />
 
+        </div>
+
+        <div style={{ marginTop: '20px' }}>
+          <Footer />
+
+        </div>
       </div>
 
-      <div style={{ marginTop: '20px' }}>
-        <Footer />
-
-      </div> 
-      </div>
-     
     </>
   )
 }

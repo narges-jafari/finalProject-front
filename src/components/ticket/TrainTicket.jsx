@@ -1,10 +1,9 @@
-const TrainTicket =() => {
-    return(
-        <>
-        train
-        </>
-        )
-
+const TrainTicket = () => {
+  return (
+    <>
+      train
+    </>
+  )
 }
 
 export default TrainTicket

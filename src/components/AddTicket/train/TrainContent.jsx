@@ -49,7 +49,7 @@ const TrainContent = () => {
         </div>
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
-           <label>  شهر مبدا</label>
+            <label>  شهر مبدا</label>
             <input
               type='text'
               value={originName}
@@ -58,7 +58,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label> شهر مقصد</label>
+            <label> شهر مقصد</label>
             <input
               type='text'
               value={originName}
@@ -67,7 +67,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>راه آهن مبدا</label>
+            <label>راه آهن مبدا</label>
             <input
               type='text'
               value={originName}
@@ -76,7 +76,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>راه آهن مقصد</label>
+            <label>راه آهن مقصد</label>
             <input
               type='text'
               value={originName}
@@ -85,7 +85,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>   قیمت</label>
+            <label>   قیمت</label>
             <input
               type='text'
               value={originName}
@@ -94,8 +94,8 @@ const TrainContent = () => {
             />
           </div>
 
-             <div className={styles.content}>
-           <label>   ساعت حرکت</label>
+          <div className={styles.content}>
+            <label>   ساعت حرکت</label>
             <input
               type='text'
               value={originName}
@@ -104,7 +104,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>   ساعت  رسیدن</label>
+            <label>   ساعت  رسیدن</label>
             <input
               type='text'
               value={originName}
@@ -113,7 +113,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>   تاریخ</label>
+            <label>   تاریخ</label>
             <input
               type='text'
               value={originName}
@@ -122,16 +122,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>     شماره قطار </label>
-            <input
-              type='text'
-              value={originName}
-              onChange={e => setOriginName(e.target.value)}
-              className={styles.inputcss}
-            />
-          </div>
-             <div className={styles.content}>
-           <label>    ظرفیت</label>
+            <label>     شماره قطار </label>
             <input
               type='text'
               value={originName}
@@ -140,7 +131,7 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>    نام شرکت </label>
+            <label>    ظرفیت</label>
             <input
               type='text'
               value={originName}
@@ -149,30 +140,39 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>    نوع سالن </label>
-           <select>
-            <option>
-              ویژه خواهران
-            </option>
-            <option>
-              معمولی
-            </option>
-            <option>
-              ویژه برادران
-            </option>
-            <option>
-              کوپه دربست
-            </option>
-           </select>
+            <label>    نام شرکت </label>
+            <input
+              type='text'
+              value={originName}
+              onChange={e => setOriginName(e.target.value)}
+              className={styles.inputcss}
+            />
+          </div>
+          <div className={styles.content}>
+            <label>    نوع سالن </label>
+            <select>
+              <option>
+                ویژه خواهران
+              </option>
+              <option>
+                معمولی
+              </option>
+              <option>
+                ویژه برادران
+              </option>
+              <option>
+                کوپه دربست
+              </option>
+            </select>
           </div>
 
         </div>
         {/* <div className='d-flex flex-row mt-3 flex-wrap justify-content-between'>
-       
+
         </div> */}
         <div className='d-flex flex-column mt-3 flex-wrap justify-content-between'>
           <label>اطلاعات</label>
-        <textarea/>
+          <textarea />
         </div>
 
         <div>

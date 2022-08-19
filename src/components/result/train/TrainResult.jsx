@@ -20,7 +20,6 @@ const TrainResult = () => {
         </div>
 
       </div>
- 
 
     </>
   )

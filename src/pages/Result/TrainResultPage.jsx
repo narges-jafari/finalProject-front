@@ -7,21 +7,20 @@ import styles from '../../assets/styles/Pages.module.css'
 const TrainResultPage = () => {
   return (
     <>
-    <div className={styles.bodycss}>
-<div className={styles.content}>
-  <HeaderLanding/>
+      <div className={styles.bodycss}>
+        <div className={styles.content}>
+          <HeaderLanding />
 
-  </div>
+        </div>
 
+        <div className=' mx-auto '>
+          <TrainResult />
 
-      <div className=' mx-auto ' >
-        <TrainResult />
+        </div>
+        <div style={{ marginTop: '200px' }}>
+          <Footer />
 
-      </div>
-      <div style={{ marginTop: '200px' }}>
-        <Footer />
-
-      </div>
+        </div>
       </div>
     </>
   )

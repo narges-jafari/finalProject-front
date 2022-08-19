@@ -1,68 +1,161 @@
-.imgmagezineCss{
-    color:#e5e5f8;
-    box-shadow: 0 0 4px 1px rgb(241, 121, 121);
-    position:relative;
-    margin:20px
+@import url('./Fonts.css');
+.content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+    margin:0px auto;
+    border-radius: 20px;
+    /* padding:50px 0px; */
+    background-color: #ffffff;
+    text-align: center;
+    /* padding:10px 10px 0px 1px */
 
 }
 
-.card{
+
+
+
+
+.textcss{
+    width:32%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding:10px 10px 0px 0px
+    /* border:1px solid red */
+}
+
+.img{
+    width:68%;
+    height:300px;
+    /* border:1px solid red */
+
+}
+
+.fontCss{
+    font-family: Vazir;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.spancss{
+    font-family: Vazir;
+    font-size: 16px;
+    font-weight: thin;
+    margin:10px 2px
+
+}
+
+.spancss1{
+    font-family: Vazir;
+    font-size: 17px;
+    font-weight: bold;
+    margin:20px 2px;
+   
+
+}
+
+
+
+
+
+
+
+.content1{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+    margin:60px auto;
+    border-radius: 20px;
+    justify-content:center;
+    /* padding:50px 0px; */
+    background-color: #ffffff;
+
+padding:50px 10px
+
+}
+
+.spantext{
+    /* position: absolute; */
+    font-family: Vazir;
+    text-align: center;
+    align-items: center;
+  padding:20px 0px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color:#000;
+
+}
+
+.imgcss{
+    width:100%;
+    /* border-radius: 20px; */
+    height:200px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+.content1Item{
+    width:30%;
+    margin:10px 5px;
     display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    width:300px;
-    border-radius: 10px;
-    background-color: white;
-    margin: 2px;
-    box-shadow: 0 0 4px 1px #ddd;
-cursor: pointer;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color:white;
+    box-shadow: 1px 2px 4px 1px #ddd
 
+    
 }
 
 
-.btnCss{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    /* border: 1px solid red; */
-    float:right;
-    margin-top:-30px;
-    position:relative;
-    background:#3fef3f;
-    border:none;
-        box-shadow: 0 0 4px 1px #ddd;
-        margin-right: 210px;
-        margin-bottom: 10px;
-
-
-
+.content1Item:hover{
+    transform: scale(1.2)
 }
 
-.btnCss:hover{
-color:red;
-}
 
-.divCss{
-    color:red;
-    position: relative;
-    /* animation: mymove infinite; */
-    animation: mymove 2s ;
-    animation-direction: alternate;
-    animation-fill-mode: forwards;
-    background: rgb(55, 5, 156);
-    width:300px;
-    margin-right:-213px;
-    border-radius: 5px;
+@media screen and (max-width: 750px) {
+
+  
+    .content1{
+        width:100%;
+        justify-content:center
+    }
+    .content1Item{
+        width:100%;
+
+    }
+    .content{
+        width:90%;
+   
+    }
+
+    .img{
+        width:55%;
+        /* border:1px solid red */
+    }
+
+    .textcss{
+        width:45%;
+
+
+    }
+
+    .fontCss{
+        font-size: 16px;
+    }
+
+  
+
     
 
+
+  
+   
 }
 
-/* .divCss:hover{
-    display:block;
-    color: yellow;
-} */
 
-@keyframes mymove {
-    from {bottom: 100px;}
-    to {bottom: 130px;}
-  }

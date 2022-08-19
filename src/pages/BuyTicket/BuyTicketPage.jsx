@@ -7,21 +7,20 @@ import BuyTicket from '../../components/ticket'
 const BuyTicketPage = () => {
   return (
     <>
-    <div className={styles.bodycss}>
-<div className={styles.content} >
-  <HeaderLanding/>
+      <div className={styles.bodycss}>
+        <div className={styles.content}>
+          <HeaderLanding />
 
-  </div>
+        </div>
 
+        <div className=' mx-auto  '>
+          <BuyTicket />
 
-      <div className=' mx-auto  ' >
-        <BuyTicket/>
+        </div>
+        <div style={{ marginTop: '200px' }}>
+          <Footer />
 
-      </div>
-      <div style={{ marginTop: '200px' }}>
-        <Footer />
-
-      </div>
+        </div>
       </div>
     </>
   )

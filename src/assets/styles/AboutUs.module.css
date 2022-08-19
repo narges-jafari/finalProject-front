@@ -1,36 +1,42 @@
 
 
-@font-face {
-    font-family: Vazir;
-    font-style: normal;
-    font-weight: normal;
-    src: url('../fonts/Vazir.eot');
-    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Vazir.woff2') format('woff2'),
-    url('../fonts/Vazir.woff') format('woff'),
-    url('../fonts/Vazir.ttf') format('truetype');
-    }
-     @font-face {
-    font-family: Vazir;
-    font-style: normal;
-    font-weight: bold;
-    src: url('../fonts/Vazir-Bold.eot');
-    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Vazir-Bold.woff2') format('woff2'),
-    url('../fonts/Vazir-Bold.woff') format('woff'),
-    url('../fonts/Vazir-Bold.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: Yekan;
-       src: url('../fonts/Yekan.ttf') format('truetype');
-        font-weight: bold;
-        font-style: normal;
-        }
-
+@import url('./Fonts.css');
 
 .content{
+    width:75%;
+    margin:2px auto;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.contentItem{
     width:40%;
+}
+
+.contentItem1{
+    width:60%;
+
+}
+
+.spanCss{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+    color:#0c8de9;
+}
+
+.spanCss1{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 30px;
+    color:#000000;
+
+}
+
+.pcss{
+    margin:40px 2px ;
+    font-family:'Vazir'
 }
 
 .img{
@@ -38,6 +44,7 @@
     height: 400px;
     margin-top: 30px;
     border-radius: 10px;
+    /* border:1px solid black */
  
 }
 
@@ -124,6 +131,9 @@
 .company{
     font-family: Yekan;
     padding: 10px 0px;
+    font-size: 25px;
+    font-size: bold;
+    
     
 }
 
@@ -143,9 +153,22 @@
     padding: 10px 0px;
 }
 
-@media screen and (max-width: 1200px) {
+.emailCss1{
 
-    .content{
+    font-family: Yekan;
+    padding: 10px 0px;
+    font-weight: bold;
+    font-size: 15px;
+    margin:0px 3px 0px 0px
+
+}
+
+@media screen and (max-width: 900px) {
+
+    .contentItem{
+        width:100%
+    }
+    .contentItem1{
         width:100%
     }
 

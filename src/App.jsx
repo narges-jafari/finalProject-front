@@ -13,6 +13,10 @@ import HotelResultPage from './pages/Result/HotelResultPage'
 import PaymentPage from './pages/Payment/PaymentPage'
 import AddTicketPage from './pages/AddTicket/AddTicketPage'
 import BuyTicketPage from './pages/BuyTicket/BuyTicketPage'
+import AboutUsPage from './pages/Footer/AboutUsPage'
+import RoulesPage from './pages/Footer/RoulesPage'
+import QuestionPage from './pages/Footer/QuestionPage'
+import MagazineResultPage from './pages/Footer/MagazineResultPage'
 
 const App = () => {
   return (
@@ -31,9 +35,10 @@ const App = () => {
         <Route path='/airplanepay' element={<PaymentPage />} />
         <Route path='/addticket' element={<AddTicketPage />} />
         <Route path='/buyticket' element={<BuyTicketPage />} />
-
-
-
+        <Route path='/aboutus' element={<AboutUsPage />} />
+        <Route path='/roules' element={<RoulesPage />} />
+        <Route path='/question' element={<QuestionPage />} />
+        <Route path='/magazin' element={<MagazineResultPage />} />
 
       </Routes>
     </Router>

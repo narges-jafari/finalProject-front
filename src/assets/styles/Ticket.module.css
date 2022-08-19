@@ -1,0 +1,50 @@
+@import url('./Fonts.css');
+.content{
+    display: flex;
+    /* flex-wrap:  wrap; */
+    flex-direction: column;
+    width: 60%;
+    margin:0px auto
+}
+
+.contentItem{
+    display: flex;
+    /* flex-wrap:  wrap; */
+    flex-direction: row;
+    justify-content:space-around;
+    padding: 10px 0px
+
+}
+
+.spancss{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 12px;
+    color:#000000;
+    padding: 1px 0px 1px 10px;
+
+}
+
+.spancss1{
+    font-family: Yekan;
+    font-size: 12px;
+    color:#000000a5;
+    
+}
+
+
+@media screen and (max-width: 900px) {
+
+  
+    .content{
+        width:100%
+        
+    }
+
+
+    
+
+
+  
+   
+}

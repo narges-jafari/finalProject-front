@@ -49,7 +49,7 @@ const HotelContent = () => {
         </div>
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
-           <label>   نام هتل</label>
+            <label>   نام هتل</label>
             <input
               type='text'
               value={originName}
@@ -58,7 +58,7 @@ const HotelContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>  ستاره هتل</label>
+            <label>  ستاره هتل</label>
             <input
               type='text'
               value={originName}
@@ -67,7 +67,7 @@ const HotelContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>نام استان  </label>
+            <label>نام استان  </label>
             <input
               type='text'
               value={originName}
@@ -76,7 +76,7 @@ const HotelContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>  آدرس</label>
+            <label>  آدرس</label>
             <input
               type='text'
               value={originName}
@@ -85,7 +85,7 @@ const HotelContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>   قیمت</label>
+            <label>   قیمت</label>
             <input
               type='text'
               value={originName}
@@ -95,7 +95,7 @@ const HotelContent = () => {
           </div>
 
           <div className={styles.content}>
-           <label>     مدت اقامت</label>
+            <label>     مدت اقامت</label>
             <input
               type='text'
               value={originName}
@@ -104,7 +104,7 @@ const HotelContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label>   تاریخ</label>
+            <label>   تاریخ</label>
             <input
               type='text'
               value={originName}
@@ -112,9 +112,9 @@ const HotelContent = () => {
               className={styles.inputcss}
             />
           </div>
-   
-             <div className={styles.content}>
-           <label>    ظرفیت</label>
+
+          <div className={styles.content}>
+            <label>    ظرفیت</label>
             <input
               type='text'
               value={originName}
@@ -123,7 +123,7 @@ const HotelContent = () => {
             />
           </div>
           <div className={styles.content}>
-           <label> آپلود تصاویر  </label>
+            <label> آپلود تصاویر  </label>
             <input
               type='text'
               value={originName}
@@ -131,19 +131,17 @@ const HotelContent = () => {
               className={styles.inputcss}
             />
           </div>
-  
+
         </div>
-
 
         <div className='d-flex flex-column mt-3 flex-wrap justify-content-between'>
           <label>اطلاعات</label>
-        <textarea/>
+          <textarea />
         </div>
         <div className={styles.content}>
-        <button className='btn btn-sm btn-danger my-4 py-4 rounded-3  px-4 ' style={{fontFamily:'Vazir',fontSize:'18px',fontWeight:'bold'}}>اضافه کردن</button>
+          <button className='btn btn-sm btn-danger my-4 py-4 rounded-3  px-4 ' style={{ fontFamily: 'Vazir', fontSize: '18px', fontWeight: 'bold' }}>اضافه کردن</button>
 
-         </div>
-
+        </div>
 
       </div>
     </>

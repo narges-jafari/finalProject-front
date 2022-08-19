@@ -9,21 +9,21 @@ import BusResult from '../../components/result/bus/BusResult'
 const AboutUsPage = () => {
   return (
     <>
-<div style={{backgroundColor:'#e6ebeb90'}}>
-      <Navbar />
-      <div style={{padding:'100px 0px 0px 0px '}}>
-      <AboutUs/>
+      <div style={{ backgroundColor: '#e6ebeb90' }}>
+        <Navbar />
+        <div style={{ padding: '100px 0px 0px 0px ' }}>
+          <AboutUs />
 
-      </div>
-      {/* <Header /> */}
-      {/* <div style={{marginTop:'40px'}}>
+        </div>
+        {/* <Header /> */}
+        {/* <div style={{marginTop:'40px'}}>
 
       </div>
 */}
-      <div style={{ marginTop: '20px' }}>
-        <Footer />
+        <div style={{ marginTop: '20px' }}>
+          <Footer />
 
-      </div> 
+        </div>
       </div>
     </>
   )

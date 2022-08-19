@@ -10,9 +10,9 @@ import Payment from '../../components/Payment/Payment'
 const PaymentPage = () => {
   return (
     <>
-<div >
+      <div>
 
-<Payment/>
+        <Payment />
       </div>
     </>
   )

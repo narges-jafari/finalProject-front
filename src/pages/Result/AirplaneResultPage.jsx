@@ -10,7 +10,7 @@ const AirplaneResultPage = () => {
   return (
     <>
 
-   <HeaderLanding/>
+      <HeaderLanding />
       <div className=' mx-auto '>
         <AirplaneResult />
 

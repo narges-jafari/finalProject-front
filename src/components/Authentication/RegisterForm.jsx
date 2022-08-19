@@ -1,143 +1,92 @@
-import React from 'react'
-// import { useMutation } from '@apollo/client'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Row, Col, CardBody, Card, Container, Label } from 'reactstrap'
-// import { toast } from 'react-toastify'
-// import loginimg from '../../assets/img/lo.JPG'
+import { Route, Redirect } from 'react-router-dom'
+
+// import { useHistory } from "react-router-dom";
+
 import styles from '../../assets/styles/Login.module.css'
-
-import registerimg from '../../assets/img/register1.JPG'
-// import { schema } from '../../utils/registerFormValidation'
-
-// import userMutations from '../../apollo/mutations/userMutations'
-
-// import {
-//   AUTH_USER,
-//   AUTH_USER_INFO,
-//   AUTH_USER_TEAM_ID,
-//   USERNAME,
-//   SELECTED_TEAM,
-//   DEFAULT_TEAM_NAME,
-//   DEFAULT_TEAM_ID
-// } from '../../constants/auth'
+import { schema } from '../../Utils/ResisterValidation'
+// import { toast } from 'react-toastify'
+import { useMutation } from '@apollo/client'
+import userMutations from '../../Apollo/Mutation/userMutations'
+import registerimg from '../../assets/img/Capturedjdsk.JPG'
+import HomePage from '../../pages/Common/HomePage'
 
 const RegisterForm = () => {
-//   const [register, { loading, data }] = useMutation(userMutations.SIGNUP)
+  const [register, { regdata }] = useMutation(userMutations.CREATEUSER)
+  const [gender, setGender] = useState('زن')
 
-  //   if (!loading && data) {
-  //     if (data.signup == null) {
-  //     } else if (data.signup.token) {
-  //       toast.success('Your account has been created.')
+  console.log(register.length)
 
-  //       window.localStorage.removeItem(AUTH_USER)
+  // console.log(register.createUser)
 
-  //       window.localStorage.setItem(AUTH_USER, data.signup.token)
-  //       window.localStorage.setItem(
-  //         AUTH_USER_TEAM_ID,
-  //         '<PERSONAL>'
-  //       )
-  //       window.localStorage.setItem(
-  //         AUTH_USER_INFO,
-  //         JSON.stringify(data.signup.user)
-  //       )
-  //       window.localStorage.setItem(USERNAME, data.signup.user.username)
-  //       window.localStorage.setItem(
-  //         DEFAULT_TEAM_NAME,
-  //         '<PERSONAL>'
-  //       )
-  //       window.localStorage.setItem(
-  //         DEFAULT_TEAM_ID,
-  //         '<PERSONAL>'
-  //       )
-  //       window.localStorage.setItem(
-  //         SELECTED_TEAM,
-  //         '<PERSONAL>'
-  //       )
-
-  //       props.setIsLoggedIn(true)
-  //     }
-  //   }
+  // console.log(register)
 
   return (
-
     <div className={styles.bgCss}>
       <div className='account-pages my-3  pt-sm-5'>
         <Container>
-          <Row className='justify-content-center'>
+          <Row className='justify-content-center  '>
             <Col md={8} lg={6} xl={5}>
-              <Card className='overflow-hidden'>
+              <Card className='overflow-hidden ' style={{ border: 'none', boxShadow: ' 0 0 4px 1px #ddd' }}>
                 <div>
                   <img src={registerimg} alt='' className={styles.imgCss} />
+                  <span className={styles.spancss}>ثبت نام</span>
 
                 </div>
                 <CardBody>
                   <div className='p-2'>
+
                     <Formik
                       initialValues={{
-                        firstName: '',
-                        lastName: '',
-                        username: '',
-                        password: '',
-                        emailAddress: ''
-                      }}
-                    //   validationSchema={schema}
+                            fullName: '',
+                            username: '',
+                            password: '',
+                            email: '',
+                            birthdate: '',
+                            nationalcode: ''
+                          }}
+                      validationSchema={schema}
                       enableReinitialize
                       className='form-horizontal'
-                    //   onSubmit={(values) => {
-                    //     console.log(values)
-                    //     register({
-                    //       variables: {
-                    //         username: values.username,
-                    //         password: values.password,
-                    //         firstName: values.firstName,
-                    //         lastName: values.lastName,
-                    //         email: values.emailAddress
-                    //       }
-                    //       // update(cache, result) {
-                    //       //   cache.writeQuery({
-                    //       //     query: queries.GET_USER_ITEM,
-                    //       //     data: { userItem: result.data.signup }
-                    //       //   })
-                    //       // }
-                    //     })
-                    //   }}
+                      onSubmit={(values) => {
+                            console.log(values)
+                            register({
+                              variables: {
+                                fullName: values.fullName,
+                                username: values.username,
+                                password: values.password,
+                                email: values.email,
+                                // gender: values.gender,
+                                birthdate: values.birthdate,
+                                nationalcode: values.nationalcode
+                              }
+
+                            })
+                          }}
                     >
                       <Form>
-                        <div className='mb-3'>
-                          <Label>نام</Label>
+                            <div className='mb-3'>
+                          <Label>نام   ونام خانوادگی</Label>
                           <Field
-                            name='firstName'
-                            className='form-control'
-                            placeholder='نام خود را وارد کنید'
+                            name='fullName'
+                            className={styles.filedcss}
+                            placeholder='نام ونام خانوادگی خود را وارد کنید'
                             type='text'
                           />
                           <ErrorMessage
                             className='alert alert-danger p-2 mt-1'
                             component='div'
-                            name='firstName'
+                            name='fullName'
                           />
                         </div>
 
-                        <div className='mb-3'>
-                          <Label>نام خانوادگی</Label>
-                          <Field
-                            name='lastName'
-                            className='form-control'
-                            placeholder='نام خانوادگی خود را وارد کنید'
-                            type='text'
-                          />
-                          <ErrorMessage
-                            className='alert alert-danger p-2 mt-1'
-                            component='div'
-                            name='lastName'
-                          />
-                        </div>
-
-                        <div className='mb-3'>
+                            <div className='mb-3'>
                           <Label>نام کاربری</Label>
                           <Field
                             name='username'
-                            className='form-control'
+                            className={styles.filedcss}
                             placeholder='نام کاربری را وراد کنید'
                             type='text'
                           />
@@ -148,11 +97,11 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                        <div className='mb-3'>
+                            <div className='mb-3'>
                           <Label>رمز عبور</Label>
                           <Field
                             name='password'
-                            className='form-control'
+                            className={styles.filedcss}
                             placeholder='رمز عبور را وارد کنید'
                             type='password'
                           />
@@ -163,7 +112,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                        {/* <div className='mb-3'>
+                            {/* <div className='mb-3'>
                           <Label>Repeat Password</Label>
                           <Field
                             name='repeatPassword'
@@ -178,47 +127,112 @@ const RegisterForm = () => {
                           />
                         </div> */}
 
-                        <div className='mb-3'>
+                            <div className='mb-3'>
                           <Label>ایمیل</Label>
                           <Field
-                            name='emailAddress'
-                            className='form-control'
+                            name='email'
+                            className={styles.filedcss}
                             placeholder='ایمیل خود را وارد کنید'
                             type='email'
                           />
                           <ErrorMessage
                             className='alert alert-danger p-2 mt-1'
                             component='div'
-                            name='emailAddress'
+                            name='email'
                           />
                         </div>
-
-                        {/* <div className='mb-3'>
-                          <Label>Repeat Email Address</Label>
+                            <div className='mb-3'>
+                          <Label>تاریخ تولد</Label>
                           <Field
-                            name='repeatEmailAddress'
-                            className='form-control'
-                            placeholder='Re-enter your email address'
-                            type='email'
+                            name='birthdate'
+                            className={styles.filedcss}
+                            placeholder='تاریخ تولد خود را وارد کنید'
+                            type='text'
                           />
                           <ErrorMessage
                             className='alert alert-danger p-2 mt-1'
                             component='div'
-                            name='repeat-emailAddress'
+                            name='birthdate'
                           />
-                        </div> */}
+                        </div>
 
-                        <div className='mt-5'>
+                            <div className='mb-3'>
+
+                          <Label> کدملی</Label>
+                          <Field
+                            name='nationalcode'
+                            className={styles.filedcss}
+                            placeholder='کدملی خود را وارد کنید'
+                            type='text'
+                          />
+                          <ErrorMessage
+                            className='alert alert-danger p-2 mt-1'
+                            component='div'
+                            name='nationalcode'
+                          />
+                        </div>
+
+                            {/* {register.length ==1?                     <a href='/'>
+                         <span
+                               className='btn  py-2 col-12'
+                               style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
+                               type='submit'
+                             >
+                               ثبت نام
+                             </span>
+                             </a>
+                      :    <a href='/'>
+                      <span
+                            className='btn  py-2 col-12'
+                            style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
+                            type='submit'
+                          >
+                            ثبت نام
+                          </span>
+                          </a>} */}
+
+                            <div className='mt-5'>
                           <button
-                            className='btn btn-primary col-12'
+                            className='btn  py-2 col-12'
+                            style={{ backgroundColor: '#f49107f1', fontFamily: 'Vazir', fontSize: '20px' }}
                             type='submit'
                           >
                             ثبت نام
                           </button>
+
+                          {/* <a href='/'> */}
+                          {/* {!register ?
+                      <a href='/'>
+                      <span
+                            className='btn  py-2 col-12'
+                            style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
+                            type='submit'
+                          >
+                            ثبت نام
+                          </span>
+                          </a>:
+                            <a href='/register'>
+                            <span
+                                  className='btn  py-2 col-12'
+                                  style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
+                                  type='submit'
+                                >
+                                  ثبت نام
+                                </span>
+                                </a>
+                    }
+                   */}
+                          {/* </a> */}
+
                         </div>
-                      </Form>
+                            {/* {register? history.push('/')
+:history.push('/register')} */}
+
+                          </Form>
                     </Formik>
+
                   </div>
+                  {/* {register? <HomePage/>:'fffff'} */}
 
                   <div className='mt-5 text-center'>
                     <p>

@@ -1,154 +1,141 @@
-import React,{useState,useCallback} from 'react'
+import React, { useState, useCallback } from 'react'
 import Search from './Search/Search'
-// import Navbar from './Navbar/Navbar'
-// import Header from './Navbar/Header'
-// import HotelSlide from './Hotel/HotelSlide'
 import Footer from './Footer/Footer'
 import styles from '../../assets/styles/Search.module.css'
 import HeaderLanding from './Navbar/HeaderLanding'
-// import BusyRoutsSlide from './Airplan/BusyRoutsSlide'
-// import SearchEntertainment from './Entertainment/SearchEntertainment'
-// import Magazine from './Magazine/Magazine'
-import  HotelQuestion from '../Question/HotelQuestion'
-import  AirplaneQuestion from '../Question/AirplaneQuestion'
-import  TrainQuestion from '../Question/TrainQuestion'
+import HotelQuestion from '../Question/HotelQuestion'
+import AirplaneQuestion from '../Question/AirplaneQuestion'
+import TrainQuestion from '../Question/TrainQuestion'
 import AirplaneFast from './FastSearch/AirplaneFast'
 import HotelFast from './FastSearch/HotelFast'
 import TrainFast from './FastSearch/TrainFast'
 import Necessary from './Necessary/Necessary'
 
-
-
 const Landing = () => {
-  const [showActiveTab,setActiveTab] =useState([])
+  const [showActiveTab, setActiveTab] = useState([])
 
   const handleTab = useCallback((tab) => {
     setActiveTab(tab)
   }, [])
   return (
-    <div style={{backgroundColor:'#9293921b'}}>
-        {(() => {
+    <div style={{ backgroundColor: '#9293921b' }}>
+      {(() => {
         switch (showActiveTab) {
           case '1':
             return (
               <div className={styles.divhotelCss}>
-              <HeaderLanding/>
-              <Search 
-              selectTab={handleTab}
-              />
-      
-            </div>
-            );
+                <HeaderLanding />
+                <Search
+                  selectTab={handleTab}
+                />
+
+              </div>
+            )
           case '2':
             return (
               <div className={styles.divairplaneCss}>
-              <HeaderLanding/>
-              <Search 
-              selectTab={handleTab}
-              />
-      
-            </div>
-            );
+                <HeaderLanding />
+                <Search
+                  selectTab={handleTab}
+                />
+
+              </div>
+            )
           case '3':
             return (
               <div className={styles.divtrainCss}>
-              <HeaderLanding/>
-              <Search 
-              selectTab={handleTab}
-              />
-      
-            </div>
-            );
-            case '4':
-              return (
-                <div className={styles.divbusCss}>
-                <HeaderLanding/>
-                <Search 
-                selectTab={handleTab}
+                <HeaderLanding />
+                <Search
+                  selectTab={handleTab}
                 />
-        
+
               </div>
-              );
+            )
+          case '4':
+            return (
+              <div className={styles.divbusCss}>
+                <HeaderLanding />
+                <Search
+                  selectTab={handleTab}
+                />
+
+              </div>
+            )
           default:
             return (
               <div className={styles.divhotelCss}>
-              <HeaderLanding/>
-              <Search 
-              selectTab={handleTab}
-              />
-      
-            </div>
-            );
+                <HeaderLanding />
+                <Search
+                  selectTab={handleTab}
+                />
+
+              </div>
+            )
         }
       })()}
-          {(() => {
+      {(() => {
         switch (showActiveTab) {
           case '1':
             return (
-              <div >
-          <HotelFast/>
-      
-            </div>
-            );
+              <div>
+                <HotelFast />
+
+              </div>
+            )
           case '2':
             return (
-              <div >
-        <AirplaneFast/>
-            
-      
-            </div>
-            );
+              <div>
+                <AirplaneFast />
+
+              </div>
+            )
           case '3':
             return (
-              <div >
-             <TrainFast/>
-      
-            </div>
-            );
+              <div>
+                <TrainFast />
+
+              </div>
+            )
 
           default:
             return (
-             null
-            );
+              null
+            )
         }
       })()}
-            <Necessary/>
+      <Necessary />
 
-
-{(() => {
+      {(() => {
         switch (showActiveTab) {
           case '1':
             return (
-              <div >
-           <HotelQuestion/>
-      
-            </div>
-            );
+              <div>
+                <HotelQuestion />
+
+              </div>
+            )
           case '2':
             return (
-              <div >
-        <AirplaneQuestion/>
-            
-      
-            </div>
-            );
+              <div>
+                <AirplaneQuestion />
+
+              </div>
+            )
           case '3':
             return (
-              <div >
-             <TrainQuestion/>
-      
-            </div>
-            );
+              <div>
+                <TrainQuestion />
+
+              </div>
+            )
 
           default:
             return (
-             null
-            );
+              null
+            )
         }
       })()}
 
-  
-    
       <div style={{ marginTop: '20px' }}>
         <Footer />
       </div>

@@ -10,7 +10,7 @@ const HotelResultPage = () => {
   return (
     <>
 
-<HeaderLanding/>
+      <HeaderLanding />
 
       <div className=' mx-auto '>
         <HotelResult />
