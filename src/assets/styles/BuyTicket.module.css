@@ -1,0 +1,23 @@
+@import url('./Fonts.css');
+
+.content{
+    width:75%;
+    margin:0px auto;
+    text-align:center;
+    font-family: Vazir;
+    font-weight: bold;
+}
+
+.nameItem{
+    width:25%;
+}
+
+.tabContent{
+    width:75%;
+    margin:0px auto;
+}
+
+.header{
+    width:100%;
+   background-color: #e3e1e15d;
+}

@@ -158,7 +158,7 @@ const Filter = () => {
             </button>
           </h2>
 
-          <Collapse isOpen={col2}>
+          <Collapse isOpen={col2}  className={styles.inputnumber}>
             <div className='mx-3'>
               <form>
                 <fieldset>
@@ -172,7 +172,7 @@ const Filter = () => {
                     onChange={handleMoneyChange}
                     checked={money === '0-300000'}
                   />
-                  <label htmlFor='age-range-1 '>0-300000</label><br />
+                  <label htmlFor='age-range-1 '>0-300000تومان</label><br />
 
                   <input
                     type='radio'
@@ -183,7 +183,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '300000-500000'}
                   />
-                  <label htmlFor='age-range-2'>300000-500000</label><br />
+                  <label htmlFor='age-range-2'>300000-500000 تومان</label><br />
 
                   <input
                     type='radio'
@@ -194,7 +194,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '500000-700000'}
                   />
-                  <label htmlFor='age-range-3'>500000-700000</label><br />
+                  <label htmlFor='age-range-3'>500000-700000 تومان</label><br />
                   <input
                     type='radio'
                     name='age'
@@ -204,7 +204,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '700000-1000000'}
                   />
-                  <label htmlFor='age-range-3'>700000-1000000</label><br />
+                  <label htmlFor='age-range-3'>700000-1000000 تومان</label><br />
 
                   <input
                     type='radio'
@@ -215,7 +215,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '1000000+'}
                   />
-                  <label htmlFor='age-range-7'>1000000+</label><br />
+                  <label htmlFor='age-range-7'>1000000+ تومان</label><br />
                 </fieldset>
               </form>
             </div>
@@ -240,20 +240,34 @@ const Filter = () => {
 
               }}
             >
-              شرکت های اتوبوسرانی
+              شرکت‌های اتوبوسرانی
               {col3 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
 
           <Collapse isOpen={col3}>
             <div className='d-flex flex-column '>
-              <div className='d-flex flex-row my-1 mx-3 '><img src={logo1} className={styles.logoCss} /><span className='mx-1'>ایران ایرتور</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo2} className={styles.logoCss} /><span className='mx-1'>آسمان </span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo3} className={styles.logoCss} /><span className='mx-1'> تابان</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo4} className={styles.logoCss} /><span className='mx-1'>کاسپین</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo5} className={styles.logoCss} /><span className='mx-1'>کیش</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo6} className={styles.logoCss} /><span className='mx-1'>زاگرس</span></div>
-              {/* <div className='d-flex flex-row '><img/><span></span></div> */}
+            <span className='mx-4 my-1'> 
+            آسوده سفر ترمینال غرب
+              </span>
+              <span className='mx-4 my-1'>
+              تک سفر ایرانیان
+                 </span>
+              <span className='mx-4 my-1'> 
+              آسیا سفر
+              </span>
+              <span className='mx-4 my-1'>
+                تعاونی 17 پیک صبا
+              </span>
+              <span className='mx-4 my-1'>
+              تعاونی 1 ایران پیما
+              </span>
+              <span className='mx-4 my-1'>
+                مارال سیر
+              </span>
+              <span className='mx-4 my-1'>
+                میهن نور
+              </span>
             </div>
           </Collapse>
         </div>

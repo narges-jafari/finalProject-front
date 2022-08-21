@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import img from '../../../assets/img/logo1.JPG'
 import styles from '../../../assets/styles/AirplaneList.module.css'
-import { FaPlane } from 'react-icons/fa'
 import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
 
@@ -22,7 +21,7 @@ const TrainList = (props) => {
           }}
           className='btn py-1  my-2 mx-2  bg-soft   text-primary text-nowrap '
         >
-          <FcSalesPerformance className='fa-lg' /> مقایسه قیمت ها
+          <FcSalesPerformance className='fa-lg' /> مقایسه قیمت‌ها
         </button>
         {showPriceTableModal && (
           <PriceTable

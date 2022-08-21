@@ -5,12 +5,16 @@ import Header from '../../components/Landing/Navbar/Header.jsx'
 import Navbar from '../../components/Landing/Navbar/Navbar.jsx'
 import BusResult from '../../components/result/bus/BusResult'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
+import styles from '../../assets/styles/Pages.module.css'
 
 const BusResultPage = () => {
   return (
     <>
 
-      <HeaderLanding />
+<div className={styles.content}>
+        <HeaderLanding />
+
+      </div>
 
       <div className=' mx-auto '>
         <BusResult />

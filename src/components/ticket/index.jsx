@@ -1,79 +1,114 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
+import Nav from 'react-bootstrap/Nav';
 import {
-  Card,
-  CardBody,
-  Nav,
-  NavItem,
-  NavLink,
-  TabContent,
-  TabPane
+  TabContent, TabPane,
+  Row, Col
 } from 'reactstrap'
+
+import styles from '../../assets/styles/BuyTicket.module.css'
+
+
 import HotelTicket from './HotelTicket'
 import AirplaneTicket from './AirplaneTicket'
 import TrainTicket from './TrainTicket'
 import BusTicket from './BusTicket'
 
 const BuyTicket = () => {
-  // STATE VARIABLES
-  const [customActiveTab, setCustomActiveTab] = useState('indicators')
+  const [currentActiveTab, setCurrentActiveTab] = useState('1')
 
-  // TOGGLE FUNCTIONS FOR TABS
-  const toggleCustom = (tab) => {
-    if (customActiveTab !== tab) {
-      setCustomActiveTab(tab)
-    }
+  // Toggle active state for Tab
+  const toggle = tab => {
+    if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
 
-  const customTabs = [
-    {
-      id: 'hotelticket',
-      name: 'بلیط هتل',
-      component: <HotelTicket />
-    },
-    {
-      id: 'airplaneticket',
-      name: 'بلیط هواپیما',
-      component: <AirplaneTicket />
-    },
-    {
-      id: 'trainticket',
-      name: 'بلیط قطار',
-      component: <TrainTicket />
-    },
-    {
-      id: 'busticket',
-      name: 'بلیط اتوبوس',
-      component: <BusTicket />
-    }]
 
-  return (
-    <Card style={{ border: 'none', cursor: 'pointer', backgroundColor: 'white', borderRadius: '0px' }}>
-      <CardBody>
-        <Nav tabs style={{ border: 'none', color: 'black' }} className='nav-tabs-custom nav-justified'>
-          {customTabs.map((tab) => (
-            <NavItem key={tab.id}>
-              <NavLink
-                className={classnames({ active: customActiveTab === tab.id })}
-                onClick={() => { toggleCustom(tab.id) }}
+   return (
+    <>
+    <div className={styles.header}>
+    <Nav variant="pills" defaultActiveKey="/home" className={styles.content} >
+      <Nav.Item className={styles.nameItem}>
+        <Nav.Link   className={classnames({
+                  active:
+                currentActiveTab === '1'
+                })}
                 style={{ border: 'none' }}
-              >
-                {tab.name}
-              </NavLink>
-            </NavItem>
-          ))}
-        </Nav>
-
-        <TabContent activeTab={customActiveTab} className='p-3 text-muted '>
-          {customTabs.map((tab) => (
-            <TabPane tabId={tab.id} key={tab.id}>
-              {tab.component}
+                onClick={() => { toggle('1') }} >
+          بلیط هتل
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item className={styles.nameItem}>
+        <Nav.Link   className={classnames({
+                  active:
+                currentActiveTab === '2'
+                })}
+                // style={{ border: 'none' }}
+                onClick={() => { toggle('2') }}>
+          بلیط هواپیما
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item className={styles.nameItem}>
+        <Nav.Link   className={classnames({
+                  active:
+                currentActiveTab === '3'
+                })}
+                // style={{ border: 'none' }}
+                onClick={() => { toggle('3') }} 
+        >
+          بلیط قطار
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item className={styles.nameItem}>
+        <Nav.Link   className={classnames({
+                  active:
+                currentActiveTab === '4'
+                })}
+                // style={{ border: 'none' }}
+                onClick={() => { toggle('4') }} >
+          بلیط اتوبوس
+        </Nav.Link>
+      </Nav.Item>
+    </Nav>
+    </div>
+ 
+    <TabContent activeTab={currentActiveTab}  className={styles.tabContent}>
+            <TabPane tabId='1'>
+              <Row>
+                <Col sm='12'>
+                  {/* <Trip /> */}
+                  <HotelTicket/>
+                </Col>
+              </Row>
             </TabPane>
-          ))}
-        </TabContent>
-      </CardBody>
-    </Card>
-  )
-}
+            <TabPane tabId='2'>
+              <Row>
+                <Col sm='12'>
+                  {/* <Shopping /> */}
+<AirplaneTicket/>
+                </Col>
+              </Row>
+            </TabPane>
+            <TabPane tabId='3'>
+              <Row>
+                <Col sm='12' >
+                  {/* <HealthBeauty /> */}
+                  <TrainTicket/>
+                </Col>
+              </Row>
+            </TabPane>
+            <TabPane tabId='4'>
+              <Row>
+                <Col sm='12'>
+                  <BusTicket/>
+                </Col>
+              </Row>
+            </TabPane>
+          
+          </TabContent>
+    </>
+  );
+
+ 
+  }
 
 export default BuyTicket

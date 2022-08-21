@@ -47,7 +47,7 @@ const Filter = () => {
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span> نتایج33 </span>
-            <span>لغو فیلتر ها</span>
+            <span>لغو فیلتر‌ها</span>
           </div>
           <div>
             {money == null
@@ -158,8 +158,8 @@ const Filter = () => {
             </button>
           </h2>
 
-          <Collapse isOpen={col2}>
-            <div className='mx-3'>
+          <Collapse isOpen={col2} className={styles.inputnumber}>
+            <div  >
               <form>
                 <fieldset>
 
@@ -172,7 +172,7 @@ const Filter = () => {
                     onChange={handleMoneyChange}
                     checked={money === '0-1000000'}
                   />
-                  <label htmlFor='age-range-1 '>0-1000000</label><br />
+                  <label htmlFor='age-range-1 '>0-1000000 تومان</label><br />
 
                   <input
                     type='radio'
@@ -183,7 +183,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '1000000-1500000'}
                   />
-                  <label htmlFor='age-range-2'>1000000-1500000</label><br />
+                  <label htmlFor='age-range-2'>1000000-1500000 تومان</label><br />
 
                   <input
                     type='radio'
@@ -194,7 +194,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '1500000-2000000'}
                   />
-                  <label htmlFor='age-range-3'>1500000-2000000</label><br />
+                  <label htmlFor='age-range-3'>1500000-2000000 تومان</label><br />
                   <input
                     type='radio'
                     name='age'
@@ -204,7 +204,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '2000000-3000000'}
                   />
-                  <label htmlFor='age-range-3'>2000000-3000000</label><br />
+                  <label htmlFor='age-range-3'>2000000-3000000تومان</label><br />
 
                   <input
                     type='radio'
@@ -215,7 +215,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '30000000+'}
                   />
-                  <label htmlFor='age-range-7'>30000000+</label><br />
+                  <label htmlFor='age-range-7'>30000000+تومان</label><br />
                 </fieldset>
               </form>
             </div>
@@ -240,7 +240,7 @@ const Filter = () => {
 
               }}
             >
-              شرکت های هواپیمایی
+              شرکت‌های هواپیمایی
               {col3 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>

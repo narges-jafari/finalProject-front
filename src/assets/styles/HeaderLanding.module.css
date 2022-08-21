@@ -1,5 +1,19 @@
 
 @import url('./Fonts.css');
+.acss{
+    text-decoration:none;
+    color:#000;
+    margin:10px 0px;
+    background-color:white;
+    height:40px;
+    padding:5px 0px;
+    border-radius: 10px;
+}
+
+.acss:hover {
+    color:red
+}
+
 .divheader{
     display:flex;
     flex-direction:row;

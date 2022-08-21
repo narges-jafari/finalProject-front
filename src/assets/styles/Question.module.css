@@ -52,3 +52,12 @@
     color:black
 
 }
+@media screen and (max-width: 600px) {
+
+ .spanfont{
+    font-size:13px
+ } 
+  
+    
+     
+  }

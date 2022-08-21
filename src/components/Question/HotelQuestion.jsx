@@ -55,14 +55,15 @@ const HotelQuestion = () => {
               >
                 <i className='fa fa-question fa-lg mx-3' />
                 <span className={styles.spanfont}>
-                  چه طور به صورت آنلاین هتل را در تریپنو رزرو کنیم ؟
+                  چه‌طور به صورت آنلاین هتل را در تریپنو رزرو کنیم ؟
                 </span>
                 {col1 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
               </button>
             </h2>
 
             <Collapse isOpen={col1}>
-              <p>قیمت و ظرفیت نتایج ممکن است معتبر نباشد. برای اطمینان از نمایش به‌روزترین نتایج لطفا مجددا جستجو کنید.
+              <p className='mx-4 px-4'>
+              رزرو هتل به صورت اینترنتی کار سختی نیست و تنها لازم است که مقصد و تاریخ اقامت خود را در سیستم تریپنو مشخص کنید. پس از آن جستجو را بزنید و بهترین هتل‌های داخلی را مشاهده کنید.
               </p>
             </Collapse>
             <h2 className='accordion-header my-2' id='headingtwo'>
@@ -86,7 +87,7 @@ const HotelQuestion = () => {
               >
                 <i className='fa fa-question fa-lg mx-3' />
                 <span className={styles.spanfont}>
-                  بهترین قیمت هتل را چه طور در تریپنو پیدا کنیم؟
+                  بهترین قیمت هتل را چه‌طور در تریپنو پیدا کنیم؟
                 </span>
 
                 {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
@@ -94,7 +95,8 @@ const HotelQuestion = () => {
             </h2>
 
             <Collapse isOpen={col2}>
-              <p>قیمت و ظرفیت نتایج ممکن است معتبر نباشد. برای اطمینان از نمایش به‌روزترین نتایج لطفا مجددا جستجو کنید.
+              <p className='mx-4 px-4'>
+              با تنظیم کردن فیلتر قیمت و مشاهده هتل‌ها  بر‌اساس ارزان‌ترین قیمت می‌توان هتل‌هایی با قیمت فوق‌العاده در تریپنو پیدا کرد.
               </p>
             </Collapse>
             <h2 className='accordion-header my-2' id='headingthree'>
@@ -124,8 +126,8 @@ const HotelQuestion = () => {
             </h2>
 
             <Collapse isOpen={col3}>
-              <p>قیمت و ظرفیت نتایج ممکن است معتبر نباشد. برای اطمینان از نمایش به‌روزترین نتایج لطفا مجددا جستجو کنید.
-              </p>
+              <p className='mx-4 px-4'>
+              رزرو هتل برای کودکان وابسته به قوانین هرهتل است. به همین خاطر هنگام رزرو حتما قوانین هتل مورد‌نظر را مطالعه کنید و اطلاعات هزینه‌کودکان را مشاهده کنید.              </p>
             </Collapse>
 
           </div>

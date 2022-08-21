@@ -1,7 +1,19 @@
+@import url('./Fonts.css');
+
 .logoCss{
     width:100px;
     height:100px;
     margin-top: 10px;
+}
+
+.contentFlex{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    font-family: Vazir;
+    width:80%;
+    margin:20px auto
 }
 
 
@@ -81,4 +93,17 @@ background-color: #0000ff
 
 .tweeter:hover{
     transform:scale(1.06)
-}   
+}  
+
+@media screen and (max-width: 700px) {
+
+  
+    .contentFlex{
+        justify-content: center;
+    }
+  
+
+
+  
+   
+}

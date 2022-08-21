@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import styles from '../../../assets/styles/TrainContent.module.css'
-import Passenger from '../train/Pasenger'
-import { dropdown1 } from '../../../constants/dropdown.js'
+
+import { busCompany } from '../../../constants/busComany'
 
 import {
   Button,
@@ -22,31 +22,15 @@ const BusContent = () => {
   const [traiTicket, setTrainticket] = useState(false)
   const [ticketDropDown, setTicketDropDown] = useState(false)
   const [showPassengerModal, setShowPassengerModal] = useState(false)
+  const [showBusCompany, setShowBusCompany] = useState('')
+  const firstUpdate = useRef(true)
+
+
 
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-        <div className='d-flex flex-row mt-4 mx-3'>
-          <button
-            type='button'
-            data-toggle='modal'
-            onClick={() => {
-              if (!showPassengerModal) {
-                setShowPassengerModal(true)
-              }
-            }}
-            className='btn py-1  my-2 mx-2  bg-soft bg-warning  text-primary border border-primary rounded-3 text-nowrap '
-          >
-            <i className='fa fa-cog text-danger mx-1' /> مسافران
-          </button>
-          {showPassengerModal && (
-            <Passenger
-              isOpen={showPassengerModal}
-              setIsOpen={setShowPassengerModal}
-            />
-          )}
-
-        </div>
+      
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
             <label>  شهر مبدا</label>
@@ -141,17 +125,21 @@ const BusContent = () => {
           </div>
           <div className={styles.content}>
             <label>    نام شرکت </label>
-            <input
-              type='text'
-              value={originName}
-              onChange={e => setOriginName(e.target.value)}
-              className={styles.inputcss}
-            />
+            <select
+              value={showBusCompany}
+              onChange={e => {
+                firstUpdate.current = false
+                setShowBusCompany(e.target.value)
+              }}
+            >
+               {busCompany.map((bus, index) => (
+                <option value={bus} key={index}>{bus}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-        {/* <div className='d-flex flex-row mt-3 flex-wrap justify-content-between'>
 
-        </div> */}
         <div className='d-flex flex-column mt-3 flex-wrap justify-content-between'>
           <label>اطلاعات</label>
           <textarea />

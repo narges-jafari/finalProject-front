@@ -4,17 +4,85 @@
     /* flex-wrap:  wrap; */
     flex-direction: column;
     width: 60%;
-    margin:0px auto
+    margin:10px auto;
+    border:2px solid #636262;
+    border-radius: 10px;
+    font-family: Vazir;
+    font-size:12px;
+    font-weight: bold;
+    
+}
+
+.headercss{
+    font-size: 17px;
+    text-align:center;
+    background-color: #f3f1eebb;
+
+}
+
+
+.content1{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin:10px auto;
+    border:2px solid #636262;
+    border-radius: 10px;
+    justify-content:space-between;
+
 }
 
 .contentItem{
     display: flex;
     /* flex-wrap:  wrap; */
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:space-between;
+    padding: 10px 0px;
+    margin:2px 10px
+
+}
+
+.contentItem1{
+    display: flex;
+    flex-direction: column;
     padding: 10px 0px
 
 }
+.contentItem2{
+ height: 40px;
+ background-color: #f3f1eebb;
+
+ border-top-left-radius: 10px;
+ border-top-right-radius:10px ;
+text-align: center;
+padding:5px 10px 0px 10px;
+display: flex;
+flex-direction: row;
+
+justify-content:space-between;
+
+
+}
+
+.fontcss{
+    font-family: Yekan;
+
+}
+
+.contentItem3{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin:5px 0px ;
+    padding:2px 10px
+
+}
+
+
+
+
+
 
 .spancss{
     font-family: Vazir;
@@ -33,12 +101,17 @@
 }
 
 
+
+
 @media screen and (max-width: 900px) {
 
   
     .content{
         width:100%
         
+    }
+    .content1{
+        width:100%
     }
 
 

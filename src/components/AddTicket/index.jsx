@@ -45,7 +45,7 @@ const AddTicketAccordion = () => {
 
   return (
     <>
-      <div className='accordion w-75 ' id='accordion' style={{ margin: '1px auto' }}>
+      <div className='accordion w-75 ' id='accordion' style={{ margin: '40px auto' }}>
         <div className='accordion-item border-0 mb-2'>
           <h2 className='accordion-header' id='headingfour'>
             <button
@@ -101,7 +101,7 @@ const AddTicketAccordion = () => {
               {col1 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
             </button>
           </h2>
-          <Collapse isOpen={col1}><AirplaneContent /></Collapse>
+          <Collapse isOpen={col1} style={{ width: '80%', margin: '0px auto' }}><AirplaneContent /></Collapse>
         </div>
 
         <div className='accordion-item mb-2 border-0'>

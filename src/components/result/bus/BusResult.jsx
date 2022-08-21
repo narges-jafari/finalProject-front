@@ -11,7 +11,6 @@ const BusResult = () => {
       <div className={styles.headerCss}>
         <span className='mx-3'>بلیط هواپیما تهران به مشهد</span>
         <span className='mx-3'>تاریخ رفت:1مهر</span>
-        <span className='mx-3'>تاریخ برگشت:4مهر</span>
 
       </div>
       <div className={styles.content}>
@@ -20,9 +19,7 @@ const BusResult = () => {
         </div>
 
       </div>
-      <div className={styles.accordion}>
-        <Question />
-      </div>
+   
 
     </>
   )

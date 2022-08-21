@@ -32,7 +32,7 @@ const PriceTable = (props) => {
         centered
         size='lg-sm'
       >
-        <div className='modal-header py-2'>
+        <div className='modal-header py-2' >
           <h6 className='modal-title mt-0'> مشاهده قیمت ها </h6>
           <button
             type='button'
@@ -51,28 +51,10 @@ const PriceTable = (props) => {
             <HelpTable />
           </div>
           <div className='d-flex flex-column'>
-            <div className='d-flex flex-row justify-content-end'>
-              {/* <ReactHTMLTableToExcel
-          id='test-table-xls-button'
-          className='btn btn-outline-primary bx bxs-download m-1 fa-lg p-1'
-          table='indicator-table'
-          filename='test'
-          sheet='tablexls'
-          buttonText=''
-          data-tip='Download Data'
-          data-place='bottom'
-        /> */}
-              {/* <button
-          className='btn btn-outline-primary  m-1 mdi mdi-rotate-3d-variant fa-lg p-1'
-          data-tip='Refresh Data'
-          data-place='bottom'
-        /> */}
-              {/* <ReactTooltip /> */}
-            </div>
             <div
               className='table-responsive rounded mt-3'
             >
-              <Table id='indicator-table' bordered>
+              <Table id='indicator-table' bordered style={{fontFamily:'Yekan'}}>
                 <thead>
                   <tr>
                     <th> نام شرکت هواپیمایی

@@ -75,7 +75,7 @@ const BusSearch = () => {
                   height: '70px',
                   width: '200px',
                   fontSize: '0.8125rem',
-                  color: '#405057',
+                  color: 'gray',
                   margin: '4px 0px 0px 0px'
                 }}
               >

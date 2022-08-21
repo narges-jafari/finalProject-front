@@ -7,6 +7,17 @@
 }
 .bodycss{
     background-color: #5e5e911f;
+    padding:50px 1px
 }
+
+
+@media screen and (max-width: 900px) {
+
+.content{
+    width:92%;
+    margin:0px auto
+}
+  }
+  
 
 

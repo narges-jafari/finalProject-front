@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
-import Passenger from '../train/Pasenger'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
 
 // import flight from '../../../../../safarBackend/graphql/resolvers/flight'
 import { flightClasses } from '../../../constants/flightClasses'
+import { airplaneCompany } from '../../../constants/airplaneCompany'
+
+
 import { toast } from 'react-toastify'
 
 const AirplaneContent = () => {
@@ -22,6 +24,7 @@ const AirplaneContent = () => {
   const [capacity, setCapacity] = useState('')
   const [airline, SetAirline] = useState('')
   const [flightClass, setFlightClass] = useState('')
+  const [showairplaneCompany, setShowAirplaneCompany] = useState('')
   const [allowedLoggage, setAllowedLoggage] = useState('')
   const [information, setInformation] = useState('')
   // const [ticketDropDown, setTicketDropDown] = useState(false)
@@ -85,27 +88,7 @@ const AirplaneContent = () => {
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-        <div className='d-flex flex-row mt-4 mx-3'>
-          <button
-            type='button'
-            data-toggle='modal'
-            onClick={() => {
-              if (!showPassengerModal) {
-                setShowPassengerModal(true)
-              }
-            }}
-            className='btn py-1  my-2 mx-2  bg-soft bg-warning  text-primary border border-primary rounded-3 text-nowrap '
-          >
-            <i className='fa fa-cog text-danger mx-1' /> مسافران
-          </button>
-          {showPassengerModal && (
-            <Passenger
-              isOpen={showPassengerModal}
-              setIsOpen={setShowPassengerModal}
-            />
-          )}
-
-        </div>
+     
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
             <label>  شهر مبدا</label>
@@ -205,13 +188,35 @@ const AirplaneContent = () => {
             />
           </div>
           <div className={styles.content}>
-            <label>    نام شرکت </label>
-            <input
-              type='text'
-              value={airline}
-              onChange={e => SetAirline(e.target.value)}
-              className={styles.inputcss}
-            />
+            <label>  نام شرکت   </label>
+            <select
+              name=''
+              value={showairplaneCompany}
+              onChange={e => {
+                firstUpdate.current = false
+                setShowAirplaneCompany(e.target.value)
+              }}
+            >
+              {airplaneCompany.map((name, index) => (
+                <option value={name} key={index}>{name}
+                </option>
+              ))}
+            </select>
+
+            {/* <select>
+            <option>
+              پرمیوم
+            </option>
+            <option>
+              فرست
+            </option>
+            <option>
+              بیزینس
+            </option>
+            <option>
+              فرست
+            </option>
+           </select> */}
           </div>
           <div className={styles.content}>
             <label>    کلاس پرواز</label>

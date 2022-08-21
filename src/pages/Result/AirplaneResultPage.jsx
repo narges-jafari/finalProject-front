@@ -5,17 +5,21 @@ import Header from '../../components/Landing/Navbar/Header.jsx'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 import Navbar from '../../components/Landing/Navbar/Navbar.jsx'
 import AirplaneResult from '../../components/result/airplane/AirplaneResult'
+import styles from '../../assets/styles/Pages.module.css'
+
 
 const AirplaneResultPage = () => {
   return (
     <>
+  <div className={styles.content}>
+        <HeaderLanding />
 
-      <HeaderLanding />
+      </div>
       <div className=' mx-auto '>
         <AirplaneResult />
 
       </div>
-      <div style={{ marginTop: '200px' }}>
+      <div style={{ marginTop: '0px' }}>
         <Footer />
 
       </div>

@@ -114,7 +114,7 @@ const Filter = () => {
             </button>
           </h2>
 
-          <Collapse isOpen={col2}>
+          <Collapse isOpen={col2}  className={styles.inputnumber}>
             <div className='mx-3'>
               <form>
                 <fieldset>
@@ -128,7 +128,7 @@ const Filter = () => {
                     onChange={handleMoneyChange}
                     checked={money === '0-10000000'}
                   />
-                  <label htmlFor='age-range-1 '>0-10000000</label><br />
+                  <label htmlFor='age-range-1 '>0-10000000تومان</label><br />
 
                   <input
                     type='radio'
@@ -139,7 +139,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '10000000-20000000'}
                   />
-                  <label htmlFor='age-range-2'>10000000-20000000</label><br />
+                  <label htmlFor='age-range-2'>10000000-20000000تومان</label><br />
 
                   <input
                     type='radio'
@@ -150,7 +150,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '20000000-30000000'}
                   />
-                  <label htmlFor='age-range-3'>20000000-30000000</label><br />
+                  <label htmlFor='age-range-3'>20000000-30000000تومان</label><br />
 
                   <input
                     type='radio'
@@ -161,7 +161,7 @@ const Filter = () => {
                     className='mx-2'
                     checked={money === '30000000+'}
                   />
-                  <label htmlFor='age-range-7'>30000000+</label><br />
+                  <label htmlFor='age-range-7'>30000000+ تومان</label><br />
                 </fieldset>
               </form>
             </div>

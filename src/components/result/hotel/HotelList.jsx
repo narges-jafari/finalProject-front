@@ -22,7 +22,7 @@ const HotelList = (props) => {
           }}
           className='btn py-1  mt-2 mx-2  bg-soft   text-primary text-nowrap '
         >
-          <FcSalesPerformance className='fa-lg' /> مقایسه قیمت ها
+          <FcSalesPerformance className='fa-lg' /> مقایسه قیمت‌ها
         </button>
         {showPriceTableModal && (
           <PriceTable

@@ -1,15 +1,29 @@
 @import url('./Fonts.css');
 
 .content{
-    margin:10px auto;
+    /* margin:10px auto; */
     display: flex;
     flex-direction:column;
     background-color: #fff;
     padding: 10px 30px;
     border-radius:13px;
     box-shadow: 1px 0px 2px 4px #dddddd49;
+    width:40%;
 
 
+}
+
+.content1{
+    display: flex;
+    flex-direction:column;
+    background-color: #fff;
+    padding: 10px 30px;
+    border-radius:13px;
+    box-shadow: 1px 0px 2px 4px #dddddd49;
+    height:100px;
+    margin:20px 0px 20px 0px;
+    width:100%; 
+    font-family: Yekan; 
 }
 
 label{
@@ -40,7 +54,7 @@ select:hover{
 
 .contentItem{
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     flex-wrap: wrap;
     justify-content:space-between;
     width:90%;
@@ -67,12 +81,6 @@ select:hover{
     
 }
 
-.contentItem2{
-    margin:10px 2px;
-    display: flex;
-    flex-direction:column; 
-    /* width:150px */
-}
 
 
 
@@ -94,9 +102,26 @@ select:hover{
 
 }
 
-@media screen and (max-width: 900px) {
+.columncss{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    width:50%;
 
-  
+}
+
+@media screen and (max-width: 700px) {
+
+  .content{
+    width:100%
+  }
+  .content1{
+    width:100%;
+  }
+
+  .columncss{
+    width:100%;
+  }
     .contentItem{
         width:100%;
     }

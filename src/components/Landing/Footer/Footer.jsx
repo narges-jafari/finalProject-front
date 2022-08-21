@@ -12,15 +12,15 @@ import { TbBrandInstagram, TbBrandTelegram, TbBrandWhatsapp, TbBrandTwitter } fr
 const Footer = () => {
   return (
     <>
-      <div className='d-flex flex-row flex-wrap my-2 justify-content-between mx-5' style={{ cursor: 'pointer', fontFamily: 'Vazir' }}>
+      <div className={styles.contentFlex}>
         <div className='d-flex flex-column flex-wrap my-2  '>
-          <span className='mx-3'>   درباره ی تریپنو</span>
+          <span className='mx-3'>   درباره‌ی تریپنو</span>
           {/* <Link to="/about">About</Link> */}
           <Nav className='d-flex flex-column'>
             <Nav.Link href='aboutus' className='text-secondary'>
-              <span>در باره ی ما </span>
+              <span>درباره‌ی‌ما </span>
             </Nav.Link>
-            <Nav.Link href='#link' className='text-secondary'>
+            <Nav.Link href='magazin' className='text-secondary'>
               <span>  مجله تریپنو </span>
             </Nav.Link>
           </Nav>
@@ -33,7 +33,7 @@ const Footer = () => {
               <span>   قوانین </span>
             </Nav.Link>
             <Nav.Link href='question' className='text-secondary'>
-              <span>   سوالات متداول </span>
+              <span>   سوالات‌متداول </span>
             </Nav.Link>
           </Nav>
         </div>
@@ -49,7 +49,7 @@ const Footer = () => {
               تریپنو 1400-1401 تمامی حقوق محفوظ است
             </span>
           </div>
-          <span className=' text-center my-2'>ساخته شده با <i className='fa fa-heart  text-danger' /> در ایران</span>
+          <span className=' text-center my-2'>ساخته‌شده با <i className='fa fa-heart  text-danger' /> در ایران</span>
           <div className='d-flex flex-row flex-wrap justify-content-between ' style={{ fontFamily: 'Yekan' }}>
             <img src={neshan} className={styles.logoCss} />
             <img src={namad} className={styles.logoCss} />

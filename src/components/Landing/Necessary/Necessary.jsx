@@ -12,14 +12,14 @@ const Necessary = () => {
         <div className={styles.content}>
           <img src={img3} className={styles.imgcss} />
           <span>
-            رزرو هتل با نازلترین قیمت
+            رزرو هتل با نازل‌ترین قیمت
           </span>
         </div>
         <div className={styles.content}>
           <img src={img} className={styles.imgcss} />
 
           <span>
-            خرید بلیط  هواپیما از تمام شرکت های هواپیمایی
+            خرید بلیط  هواپیما از تمام شرکت‌های‌هواپیمایی
           </span>
         </div>
         <div className={styles.content}>
@@ -31,7 +31,7 @@ const Necessary = () => {
         <div className={styles.content}>
           <img src={img1} className={styles.imgcss} />
           <span>
-            خرید بلیط اتوبوس از تمام پایانه ها
+            خرید بلیط اتوبوس از تمام پایانه‌ها
           </span>
         </div>
 

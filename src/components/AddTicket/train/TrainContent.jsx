@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import styles from '../../../assets/styles/TrainContent.module.css'
-import Passenger from '../train/Pasenger'
-import { dropdown1 } from '../../../constants/dropdown.js'
+// import { dropdown1 } from '../../../constants/dropdown.js'
+// import { trainCompany } from '../../../constants/trainCompany'
+import {trainCompany } from '../../../constants/trainCompany'
 
-import {
-  Button,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  ButtonDropdown
-} from 'reactstrap'
+
 
 const TrainContent = () => {
   const [destinationName, setDestinationName] = useState()
@@ -22,31 +17,16 @@ const TrainContent = () => {
   const [traiTicket, setTrainticket] = useState(false)
   const [ticketDropDown, setTicketDropDown] = useState(false)
   const [showPassengerModal, setShowPassengerModal] = useState(false)
+  const[showTrainCompany,setShowTrainCompany] =useState('')
+  const[showTrainClass,setShowTrainClass] =useState('')
+  const firstUpdate = useRef(true)
+
 
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-        <div className='d-flex flex-row mt-4 mx-3'>
-          <button
-            type='button'
-            data-toggle='modal'
-            onClick={() => {
-              if (!showPassengerModal) {
-                setShowPassengerModal(true)
-              }
-            }}
-            className='btn py-1  my-2 mx-2  bg-soft bg-warning  text-primary border border-primary rounded-3 text-nowrap '
-          >
-            <i className='fa fa-cog text-danger mx-1' /> مسافران
-          </button>
-          {showPassengerModal && (
-            <Passenger
-              isOpen={showPassengerModal}
-              setIsOpen={setShowPassengerModal}
-            />
-          )}
-
-        </div>
+      
+      
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
             <label>  شهر مبدا</label>
@@ -140,13 +120,21 @@ const TrainContent = () => {
             />
           </div>
           <div className={styles.content}>
-            <label>    نام شرکت </label>
-            <input
-              type='text'
-              value={originName}
-              onChange={e => setOriginName(e.target.value)}
-              className={styles.inputcss}
-            />
+            <label>  نام شرکت   </label>
+            <select
+              name=''
+              value={showTrainCompany}
+              onChange={e => {
+                firstUpdate.current = false
+                setShowTrainCompany(e.target.value)
+              }}
+            >
+              {trainCompany.map((name, index) => (
+                <option value={name} key={index}>{name}
+                </option>
+              ))}
+            </select>
+
           </div>
           <div className={styles.content}>
             <label>    نوع سالن </label>

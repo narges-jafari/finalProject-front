@@ -4,20 +4,21 @@ import Footer from '../../components/Landing/Footer/Footer.jsx'
 import TrainResult from '../../components/result/train/TrainResult'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 import styles from '../../assets/styles/Pages.module.css'
+
 const TrainResultPage = () => {
   return (
     <>
       <div className={styles.bodycss}>
-        <div className={styles.content}>
-          <HeaderLanding />
+      <div className={styles.content}>
+        <HeaderLanding />
 
-        </div>
+      </div>
 
         <div className=' mx-auto '>
           <TrainResult />
 
         </div>
-        <div style={{ marginTop: '200px' }}>
+        <div style={{ marginTop: '20px' }}>
           <Footer />
 
         </div>
