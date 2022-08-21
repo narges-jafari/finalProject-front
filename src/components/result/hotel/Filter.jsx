@@ -4,7 +4,6 @@ import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
 
-
 import styles from '../../../assets/styles/Filter.module.css'
 
 const Filter = () => {
@@ -109,7 +108,7 @@ const Filter = () => {
             </button>
           </h2>
 
-          <Collapse isOpen={col2}  className={styles.inputnumber}>
+          <Collapse isOpen={col2} className={styles.inputnumber}>
             <div className='mx-3'>
               <form>
                 <fieldset>

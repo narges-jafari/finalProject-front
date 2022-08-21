@@ -32,7 +32,7 @@ const PriceTable = (props) => {
         centered
         size='lg-sm'
       >
-        <div className='modal-header py-2' >
+        <div className='modal-header py-2'>
           <h6 className='modal-title mt-0'> مشاهده قیمت ها </h6>
           <button
             type='button'
@@ -54,7 +54,7 @@ const PriceTable = (props) => {
             <div
               className='table-responsive rounded mt-3'
             >
-              <Table id='indicator-table' bordered style={{fontFamily:'Yekan'}}>
+              <Table id='indicator-table' bordered style={{ fontFamily: 'Yekan' }}>
                 <thead>
                   <tr>
                     <th> نام شرکت هواپیمایی

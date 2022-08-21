@@ -158,7 +158,7 @@ const Filter = () => {
             </button>
           </h2>
 
-          <Collapse isOpen={col2}  className={styles.inputnumber}>
+          <Collapse isOpen={col2} className={styles.inputnumber}>
             <div className='mx-3'>
               <form>
                 <fieldset>
@@ -247,23 +247,23 @@ const Filter = () => {
 
           <Collapse isOpen={col3}>
             <div className='d-flex flex-column '>
-              <span className='mx-4 my-1'> 
-              شرکت حمل و نقل ریلی رجا
+              <span className='mx-4 my-1'>
+                شرکت حمل و نقل ریلی رجا
               </span>
               <span className='mx-4 my-1'>
-              شرکت قطارهای فدک
-                 </span>
-              <span className='mx-4 my-1'> 
-              شرکت ریل ترابر سبا
+                شرکت قطارهای فدک
               </span>
               <span className='mx-4 my-1'>
-              شرکت قطارهای نورالرضا
+                شرکت ریل ترابر سبا
               </span>
               <span className='mx-4 my-1'>
-              شرکت قطاری وانیا ریل
+                شرکت قطارهای نورالرضا
               </span>
               <span className='mx-4 my-1'>
-              شرکت قطارهای مسافری کوثر
+                شرکت قطاری وانیا ریل
+              </span>
+              <span className='mx-4 my-1'>
+                شرکت قطارهای مسافری کوثر
               </span>
             </div>
           </Collapse>

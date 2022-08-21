@@ -6,8 +6,6 @@ import flightMutations from '../../../Apollo/Mutation/flightMutations'
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
 
-
-
 const AirplaneContent = () => {
   const [destinationName, setDestinationName] = useState('')
   const [originName, setOriginName] = useState('')
@@ -86,7 +84,7 @@ const AirplaneContent = () => {
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-     
+
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
             <label>  شهر مبدا</label>

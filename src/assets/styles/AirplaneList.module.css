@@ -1,5 +1,11 @@
 @import url('./Fonts.css');
 
+.modalbodycss{
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    border-radius: 10px
+}
+
 .content{
     display:flex ;
     flex-direction: column;

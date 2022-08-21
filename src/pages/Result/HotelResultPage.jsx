@@ -8,7 +8,7 @@ const HotelResultPage = () => {
   return (
     <>
 
-<div className={styles.content}>
+      <div className={styles.content}>
         <HeaderLanding />
 
       </div>

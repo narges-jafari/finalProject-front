@@ -6,7 +6,6 @@ import styles from '../../assets/styles/Login.module.css'
 import { useQuery } from '@apollo/client'
 import userQueries from '../../Apollo/Query/userQueries'
 
-
 const LoginForm = () => {
   const [email1, setEmail1] = useState(false)
   const [password1, setPassword1] = useState(false)

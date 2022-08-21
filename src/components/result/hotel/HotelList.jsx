@@ -5,9 +5,11 @@ import styles from '../../../assets/styles/AirplaneList.module.css'
 import { FaPlane } from 'react-icons/fa'
 import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
+import Info from './Info'
 
 const HotelList = (props) => {
   const [showPriceTableModal, setShowPriceTableModal] = useState(false)
+  const [showInfoModal, setShowInfoModal] = useState(false)
 
   return (
     <>
@@ -53,7 +55,21 @@ const HotelList = (props) => {
               </div>
               <span className='mt-2  text-danger' style={{ fontSize: '22px' }}>1200000 تومان</span>
               <span className='' style={{ fontSize: '20px' }}><i className='fa fa-map-marker px-2 ' />تهران</span>
-              <span className='mt-2 w-100  rounded-3 px-4  text-center py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
+              <span
+                onClick={() => {
+                  if (!showInfoModal) {
+                    setShowInfoModal(true)
+                  }
+                }}
+                className='mt-2 w-100  rounded-3 px-4  text-center py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
+              >جزییات
+              </span>
+              {showInfoModal && (
+                <Info
+                  isOpen={showInfoModal}
+                  setIsOpen={setShowInfoModal}
+                />
+              )}
               <button className='btn w-100 btn-lg  btn-danger rounded-3  mt-2'> انتخاب</button>
 
             </div>

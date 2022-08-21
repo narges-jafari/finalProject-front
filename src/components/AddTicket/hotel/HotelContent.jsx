@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { dropdown1 } from '../../../constants/dropdown.js'
 
-
-
 const HotelContent = () => {
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
@@ -16,7 +14,7 @@ const HotelContent = () => {
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-       
+
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
             <label>   نام هتل</label>

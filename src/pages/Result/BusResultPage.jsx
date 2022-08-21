@@ -1,5 +1,4 @@
 import React from 'react'
-// import Filter from '../../components/result/Filter'
 import Footer from '../../components/Landing/Footer/Footer.jsx'
 
 import BusResult from '../../components/result/bus/BusResult'
@@ -10,7 +9,7 @@ const BusResultPage = () => {
   return (
     <>
 
-<div className={styles.content}>
+      <div className={styles.content}>
         <HeaderLanding />
 
       </div>

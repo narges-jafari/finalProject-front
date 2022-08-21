@@ -4,7 +4,6 @@ import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
 
-
 import styles from '../../../assets/styles/Filter.module.css'
 
 const Filter = () => {
@@ -153,7 +152,7 @@ const Filter = () => {
             </button>
           </h2>
 
-          <Collapse isOpen={col2}  className={styles.inputnumber}>
+          <Collapse isOpen={col2} className={styles.inputnumber}>
             <div className='mx-3'>
               <form>
                 <fieldset>
@@ -242,20 +241,20 @@ const Filter = () => {
 
           <Collapse isOpen={col3}>
             <div className='d-flex flex-column '>
-            <span className='mx-4 my-1'> 
-            آسوده سفر ترمینال غرب
+              <span className='mx-4 my-1'>
+                آسوده سفر ترمینال غرب
               </span>
               <span className='mx-4 my-1'>
-              تک سفر ایرانیان
-                 </span>
-              <span className='mx-4 my-1'> 
-              آسیا سفر
+                تک سفر ایرانیان
+              </span>
+              <span className='mx-4 my-1'>
+                آسیا سفر
               </span>
               <span className='mx-4 my-1'>
                 تعاونی 17 پیک صبا
               </span>
               <span className='mx-4 my-1'>
-              تعاونی 1 ایران پیما
+                تعاونی 1 ایران پیما
               </span>
               <span className='mx-4 my-1'>
                 مارال سیر

@@ -18,9 +18,9 @@ const PaymentPage = () => {
         <Payment />
       </div>
       <div style={{ marginTop: '20px' }}>
-          <Footer />
+        <Footer />
 
-        </div>
+      </div>
     </>
   )
 }

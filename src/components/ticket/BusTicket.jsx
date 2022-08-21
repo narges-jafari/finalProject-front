@@ -3,7 +3,7 @@ import styles from '../../assets/styles/Ticket.module.css'
 const BusTicket = () => {
   return (
     <>
-        <div >
+      <div>
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
@@ -22,7 +22,6 @@ const BusTicket = () => {
 
             </div>
 
-         
           </div>
           <div className={styles.contentItem}>
             <div>

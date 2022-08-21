@@ -3,7 +3,7 @@ import styles from '../../assets/styles/Ticket.module.css'
 const HotelTicket = () => {
   return (
     <>
-        <div >
+      <div>
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
@@ -15,9 +15,7 @@ const HotelTicket = () => {
               <span className={styles.spancss1}>تهران</span>
 
             </div>
-          
 
-          
           </div>
           <div className={styles.contentItem}>
             <div>
@@ -32,7 +30,7 @@ const HotelTicket = () => {
 
           </div>
           <div className={styles.contentItem}>
-          <div>
+            <div>
               <span className={styles.spancss}>   از تاریخ  </span>
 
               <span className={styles.spancss1}> 1401/01/01</span>
@@ -53,9 +51,7 @@ const HotelTicket = () => {
               <span className={styles.spancss1}>210000</span>
 
             </div>
-          
 
-          
           </div>
         </div>
       </div>

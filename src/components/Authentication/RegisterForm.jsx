@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Row, Col, CardBody, Card, Container, Label } from 'reactstrap'
 
-
 import styles from '../../assets/styles/Login.module.css'
 import { schema } from '../../Utils/ResisterValidation'
 import { useMutation } from '@apollo/client'
@@ -36,34 +35,34 @@ const RegisterForm = () => {
 
                     <Formik
                       initialValues={{
-                            fullName: '',
-                            username: '',
-                            password: '',
-                            email: '',
-                            birthdate: '',
-                            nationalcode: ''
-                          }}
+                        fullName: '',
+                        username: '',
+                        password: '',
+                        email: '',
+                        birthdate: '',
+                        nationalcode: ''
+                      }}
                       validationSchema={schema}
                       enableReinitialize
                       className='form-horizontal'
                       onSubmit={(values) => {
-                            console.log(values)
-                            register({
-                              variables: {
-                                fullName: values.fullName,
-                                username: values.username,
-                                password: values.password,
-                                email: values.email,
-                                // gender: values.gender,
-                                birthdate: values.birthdate,
-                                nationalcode: values.nationalcode
-                              }
+                        console.log(values)
+                        register({
+                          variables: {
+                            fullName: values.fullName,
+                            username: values.username,
+                            password: values.password,
+                            email: values.email,
+                            // gender: values.gender,
+                            birthdate: values.birthdate,
+                            nationalcode: values.nationalcode
+                          }
 
-                            })
-                          }}
+                        })
+                      }}
                     >
                       <Form>
-                            <div className='mb-3'>
+                        <div className='mb-3'>
                           <Label>نام   ونام خانوادگی</Label>
                           <Field
                             name='fullName'
@@ -78,7 +77,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                            <div className='mb-3'>
+                        <div className='mb-3'>
                           <Label>نام کاربری</Label>
                           <Field
                             name='username'
@@ -93,7 +92,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                            <div className='mb-3'>
+                        <div className='mb-3'>
                           <Label>رمز عبور</Label>
                           <Field
                             name='password'
@@ -108,7 +107,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                            {/* <div className='mb-3'>
+                        {/* <div className='mb-3'>
                           <Label>Repeat Password</Label>
                           <Field
                             name='repeatPassword'
@@ -123,7 +122,7 @@ const RegisterForm = () => {
                           />
                         </div> */}
 
-                            <div className='mb-3'>
+                        <div className='mb-3'>
                           <Label>ایمیل</Label>
                           <Field
                             name='email'
@@ -137,7 +136,7 @@ const RegisterForm = () => {
                             name='email'
                           />
                         </div>
-                            <div className='mb-3'>
+                        <div className='mb-3'>
                           <Label>تاریخ تولد</Label>
                           <Field
                             name='birthdate'
@@ -152,7 +151,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                            <div className='mb-3'>
+                        <div className='mb-3'>
 
                           <Label> کدملی</Label>
                           <Field
@@ -168,7 +167,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                            {/* {register.length ==1?                     <a href='/'>
+                        {/* {register.length ==1?                     <a href='/'>
                          <span
                                className='btn  py-2 col-12'
                                style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
@@ -187,7 +186,7 @@ const RegisterForm = () => {
                           </span>
                           </a>} */}
 
-                            <div className='mt-5'>
+                        <div className='mt-5'>
                           <button
                             className='btn  py-2 col-12'
                             style={{ backgroundColor: '#f49107f1', fontFamily: 'Vazir', fontSize: '20px' }}
@@ -221,10 +220,10 @@ const RegisterForm = () => {
                           {/* </a> */}
 
                         </div>
-                            {/* {register? history.push('/')
+                        {/* {register? history.push('/')
 :history.push('/register')} */}
 
-                          </Form>
+                      </Form>
                     </Formik>
 
                   </div>

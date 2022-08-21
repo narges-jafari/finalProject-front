@@ -159,7 +159,7 @@ const Filter = () => {
           </h2>
 
           <Collapse isOpen={col2} className={styles.inputnumber}>
-            <div  >
+            <div>
               <form>
                 <fieldset>
 

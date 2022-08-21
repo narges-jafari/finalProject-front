@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { busCompany } from '../../../constants/busComany'
 
-
-
 const BusContent = () => {
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
@@ -15,12 +13,10 @@ const BusContent = () => {
   const [showBusCompany, setShowBusCompany] = useState('')
   const firstUpdate = useRef(true)
 
-
-
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-      
+
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
           <div className={styles.content}>
             <label>  شهر مبدا</label>
@@ -122,7 +118,7 @@ const BusContent = () => {
                 setShowBusCompany(e.target.value)
               }}
             >
-               {busCompany.map((bus, index) => (
+              {busCompany.map((bus, index) => (
                 <option value={bus} key={index}>{bus}
                 </option>
               ))}

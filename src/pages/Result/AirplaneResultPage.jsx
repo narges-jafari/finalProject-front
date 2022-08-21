@@ -5,11 +5,10 @@ import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 import AirplaneResult from '../../components/result/airplane/AirplaneResult'
 import styles from '../../assets/styles/Pages.module.css'
 
-
 const AirplaneResultPage = () => {
   return (
     <>
-  <div className={styles.content}>
+      <div className={styles.content}>
         <HeaderLanding />
 
       </div>

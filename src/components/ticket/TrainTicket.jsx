@@ -3,7 +3,7 @@ import styles from '../../assets/styles/Ticket.module.css'
 const TrainTicket = () => {
   return (
     <>
-         <div >
+      <div>
         <div className={styles.content}>
           <div className={styles.contentItem}>
             <div>
@@ -22,7 +22,6 @@ const TrainTicket = () => {
 
             </div>
 
-          
           </div>
           <div className={styles.contentItem}>
             <div>
@@ -56,12 +55,11 @@ const TrainTicket = () => {
 
             </div>
 
-          
           </div>
           <div className='mx-2'>
-              <span className={styles.spancss}> ساعت ورود</span>
-              <span className={styles.spancss1}>20:36</span>
-            </div>
+            <span className={styles.spancss}> ساعت ورود</span>
+            <span className={styles.spancss1}>20:36</span>
+          </div>
         </div>
       </div>
     </>

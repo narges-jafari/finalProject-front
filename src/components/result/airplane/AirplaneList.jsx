@@ -4,9 +4,11 @@ import img from '../../../assets/img/logo1.JPG'
 import styles from '../../../assets/styles/AirplaneList.module.css'
 import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
+import Info from './Info'
 
 const AirplaneList = (props) => {
   const [showPriceTableModal, setShowPriceTableModal] = useState(false)
+  const [showInfoModal, setShowInfoModal] = useState(false)
 
   return (
     <>
@@ -74,7 +76,22 @@ const AirplaneList = (props) => {
               <span className='mt-1 text-center'>قیمت هر مسافر </span>
               <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  1200000 تومان</span>
             </div>
-            <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
+            <span
+              className='mt-2  rounded-3 px-4 mx-2 py-2'
+              onClick={() => {
+                if (!showInfoModal) {
+                  setShowInfoModal(true)
+                }
+              }}
+              style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
+            >جزییات
+            </span>
+            {showInfoModal && (
+              <Info
+                isOpen={showInfoModal}
+                setIsOpen={setShowInfoModal}
+              />
+            )}
             <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 
@@ -122,6 +139,7 @@ const AirplaneList = (props) => {
               <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  1200000 تومان</span>
             </div>
             <span className='mt-2  rounded-3 px-4 mx-2 py-2' style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}>جزییات</span>
+
             <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
           </div>
 

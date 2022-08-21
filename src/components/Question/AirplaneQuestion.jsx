@@ -65,14 +65,12 @@ const AirplaneQuestion = () => {
                 type='button'
                 onClick={toggleCol1}
                 style={{
-                // cursor: 'pointer',
                   backgroundColor: '#FFFF',
                   borderRadius: '0.8rem',
                   width: '100%',
                   padding: '0.9rem 1.25rem',
                   fontSize: '0.8125rem',
                   color: '#405057'
-                  // boxShadow: '0 0 4px 1px #ddd'
 
                 }}
               >
@@ -84,7 +82,8 @@ const AirplaneQuestion = () => {
 
             <Collapse isOpen={col1}>
               <p className='mx-4 px-4'>
-              برای تغییر تاریخ بلیط سفر خود وارد حساب کاربری در تریپنو شوید و با انتخاب بلیط مورد نظر، از پشتیبانی ۲۴ ساعته تریپنو کمک بگیرید.              </p>
+                برای تغییر تاریخ بلیط سفر خود وارد حساب کاربری در تریپنو شوید و با انتخاب بلیط مورد نظر، از پشتیبانی ۲۴ ساعته تریپنو کمک بگیرید.
+              </p>
             </Collapse>
             <h2 className='accordion-header my-2' id='headingtwo'>
               <button
@@ -101,7 +100,6 @@ const AirplaneQuestion = () => {
                   padding: '0.9rem 1.25rem',
                   fontSize: '0.8125rem',
                   color: '#405057'
-                  // boxShadow: '0 0 4px 1px #ddd'
 
                 }}
               >
@@ -114,7 +112,8 @@ const AirplaneQuestion = () => {
 
             <Collapse isOpen={col2}>
               <p className='mx-4 px-4'>
-              این‌رقم وابسته به قوانین ایرلاین‌ها است. ممکن است بین ۵ یا ۷ کیلوگرم تا ۲۵ و ۲۰ کیلوگرم امکان حمل بار در هواپیما را داشته‌باشید. در هنگام خرید بلیط حتما به جزئیات پرواز و بلیط دقت کنید و میزان بار را مطمئن شوید.              </p>
+                این‌رقم وابسته به قوانین ایرلاین‌ها است. ممکن است بین ۵ یا ۷ کیلوگرم تا ۲۵ و ۲۰ کیلوگرم امکان حمل بار در هواپیما را داشته‌باشید. در هنگام خرید بلیط حتما به جزئیات پرواز و بلیط دقت کنید و میزان بار را مطمئن شوید.
+              </p>
             </Collapse>
             <h2 className='accordion-header my-2' id='headingthree'>
               <button
@@ -131,7 +130,6 @@ const AirplaneQuestion = () => {
                   padding: '0.9rem 1.25rem',
                   fontSize: '0.8125rem',
                   color: '#405057'
-                  // boxShadow: '0 0 4px 1px #ddd'
 
                 }}
               > <i className='fa fa-question fa-lg mx-3' />
@@ -142,8 +140,8 @@ const AirplaneQuestion = () => {
 
             <Collapse isOpen={col3}>
               <p className='mx-4 px-4'>
-                فعلا این‌امکان وجود ندارد 
-                       </p>
+                فعلا این‌امکان وجود ندارد
+              </p>
             </Collapse>
             <h2 className='accordion-header my-2' id='headingfoure'>
               <button
@@ -160,7 +158,6 @@ const AirplaneQuestion = () => {
                   padding: '0.9rem 1.25rem',
                   fontSize: '0.8125rem',
                   color: '#405057'
-                  // boxShadow: '0 0 4px 1px #ddd'
 
                 }}
               > <i className='fa fa-question fa-lg mx-3 ' />
@@ -173,7 +170,8 @@ const AirplaneQuestion = () => {
 
             <Collapse isOpen={col4}>
               <p className='mx-4 px-4'>
-قیمت بلیط پرواز داخلی برای کودکان زیر ۱۲ سال حدود ۵۰ الی ۷۵ درصد، و برای نوزادان زیر ۲ سال، حدود ۱۰ درصد قیمت بزرگسال همان بلیط است. این‌قوانین نسبت به نوع بلیط متفاوت خواهد‌بود.              </p>
+                قیمت بلیط پرواز داخلی برای کودکان زیر ۱۲ سال حدود ۵۰ الی ۷۵ درصد، و برای نوزادان زیر ۲ سال، حدود ۱۰ درصد قیمت بزرگسال همان بلیط است. این‌قوانین نسبت به نوع بلیط متفاوت خواهد‌بود.
+              </p>
             </Collapse>
             <h2 className='accordion-header my-2' id='headingfive'>
               <button
@@ -190,7 +188,6 @@ const AirplaneQuestion = () => {
                   padding: '0.9rem 1.25rem',
                   fontSize: '0.8125rem',
                   color: '#405057'
-                  // boxShadow: '0 0 4px 1px #ddd'
 
                 }}
               > <i className='fa fa-question fa-lg mx-3 ' />
@@ -203,7 +200,8 @@ const AirplaneQuestion = () => {
 
             <Collapse isOpen={col5}>
               <p className='mx-4 px-4'>
-              حمل حیوان خانگی با هواپیما در کشور‌ها و ایرلاین‌های مختلف قوانین متفاوتی دارد؛ برای مثال ورود حیوان خانگی به داخل کابین هواپیما‌ها‌ی ایران ممنوع است و در پرواز‌ها‌ی داخلی لازم است حیوان خانگی خود را در پایانه تحویل دهید و در فرودگاه مقصد از سالن دریافت بار تحویل بگیرید.              </p>
+                حمل حیوان خانگی با هواپیما در کشور‌ها و ایرلاین‌های مختلف قوانین متفاوتی دارد؛ برای مثال ورود حیوان خانگی به داخل کابین هواپیما‌ها‌ی ایران ممنوع است و در پرواز‌ها‌ی داخلی لازم است حیوان خانگی خود را در پایانه تحویل دهید و در فرودگاه مقصد از سالن دریافت بار تحویل بگیرید.
+              </p>
             </Collapse>
           </div>
 

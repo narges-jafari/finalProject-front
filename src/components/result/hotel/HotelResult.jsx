@@ -18,7 +18,6 @@ const HotelResult = () => {
         </div>
 
       </div>
-  
 
     </>
   )
