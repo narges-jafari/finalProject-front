@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Row, Col, CardBody, Card, Container, Label } from 'reactstrap'
-import { Route, Redirect } from 'react-router-dom'
 
-// import { useHistory } from "react-router-dom";
 
 import styles from '../../assets/styles/Login.module.css'
 import { schema } from '../../Utils/ResisterValidation'
-// import { toast } from 'react-toastify'
 import { useMutation } from '@apollo/client'
 import userMutations from '../../Apollo/Mutation/userMutations'
 import registerimg from '../../assets/img/Capturedjdsk.JPG'
-import HomePage from '../../pages/Common/HomePage'
 
 const RegisterForm = () => {
   const [register, { regdata }] = useMutation(userMutations.CREATEUSER)

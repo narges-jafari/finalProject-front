@@ -3,12 +3,7 @@ import React, { useState } from 'react'
 import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
-import logo1 from '../../../assets/img/logo6.JPG'
-import logo2 from '../../../assets/img/logo5.JPG'
-import logo3 from '../../../assets/img/logo2.JPG'
-import logo4 from '../../../assets/img/logo3.JPG'
-import logo5 from '../../../assets/img/logo4.JPG'
-import logo6 from '../../../assets/img/logo1.JPG'
+
 
 import styles from '../../../assets/styles/Filter.module.css'
 

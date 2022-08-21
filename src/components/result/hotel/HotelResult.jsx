@@ -3,7 +3,6 @@ import styles from '../../../assets/styles/AirplaneResult.module.css'
 import HotelList from './HotelList'
 // import Filter from './Filter.jsx'
 import Filter from './Filter'
-import Question from './Question'
 
 const HotelResult = () => {
   return (

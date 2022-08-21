@@ -4,7 +4,6 @@ import img from '../../../assets/img/landing/water.jpg'
 import img1 from '../../../assets/img/need/phone.JPG'
 import Footer from './Footer'
 
-// import HeaderLanding from '../Navbar/HeaderLanding'
 
 const AboutUs = () => {
   return (

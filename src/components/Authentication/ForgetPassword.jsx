@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-// import { useMutation } from '@apollo/client'
 import classnames from 'classnames'
 import { Card, CardTitle, CardBody, Col, Label, Input, Row, Container } from 'reactstrap'
-import loginimg from '../../assets/img/3.JPG'
 import styles from '../../assets/styles/Login.module.css'
-// import { toast } from 'react-toastify'
 
 const ForgetPassword = () => {
   const [oldPassword, setOldPassword] = useState('')
@@ -45,7 +42,7 @@ const ForgetPassword = () => {
             <Col md={8} lg={6} xl={5}>
               <Card className='shadow-sm '>
                 <div>
-                  <img src={loginimg} alt='' className={styles.imgCss} />
+                  {/* <img src={loginimg} alt='' className={styles.imgCss} /> */}
                   <CardTitle className='text-danger primary fw-bold fs-6 mb-4' style={{ textAlign: 'center', marginTop: '-32px' }}>
                     بازیابی رمز عبور
                   </CardTitle>

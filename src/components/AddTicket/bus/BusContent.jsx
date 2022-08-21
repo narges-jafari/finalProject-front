@@ -1,18 +1,8 @@
 import React, { useState, useRef } from 'react'
-import persian from 'react-date-object/calendars/persian'
-import persianfa from 'react-date-object/locales/persian_fa'
-import DatePicker from 'react-multi-date-picker'
 import styles from '../../../assets/styles/TrainContent.module.css'
-
 import { busCompany } from '../../../constants/busComany'
 
-import {
-  Button,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  ButtonDropdown
-} from 'reactstrap'
+
 
 const BusContent = () => {
   const [destinationName, setDestinationName] = useState()

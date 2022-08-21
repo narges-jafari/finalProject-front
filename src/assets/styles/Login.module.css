@@ -104,7 +104,6 @@ form:focus {
 }
 
 .bgCss{
-/* background-image: url('../img/p3.jpg'); */
 background-repeat: no-repeat;
 background-size:cover;
 background-attachment: fixed;
@@ -116,7 +115,6 @@ font-size:14px;
 }
 
 .cardCss{
-background-image: url('../img/b1.JPG');
 width:100%
 
 }

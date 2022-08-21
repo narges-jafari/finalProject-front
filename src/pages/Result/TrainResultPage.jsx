@@ -1,5 +1,4 @@
 import React from 'react'
-// import Filter from '../../components/result/Filter'
 import Footer from '../../components/Landing/Footer/Footer.jsx'
 import TrainResult from '../../components/result/train/TrainResult'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'

@@ -1,22 +1,11 @@
 import React, { useState } from 'react'
-// import { useMutation } from '@apollo/client'
-// import { Formik, Form, Field, ErrorMessage } from 'formik'
+
 import { Card, CardBody, Col, Container, Row, Label } from 'reactstrap'
 import loginimg from '../../assets/img/Capturedjdsk.JPG'
 import styles from '../../assets/styles/Login.module.css'
 import { useQuery } from '@apollo/client'
 import userQueries from '../../Apollo/Query/userQueries'
-// import { toast } from 'react-toastify'
-import {
-  AUTH_USER,
-  AUTH_USER_INFO,
-  AUTH_USER_TEAM_ID,
-  USERNAME,
-  SELECTED_TEAM,
-  GUEST_USER,
-  DEFAULT_TEAM_NAME,
-  DEFAULT_TEAM_ID
-} from '../../constants/auth'
+
 
 const LoginForm = () => {
   const [email1, setEmail1] = useState(false)

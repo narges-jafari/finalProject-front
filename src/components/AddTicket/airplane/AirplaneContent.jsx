@@ -3,12 +3,10 @@ import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
 
-// import flight from '../../../../../safarBackend/graphql/resolvers/flight'
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
 
 
-import { toast } from 'react-toastify'
 
 const AirplaneContent = () => {
   const [destinationName, setDestinationName] = useState('')

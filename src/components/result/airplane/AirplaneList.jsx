@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import img from '../../../assets/img/logo1.JPG'
 import styles from '../../../assets/styles/AirplaneList.module.css'
-import { FaPlane } from 'react-icons/fa'
 import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
 
