@@ -3,7 +3,6 @@ export const schema = yup.object().shape({
   fullName: yup
     .string()
     .required('  لطفا این فیلد را پر کنید')
-    .max(8, 'بیشترین طول ممکن برای اسم 100 است')
     .min(3, 'کمترین طول ممکن برای اسم 6 هست'),
 
   username: yup
@@ -15,17 +14,16 @@ export const schema = yup.object().shape({
     .string()
     .email('لطفا ایمیل معتبر وارد کنید')
     .required('لطفا این فیلد را پر کنید'),
-  // birthdate: yup
-  // .string()
-  // .required('لطفا این فیلد را پر کنید')
-  // .max(13, 'بیشترین طول ممکن برای نام کاربری 13 است')
-  // .min(2, 'کمترین طول ممکن برای نام کاربری 3 است'),
+  birthdate: yup
+  .string()
+  .required('لطفا این فیلد را پر کنید'),
 
-  // nationalcode: yup
-  // .string()
-  // .required('لطفا این فیلد را پر کنید')
-  // .max(13, 'بیشترین طول ممکن برای نام کاربری 13 است')
-  // .min(2, 'کمترین طول ممکن برای نام کاربری 3 است'),
+  nationalcode: yup
+  .string()
+  .required('لطفا این فیلد را پر کنید')
+  .max(10, 'کدملی 10 رقمی است')
+  .min(10, '      کدملی 10 رقمی است '),
+  
 
   // gender: yup.string().required('یک گزینه انتخاب کنید'),
 

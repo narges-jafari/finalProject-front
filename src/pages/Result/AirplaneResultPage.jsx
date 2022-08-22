@@ -4,9 +4,16 @@ import Footer from '../../components/Landing/Footer/Footer.jsx'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 import AirplaneResult from '../../components/result/airplane/AirplaneResult'
 import styles from '../../assets/styles/Pages.module.css'
+import { AUTH_TOKEN } from '../../constants/auth'
+import NotLoginPage from '../NotLogin.jsx'
+import Landing from '../../components/Landing/index.jsx'
 
 const AirplaneResultPage = () => {
+  const showData=window.localStorage.getItem(AUTH_TOKEN)
+  console.log(showData)
   return (
+    <>
+    {showData?
     <>
       <div className={styles.content}>
         <HeaderLanding />
@@ -20,6 +27,12 @@ const AirplaneResultPage = () => {
         <Footer />
 
       </div>
+      </>:
+      <div>
+        <NotLoginPage/>
+      </div>
+    }
+    
     </>
   )
 }

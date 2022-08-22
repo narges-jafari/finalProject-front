@@ -7,16 +7,26 @@ import { schema } from '../../Utils/ResisterValidation'
 import { useMutation } from '@apollo/client'
 import userMutations from '../../Apollo/Mutation/userMutations'
 import registerimg from '../../assets/img/Capturedjdsk.JPG'
+import { toast } from 'react-toastify'
+import {
+  AUTH_TOKEN,
+  USER_ID
+
+} from '../../constants/auth'
 
 const RegisterForm = () => {
-  const [register, { regdata }] = useMutation(userMutations.CREATEUSER)
-  const [gender, setGender] = useState('زن')
+  const [register, { data,loading }] = useMutation(userMutations.CREATEUSER)
+  if (!loading && data) {
+    if (data.createUser == null) {
+    }else if (data.createUser) {
+      window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.createUser.token)) 
+      window.localStorage.setItem(USER_ID, JSON.stringify(data.createUser.userId))
+      window.location.href = '/login'
+    }
 
-  console.log(register.length)
+  }
 
-  // console.log(register.createUser)
 
-  // console.log(register)
 
   return (
     <div className={styles.bgCss}>
@@ -46,19 +56,17 @@ const RegisterForm = () => {
                       enableReinitialize
                       className='form-horizontal'
                       onSubmit={(values) => {
-                        console.log(values)
                         register({
                           variables: {
                             fullName: values.fullName,
                             username: values.username,
                             password: values.password,
                             email: values.email,
-                            // gender: values.gender,
                             birthdate: values.birthdate,
                             nationalcode: values.nationalcode
                           }
 
-                        })
+                        });
                       }}
                     >
                       <Form>
@@ -107,20 +115,7 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                        {/* <div className='mb-3'>
-                          <Label>Repeat Password</Label>
-                          <Field
-                            name='repeatPassword'
-                            className='form-control'
-                            placeholder='Re-enter your password'
-                            type='password'
-                          />
-                          <ErrorMessage
-                            className='alert alert-danger p-2 mt-1'
-                            component='div'
-                            name='repeat-password'
-                          />
-                        </div> */}
+                
 
                         <div className='mb-3'>
                           <Label>ایمیل</Label>
@@ -167,24 +162,6 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                        {/* {register.length ==1?                     <a href='/'>
-                         <span
-                               className='btn  py-2 col-12'
-                               style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
-                               type='submit'
-                             >
-                               ثبت نام
-                             </span>
-                             </a>
-                      :    <a href='/'>
-                      <span
-                            className='btn  py-2 col-12'
-                            style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
-                            type='submit'
-                          >
-                            ثبت نام
-                          </span>
-                          </a>} */}
 
                         <div className='mt-5'>
                           <button
@@ -195,39 +172,14 @@ const RegisterForm = () => {
                             ثبت نام
                           </button>
 
-                          {/* <a href='/'> */}
-                          {/* {!register ?
-                      <a href='/'>
-                      <span
-                            className='btn  py-2 col-12'
-                            style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
-                            type='submit'
-                          >
-                            ثبت نام
-                          </span>
-                          </a>:
-                            <a href='/register'>
-                            <span
-                                  className='btn  py-2 col-12'
-                                  style={{backgroundColor:'#f49107f1', fontFamily:'Vazir',fontSize:'20px'}}
-                                  type='submit'
-                                >
-                                  ثبت نام
-                                </span>
-                                </a>
-                    }
-                   */}
-                          {/* </a> */}
-
+    
                         </div>
-                        {/* {register? history.push('/')
-:history.push('/register')} */}
+                     
 
                       </Form>
                     </Formik>
 
                   </div>
-                  {/* {register? <HomePage/>:'fffff'} */}
 
                   <div className='mt-5 text-center'>
                     <p>

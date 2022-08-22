@@ -89,6 +89,13 @@
     color:#0b0b0b;
 
 }
+.numberfont11{
+    font-family:Vazir;
+    font-size: 15px;
+    font-weight:bold;
+    color:#0b0b0b;
+
+}
 .buttonCss1{
     font-family:Vazir;
     font-size: 15px;
@@ -97,8 +104,11 @@
     border:none;
     border-radius: 10px;
     background-color:#f9a404;
+    margin:0px 3px
 
 }
+
+
 
 .numberfontChange{
     font-family:Yekan;

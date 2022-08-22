@@ -12,6 +12,7 @@ const TrainResult = () => {
         <span className='mx-3'>تاریخ رفت:1مهر</span>
 
       </div>
+    
       <div className={styles.content}>
         <div className={styles.filterDiv}><Filter /></div>
         <div className={styles.airCss}> <TrainList />

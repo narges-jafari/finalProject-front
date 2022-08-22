@@ -5,14 +5,16 @@ import flightMutations from '../../../Apollo/Mutation/flightMutations'
 
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
+import {AUTH_TOKEN} from '../../../constants/auth'
 
 const AirplaneContent = () => {
-  const [destinationName, setDestinationName] = useState('')
   const [originName, setOriginName] = useState('')
+  const [destinationName, setDestinationName] = useState('')
+  const [price, setPrice] = useState('')
+
   const [startDate, setStartDate] = useState('')
   const [destinationAirport, setDestinationAirport] = useState('')
   const [originAirport, setOriginAirport] = useState('')
-  const [price, setPrice] = useState('')
   const [departureTime, setDepartureTime] = useState('')
   const [arrivalTime, setArrivalTime] = useState('')
   const [airplaneModel, setAirplaneModel] = useState('')
@@ -23,9 +25,8 @@ const AirplaneContent = () => {
   const [showairplaneCompany, setShowAirplaneCompany] = useState('')
   const [allowedLoggage, setAllowedLoggage] = useState('')
   const [information, setInformation] = useState('')
-  // const [ticketDropDown, setTicketDropDown] = useState(false)
-  const [showPassengerModal, setShowPassengerModal] = useState('')
   const firstUpdate = useRef(true)
+ 
 
   const resetFields = () => {
     setDestinationName('')
@@ -39,7 +40,7 @@ const AirplaneContent = () => {
     setAirplaneModel('')
     setFlightNumber(null)
     setCapacity(null)
-    SetAirline('')
+    setShowAirplaneCompany('')
     setFlightClass('')
     setAllowedLoggage(null)
     setInformation('')
@@ -52,6 +53,7 @@ const AirplaneContent = () => {
     e.preventDefault()
     createFlights({
       variables: {
+        // userId:'62ebac44e2492fd084f4454c',
         originName: originName,
         destinationName: destinationName,
         price: parseInt(price),
@@ -64,15 +66,16 @@ const AirplaneContent = () => {
         airportDestination: destinationAirport,
         information: information,
         date: startDate,
-        airline: airline,
+        airline: showairplaneCompany,
         airplaneModel: airplaneModel,
         allowedLoggage: parseInt(allowedLoggage)
 
       }
     })
       .then(({ data }) => {
-        if (data.createFlight !== null) {
+        if (data.AUTH_TOKEN) {
           // toast.success('Your alert have been create successfully')
+
           <div>cccccccc</div>
           resetFields()
         } else {

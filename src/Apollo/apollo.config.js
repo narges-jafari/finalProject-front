@@ -4,18 +4,21 @@ import { setContext } from 'apollo-link-context'
 import { createUploadLink } from 'apollo-upload-client'
 import { offsetLimitPagination } from '@apollo/client/utilities'
 
-import { AUTH_USER } from '../constants/auth'
+import { AUTH_TOKEN } from '../constants/auth'
 
 const httpLink = new createUploadLink({ // eslint-disable-line
   uri: 'http://localhost:4000/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {
-  const token = window.localStorage.getItem(AUTH_USER)
+  const token = window.localStorage.getItem(AUTH_TOKEN)
+
+  
   return {
     headers: {
       ...headers,
-      token: token || ''
+      // token: token || ''
+      authorization: token ? `Bearer ${token}` : ''
     }
   }
 })

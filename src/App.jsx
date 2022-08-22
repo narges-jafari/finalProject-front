@@ -14,29 +14,45 @@ import AboutUsPage from './pages/Footer/AboutUsPage'
 import RoulesPage from './pages/Footer/RoulesPage'
 import QuestionPage from './pages/Footer/QuestionPage'
 import MagazineResultPage from './pages/Footer/MagazineResultPage'
+import {AUTH_TOKEN} from './constants/auth'
 
-const App = () => {
+
+const App = (props) => {
+
+//   const showData=window.localStorage.getItem(AUTH_TOKEN)
+// console.log(showData)
+// console.log(window.localStorage.getItem(AUTH_TOKEN))
+
+ 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/resultairplain' element={<AirplaneResultPage />} />
-        <Route path='/resulttrain' element={<TrainResultPage />} />
-        <Route path='/resultbus' element={<BusResultPage />} />
-        <Route path='/resulthotel' element={<HotelResultPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/airplanepay' element={<PaymentPage />} />
-        <Route path='/addticket' element={<AddTicketPage />} />
-        <Route path='/buyticket' element={<BuyTicketPage />} />
-        <Route path='/aboutus' element={<AboutUsPage />} />
-        <Route path='/roules' element={<RoulesPage />} />
-        <Route path='/question' element={<QuestionPage />} />
-        <Route path='/magazin' element={<MagazineResultPage />} />
+    // {props.AllData ?
+ <>
 
-      </Routes>
-    </Router>
 
+<Router>
+  <Routes>
+
+    <Route path='/' element={<HomePage />} />
+    <Route path='/aboutus' element={<AboutUsPage />} />
+    <Route path='/roules' element={<RoulesPage />} />
+    <Route path='/question' element={<QuestionPage />} />
+    <Route path='/magazin' element={<MagazineResultPage />} />
+    <Route path='/resultairplain' element={<AirplaneResultPage />} />
+    <Route path='/resulttrain' element={<TrainResultPage />} />
+    <Route path='/resultbus' element={<BusResultPage />} />
+    <Route path='/resulthotel' element={<HotelResultPage />} />
+
+    <Route path='/airplanepay' element={<PaymentPage />} />
+    <Route path='/addticket' element={<AddTicketPage />} />
+    <Route path='/buyticket' element={<BuyTicketPage />} />
+    <Route path='/login' element={<LoginPage />} />
+    <Route path='/register' element={<RegisterPage />} />
+
+  
+  </Routes>
+</Router>
+
+    </>
   )
 }
 export default App

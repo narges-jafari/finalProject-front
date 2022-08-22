@@ -25,6 +25,7 @@ const HeaderLanding = () => {
               <img src={img} className={styles.logoCss} />
               <span className={styles.headerfont}>تریپنو</span>
             </div>
+  
             <div className=' mt-4 '>
               <span className={styles.numberfont}>021-41502</span>
               <a href='login'>
