@@ -9,8 +9,7 @@ const userQueries = {
         token
       }
     }
-  `
-  ,
+  `,
   USERS: gql`
   query users($userId: String!) {
     users(userId: $userId) {

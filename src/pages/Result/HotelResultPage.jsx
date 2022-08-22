@@ -7,30 +7,29 @@ import { AUTH_TOKEN } from '../../constants/auth'
 import NotLoginPage from '../NotLogin.jsx'
 
 const HotelResultPage = () => {
-  const showData=window.localStorage.getItem(AUTH_TOKEN)
+  const showData = window.localStorage.getItem(AUTH_TOKEN)
   console.log(showData)
   return (
     <>
-    {showData?
-    <>
-      <div className={styles.content}>
-        <HeaderLanding />
+      {showData
+        ? <>
+          <div className={styles.content}>
+            <HeaderLanding />
 
-      </div>
+          </div>
 
-      <div className=' mx-auto '>
-        <HotelResult />
+          <div className=' mx-auto '>
+            <HotelResult />
 
-      </div>
-      <div style={{ marginTop: '200px' }}>
-        <Footer />
+          </div>
+          <div style={{ marginTop: '200px' }}>
+            <Footer />
 
-      </div>
-      </>:
-      <div>
-        <NotLoginPage/>
-      </div>
-      }
+          </div>
+          </>
+        : <div>
+          <NotLoginPage />
+          </div>}
     </>
   )
 }

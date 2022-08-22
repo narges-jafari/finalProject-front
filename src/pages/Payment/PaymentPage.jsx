@@ -9,29 +9,28 @@ import NotLoginPage from '../NotLogin.jsx'
 import styles from '../../assets/styles/Pages.module.css'
 
 const PaymentPage = () => {
-  const showData=window.localStorage.getItem(AUTH_TOKEN)
+  const showData = window.localStorage.getItem(AUTH_TOKEN)
   console.log(showData)
   return (
     <>
-    {showData?
-    <>
-      <div className={styles.content}>
-        <HeaderLanding />
+      {showData
+        ? <>
+          <div className={styles.content}>
+            <HeaderLanding />
 
-      </div>
-      <div>
+          </div>
+          <div>
 
-        <Payment />
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        <Footer />
+            <Payment />
+          </div>
+          <div style={{ marginTop: '20px' }}>
+            <Footer />
 
-      </div>
-      </>:
-      <div>
-        <NotLoginPage/>
-      </div>
-}
+          </div>
+          </>
+        : <div>
+          <NotLoginPage />
+          </div>}
     </>
   )
 }

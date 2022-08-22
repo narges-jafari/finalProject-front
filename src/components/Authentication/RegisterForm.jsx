@@ -15,18 +15,16 @@ import {
 } from '../../constants/auth'
 
 const RegisterForm = () => {
-  const [register, { data,loading }] = useMutation(userMutations.CREATEUSER)
+  const [register, { data, loading }] = useMutation(userMutations.CREATEUSER)
   if (!loading && data) {
     if (data.createUser == null) {
-    }else if (data.createUser) {
-      window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.createUser.token)) 
+    } else if (data.createUser) {
+      window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.createUser.token))
       window.localStorage.setItem(USER_ID, JSON.stringify(data.createUser.userId))
+      toast.success('ثبت‌نام شما موفق‌آمیز بود')
       window.location.href = '/login'
     }
-
   }
-
-
 
   return (
     <div className={styles.bgCss}>
@@ -66,7 +64,7 @@ const RegisterForm = () => {
                             nationalcode: values.nationalcode
                           }
 
-                        });
+                        })
                       }}
                     >
                       <Form>
@@ -115,8 +113,6 @@ const RegisterForm = () => {
                           />
                         </div>
 
-                
-
                         <div className='mb-3'>
                           <Label>ایمیل</Label>
                           <Field
@@ -162,7 +158,6 @@ const RegisterForm = () => {
                           />
                         </div>
 
-
                         <div className='mt-5'>
                           <button
                             className='btn  py-2 col-12'
@@ -172,9 +167,7 @@ const RegisterForm = () => {
                             ثبت نام
                           </button>
 
-    
                         </div>
-                     
 
                       </Form>
                     </Formik>

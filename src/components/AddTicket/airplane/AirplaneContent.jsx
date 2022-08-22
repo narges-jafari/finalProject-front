@@ -5,7 +5,7 @@ import flightMutations from '../../../Apollo/Mutation/flightMutations'
 
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
-import {AUTH_TOKEN} from '../../../constants/auth'
+import { AUTH_TOKEN } from '../../../constants/auth'
 
 const AirplaneContent = () => {
   const [originName, setOriginName] = useState('')
@@ -26,7 +26,6 @@ const AirplaneContent = () => {
   const [allowedLoggage, setAllowedLoggage] = useState('')
   const [information, setInformation] = useState('')
   const firstUpdate = useRef(true)
- 
 
   const resetFields = () => {
     setDestinationName('')

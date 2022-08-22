@@ -9,30 +9,29 @@ import NotLoginPage from '../NotLogin.jsx'
 import Landing from '../../components/Landing/index.jsx'
 
 const AirplaneResultPage = () => {
-  const showData=window.localStorage.getItem(AUTH_TOKEN)
+  const showData = window.localStorage.getItem(AUTH_TOKEN)
   console.log(showData)
   return (
     <>
-    {showData?
-    <>
-      <div className={styles.content}>
-        <HeaderLanding />
+      {showData
+        ? <>
+          <div className={styles.content}>
+            <HeaderLanding />
 
-      </div>
-      <div className=' mx-auto '>
-        <AirplaneResult />
+          </div>
+          <div className=' mx-auto '>
+            <AirplaneResult />
 
-      </div>
-      <div style={{ marginTop: '0px' }}>
-        <Footer />
+          </div>
+          <div style={{ marginTop: '0px' }}>
+            <Footer />
 
-      </div>
-      </>:
-      <div>
-        <NotLoginPage/>
-      </div>
-    }
-    
+          </div>
+          </>
+        : <div>
+          <NotLoginPage />
+          </div>}
+
     </>
   )
 }

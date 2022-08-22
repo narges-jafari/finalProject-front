@@ -13,7 +13,6 @@ const httpLink = new createUploadLink({ // eslint-disable-line
 const authLink = setContext((_, { headers }) => {
   const token = window.localStorage.getItem(AUTH_TOKEN)
 
-  
   return {
     headers: {
       ...headers,

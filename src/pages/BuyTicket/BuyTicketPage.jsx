@@ -7,36 +7,31 @@ import BuyTicket from '../../components/ticket'
 import { AUTH_TOKEN } from '../../constants/auth'
 import NotLoginPage from '../NotLogin.jsx'
 
-
 const BuyTicketPage = () => {
-  const showData=window.localStorage.getItem(AUTH_TOKEN)
+  const showData = window.localStorage.getItem(AUTH_TOKEN)
   console.log(showData)
   return (
     <>
-    {showData? 
-       <div className={styles.bodycss}>
-       <div className={styles.content}>
-         <HeaderLanding />
-   
-       </div>
-   
-       <div className=' mx-auto  '>
-         <BuyTicket />
-   
-       </div>
-       <div style={{ marginTop: '200px' }}>
-         <Footer />
-   
-       </div>
-     </div>
-   
+      {showData
+        ? <div className={styles.bodycss}>
+          <div className={styles.content}>
+            <HeaderLanding />
 
-    :
-    <div>
-    <NotLoginPage/>
-  </div>
- 
-}
+          </div>
+
+          <div className=' mx-auto  '>
+            <BuyTicket />
+
+          </div>
+          <div style={{ marginTop: '200px' }}>
+            <Footer />
+
+          </div>
+          </div>
+
+        : <div>
+          <NotLoginPage />
+        </div>}
     </>
   )
 }

@@ -5,32 +5,30 @@ import styles from '../../assets/styles/Pages.module.css'
 import { AUTH_TOKEN } from '../../constants/auth'
 import NotLoginPage from '../NotLogin.jsx'
 const AddTicketPage = () => {
-  const showData=window.localStorage.getItem(AUTH_TOKEN)
+  const showData = window.localStorage.getItem(AUTH_TOKEN)
   console.log(showData)
   return (
     <>
-    {showData?
-      
-    <div className={styles.bodycss}>
-      <div className={styles.content}>
-        <HeaderLanding />
+      {showData
 
-      </div>
+        ? <div className={styles.bodycss}>
+          <div className={styles.content}>
+            <HeaderLanding />
 
-      <div className=' mx-auto '>
-        <AddTicketAccordion />
+          </div>
 
-      </div>
-      <div style={{ marginTop: '200px' }}>
-        <Footer />
+          <div className=' mx-auto '>
+            <AddTicketAccordion />
 
-      </div>
-    </div>
-    :
-     <div>
-     <NotLoginPage/>
-   </div>
-    }
+          </div>
+          <div style={{ marginTop: '200px' }}>
+            <Footer />
+
+          </div>
+          </div>
+        : <div>
+          <NotLoginPage />
+          </div>}
     </>
   )
 }

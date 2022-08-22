@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from 'react'
 import { Card, CardBody, Col, Container, Row, Label } from 'reactstrap'
 import loginimg from '../../assets/img/Capturedjdsk.JPG'
 import styles from '../../assets/styles/Login.module.css'
@@ -8,59 +7,52 @@ import userQueries from '../../Apollo/Query/userQueries'
 import { toast } from 'react-toastify'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
-
 import {
   AUTH_TOKEN,
   USER_ID
 
 } from '../../constants/auth'
 
-
 const LoginForm = () => {
-
-
-  const [Login,{loading,data}]=useLazyQuery(userQueries.LOGIN)
+  const [Login, { loading, data }] = useLazyQuery(userQueries.LOGIN)
   if (!loading && data) {
     window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
     if (data.login.token) {
       window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
+      toast.success('   ورود موفق‌آمیز')
 
       window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
-      window.location.href = '/';
+      window.location.href = '/'
+    }
+  }
 
-
-
-  }}
-
-
-  
   return (
     <>
       <div className='account-pages mt-3 mb-3 pt-sm-5'>
         <Container>
           <Row className='justify-content-center'>
             <Col md={8} lg={6} xl={5}>
-            <Card className='overflow-hidden ' style={{ border: 'none', boxShadow: ' 0 0 4px 1px #ddd' }}>
-            <div>
+              <Card className='overflow-hidden ' style={{ border: 'none', boxShadow: ' 0 0 4px 1px #ddd' }}>
+                <div>
 
-<img src={loginimg} alt='' className={styles.imgCsslogin} />
-<div className={styles.spancss1}>
-  به تریپنو خوش امدید
+                  <img src={loginimg} alt='' className={styles.imgCsslogin} />
+                  <div className={styles.spancss1}>
+                    به تریپنو خوش امدید
 
-</div>
-<div className={styles.fontcss}>
-  برای شروع وارد حساب کاربری شوید
-</div>
-</div>
-                       
+                  </div>
+                  <div className={styles.fontcss}>
+                    برای شروع وارد حساب کاربری شوید
+                  </div>
+                </div>
+
                 <CardBody className='pt-0'>
                   <div className='p-2'>
                     <Formik
                       initialValues={{
-                  
+
                         username: '',
                         password: ''
-                        
+
                       }}
                       enableReinitialize
                       className='form-horizontal'
@@ -68,20 +60,20 @@ const LoginForm = () => {
                         Login({
                           variables: {
                             // login:{
-                              username: values.username,
+                            username: values.username,
                             password: values.password
                             // }
-                        }
+                          }
 
-                        });
+                        })
                       }}
                     >
                       <Form>
                         <div className='mb-3'>
-                        <label>نام کاربری</label>                 
-                                 <Field
+                          <label>نام کاربری</label>
+                          <Field
                             name='username'
-                            className={styles.filedcss}            
+                            className={styles.filedcss}
                             placeholder='نام کاربری را وارد کنید'
                             type='text'
                           />
@@ -93,7 +85,7 @@ const LoginForm = () => {
                         </div>
 
                         <div className='mb-3'>
-                        <label> پسوورد</label>                 
+                          <label> پسوورد</label>
                           <Field
                             name='password'
                             className={styles.filedcss}
@@ -107,29 +99,28 @@ const LoginForm = () => {
                           />
                         </div>
 
-                    
                         <button
-                        className='btn  py-2  col-12'
-                        style={{ backgroundColor: '#f49107f1', border: ' none ', fontFamily: 'Vazir', fontSize: '20px' }}
-                        type='submit'
-                      >
-                        ورود
-                      </button>
+                          className='btn  py-2  col-12'
+                          style={{ backgroundColor: '#f49107f1', border: ' none ', fontFamily: 'Vazir', fontSize: '20px' }}
+                          type='submit'
+                        >
+                          ورود
+                        </button>
                       </Form>
                     </Formik>
                   </div>
 
                   <div className='mt-5 text-center'>
 
-<a href='register'>
-  <label
+                    <a href='register'>
+                      <label
     // className='font-weight-medium  ms-1'
-    style={{ cursor: 'pointer', color: '#fb9208' }}
-  >
-    ثبت نام در تریپنو
-  </label>
-</a>
-</div>
+                        style={{ cursor: 'pointer', color: '#fb9208' }}
+                      >
+                        ثبت نام در تریپنو
+                      </label>
+                    </a>
+                  </div>
                 </CardBody>
               </Card>
             </Col>
