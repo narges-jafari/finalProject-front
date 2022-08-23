@@ -135,9 +135,22 @@
     padding: 10px 20px;
     border:none;
     border-radius: 10px;
-    color: #ffffff;
-    background-color:#c41c1c;
-    margin:20px 2px
+    color: #fff;
+    background-color:#e9e6e651;
+    margin:5px 2px
+}
+
+.buttonCssChange1{
+    font-family:Vazir;
+    font-size: 15px;
+    font-weight:bold;
+    padding: 10px 20px;
+    border:none;
+    border-radius: 10px;
+    color: #000;
+    background-color:#89888851;
+    margin:15px 2px
+
 }
 
 

@@ -9,6 +9,7 @@ import userMutations from '../../Apollo/Mutation/userMutations'
 import registerimg from '../../assets/img/Capturedjdsk.JPG'
 import { toast } from 'react-toastify'
 import {
+  AUTH_USERINFO,
   AUTH_TOKEN,
   USER_ID
 

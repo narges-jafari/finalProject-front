@@ -8,8 +8,9 @@ import { toast } from 'react-toastify'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import {
-  AUTH_TOKEN,
-  USER_ID
+  AUTH_USERINFO,
+  USER_ID,
+  AUTH_TOKEN
 
 } from '../../constants/auth'
 
@@ -17,6 +18,8 @@ const LoginForm = () => {
   const [Login, { loading, data }] = useLazyQuery(userQueries.LOGIN)
   if (!loading && data) {
     window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
+    window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
+
     if (data.login.token) {
       window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
       toast.success('   ورود موفق‌آمیز')
@@ -26,6 +29,9 @@ const LoginForm = () => {
     }
   }
 
+
+
+  console.log(  window.localStorage.getItem(AUTH_TOKEN,USER_ID))
   return (
     <>
       <div className='account-pages mt-3 mb-3 pt-sm-5'>
@@ -38,7 +44,7 @@ const LoginForm = () => {
                   <img src={loginimg} alt='' className={styles.imgCsslogin} />
                   <div className={styles.spancss1}>
                     به تریپنو خوش امدید
-
+{Login.token}
                   </div>
                   <div className={styles.fontcss}>
                     برای شروع وارد حساب کاربری شوید

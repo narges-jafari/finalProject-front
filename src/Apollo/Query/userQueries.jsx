@@ -5,14 +5,15 @@ const userQueries = {
   LOGIN: gql`
     query login($username: String!, $password:String!) {
       login(password: $password ,username:$username) {
-        userId
         token
+        userId
+        
       }
     }
   `,
   USERS: gql`
-  query users($userId: String!) {
-    users(userId: $userId) {
+  query user($userId: String) {
+    user(userId: $userId) {
       username
       
     }

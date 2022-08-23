@@ -1,5 +1,5 @@
 export const GUEST_USER = 'guest-user'
-export const AUTH_USER = 'auth-user'
+export const AUTH_USERINFO = 'auth-userinfo'
 export const AUTH_USER_INFO = 'auth-user-info'
 export const AUTH_TOKEN = 'auth-token'
 export const AUTH_USER_DISPLAYNAME = 'auth-user-displayname'
