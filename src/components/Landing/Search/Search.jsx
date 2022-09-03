@@ -57,8 +57,8 @@ function Search (props) {
               >
                 {
                  currentActiveTab === '1'
-                   ? <div className='text-danger'><FaHotel className='mx-1 fa-lg ' />هتل </div>
-                   : <div className='text-success'><FaHotel className='mx-1 fa-lg ' />هتل </div>
+                   ? <div style={{ fontWeight: 'bold', fontSize: '16px' }} className='text-danger'><FaHotel className='mx-1 fa-lg ' />هتل </div>
+                   : <div className='text-success '><FaHotel className='mx-1 fa-lg ' />هتل </div>
               }
               </NavLink>
             </NavItem>
@@ -73,7 +73,7 @@ function Search (props) {
               >
                 {
                  currentActiveTab === '2'
-                   ? <div className='text-danger'> <FaPlane className='mx-1 fa-lg ' />هواپیما </div>
+                   ? <div style={{ fontWeight: 'bold', fontSize: '16px' }} className='text-danger'> <FaPlane className='mx-1 fa-lg ' />هواپیما </div>
                    : <div className='text-success'> <FaPlane className='mx-1 fa-lg ' />هواپیما </div>
               }
               </NavLink>
@@ -89,7 +89,7 @@ function Search (props) {
 
                 {
                  currentActiveTab === '3'
-                   ? <div className='text-danger'><FaSubway className='mx-1 fa-lg' />قطار </div>
+                   ? <div style={{ fontWeight: 'bold', fontSize: '16px' }} className='text-danger'><FaSubway className='mx-1 fa-lg' />قطار </div>
                    : <div className='text-success'><FaSubway className='mx-1 fa-lg' />قطار </div>
               }
               </NavLink>
@@ -104,7 +104,7 @@ function Search (props) {
               >
                 {
                  currentActiveTab === '4'
-                   ? <div className='text-danger'><FaBusAlt className='mx-1 fa-lg' />اتوبوس</div>
+                   ? <div style={{ fontWeight: 'bold', fontSize: '16px' }} className='text-danger'><FaBusAlt className='mx-1 fa-lg' />اتوبوس</div>
                    : <div className='text-success'><FaBusAlt className='mx-1 fa-lg' />اتوبوس</div>
               }
               </NavLink>

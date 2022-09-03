@@ -29,9 +29,7 @@ const LoginForm = () => {
     }
   }
 
-
-
-  console.log(  window.localStorage.getItem(AUTH_TOKEN,USER_ID))
+  console.log(window.localStorage.getItem(AUTH_TOKEN, USER_ID))
   return (
     <>
       <div className='account-pages mt-3 mb-3 pt-sm-5'>
@@ -44,7 +42,7 @@ const LoginForm = () => {
                   <img src={loginimg} alt='' className={styles.imgCsslogin} />
                   <div className={styles.spancss1}>
                     به تریپنو خوش امدید
-{Login.token}
+                    {Login.token}
                   </div>
                   <div className={styles.fontcss}>
                     برای شروع وارد حساب کاربری شوید

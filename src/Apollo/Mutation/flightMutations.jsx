@@ -18,6 +18,7 @@ const flightMutations = {
     $airline:String!
     $airplaneModel:String!
     $allowedLoggage:Int!
+    
   ){
     createFlight(
   flightInput:{

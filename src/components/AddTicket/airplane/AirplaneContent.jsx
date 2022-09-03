@@ -5,7 +5,7 @@ import flightMutations from '../../../Apollo/Mutation/flightMutations'
 
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
-import { AUTH_TOKEN } from '../../../constants/auth'
+import { AUTH_TOKEN, USER_ID } from '../../../constants/auth'
 
 const AirplaneContent = () => {
   const [originName, setOriginName] = useState('')
@@ -45,14 +45,21 @@ const AirplaneContent = () => {
     setInformation('')
   }
 
+  const userid = window.localStorage.getItem(USER_ID)
+  const usertoken = window.localStorage.getItem(AUTH_TOKEN)
+
   // APOLLO
   const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
 
   const handleCreateAlert = (e) => {
     e.preventDefault()
+    // window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
+    // window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
+
     createFlights({
+
       variables: {
-        // userId:'62ebac44e2492fd084f4454c',
+        // creator:userid,
         originName: originName,
         destinationName: destinationName,
         price: parseInt(price),
@@ -72,16 +79,19 @@ const AirplaneContent = () => {
       }
     })
       .then(({ data }) => {
-        if (data.AUTH_TOKEN) {
+        if (data.createFlight !== null) {
           // toast.success('Your alert have been create successfully')
+          console.log(data.createFlight)
 
-          <div>cccccccc</div>
           resetFields()
         } else {
           <div>000000</div>
+          console.log('kkkkkkkkk')
         }
       })
   }
+
+  console.log(JSON.parse(userid), usertoken)
 
   return (
     <>
@@ -268,11 +278,13 @@ const AirplaneContent = () => {
         </div>
 
         <div>
+
           <button
             onClick={handleCreateAlert}
             className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '
           >جستجو
           </button>
+
         </div>
 
       </div>

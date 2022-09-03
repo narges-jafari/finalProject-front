@@ -14,10 +14,10 @@ const Footer = () => {
     <>
       <div className={styles.contentFlex}>
         <div className='d-flex flex-column flex-wrap my-2  '>
-          <span className='mx-3'>   درباره‌ی تریپنو</span>
+          <span className='mx-3 mt-4'>   درباره‌ی تریپنو</span>
           {/* <Link to="/about">About</Link> */}
           <Nav className='d-flex flex-column'>
-            <Nav.Link href='aboutus' className='text-secondary'>
+            <Nav.Link href='aboutus' className='text-secondary mt-2'>
               <span>درباره‌ی‌ما </span>
             </Nav.Link>
             <Nav.Link href='magazin' className='text-secondary'>
@@ -26,13 +26,13 @@ const Footer = () => {
           </Nav>
         </div>
         <div className='d-flex flex-column flex-wrap my-2  '>
-          <span className='mx-3'>    پشتیبانی  تریپنو</span>
+          <span className='mx-3 mt-4'>    پشتیبانی  تریپنو</span>
           {/* <Link to="/about">About</Link> */}
           <Nav className='d-flex flex-column'>
-            <Nav.Link href='roules' className='text-secondary'>
+            <Nav.Link href='roules' className='text-secondary mt-2'>
               <span>   قوانین </span>
             </Nav.Link>
-            <Nav.Link href='question' className='text-secondary'>
+            <Nav.Link href='question' className='text-secondary mt-2'>
               <span>   سوالات‌متداول </span>
             </Nav.Link>
           </Nav>

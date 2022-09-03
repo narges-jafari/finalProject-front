@@ -18,7 +18,7 @@ const Landing = () => {
     setActiveTab(tab)
   }, [])
   return (
-    <div style={{ backgroundColor: '#9293921b' }}>
+    <div style={{ backgroundColor: '#92939211' }}>
       {(() => {
         switch (showActiveTab) {
           case '1':
@@ -136,7 +136,7 @@ const Landing = () => {
         }
       })()}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', backgroundColor: 'white' }}>
         <Footer />
       </div>
 

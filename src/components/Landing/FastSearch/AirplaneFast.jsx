@@ -15,7 +15,7 @@ const AirplaneFast = () => {
           <div className={styles.contentItem}>
             <div className={styles.contentItem1}>
               <span>تهران </span>
-              <i className='fa fa-user ' />
+              <i className='fa fa-plane ' />
               <span> مشهد </span>
             </div>
             <div className={styles.contentItem2}>
@@ -31,7 +31,7 @@ const AirplaneFast = () => {
           <div className={styles.contentItem}>
             <div className={styles.contentItem1}>
               <span>تهران </span>
-              <i className='fa fa-user ' />
+              <i className='fa fa-plane ' />
               <span> مشهد </span>
             </div>
             <div className={styles.contentItem2}>
@@ -47,7 +47,7 @@ const AirplaneFast = () => {
           <div className={styles.contentItem}>
             <div className={styles.contentItem1}>
               <span>تهران </span>
-              <i className='fa fa-user ' />
+              <i className='fa fa-plane ' />
               <span> مشهد </span>
             </div>
             <div className={styles.contentItem2}>
@@ -66,7 +66,7 @@ const AirplaneFast = () => {
           <div className={styles.contentItem}>
             <div className={styles.contentItem1}>
               <span>تهران </span>
-              <i className='fa fa-user ' />
+              <i className='fa fa-plane ' />
               <span> مشهد </span>
             </div>
             <div className={styles.contentItem2}>
@@ -82,7 +82,7 @@ const AirplaneFast = () => {
           <div className={styles.contentItem}>
             <div className={styles.contentItem1}>
               <span>تهران </span>
-              <i className='fa fa-user ' />
+              <i className='fa fa-plane ' />
               <span> مشهد </span>
             </div>
             <div className={styles.contentItem2}>
@@ -98,7 +98,7 @@ const AirplaneFast = () => {
           <div className={styles.contentItem}>
             <div className={styles.contentItem1}>
               <span>تهران </span>
-              <i className='fa fa-user ' />
+              <i className='fa fa-plane ' />
               <span> مشهد </span>
             </div>
             <div className={styles.contentItem2}>

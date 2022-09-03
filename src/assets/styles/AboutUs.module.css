@@ -36,7 +36,11 @@
 
 .pcss{
     margin:40px 2px ;
-    font-family:'Vazir'
+    font-family:'Vazir';
+    text-align: justify;
+    text-justify: inter-word;
+    padding:1px 10px
+  
 }
 
 .img{

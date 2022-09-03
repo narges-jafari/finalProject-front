@@ -8,22 +8,16 @@ import { useQuery } from '@apollo/client'
 import userQueries from '../../../Apollo/Query/userQueries'
 import { useNavigate } from 'react-router-dom'
 import {
-  AUTH_USERINFO,  USER_ID,
+  AUTH_USERINFO, USER_ID,
   AUTH_TOKEN
 
 } from '../../../constants/auth'
 
-
-
 const HeaderLanding = () => {
-
-
   const [showusername, setShowUsername] = useState(false)
   const [isloggin, setIsLogin] = useState(false)
   const navigate = useNavigate()
 
-
- 
   const [headerChange, setHeaderChange] = useState(false)
   const changeNavbarColor = () => {
     if (window.scrollY >= 10) {
@@ -34,17 +28,16 @@ const HeaderLanding = () => {
   }
   window.addEventListener('scroll', changeNavbarColor)
 
-
-
   const userid = window.localStorage.getItem(USER_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
+
+  console.log(usertoken)
   useQuery(userQueries.USERS, {
     variables: {
-      userId:JSON.parse(userid)
+      userId: JSON.parse(userid)
     },
     onCompleted: (res) => {
       setShowUsername(res.user)
-
     },
     onError: () => {
       setShowUsername([])
@@ -67,17 +60,22 @@ const HeaderLanding = () => {
 
             <div className=' mt-4 '>
               <span className={styles.numberfont}>021-41502</span>
-              {!showusername?
-              <a href='login'>
-                <button className={styles.buttonCssChange}>ورود/ثبت نام</button>
+              {!usertoken || usertoken == 'undefined'
+                ? <>
+                  <a href='login'>
+                    <button className={styles.buttonCssChange}>ورود/ثبت نام</button>
+                  </a>
+                  <button onClickCapture={logout} className={styles.buttonCssChange}>خروج </button>
 
-              </a>:
-               <a href='/'>
-               <button onClickCapture={logout} className={styles.buttonCssChange}>{showusername.username} </button>
+                </>
+                : <>
+                  <button className={styles.buttonCssChange}>{showusername.username} </button>
 
-             </a>
+                  <a href='/'>
+                    <button onClickCapture={logout} className={styles.buttonCssChange}>خروج </button>
 
-              }
+                  </a>
+                  </>}
               <Header />
 
             </div>
@@ -95,18 +93,24 @@ const HeaderLanding = () => {
 
             <div>
               <span className={styles.numberfontChange}>021-41502</span>
-              {!showusername?
-              <a href='login'>
-                <button className={styles.buttonCssChange1}>ورود/ثبت نام</button>
+              {!usertoken || usertoken == 'undefined'
+                ? <>
+                  <a href='login'>
+                    <button className={styles.buttonCssChange1}>ورود/ثبت نام</button>
+                  </a>
+                  <button onClickCapture={logout} className={styles.buttonCssChange1}>خروج </button>
 
-              </a>:
-               <a href='/'>
-               <button onClickCapture={logout} className={styles.buttonCssChange1}>{showusername.username} </button>
+                </>
 
-             </a>
+                : <>
+                  <button className={styles.buttonCssChange1}>{showusername.username} </button>
 
-              }
-              <Header/>
+                  <a href='/'>
+                    <button onClickCapture={logout} className={styles.buttonCssChange1}>خروج </button>
+
+                  </a>
+                </>}
+              <Header />
             </div>
 
           </div>

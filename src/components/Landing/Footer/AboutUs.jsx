@@ -1,6 +1,8 @@
 import styles from '../../../assets/styles/AboutUs.module.css'
 
-import img from '../../../assets/img/landing/water.jpg'
+// import img from '../../../assets/img/landing/water.jpg'
+import img from '../../../assets/img/pic1.jpg'
+
 import img1 from '../../../assets/img/need/phone.JPG'
 import Footer from './Footer'
 
