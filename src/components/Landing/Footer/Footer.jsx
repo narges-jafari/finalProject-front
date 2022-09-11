@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from 'react-bootstrap/Nav'
-import img from '../../../assets/img/landing/logo.PNG'
+import img from '../../../assets/img/landing/logo.png'
 import neshan from '../../../assets/img/landing/neshan.jpg'
 import namad from '../../../assets/img/landing/namad.jpg'
 import digital from '../../../assets/img/landing/digital.jpg'

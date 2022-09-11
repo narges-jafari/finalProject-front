@@ -14,8 +14,7 @@ const AmusementPark = () => {
           <Nav.Link className='text-dark' href='https://snapproom.com/blog/%D9%BE%D8%A7%D8%B1%DA%A9-%D9%87%D8%A7%DB%8C-%D8%A2%D8%A8%DB%8C-%D9%85%D8%B4%D9%87%D8%AF/'>
             <div className={styles.card}>
               <img src={img} className={styles.img} />
-              <span className='text-center mt-2'>          موج های خروشان        </span>
-              <hr className='mx-3' />
+              <span className='text-center mt-2 border-bottom border-secondary mx-3 pb-2'>          موج‌های خروشان        </span>
               <div className='d-flex flex-row flex-wrap text-danger justify-content-center my-1 mx-2'>
                 <span>مشهد</span>
 
@@ -29,8 +28,8 @@ const AmusementPark = () => {
           <Nav.Link className='text-dark' href='https://arshaclub.com/about'>
             <div className={styles.card}>
               <img src={img2} className={styles.img} />
-              <span className='text-center mt-2'>                ارشا کلاب  </span>
-              <hr className='mx-3' />
+              <span className='text-center mt-2 border-bottom border-secondary mx-3 pb-2'>                ارشا کلاب  </span>
+              {/* <hr style={{position:'relative'}} className='mx-3' /> */}
               <div className='d-flex flex-row flex-wrap text-danger justify-content-center my-1 mx-2'>
                 <span>تهران</span>
 
@@ -38,12 +37,12 @@ const AmusementPark = () => {
             </div>
           </Nav.Link>
         </Nav>
+        
         <Nav>
           <Nav.Link className='text-dark' href='https://www.raheeno.com/article/3083/%D9%BE%D8%A7%D8%B1%DA%A9-%D8%AC%D9%85%D8%B4%DB%8C%D8%AF%DB%8C%D9%87.aspx'>
             <div className={styles.card}>
               <img src={img1} className={styles.img} />
-              <span className='text-center mt-2'>         پارک جمشیدیه        </span>
-              <hr className='mx-3' />
+              <span className='text-center mt-2 border-bottom border-secondary mx-3 pb-2'>         پارک جمشیدیه        </span>
               <div className='d-flex flex-row flex-wrap justify-content-center my-1 text-danger mx-2'>
 
                 <span>تهران </span>

@@ -1,14 +1,15 @@
 
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 
 import styles from '../../../assets/styles/HeaderLanding.module.css'
-import img from '../../../assets/img/landing/1.JPG'
+import img from '../../../assets/img/landing/logo.png'
+
 import Header from './Header'
 import { useQuery } from '@apollo/client'
 import userQueries from '../../../Apollo/Query/userQueries'
 import { useNavigate } from 'react-router-dom'
 import {
-  AUTH_USERINFO, USER_ID,
+   USER_ID,
   AUTH_TOKEN
 
 } from '../../../constants/auth'
@@ -31,7 +32,7 @@ const HeaderLanding = () => {
   const userid = window.localStorage.getItem(USER_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
 
-  console.log(usertoken)
+ 
   useQuery(userQueries.USERS, {
     variables: {
       userId: JSON.parse(userid)
@@ -45,8 +46,11 @@ const HeaderLanding = () => {
   })
   const logout = () => {
     localStorage.removeItem('auth-token')
+    // localStorage.removeItem('user-id')
     setIsLogin(false)
   }
+
+  // console.log(userid,usertoken)
 
   return (
     <>

@@ -10,7 +10,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import {
   AUTH_USERINFO,
   USER_ID,
-  AUTH_TOKEN
+  AUTH_TOKEN,
+  USER_INFO
 
 } from '../../constants/auth'
 
@@ -18,6 +19,7 @@ const LoginForm = () => {
   const [Login, { loading, data }] = useLazyQuery(userQueries.LOGIN)
   if (!loading && data) {
     window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
+
     window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
 
     if (data.login.token) {
@@ -26,10 +28,14 @@ const LoginForm = () => {
 
       window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
       window.location.href = '/'
+      // console.log(window.localStorage.getItem(USER_ID,'uuuuuuu'))
+      // console.log(window.localStorage.getItem(AUTH_TOKEN,'aaaaaa'))
+
     }
   }
 
-  console.log(window.localStorage.getItem(AUTH_TOKEN, USER_ID))
+
+
   return (
     <>
       <div className='account-pages mt-3 mb-3 pt-sm-5'>

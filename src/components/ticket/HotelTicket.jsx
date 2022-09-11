@@ -1,10 +1,32 @@
 import styles from '../../assets/styles/Ticket.module.css'
+import img from '../../assets/img/barcode.JPG'
+import logo from '../../assets/img/landing/logo.png'
+import train from '../../assets/img/hotel.png'
 
 const HotelTicket = () => {
   return (
     <>
       <div>
         <div className={styles.content}>
+        <div className={styles.ticketHeader}>
+            <div >
+            <span>
+           کد رهگیری :{12345666} 
+            </span>
+            <span>
+           سریال بلیط :{111111} 
+            </span>
+
+            </div>
+            <div style={{marginTop:'-4px'}}>
+              <img src={train} className='w-50 h-75'/>
+            </div>
+            <div style={{marginTop:'-5px'}}>
+            <span style={{fontSize:'20px',fontWeight:'bold'}}>تریپنو</span>
+<img src={logo} className={styles.logoCss}/>
+
+            </div>
+          </div>
           <div className={styles.contentItem}>
             <div>
               <span className={styles.spancss}>نام هتل </span>

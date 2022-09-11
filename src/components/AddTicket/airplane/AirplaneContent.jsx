@@ -45,21 +45,16 @@ const AirplaneContent = () => {
     setInformation('')
   }
 
-  const userid = window.localStorage.getItem(USER_ID)
+  const userid = window.localStorage.getItem('user-id')
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-
+console.log(userid,'lllllllllllllllll')
   // APOLLO
-  const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
+  const [createFlights1] = useMutation(flightMutations.CREATEFLIGHT)
 
   const handleCreateAlert = (e) => {
-    e.preventDefault()
-    // window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
-    // window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
-
-    createFlights({
-
+    // e.preventDefault()
+    createFlights1({
       variables: {
-        // creator:userid,
         originName: originName,
         destinationName: destinationName,
         price: parseInt(price),
@@ -77,21 +72,24 @@ const AirplaneContent = () => {
         allowedLoggage: parseInt(allowedLoggage)
 
       }
+
     })
-      .then(({ data }) => {
+      .then(({ data,usertoken }) => {
+        if(usertoken){
         if (data.createFlight !== null) {
           // toast.success('Your alert have been create successfully')
+
           console.log(data.createFlight)
 
           resetFields()
         } else {
           <div>000000</div>
           console.log('kkkkkkkkk')
-        }
+        }}
       })
   }
 
-  console.log(JSON.parse(userid), usertoken)
+ 
 
   return (
     <>
@@ -279,11 +277,14 @@ const AirplaneContent = () => {
 
         <div>
 
+          {usertoken?
+
           <button
             onClick={handleCreateAlert}
             className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '
           >جستجو
-          </button>
+          </button>:'null'
+}
 
         </div>
 

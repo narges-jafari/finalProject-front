@@ -34,39 +34,39 @@ const HotelSearch = () => {
           <input
             type='text'
             placeholder='نام هتل'
+            value={hotelName}
             onChange={e => setHotelName(e.target.value)}
             className={styles.hotelInputCss}
           />
 
-          {hotelName}
         </div>
-        <div className='mx-2 my-1 '>
+        <div className='mx-2 my-2 '>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             calendar={persian}
             locale={persianfa}
             calendarPosition='bottom-right'
-            placeholder='تاریخ  رفت'
-            style={{ backgroundColor: '#e3e1e154', height: '70px', paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: 'none', borderRadius: '20px' }}
+            inputClass={styles.inputDateCss}
+            placeholder='   از تاریخ ؟'
           />
         </div>
-        <div className='mx-2 my-1 '>
+        <div className='mx-2 my-2 '>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             calendar={persian}
+            inputClass={styles.inputDateCss}
             locale={persianfa}
             calendarPosition='bottom-right'
-            placeholder='تاریخ  برگشت'
-            style={{ backgroundColor: '#e3e1e154', height: '70px', paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: 'none', borderRadius: '20px' }}
+            placeholder='  تا تاریخ  ؟'
           />
         </div>
         <div className='accordion' id='accordion'>
           <div className='accordion-item border-0 mb-2'>
             <h2 className='accordion-header' id='headingOne'>
               <button
-                className={classnames('fw-medium', 'text-center', 'border-0', {
+                className={classnames('fw-bold', 'text-center', 'border-0', {
                   collapsed: !col1
                 })}
                 type='button'
@@ -77,17 +77,15 @@ const HotelSearch = () => {
                   borderRadius: '20px',
                   height: '70px',
                   width: '200px',
-                  // padding: '0.9rem 1.25rem',
                   fontSize: '0.8125rem',
-                  color: 'gray',
                   margin: '4px 0px 0px 0px'
                 }}
               >
                 <div className='d-flex flex-column my-2'>
-                  <span>مسافران/ اتاق</span>
+                  <span className={styles.spanAccordion}>مسافران/ اتاق</span>
                   <div className='d-flex flex-row mx-4 px-4'>
-                    {showPassenger == '' ? <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>  امسافر </span> : <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>  {showPassenger} مسافر</span>}
-                    {!showRoom ? <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>   ااتاق</span> : <span> {showRoom} اتاق</span>}
+                    {showPassenger == '' ? <span className={styles.spanAccordion}>  امسافر </span> : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
+                    {!showRoom ? <span className={styles.spanAccordion}>   ااتاق</span> : <span className={styles.spanAccordion}> {showRoom} اتاق</span>}
                   </div>
                 </div>
 

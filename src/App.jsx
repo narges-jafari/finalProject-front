@@ -33,7 +33,7 @@ const App = (props) => {
           <Route path='/roules' element={<RoulesPage />} />
           <Route path='/question' element={<QuestionPage />} />
           <Route path='/magazin' element={<MagazineResultPage />} />
-          <Route path='/resultairplain' element={<AirplaneResultPage />} />
+          <Route path='/resultairplane' element={<AirplaneResultPage />} />
           <Route path='/resulttrain' element={<TrainResultPage />} />
           <Route path='/resultbus' element={<BusResultPage />} />
           <Route path='/resulthotel' element={<HotelResultPage />} />

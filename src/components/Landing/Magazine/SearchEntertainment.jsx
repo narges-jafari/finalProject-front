@@ -26,7 +26,7 @@ function Search () {
   return (
     <>
       <div className={styles.headercss}>
-        تفریح گردی
+        تفریح‌گردی
       </div>
       <div
         className=' d-flex flex-row justify-content-center flex-wrap '

@@ -10,9 +10,15 @@ import AirplaneFast from './FastSearch/AirplaneFast'
 import HotelFast from './FastSearch/HotelFast'
 import TrainFast from './FastSearch/TrainFast'
 import Necessary from './Necessary/Necessary'
+import SuggestionList from './Suggestion/SuggestionList'
+import { AUTH_TOKEN, USER_ID } from '../../constants/auth'
 
 const Landing = () => {
   const [showActiveTab, setActiveTab] = useState([])
+
+  const userid = window.localStorage.getItem(USER_ID)
+  const usertoken = window.localStorage.getItem(AUTH_TOKEN)
+  console.log(userid,usertoken)
 
   const handleTab = useCallback((tab) => {
     setActiveTab(tab)
@@ -135,6 +141,8 @@ const Landing = () => {
             )
         }
       })()}
+
+<SuggestionList/>
 
       <div style={{ marginTop: '20px', backgroundColor: 'white' }}>
         <Footer />

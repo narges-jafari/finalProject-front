@@ -47,7 +47,6 @@
 
 .divcontent{
     cursor:pointer;
-    background-color:white;
     border-radius: 0.8rem;
     font-size:0.8125rem;
     width:100%;
@@ -56,16 +55,13 @@
 }
 
 
-/* FcAlarmClock
-FcPlanner */
-
 
 .navCss{
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
     margin: 0px;
-    background-color: yellow;
+    background-color:#34495E ;
     box-shadow: none;
     justify-content: center;
     border:none
@@ -74,10 +70,10 @@ FcPlanner */
 
 .divCss1{
     height:130px;
-    background: rgb(2, 110, 35);
+    background:  #D35400;
     box-shadow:none;
     border-radius: 0px;
-    margin-top: 1px;
+    margin-top: -1px;
 
 }
 

@@ -1,24 +1,44 @@
 @import url('./Fonts.css');
 .headerCss{
     width:100%;
+    font-family: Yekan;
+    font-weight: bold;
+    font-size: 19px;
+    background-color:white
+
+}
+
+.header{
+    width:75%;
     display:flex;
     flex-direction:row;
     flex-wrap: wrap;
     margin:0px auto ;
-    justify-content:center;
-    padding:7px;
-    animation: move 5s infinite;
-    font-family: Yekan;
-/* background-color: #3bc6de; */
-animation-delay: -2s;
+    justify-content:space-around;
 }
-@keyframes move {
-    from {background-color: #ebf7a8a1;}
-    to {background-color: #d5fa05a1;}
-  }
 
+.headerItem1 button{
+    padding:10px 10px;
+    border:none;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #E5E7E9;
+}
+
+.headerItem1{
+
+    margin:10px 0px
+
+}
+
+.headerItem{
+
+   margin:20px 0px
+
+}
 .filterDiv{
     width:25%;
+    margin-top: 65px;
 }
 .airCss{
     width: 70%;
@@ -32,6 +52,15 @@ animation-delay: -2s;
     flex-wrap:wrap;
     width:90%;
     margin: 20px;
+}
+
+.iconcss{
+    transform:rotate(-135deg);
+    margin:0px 10px
+}
+
+.iconcss1{
+    margin:0px 10px  
 }
 
 
@@ -53,4 +82,12 @@ animation-delay: -2s;
     }
 
 }
+@media screen and (max-width: 600px) {
 
+    .header{
+     width: 100%;
+
+    }
+
+
+}

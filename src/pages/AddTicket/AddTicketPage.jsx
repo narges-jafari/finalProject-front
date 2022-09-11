@@ -6,7 +6,7 @@ import { AUTH_TOKEN } from '../../constants/auth'
 import NotLoginPage from '../NotLogin.jsx'
 const AddTicketPage = () => {
   const showData = window.localStorage.getItem(AUTH_TOKEN)
-  console.log(showData, 'lllllllllll')
+  // console.log(showData, 'lllllllllll')
   return (
     <>
       {showData

@@ -1,10 +1,30 @@
 import styles from '../../assets/styles/Ticket.module.css'
-
+import logo from '../../assets/img/landing/logo.png'
+import bus from '../../assets/img/bus.png'
 const BusTicket = () => {
   return (
     <>
       <div>
         <div className={styles.content}>
+        <div className={styles.ticketHeader}>
+            <div >
+            <span>
+           کد رهگیری :{12345666} 
+            </span>
+            <span>
+           سریال بلیط :{111111} 
+            </span>
+
+            </div>
+            <div style={{marginTop:'-4px'}}>
+              <img src={bus} className='w-50 h-75'/>
+            </div>
+            <div style={{marginTop:'-5px'}}>
+            <span style={{fontSize:'20px',fontWeight:'bold'}}>تریپنو</span>
+<img src={logo} className={styles.logoCss}/>
+
+            </div>
+          </div>
           <div className={styles.contentItem}>
             <div>
               <span className={styles.spancss}>از پایانه</span>
@@ -50,11 +70,19 @@ const BusTicket = () => {
 
             </div>
 
-            <div>
+            <div  >
               <span className={styles.spancss}> ساعت ورود</span>
               <span className={styles.spancss1}>20:36</span>
             </div>
+           
           </div>
+          <div className={styles.contentItem}>
+            <div>
+            <span className={styles.spancss}>  قیمت </span>
+              <span className={styles.spancss1}>123000</span>
+            </div>
+     
+            </div>
         </div>
       </div>
     </>

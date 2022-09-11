@@ -15,6 +15,8 @@ const BusResultPage = () => {
 
       {showData
         ? <>
+                          <div className={styles.bodycss}>
+
           <div className={styles.content}>
             <HeaderLanding />
 
@@ -24,10 +26,12 @@ const BusResultPage = () => {
             <BusResult />
 
           </div>
-          <div style={{ marginTop: '200px' }}>
+          <div style={{ marginTop: '0px',backgroundColor:'white' }}>
             <Footer />
 
           </div>
+          </div>
+
           </>
         : <div>
           <NotLoginPage />

@@ -43,7 +43,7 @@ const AboutUs = () => {
 
       <div className='d-flex flex-column w-75  ' style={{ margin: '70px auto 20px auto' }}>
         <span className={styles.spanCss}>
-          ماموریت و چشم‌انداز تریپنو
+          مأموریت و چشم‌انداز تریپنو
         </span>
         <span className={styles.spanCss1}>
           فراتر از این‌ها خواهیم‌رفت

@@ -23,7 +23,7 @@ const TrainResultPage = () => {
               <TrainResult />
 
             </div>
-            <div style={{ marginTop: '20px' }}>
+            <div style={{ marginTop: '20px' ,backgroundColor:'white'}}>
               <Footer />
 
             </div>

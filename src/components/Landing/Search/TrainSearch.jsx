@@ -55,22 +55,22 @@ const TrainSearch = () => {
 
           {destinationName}
         </div>
-        <div className='mx-2 my-1 '>
+        <div className='mx-2 my-2 '>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             calendar={persian}
+            inputClass={styles.inputDateCss}
             locale={persianfa}
             calendarPosition='bottom-right'
             placeholder='تاریخ '
-            style={{ backgroundColor: '#e3e1e154', height: '70px', paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: 'none', borderRadius: '20px' }}
           />
         </div>
         <div className='accordion' id='accordion'>
           <div className='accordion-item border-0 mb-2'>
             <h2 className='accordion-header' id='headingOne'>
               <button
-                className={classnames('fw-medium', 'text-center', 'border-0', {
+                className={classnames('fw-bold', 'text-center', 'border-0', {
                   collapsed: !col1
                 })}
                 type='button'
@@ -87,10 +87,10 @@ const TrainSearch = () => {
                 }}
               >
                 <div className='d-flex flex-column my-2'>
-                  <span>مسافران/ سالن</span>
+                  <span className={styles.spanAccordion}>مسافران/ سالن</span>
                   <div className='d-flex flex-row mx-4 px-4'>
-                    {showPassenger == '' ? null : <span style={{ fontFamily: 'Yekan', fontSize: '14px', fontWeight: 'bold' }}>  {showPassenger} مسافر</span>}
-                    {!showClass ? null : <span> {showClass} </span>}
+                    {showPassenger == '' ? null : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
+                    {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}
                   </div>
                 </div>
 

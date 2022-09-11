@@ -1,20 +1,32 @@
 
 import styles from '../../assets/styles/Ticket.module.css'
+
+import logo from '../../assets/img/landing/logo.png'
+import flight from '../../assets/img/flight.png'
+
 const AirplaneTicket = () => {
   return (
     <>
       <div className={styles.content}>
-        <div className={styles.contentItem2}>
-          <span>
-            نرگس جعفری
-          </span>
-          <div>
-            <span>
-              شماره پرواز
-            </span>
-            <span className={styles.fontcss}>1234</span>
-          </div>
-        </div>
+      <div className={styles.ticketHeader}>
+<div >
+<span>
+نرگس جعفری
+</span>
+<span>
+ شماره پرواز :{111111} 
+</span>
+
+</div>
+<div style={{marginTop:'-4px'}}>
+  <img src={flight} className='w-50 h-75 ' />
+</div>
+<div style={{marginTop:'-5px'}}>
+<span style={{fontSize:'20px',fontWeight:'bold'}}>تریپنو</span>
+<img src={logo} className={styles.logoCss}/>
+
+</div>
+</div>
 
         <span className={styles.headercss}>اطلاعات پرواز</span>
 
@@ -68,6 +80,10 @@ const AirplaneTicket = () => {
           <div>
             <span>  بار مجاز </span>
             <span className={styles.fontcss}> 10 </span>
+          </div>
+          <div>
+            <span>   قیمت </span>
+            <span className={styles.fontcss}> 1250000 </span>
           </div>
 
         </div>
