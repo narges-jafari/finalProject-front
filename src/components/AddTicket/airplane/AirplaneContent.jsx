@@ -2,12 +2,19 @@ import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
+import { onError } from "@apollo/client/link/error";
 
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
 import { AUTH_TOKEN, USER_ID } from '../../../constants/auth'
 
+
 const AirplaneContent = () => {
+  // const errorLink = onError(({ graphQLErrors, networkError }) => {
+  //   console.log(graphQLErrors,'nnnnnn') 
+  // });
+  // console.log(errorLink,'mmmmmmmm') 
+
   const [originName, setOriginName] = useState('')
   const [destinationName, setDestinationName] = useState('')
   const [price, setPrice] = useState('')
@@ -45,49 +52,78 @@ const AirplaneContent = () => {
     setInformation('')
   }
 
-  const userid = window.localStorage.getItem('user-id')
+  const userid = window.localStorage.getItem(USER_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-console.log(userid,'lllllllllllllllll')
+console.log(userid,'lllllllllllllllll',usertoken)
   // APOLLO
-  const [createFlights1] = useMutation(flightMutations.CREATEFLIGHT)
+  // const [createFlights12] = useMutation(flightMutations.CREATEFLIGHT)
+  const [createFlights] = useMutation(flightMutations.CREATEFLIGHT, {
+    variables: {
+        originName: 'jivhk',
+        destinationName: 'kkkkkk',
+        price: 90
+      
+    },
+  })
 
-  const handleCreateAlert = (e) => {
-    // e.preventDefault()
-    createFlights1({
-      variables: {
-        originName: originName,
-        destinationName: destinationName,
-        price: parseInt(price),
-        flightClass: flightClass,
-        departureTime: departureTime,
-        arrivalTime: arrivalTime,
-        capacity: parseInt(capacity),
-        flightNumber: parseInt(flightNumber),
-        airportOrigin: originAirport,
-        airportDestination: destinationAirport,
-        information: information,
-        date: startDate,
-        airline: showairplaneCompany,
-        airplaneModel: airplaneModel,
-        allowedLoggage: parseInt(allowedLoggage)
+  // const handleCreateAlert = (e) => {
+  //   e.preventDefault()
+  //   createFlights12({
+  //     variables: {
 
-      }
+  //       originName: originName,
+  //       destinationName: destinationName,
+  //       price: parseFloat(price),
+  //       flightClass: flightClass,
+  //       departureTime: departureTime,
+  //       arrivalTime: arrivalTime,
+  //       capacity: parseInt(capacity),
+  //       flightNumber: parseInt(flightNumber),
+  //       airportOrigin: originAirport,
+  //       airportDestination: destinationAirport,
+  //       information: information,
+  //       date: startDate,
+  //       airline: showairplaneCompany,
+  //       airplaneModel: airplaneModel,
+  //       allowedLoggage: parseInt(allowedLoggage)
+  //       originName: 'jivhk',
+  //       destinationName: 'kkkkkk',
+  //       price: 90,
+  //       flightClass: 'yek',
+  //       departureTime: '23',
+  //       arrivalTime: '34',
+  //       capacity: 12,
+  //       flightNumber: 2,
+  //       airportOrigin: 'kkk',
+  //       airportDestination: 'destinationAirport',
+  //       information: 'information',
+  //       date: 'startDate',
+  //       airline: 'showairplaneCompany',
+  //       airplaneModel: 'airplaneModel',
+  //       allowedLoggage: 23,
+  //       creator:22
 
-    })
-      .then(({ data,usertoken }) => {
-        if(usertoken){
-        if (data.createFlight !== null) {
-          // toast.success('Your alert have been create successfully')
 
-          console.log(data.createFlight)
 
-          resetFields()
-        } else {
-          <div>000000</div>
-          console.log('kkkkkkkkk')
-        }}
-      })
-  }
+  //     }
+
+  //   })
+  //     .then(({ data }) => {
+        
+  //       if (data.createFlight !== null) {
+  //         // toast.success('Your alert have been create successfully')
+
+  //         console.log(data,'kkkkkk')
+
+  //         resetFields()
+  //       } else {
+  //         <div>000000</div>
+  //         console.log('kkkkkkkkk')
+  //         resetFields()
+
+  //       }}
+  //     )
+  // }
 
  
 
@@ -277,14 +313,17 @@ console.log(userid,'lllllllllllllllll')
 
         <div>
 
-          {usertoken?
+    
 
           <button
-            onClick={handleCreateAlert}
+            onClick={createFlights}
+            // onClick={() => createFlights()}
+
+         
             className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '
           >جستجو
-          </button>:'null'
-}
+          </button>
+
 
         </div>
 

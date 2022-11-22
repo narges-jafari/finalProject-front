@@ -22,8 +22,9 @@
 
 .imgcss{
     width:100%;
-    height:60%;
+    height:300px;
     border-radius: 10px;
+    border:1px solid red
 
 
 }
@@ -42,7 +43,7 @@
 
 
 .notloginflexItem1{
-  margin-top: -180px;
+  margin-top: -10px;
   display:flex;
   flex-direction: column;
   padding:20px  1px;

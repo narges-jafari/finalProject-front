@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from 'react-bootstrap/Nav'
-import img from '../../../assets/img/landing/logo.png'
+import img from '../../../assets/img/16.png'
 import neshan from '../../../assets/img/landing/neshan.jpg'
 import namad from '../../../assets/img/landing/namad.jpg'
 import digital from '../../../assets/img/landing/digital.jpg'
@@ -40,7 +40,7 @@ const Footer = () => {
 
         <div className='d-flex flex-column flex-wrap my-2    '>
           <div className='d-flex flex-row flex-wrap justify-content-center'>
-            <img src={img} className='rounded-circle' style={{ width: '70px', height: '70px', padding: '0px' }} />
+            <img src={img} className=' mt-3 rounded-circle' style={{ width: '50px', height: '50px', padding: '0px' }} />
             <span className='my-3' style={{ fontWeight: 'bold', fontSize: '22px' }}> تریپنو</span>
           </div>
           <div className='d-flex flex-row flex-wrap ' style={{ fontFamily: 'Yekan' }}>

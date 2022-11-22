@@ -1,6 +1,6 @@
 import styles from '../../assets/styles/Ticket.module.css'
 import img from '../../assets/img/barcode.JPG'
-import logo from '../../assets/img/landing/logo.png'
+import logo from '../../assets/img/16.png'
 import train from '../../assets/img/train2.png'
 
 
@@ -134,7 +134,7 @@ const TrainTicket = () => {
                 توضیحات:
               </div>
               <span >
-                1:حتما نیم‌ساعت قبل از حرکت قطار در ایستگاه باشید 
+                1:حتما نیم‌ساعت قبل از حرکت قطار در ایستگاه راه‌آهن باشید 
               </span>
               <span>
                 2: ارائه کارت‌شناسایی معتبر هنگام سوار شدن در قطار  ضروری است 

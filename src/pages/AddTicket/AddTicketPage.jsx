@@ -21,7 +21,7 @@ const AddTicketPage = () => {
             <AddTicketAccordion />
 
           </div>
-          <div style={{ marginTop: '200px' }}>
+          <div style={{ backgroundColor: 'white', marginTop:'20px' }}>
             <Footer />
 
           </div>

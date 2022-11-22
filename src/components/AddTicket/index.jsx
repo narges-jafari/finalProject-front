@@ -8,6 +8,10 @@ import { FaBusAlt, FaSubway, FaPlane, FaHotel } from 'react-icons/fa'
 import styles from '../../assets/styles/TrainContent.module.css'
 import HotelContent from './hotel/HotelContent'
 import { AUTH_TOKEN, USER_ID } from '../../constants/auth'
+import NotesModal from './NotesModal'
+import { FcOk } from "react-icons/fc";
+
+
 
 const AddTicketAccordion = () => {
   const userid = window.localStorage.getItem(USER_ID)
@@ -17,6 +21,8 @@ const AddTicketAccordion = () => {
   const [col2, setCol2] = useState(false)
   const [col3, setCol3] = useState(false)
   const [col4, setCol4] = useState(false)
+  const [showCustomStrategyModalForBuy, setShowCustomStrategyModalForBuy] =
+  useState(false)
 
   // ACCORDION'S TOGGLE FUNCTIONS
   const toggleCol1 = () => {
@@ -48,6 +54,28 @@ const AddTicketAccordion = () => {
 
   return (
     <>
+             <div className={styles.modalcss}>
+              <button className={styles.modalItemcss}
+                onClick={() => {
+                  if (!showCustomStrategyModalForBuy) {
+                    setShowCustomStrategyModalForBuy(true)
+                  }
+                }} >
+              <FcOk
+                  size={29}
+                />
+                نکات مهم 
+              </button>
+             
+              </div>
+              {showCustomStrategyModalForBuy && (
+                <NotesModal
+                  isOpen={showCustomStrategyModalForBuy}
+                  setIsOpen={setShowCustomStrategyModalForBuy}
+                
+
+                />
+              )}
       {usertoken
         ? <div className='accordion w-75 ' id='accordion' style={{ margin: '40px auto' }}>
           <div className='accordion-item border-0 mb-2'>

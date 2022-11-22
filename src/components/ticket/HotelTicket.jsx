@@ -1,6 +1,6 @@
 import styles from '../../assets/styles/Ticket.module.css'
 import img from '../../assets/img/barcode.JPG'
-import logo from '../../assets/img/landing/logo.png'
+import logo from '../../assets/img/16.png'
 import train from '../../assets/img/hotel.png'
 
 const HotelTicket = () => {
@@ -74,6 +74,24 @@ const HotelTicket = () => {
 
             </div>
 
+          </div>
+          <hr/>
+          <div className={styles.ticketFooter}>
+            <div >
+              <img src={img} className={styles.barcodeCss} />
+            </div>
+            <div className={styles.ticketFooterItem}>
+              <div className={styles.spanCssFooter}>
+                توضیحات:
+              </div>
+            
+              <span>
+                1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است 
+              </span>
+              <span>
+              2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+              </span>
+            </div>
           </div>
         </div>
       </div>

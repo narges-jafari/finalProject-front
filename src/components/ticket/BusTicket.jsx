@@ -1,6 +1,8 @@
 import styles from '../../assets/styles/Ticket.module.css'
-import logo from '../../assets/img/landing/logo.png'
+import logo from '../../assets/img/16.png'
 import bus from '../../assets/img/bus.png'
+import img from '../../assets/img/barcode.JPG'
+
 const BusTicket = () => {
   return (
     <>
@@ -83,6 +85,26 @@ const BusTicket = () => {
             </div>
      
             </div>
+            <hr className='bg-black'/>
+        <div className={styles.ticketFooter}>
+            <div >
+              <img src={img} className={styles.barcodeCss} />
+            </div>
+            <div className={styles.ticketFooterItem}>
+              <div className={styles.spanCssFooter}>
+                توضیحات:
+              </div>
+              <span >
+                1:حتما نیم‌ساعت قبل از حرکت اتوبوس در ایستگاه باشید 
+              </span>
+              <span>
+                2: ارائه کارت‌شناسایی معتبر هنگام سوار شدن در اتوبوس  ضروری است 
+              </span>
+              <span>
+              3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </>

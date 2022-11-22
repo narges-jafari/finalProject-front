@@ -43,7 +43,6 @@ const BuyTicket = () => {
                 active:
                 currentActiveTab === '2'
               })}
-                // style={{ border: 'none' }}
               onClick={() => { toggle('2') }}
             >
               بلیط هواپیما

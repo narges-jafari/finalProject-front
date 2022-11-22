@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 import styles from '../../../assets/styles/HeaderLanding.module.css'
-import img from '../../../assets/img/landing/logo.png'
+import img from '../../../assets/img/16.png'
 
 import Header from './Header'
 import { useQuery } from '@apollo/client'

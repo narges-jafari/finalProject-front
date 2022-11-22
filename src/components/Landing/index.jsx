@@ -18,7 +18,7 @@ const Landing = () => {
 
   const userid = window.localStorage.getItem(USER_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-  console.log(userid,usertoken)
+  // console.log(userid,usertoken)
 
   const handleTab = useCallback((tab) => {
     setActiveTab(tab)
