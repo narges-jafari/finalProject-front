@@ -23,17 +23,17 @@ const LoginForm = () => {
     window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
 
     if (data.login.token) {
-      window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
       toast.success('   ورود موفق‌آمیز')
 
-      window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
+      // window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
       window.location.href = '/'
-      // console.log(window.localStorage.getItem(USER_ID,'uuuuuuu'))
-      // console.log(window.localStorage.getItem(AUTH_TOKEN,'aaaaaa'))
+      window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
+
+      window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
 
     }
   }
-
+console.log(window.localStorage.getItem(AUTH_TOKEN))
 
 
   return (

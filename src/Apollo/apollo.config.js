@@ -3,6 +3,9 @@ import { setContext } from 'apollo-link-context'
 import { createUploadLink } from 'apollo-upload-client'
 
 import { AUTH_TOKEN, USER_ID } from '../constants/auth'
+// import { onError } from "apollo-link-error";
+
+// Log any GraphQL errors or network error that occurred
 
 const httpLink = new createUploadLink({ // eslint-disable-line
   uri: 'http://localhost:4000/graphql'
@@ -11,12 +14,12 @@ const httpLink = new createUploadLink({ // eslint-disable-line
 
 const authLink = setContext((_, { headers }) => {
   const token = window.localStorage.getItem(AUTH_TOKEN)
-  const userId = window.localStorage.getItem(USER_ID)
+  const creator = window.localStorage.getItem(USER_ID)
   return {
     headers: {
       ...headers,
       token: token || '',
-      userId:userId || '',
+      creator:creator || ''
     }
   }
 })

@@ -1,19 +1,21 @@
+
+
+
+
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
-import { onError } from "@apollo/client/link/error";
-
 import { flightClasses } from '../../../constants/flightClasses'
 import { airplaneCompany } from '../../../constants/airplaneCompany'
-import { AUTH_TOKEN, USER_ID } from '../../../constants/auth'
+import { USER_ID } from '../../../constants/auth'
+import { property } from '../../../constants/property'
+
+import { toast,ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const AirplaneContent = () => {
-  // const errorLink = onError(({ graphQLErrors, networkError }) => {
-  //   console.log(graphQLErrors,'nnnnnn') 
-  // });
-  // console.log(errorLink,'mmmmmmmm') 
 
   const [originName, setOriginName] = useState('')
   const [destinationName, setDestinationName] = useState('')
@@ -32,107 +34,97 @@ const AirplaneContent = () => {
   const [showairplaneCompany, setShowAirplaneCompany] = useState('')
   const [allowedLoggage, setAllowedLoggage] = useState('')
   const [information, setInformation] = useState('')
+
   const firstUpdate = useRef(true)
+
+
+    const [userinfo, setUserInfo] = useState({
+      property: [],
+      response: [],
+    });
+    const handleChange = (e) => {
+      // Destructuring
+      const { value, checked } = e.target;
+      const { property } = userinfo;
+        
+      console.log(`${value} is ${checked}`);
+       
+      // Case 1 : The user checks the box
+      if (checked) {
+        setUserInfo({
+          property: [...property, value],
+          response: [...property, value],
+        });
+      }
+       // Case 2  : The user unchecks the box
+    else {
+      setUserInfo({
+        property: property.filter((e) => e !== value),
+        response: property.filter((e) => e !== value),
+      });
+    }
+  };
 
   const resetFields = () => {
     setDestinationName('')
     setOriginName('')
-    setStartDate('')
-    setDestinationAirport('')
-    setOriginAirport('')
-    setPrice(null)
-    setDepartureTime('')
-    setArrivalTime('')
-    setAirplaneModel('')
-    setFlightNumber(null)
-    setCapacity(null)
-    setShowAirplaneCompany('')
-    setFlightClass('')
-    setAllowedLoggage(null)
-    setInformation('')
+    // setStartDate('')
+    // setDestinationAirport('')
+    // setOriginAirport('')
+    setPrice('')
+    // setDepartureTime('')
+    // setArrivalTime('')
+    // setAirplaneModel('')
+    // setFlightNumber(null)
+    // setCapacity(null)
+    // setShowAirplaneCompany('')
+    // setFlightClass('')
+    // setAllowedLoggage(null)
+    // setInformation('')
   }
 
   const userid = window.localStorage.getItem(USER_ID)
-  const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-console.log(userid,'lllllllllllllllll',usertoken)
-  // APOLLO
-  // const [createFlights12] = useMutation(flightMutations.CREATEFLIGHT)
-  const [createFlights] = useMutation(flightMutations.CREATEFLIGHT, {
-    variables: {
-        originName: 'jivhk',
-        destinationName: 'kkkkkk',
-        price: 90
-      
-    },
-  })
+// console.log(checkedItems)
 
-  // const handleCreateAlert = (e) => {
-  //   e.preventDefault()
-  //   createFlights12({
-  //     variables: {
-
-  //       originName: originName,
-  //       destinationName: destinationName,
-  //       price: parseFloat(price),
-  //       flightClass: flightClass,
-  //       departureTime: departureTime,
-  //       arrivalTime: arrivalTime,
-  //       capacity: parseInt(capacity),
-  //       flightNumber: parseInt(flightNumber),
-  //       airportOrigin: originAirport,
-  //       airportDestination: destinationAirport,
-  //       information: information,
-  //       date: startDate,
-  //       airline: showairplaneCompany,
-  //       airplaneModel: airplaneModel,
-  //       allowedLoggage: parseInt(allowedLoggage)
-  //       originName: 'jivhk',
-  //       destinationName: 'kkkkkk',
-  //       price: 90,
-  //       flightClass: 'yek',
-  //       departureTime: '23',
-  //       arrivalTime: '34',
-  //       capacity: 12,
-  //       flightNumber: 2,
-  //       airportOrigin: 'kkk',
-  //       airportDestination: 'destinationAirport',
-  //       information: 'information',
-  //       date: 'startDate',
-  //       airline: 'showairplaneCompany',
-  //       airplaneModel: 'airplaneModel',
-  //       allowedLoggage: 23,
-  //       creator:22
-
-
-
-  //     }
-
-  //   })
-  //     .then(({ data }) => {
-        
-  //       if (data.createFlight !== null) {
-  //         // toast.success('Your alert have been create successfully')
-
-  //         console.log(data,'kkkkkk')
-
-  //         resetFields()
-  //       } else {
-  //         <div>000000</div>
-  //         console.log('kkkkkkkkk')
-  //         resetFields()
-
-  //       }}
-  //     )
-  // }
-
+  const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
  
+  const handleCreateAlert = (e) => {
+    e.preventDefault( )
+    createFlights({
+        variables: {
+          originName: originName,
+        destinationName: destinationName,
+        price: parseFloat(price),
+          creator:JSON.parse(userid)
+
+        }
+      })
+      .then(({ data }) => {
+        if (data.createFlight !== null) {
+          toast.success('عملیات اضافه شدن بلیط هواپیما با موفقیت انجام شد')
+          resetFields()
+        } else {
+          toast.danger('خطایی رخ داد از دوباره تلاش کنید' )
+        }
+      })
+  }
+
+  console.log(userinfo.response,'kksdjfh')
 
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
+          
+       
+
+          {/* {[checked]} */}
+      <div className='bg-warning my-4'>
+        مبدا و مقصد
+</div>
 
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
-          <div className={styles.content}>
+
+<div className={styles.content}>
             <label>  شهر مبدا</label>
             <input
               type='text'
@@ -168,16 +160,17 @@ console.log(userid,'lllllllllllllllll',usertoken)
               className={styles.inputcss}
             />
           </div>
-          <div className={styles.content}>
-            <label>   قیمت</label>
-            <input
-              value={price}
-              onChange={e => setPrice(e.target.value)}
-              className={styles.inputcss}
-            />
-          </div>
 
-          <div className={styles.content}>
+
+
+        </div>
+        <div className='bg-warning my-4'>
+          ساعت و زمان 
+</div>
+
+        <div className='d-flex flex-row  flex-wrap justify-content-between'>
+
+        <div className={styles.content}>
             <label>   ساعت پرواز</label>
             <input
               type='text'
@@ -204,7 +197,18 @@ console.log(userid,'lllllllllllllllll',usertoken)
               className={styles.inputcss}
             />
           </div>
-          <div className={styles.content}>
+
+
+
+
+        </div>
+        <div className='bg-warning my-4'>
+          هواپیما
+</div>
+
+        <div className='d-flex flex-row  flex-wrap justify-content-between'>
+
+        <div className={styles.content}>
             <label>    مدل  هواپیما</label>
             <input
               type='text'
@@ -222,13 +226,22 @@ console.log(userid,'lllllllllllllllll',usertoken)
             />
           </div>
           <div className={styles.content}>
-            <label>    ظرفیت</label>
+            <label>    شماره صندلی</label>
             <input
               value={capacity}
               onChange={e => setCapacity(e.target.value)}
               className={styles.inputcss}
             />
           </div>
+          <div className={styles.content}>
+            <label>   قیمت</label>
+            <input
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+              className={styles.inputcss}
+            />
+          </div>
+
           <div className={styles.content}>
             <label>  نام شرکت   </label>
             <select
@@ -245,20 +258,6 @@ console.log(userid,'lllllllllllllllll',usertoken)
               ))}
             </select>
 
-            {/* <select>
-            <option>
-              پرمیوم
-            </option>
-            <option>
-              فرست
-            </option>
-            <option>
-              بیزینس
-            </option>
-            <option>
-              فرست
-            </option>
-           </select> */}
           </div>
           <div className={styles.content}>
             <label>    کلاس پرواز</label>
@@ -275,21 +274,6 @@ console.log(userid,'lllllllllllllllll',usertoken)
                 </option>
               ))}
             </select>
-
-            {/* <select>
-            <option>
-              پرمیوم
-            </option>
-            <option>
-              فرست
-            </option>
-            <option>
-              بیزینس
-            </option>
-            <option>
-              فرست
-            </option>
-           </select> */}
           </div>
           <div className={styles.content}>
             <label>      بار مجاز </label>
@@ -299,37 +283,62 @@ console.log(userid,'lllllllllllllllll',usertoken)
               className={styles.inputcss}
             />
           </div>
+
+          
+          
+          
+
         </div>
-        {/* <div className='d-flex flex-row mt-3 flex-wrap justify-content-between'>
-
-        </div> */}
-        <div className='d-flex flex-column mt-3 flex-wrap justify-content-between'>
-          <label>اطلاعات</label>
-          <textarea
-            value={information}
-            onChange={e => setInformation(e.target.value)}
-          />
-        </div>
-
-        <div>
-
+        <div className='bg-warning my-4'>
+امکانات
+</div>
+<div className='d-flex flex-row flex-wrap justify-content-between'>
+  <div className='d-flex flex-column justify-content-between'>
+  {property.slice(0,5).map((item, index) => (
+              <div className={styles.checkboxCss} key={index}>
+                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                <span  className={styles.checkboxitem}>{item}</span>
+              </div>
+            ))}
+  </div>
+  <div className='d-flex flex-column justify-content-between'>
+  {property.slice(5,10).map((item, index) => (
+              <div className={styles.checkboxCss} key={index}>
+                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                <span className={styles.checkboxitem} >{item}</span>
+              </div>
+            ))}
+  </div>
+  <div className='d-flex flex-column justify-content-between'>
+  {property.slice(10,15).map((item, index) => (
+              <div className={styles.checkboxCss} key={index}>
+                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                <span className={styles.checkboxitem}>{item}</span>
+              </div>
+            ))}
+  </div>
+  {userinfo.response}
     
+          </div>
+
 
           <button
-            onClick={createFlights}
-            // onClick={() => createFlights()}
-
-         
-            className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '
-          >جستجو
+            onClick={handleCreateAlert}
+            className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
+          >
+            اضافه کردن 
           </button>
+          <ToastContainer />
+      
 
 
         </div>
-
-      </div>
+      
     </>
   )
 }
 
 export default AirplaneContent
+
+
+

@@ -29,24 +29,24 @@ const HeaderLanding = () => {
   }
   window.addEventListener('scroll', changeNavbarColor)
 
-  const userid = window.localStorage.getItem(USER_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
+  const userId = window.localStorage.getItem(  USER_ID    )
 
  
-  useQuery(userQueries.USERS, {
-    variables: {
-      userId: JSON.parse(userid)
-    },
-    onCompleted: (res) => {
-      setShowUsername(res.user)
-    },
-    onError: () => {
-      setShowUsername([])
-    }
-  })
+  // useQuery(userQueries.USERS, {
+  //   variables: {
+  //     creator: JSON.parse(userid)
+  //   },
+  //   onCompleted: (res) => {
+  //     setShowUsername(res.user)
+  //   },
+  //   onError: () => {
+  //     setShowUsername([])
+  //   }
+  // })
   const logout = () => {
     localStorage.removeItem('auth-token')
-    // localStorage.removeItem('user-id')
+    localStorage.removeItem('user-id')
     setIsLogin(false)
   }
 
@@ -73,7 +73,7 @@ const HeaderLanding = () => {
 
                 </>
                 : <>
-                  <button className={styles.buttonCssChange}>{showusername.username} </button>
+                  {/* <button className={styles.buttonCssChange}>{showusername.username} </button> */}
 
                   <a href='/'>
                     <button onClickCapture={logout} className={styles.buttonCssChange}>خروج </button>
@@ -107,7 +107,7 @@ const HeaderLanding = () => {
                 </>
 
                 : <>
-                  <button className={styles.buttonCssChange1}>{showusername.username} </button>
+                  {/* <button className={styles.buttonCssChange1}>{showusername.username} </button> */}
 
                   <a href='/'>
                     <button onClickCapture={logout} className={styles.buttonCssChange1}>خروج </button>

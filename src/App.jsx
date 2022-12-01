@@ -17,17 +17,17 @@ import MagazineResultPage from './pages/Footer/MagazineResultPage'
 import { AUTH_TOKEN } from './constants/auth'
 
 const App = (props) => {
-//   const showData=window.localStorage.getItem(AUTH_TOKEN)
-  // console.log(showData)
+  // const showData=window.localStorage.getItem(AUTH_TOKEN)
+  // console.log(showData,'kkkkkkkkkkkkkkkkkkk')
   // console.log(window.localStorage.getItem(AUTH_TOKEN))
 
   return (
   // {props.AllData ?
     <>
-
       <Router>
         <Routes>
-
+        <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
           <Route path='/' element={<HomePage />} />
           <Route path='/aboutus' element={<AboutUsPage />} />
           <Route path='/roules' element={<RoulesPage />} />
@@ -41,8 +41,7 @@ const App = (props) => {
           <Route path='/airplanepay' element={<PaymentPage />} />
           <Route path='/addticket' element={<AddTicketPage />} />
           <Route path='/buyticket' element={<BuyTicketPage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
+        
 
         </Routes>
       </Router>

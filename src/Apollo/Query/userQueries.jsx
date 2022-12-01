@@ -11,14 +11,7 @@ const userQueries = {
       }
     }
   `,
-  USERS: gql`
-  query user($userId: String) {
-    user(userId: $userId) {
-      username
-      
-    }
-  }
-`
+
 }
 
 export default userQueries
