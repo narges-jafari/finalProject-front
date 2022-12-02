@@ -5,9 +5,6 @@ import DatePicker from 'react-multi-date-picker'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
 
-
-
-
 import styles from '../../../assets/styles/Transport.module.css'
 import AirplanePassenger from '../Passenger/AirplanePassenger'
 
@@ -63,8 +60,6 @@ const AirplanSearch = () => {
             locale={persianfa}
             calendarPosition='bottom-right'
             placeholder='تاریخ پرواز'
-            // className='border border-primary'
-            // style={{ backgroundColor: '#e3e1e154', height: '70px', paddingTop: '15px', paddingBottom: '15px', paddingRight: '40px', border: 'none', borderRadius: '20px' }}
           />
         </div>
         <div className='accordion' id='accordion'>

@@ -15,21 +15,21 @@ const BusResultPage = () => {
 
       {showData
         ? <>
-                          <div className={styles.bodycss}>
+          <div className={styles.bodycss}>
 
-          <div className={styles.content}>
-            <HeaderLanding />
+            <div className={styles.content}>
+              <HeaderLanding />
 
-          </div>
+            </div>
 
-          <div className=' mx-auto '>
-            <BusResult />
+            <div className=' mx-auto '>
+              <BusResult />
 
-          </div>
-          <div style={{ marginTop: '0px',backgroundColor:'white' }}>
-            <Footer />
+            </div>
+            <div style={{ marginTop: '0px', backgroundColor: 'white' }}>
+              <Footer />
 
-          </div>
+            </div>
           </div>
 
           </>

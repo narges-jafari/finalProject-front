@@ -8,22 +8,22 @@ const HotelTicket = () => {
     <>
       <div>
         <div className={styles.content}>
-        <div className={styles.ticketHeader}>
-            <div >
-            <span>
-           کد رهگیری :{12345666} 
-            </span>
-            <span>
-           سریال بلیط :{111111} 
-            </span>
+          <div className={styles.ticketHeader}>
+            <div>
+              <span>
+                کد رهگیری :{12345666}
+              </span>
+              <span>
+                سریال بلیط :{111111}
+              </span>
 
             </div>
-            <div style={{marginTop:'-4px'}}>
-              <img src={train} className='w-50 h-75'/>
+            <div style={{ marginTop: '-4px' }}>
+              <img src={train} className='w-50 h-75' />
             </div>
-            <div style={{marginTop:'-5px'}}>
-            <span style={{fontSize:'20px',fontWeight:'bold'}}>تریپنو</span>
-<img src={logo} className={styles.logoCss}/>
+            <div style={{ marginTop: '-5px' }}>
+              <span style={{ fontSize: '20px', fontWeight: 'bold' }}>تریپنو</span>
+              <img src={logo} className={styles.logoCss} />
 
             </div>
           </div>
@@ -75,21 +75,21 @@ const HotelTicket = () => {
             </div>
 
           </div>
-          <hr/>
+          <hr />
           <div className={styles.ticketFooter}>
-            <div >
+            <div>
               <img src={img} className={styles.barcodeCss} />
             </div>
             <div className={styles.ticketFooterItem}>
               <div className={styles.spanCssFooter}>
                 توضیحات:
               </div>
-            
+
               <span>
-                1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است 
+                1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
               </span>
               <span>
-              2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+                2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
               </span>
             </div>
           </div>

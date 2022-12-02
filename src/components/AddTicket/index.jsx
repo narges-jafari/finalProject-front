@@ -9,9 +9,7 @@ import styles from '../../assets/styles/TrainContent.module.css'
 import HotelContent from './hotel/HotelContent'
 import { AUTH_TOKEN, USER_ID } from '../../constants/auth'
 import NotesModal from './NotesModal'
-import { FcOk } from "react-icons/fc";
-
-
+import { FcOk } from 'react-icons/fc'
 
 const AddTicketAccordion = () => {
   const userid = window.localStorage.getItem(USER_ID)
@@ -54,28 +52,28 @@ const AddTicketAccordion = () => {
 
   return (
     <>
-             <div className={styles.modalcss}>
-              <button className={styles.modalItemcss}
-                onClick={() => {
-                  if (!showCustomStrategyModalForBuy) {
-                    setShowCustomStrategyModalForBuy(true)
-                  }
-                }} >
-              <FcOk
-                  size={29}
-                />
-                نکات مهم 
-              </button>
-             
-              </div>
-              {showCustomStrategyModalForBuy && (
-                <NotesModal
-                  isOpen={showCustomStrategyModalForBuy}
-                  setIsOpen={setShowCustomStrategyModalForBuy}
-                
+      <div className={styles.modalcss}>
+        <button
+          className={styles.modalItemcss}
+          onClick={() => {
+            if (!showCustomStrategyModalForBuy) {
+              setShowCustomStrategyModalForBuy(true)
+            }
+          }}
+        >
+          <FcOk
+            size={29}
+          />
+          نکات مهم
+        </button>
 
-                />
-              )}
+      </div>
+      {showCustomStrategyModalForBuy && (
+        <NotesModal
+          isOpen={showCustomStrategyModalForBuy}
+          setIsOpen={setShowCustomStrategyModalForBuy}
+        />
+      )}
       {usertoken
         ? <div className='accordion w-75 ' id='accordion' style={{ margin: '40px auto' }}>
           <div className='accordion-item border-0 mb-2'>

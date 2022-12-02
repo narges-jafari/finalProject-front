@@ -20,7 +20,7 @@ function Search (props) {
   const toggle = tab => {
     if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
-console.log(currentActiveTab,'lllll')
+  console.log(currentActiveTab, 'lllll')
   return (
     <>
       <div className={styles.fontCss}>

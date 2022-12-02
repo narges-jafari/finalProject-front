@@ -142,7 +142,7 @@ const Landing = () => {
         }
       })()}
 
-<SuggestionList/>
+      <SuggestionList />
 
       <div style={{ marginTop: '20px', backgroundColor: 'white' }}>
         <Footer />

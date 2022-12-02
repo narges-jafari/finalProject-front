@@ -8,22 +8,22 @@ const BusTicket = () => {
     <>
       <div>
         <div className={styles.content}>
-        <div className={styles.ticketHeader}>
-            <div >
-            <span>
-           کد رهگیری :{12345666} 
-            </span>
-            <span>
-           سریال بلیط :{111111} 
-            </span>
+          <div className={styles.ticketHeader}>
+            <div>
+              <span>
+                کد رهگیری :{12345666}
+              </span>
+              <span>
+                سریال بلیط :{111111}
+              </span>
 
             </div>
-            <div style={{marginTop:'-4px'}}>
-              <img src={bus} className='w-50 h-75'/>
+            <div style={{ marginTop: '-4px' }}>
+              <img src={bus} className='w-50 h-75' />
             </div>
-            <div style={{marginTop:'-5px'}}>
-            <span style={{fontSize:'20px',fontWeight:'bold'}}>تریپنو</span>
-<img src={logo} className={styles.logoCss}/>
+            <div style={{ marginTop: '-5px' }}>
+              <span style={{ fontSize: '20px', fontWeight: 'bold' }}>تریپنو</span>
+              <img src={logo} className={styles.logoCss} />
 
             </div>
           </div>
@@ -72,36 +72,36 @@ const BusTicket = () => {
 
             </div>
 
-            <div  >
+            <div>
               <span className={styles.spancss}> ساعت ورود</span>
               <span className={styles.spancss1}>20:36</span>
             </div>
-           
+
           </div>
           <div className={styles.contentItem}>
             <div>
-            <span className={styles.spancss}>  قیمت </span>
+              <span className={styles.spancss}>  قیمت </span>
               <span className={styles.spancss1}>123000</span>
             </div>
-     
-            </div>
-            <hr className='bg-black'/>
-        <div className={styles.ticketFooter}>
-            <div >
+
+          </div>
+          <hr className='bg-black' />
+          <div className={styles.ticketFooter}>
+            <div>
               <img src={img} className={styles.barcodeCss} />
             </div>
             <div className={styles.ticketFooterItem}>
               <div className={styles.spanCssFooter}>
                 توضیحات:
               </div>
-              <span >
-                1:حتما نیم‌ساعت قبل از حرکت اتوبوس در ایستگاه باشید 
+              <span>
+                1:حتما نیم‌ساعت قبل از حرکت اتوبوس در ایستگاه باشید
               </span>
               <span>
-                2: ارائه کارت‌شناسایی معتبر هنگام سوار شدن در اتوبوس  ضروری است 
+                2: ارائه کارت‌شناسایی معتبر هنگام سوار شدن در اتوبوس  ضروری است
               </span>
               <span>
-              3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+                3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
               </span>
             </div>
           </div>

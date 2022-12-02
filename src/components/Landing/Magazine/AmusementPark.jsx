@@ -37,7 +37,7 @@ const AmusementPark = () => {
             </div>
           </Nav.Link>
         </Nav>
-        
+
         <Nav>
           <Nav.Link className='text-dark' href='https://www.raheeno.com/article/3083/%D9%BE%D8%A7%D8%B1%DA%A9-%D8%AC%D9%85%D8%B4%DB%8C%D8%AF%DB%8C%D9%87.aspx'>
             <div className={styles.card}>

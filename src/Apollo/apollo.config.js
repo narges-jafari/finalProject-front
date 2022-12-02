@@ -19,7 +19,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       token: token || '',
-      creator:creator || ''
+      creator: creator || ''
     }
   }
 })

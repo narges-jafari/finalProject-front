@@ -94,31 +94,48 @@ textarea:hover{
     flex-direction: column;
 }
 
-
+/* b0c4de */
 .iconCss{
-    color:red;
-    animation: mymove 10s infinite;
+    color:	#4682b4;
     width:20px;
     height:20px;
     margin:0px 6px;
-    animation-timing-function: linear;
-    animation-duration: 6s;
-    animation-delay: 2s;
     position: none;
 }
-@keyframes mymove {
-    0%   {color:red; left:0px; top:0px;}
-  25%  {color:yellow; left:5px; top:0px;}
-  50%  {color:blue; left:5px; top:5px;}
-  75%  {color:green; left:0px; top:5px;}
-  100% {color:red; left:0px; top:0px;}
-  }
+
+
+.headername{
+    font-family: Vazir;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.inputDateCss{
+    padding-right: 40px;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-top:-2px;
+    width:100%;
+    height:70px;
+    border-radius: 5px;
+    font-weight: bold;
+    border:none;
+    border-radius: 20px;
+    background-color: #e3e1e154; 
+ }
+
+ 
 
   @media screen and (max-width: 800px) {
 
     .content{
 width:100%
     }
+    .content select{
+        width:100%
+            }
 
 
   

@@ -1,27 +1,23 @@
-
-
-
-
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
-import { flightClasses } from '../../../constants/flightClasses'
-import { airplaneCompany } from '../../../constants/airplaneCompany'
+import { airplaneCompany, flightClasses } from '../../../constants/airplane'
 import { USER_ID } from '../../../constants/auth'
 import { property } from '../../../constants/property'
-
-import { toast,ToastContainer } from 'react-toastify'
+import persian from 'react-date-object/calendars/persian'
+import persianfa from 'react-date-object/locales/persian_fa'
+import DatePicker from 'react-multi-date-picker'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-
 const AirplaneContent = () => {
+  // STATES
 
   const [originName, setOriginName] = useState('')
   const [destinationName, setDestinationName] = useState('')
   const [price, setPrice] = useState('')
-
-  const [startDate, setStartDate] = useState('')
+  const [startDate, setStartDate] = useState(new Date())
   const [destinationAirport, setDestinationAirport] = useState('')
   const [originAirport, setOriginAirport] = useState('')
   const [departureTime, setDepartureTime] = useState('')
@@ -29,41 +25,37 @@ const AirplaneContent = () => {
   const [airplaneModel, setAirplaneModel] = useState('')
   const [flightNumber, setFlightNumber] = useState('')
   const [capacity, setCapacity] = useState('')
-  const [airline, SetAirline] = useState('')
   const [flightClass, setFlightClass] = useState('')
   const [showairplaneCompany, setShowAirplaneCompany] = useState('')
   const [allowedLoggage, setAllowedLoggage] = useState('')
-  const [information, setInformation] = useState('')
+  const [userinfo, setUserInfo] = useState({
+    property: [],
+    response: []
+  })
 
+  // REF
   const firstUpdate = useRef(true)
 
+  // FUNCTION FOR CHECKBOXES
+  const handleChange = (e) => {
+    // Destructuring
+    const { value, checked } = e.target
+    const { property } = userinfo
 
-    const [userinfo, setUserInfo] = useState({
-      property: [],
-      response: [],
-    });
-    const handleChange = (e) => {
-      // Destructuring
-      const { value, checked } = e.target;
-      const { property } = userinfo;
-        
-      console.log(`${value} is ${checked}`);
-       
-      // Case 1 : The user checks the box
-      if (checked) {
-        setUserInfo({
-          property: [...property, value],
-          response: [...property, value],
-        });
-      }
-       // Case 2  : The user unchecks the box
-    else {
+    // Case 1 : The user checks the box
+    // Case 2  : The user unchecks the box
+    if (checked) {
+      setUserInfo({
+        property: [...property, value],
+        response: [...property, value]
+      })
+    } else {
       setUserInfo({
         property: property.filter((e) => e !== value),
-        response: property.filter((e) => e !== value),
-      });
+        response: property.filter((e) => e !== value)
+      })
     }
-  };
+  }
 
   const resetFields = () => {
     setDestinationName('')
@@ -84,47 +76,44 @@ const AirplaneContent = () => {
   }
 
   const userid = window.localStorage.getItem(USER_ID)
-// console.log(checkedItems)
+  // console.log(checkedItems)
 
   const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
- 
+
   const handleCreateAlert = (e) => {
-    e.preventDefault( )
+    e.preventDefault()
     createFlights({
-        variables: {
-          originName: originName,
+      variables: {
+        originName: originName,
         destinationName: destinationName,
         price: parseFloat(price),
-          creator:JSON.parse(userid)
+        creator: JSON.parse(userid)
 
-        }
-      })
+      }
+    })
       .then(({ data }) => {
         if (data.createFlight !== null) {
           toast.success('عملیات اضافه شدن بلیط هواپیما با موفقیت انجام شد')
           resetFields()
         } else {
-          toast.danger('خطایی رخ داد از دوباره تلاش کنید' )
+          toast.danger('خطایی رخ داد از دوباره تلاش کنید')
         }
       })
   }
 
-  console.log(userinfo.response,'kksdjfh')
+  // console.log(userinfo.response,'kksdjfh')
 
   return (
     <>
       <div className='d-flex flex-column flex-wrap my-2'>
-          
-       
 
-          {/* {[checked]} */}
-      <div className='bg-warning my-4'>
-        مبدا و مقصد
-</div>
+        <div className={styles.headername}>
+          مبدا و مقصد
+        </div>
 
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
 
-<div className={styles.content}>
+          <div className={styles.content}>
             <label>  شهر مبدا</label>
             <input
               type='text'
@@ -161,16 +150,14 @@ const AirplaneContent = () => {
             />
           </div>
 
-
-
         </div>
-        <div className='bg-warning my-4'>
-          ساعت و زمان 
-</div>
+        <div className={styles.headername}>
+          ساعت و زمان
+        </div>
 
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
 
-        <div className={styles.content}>
+          <div className={styles.content}>
             <label>   ساعت پرواز</label>
             <input
               type='text'
@@ -190,25 +177,25 @@ const AirplaneContent = () => {
           </div>
           <div className={styles.content}>
             <label>    تاریخ  پرواز</label>
-            <input
-              type='text'
-              value={startDate}
-              onChange={e => setStartDate(e.target.value)}
-              className={styles.inputcss}
+            <DatePicker
+              inputClass={styles.inputDateCss}
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              calendar={persian}
+              locale={persianfa}
+              calendarPosition='bottom-right'
+              placeholder='تاریخ پرواز'
             />
           </div>
 
-
-
-
         </div>
-        <div className='bg-warning my-4'>
+        <div className={styles.headername}>
           هواپیما
-</div>
+        </div>
 
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
 
-        <div className={styles.content}>
+          <div className={styles.content}>
             <label>    مدل  هواپیما</label>
             <input
               type='text'
@@ -284,61 +271,51 @@ const AirplaneContent = () => {
             />
           </div>
 
-          
-          
-          
-
         </div>
-        <div className='bg-warning my-4'>
-امکانات
-</div>
-<div className='d-flex flex-row flex-wrap justify-content-between'>
-  <div className='d-flex flex-column justify-content-between'>
-  {property.slice(0,5).map((item, index) => (
-              <div className={styles.checkboxCss} key={index}>
-                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
-                <span  className={styles.checkboxitem}>{item}</span>
-              </div>
-            ))}
-  </div>
-  <div className='d-flex flex-column justify-content-between'>
-  {property.slice(5,10).map((item, index) => (
-              <div className={styles.checkboxCss} key={index}>
-                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
-                <span className={styles.checkboxitem} >{item}</span>
-              </div>
-            ))}
-  </div>
-  <div className='d-flex flex-column justify-content-between'>
-  {property.slice(10,15).map((item, index) => (
+        <div className={styles.headername}>
+          امکانات
+        </div>
+        <div className='d-flex flex-row flex-wrap justify-content-between'>
+          <div className='d-flex flex-column justify-content-between'>
+            {property.slice(0, 5).map((item, index) => (
               <div className={styles.checkboxCss} key={index}>
                 <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
                 <span className={styles.checkboxitem}>{item}</span>
               </div>
             ))}
-  </div>
-  {userinfo.response}
-    
           </div>
-
-
-          <button
-            onClick={handleCreateAlert}
-            className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
-          >
-            اضافه کردن 
-          </button>
-          <ToastContainer />
-      
-
+          <div className='d-flex flex-column justify-content-between'>
+            {property.slice(5, 10).map((item, index) => (
+              <div className={styles.checkboxCss} key={index}>
+                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                <span className={styles.checkboxitem}>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className='d-flex flex-column justify-content-between'>
+            {property.slice(10, 15).map((item, index) => (
+              <div className={styles.checkboxCss} key={index}>
+                <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                <span className={styles.checkboxitem}>{item}</span>
+              </div>
+            ))}
+          </div>
+          {userinfo.response}
 
         </div>
-      
+
+        <button
+          onClick={handleCreateAlert}
+          className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
+        >
+          اضافه کردن
+        </button>
+        <ToastContainer />
+
+      </div>
+
     </>
   )
 }
 
 export default AirplaneContent
-
-
-

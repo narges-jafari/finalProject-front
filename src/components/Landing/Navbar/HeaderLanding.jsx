@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/client'
 import userQueries from '../../../Apollo/Query/userQueries'
 import { useNavigate } from 'react-router-dom'
 import {
-   USER_ID,
+  USER_ID,
   AUTH_TOKEN
 
 } from '../../../constants/auth'
@@ -30,9 +30,8 @@ const HeaderLanding = () => {
   window.addEventListener('scroll', changeNavbarColor)
 
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-  const userId = window.localStorage.getItem(  USER_ID    )
+  const userId = window.localStorage.getItem(USER_ID)
 
- 
   // useQuery(userQueries.USERS, {
   //   variables: {
   //     creator: JSON.parse(userid)

@@ -30,11 +30,9 @@ const LoginForm = () => {
       window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
 
       window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
-
     }
   }
-console.log(window.localStorage.getItem(AUTH_TOKEN))
-
+  console.log(window.localStorage.getItem(AUTH_TOKEN))
 
   return (
     <>

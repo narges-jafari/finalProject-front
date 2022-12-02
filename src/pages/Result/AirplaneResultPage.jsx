@@ -16,18 +16,18 @@ const AirplaneResultPage = () => {
       {showData
         ? <>
           <div className={styles.bodycss}>
-          <div className={styles.content}>
-            <HeaderLanding />
+            <div className={styles.content}>
+              <HeaderLanding />
 
-          </div>
-          <div className=' mx-auto '>
-            <AirplaneResult />
+            </div>
+            <div className=' mx-auto '>
+              <AirplaneResult />
 
-          </div>
-          <div style={{ marginTop: '0px' ,backgroundColor:'white'}}>
-            <Footer />
+            </div>
+            <div style={{ marginTop: '0px', backgroundColor: 'white' }}>
+              <Footer />
 
-          </div>
+            </div>
           </div>
 
           </>

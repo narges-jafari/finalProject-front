@@ -26,7 +26,7 @@ const App = (props) => {
     <>
       <Router>
         <Routes>
-        <Route path='/login' element={<LoginPage />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/' element={<HomePage />} />
           <Route path='/aboutus' element={<AboutUsPage />} />
@@ -41,7 +41,6 @@ const App = (props) => {
           <Route path='/airplanepay' element={<PaymentPage />} />
           <Route path='/addticket' element={<AddTicketPage />} />
           <Route path='/buyticket' element={<BuyTicketPage />} />
-        
 
         </Routes>
       </Router>
