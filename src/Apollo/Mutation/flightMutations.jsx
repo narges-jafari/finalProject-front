@@ -5,7 +5,7 @@ const flightMutations = {
   mutation createFlight(
     $originName:String! ,
     $destinationName: String!
-    $price: Float!,
+    $capacity: Int!,
     $creator:String!
     
     
@@ -14,8 +14,8 @@ const flightMutations = {
   flightInput:{
     originName:$originName,
     destinationName:  $destinationName,
-    price:   $price,
-    creator:$creator
+    creator:$creator,
+    capacity: $capacity
     
   }
   )
@@ -26,7 +26,8 @@ const flightMutations = {
     creator{
       fullName
   }
-  price
+  capacity
+  _id
 }
 }
     

@@ -1,15 +1,16 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef,useCallback } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
 import { airplaneCompany, flightClasses } from '../../../constants/airplane'
-import { USER_ID } from '../../../constants/auth'
+import { USER_ID ,FLIGHT_ID,FLIGHT_CAPACITY} from '../../../constants/auth'
 import { property } from '../../../constants/property'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import SeatNumber from './SeatNumber'
 
 const AirplaneContent = () => {
   // STATES
@@ -28,42 +29,67 @@ const AirplaneContent = () => {
   const [flightClass, setFlightClass] = useState('')
   const [showairplaneCompany, setShowAirplaneCompany] = useState('')
   const [allowedLoggage, setAllowedLoggage] = useState('')
+  const [error, setError] = useState(null);
+  const [error1, setError1] = useState(null);
+  const [error2, setError2] = useState(null);
+  const [error3, setError3] = useState(null);
+  const [error4, setError4] = useState(null);
+  const [error5, setError5] = useState(null);
+  const [error6, setError6] = useState(null);
+  const [error7, setError7] = useState(null);
+  const [error8, setError8] = useState(null);
+  const [error9, setError9] = useState(null);
+  const [error10, setError10] = useState(null);
   const [userinfo, setUserInfo] = useState({
     property: [],
     response: []
   })
+  const [showData, setShowData] = useState([])
 
+  
   // REF
   const firstUpdate = useRef(true)
 
-  // FUNCTION FOR CHECKBOXES
-  const handleChange = (e) => {
-    // Destructuring
-    const { value, checked } = e.target
-    const { property } = userinfo
 
-    // Case 1 : The user checks the box
-    // Case 2  : The user unchecks the box
-    if (checked) {
-      setUserInfo({
-        property: [...property, value],
-        response: [...property, value]
-      })
-    } else {
-      setUserInfo({
-        property: property.filter((e) => e !== value),
-        response: property.filter((e) => e !== value)
-      })
-    }
+
+ // FUNCTION FOR CHECKBOXES
+ const handleChange = (e) => {
+  // Destructuring
+  const { value, checked } = e.target
+  const { property } = userinfo
+
+  // Case 1 : The user checks the box
+  // Case 2  : The user unchecks the box
+  if (checked) {
+    setUserInfo({
+      property: [...property, value],
+      response: [...property, value]
+    })
+  } else {
+    setUserInfo({
+      property: property.filter((e) => e !== value),
+      response: property.filter((e) => e !== value)
+    })
   }
+}
+
+
+  const rows = [];
+
+
+
+
+
+ 
 
   const resetFields = () => {
     setDestinationName('')
     setOriginName('')
+    setCapacity('')
     // setStartDate('')
     // setDestinationAirport('')
     // setOriginAirport('')
-    setPrice('')
+    // setPrice('')
     // setDepartureTime('')
     // setArrivalTime('')
     // setAirplaneModel('')
@@ -76,17 +102,20 @@ const AirplaneContent = () => {
   }
 
   const userid = window.localStorage.getItem(USER_ID)
+  const capacityf = window.localStorage.getItem(FLIGHT_CAPACITY)
+
   // console.log(checkedItems)
 
   const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
 
   const handleCreateAlert = (e) => {
+    if(!error){
     e.preventDefault()
     createFlights({
       variables: {
         originName: originName,
         destinationName: destinationName,
-        price: parseFloat(price),
+        capacity: parseInt(capacity),
         creator: JSON.parse(userid)
 
       }
@@ -94,19 +123,211 @@ const AirplaneContent = () => {
       .then(({ data }) => {
         if (data.createFlight !== null) {
           toast.success('عملیات اضافه شدن بلیط هواپیما با موفقیت انجام شد')
+          window.localStorage.setItem(FLIGHT_ID, JSON.stringify(data.createFlight._id))    
+          window.localStorage.setItem(FLIGHT_CAPACITY, JSON.stringify(data.createFlight.capacity))    
+
           resetFields()
+          
         } else {
-          toast.danger('خطایی رخ داد از دوباره تلاش کنید')
+          toast.error(
+            'خطایی در برقراری با سرور اتفاق افتاد'
+          )
         }
-      })
+      })}
+      else{
+        toast.warning('خطایی رخ داد از دوباره تلاش کنید')
+      }
+    
   }
 
   // console.log(userinfo.response,'kksdjfh')
 
+  const handleshow = useCallback((data) => {
+    setShowData(data)
+  }, [])
+
+  for (let i = 0; i <capacityf ; i++) {  
+     rows.push(<SeatNumber
+      datas={handleshow}
+
+       key={i} />);   
+}
+
+
+ //validation
+ function isValidName(email) {
+  return /^[\u0600-\u06FF\s]+$/.test(email);
+}
+//originName validation
+const handlename = event => {
+  if (!isValidName(event.target.value)) {
+    setError('باید زبان کیبورد را عوض کنید!');
+  } else if(originName.length<3) {
+    setError('حداقل باید سه حرف وارد کنید!  ');
+  }else{
+    setError(null)
+  }
+
+  setOriginName(event.target.value);
+};
+
+//destinationName validation
+const handlename1 = event => {
+  if (!isValidName(event.target.value)) {
+    setError1('باید زبان کیبورد را عوض کنید!');
+  } else if(destinationName.length<3) {
+    setError1('حداقل باید سه حرف وارد کنید!  ');
+  }else{
+    setError1(null)
+  }
+
+  setDestinationName(event.target.value);
+};
+
+//setOriginAirport validation
+const handlename2 = event => {
+  if (!isValidName(event.target.value)) {
+    setError2('باید زبان کیبورد را عوض کنید!');
+  } else if(originAirport.length<3) {
+    setError2('حداقل باید سه حرف وارد کنید!  ');
+  }else{
+    setError2(null)
+  }
+
+  setOriginAirport(event.target.value);
+};
+
+//setDestinationAirport
+const handlename3 = event => {
+  if (!isValidName(event.target.value)) {
+    setError3('باید زبان کیبورد را عوض کنید!');
+  } else if(destinationAirport.length<3) {
+    setError3('حداقل باید سه حرف وارد کنید!  ');
+  }else{
+    setError3(null)
+  }
+
+  setDestinationAirport(event.target.value);
+};
+
+const handlename4 = event => {
+  if (!isValidName(event.target.value)) {
+    setError6('فقط حروف الفبای فارسی مجاز هست');
+  } else if(airplaneModel.length<3) {
+    setError6('حداقل باید سه حرف وارد کنید!  ');
+  }else{
+    setError6(null)
+  }
+
+  setAirplaneModel(event.target.value);
+};
+
+
+
+//^\d{1-6}$
+function isValidCapacity(cp) {
+  return /^\d$/.test(cp);
+}
+
+const handlecapacity = event => {
+  if (!isValidCapacity(event.target.value)) {
+    setError4(' باید اعداد بین 9-1 را وارد کنید');
+  }  
+  else{
+    setError4(null)
+  }
+
+  setCapacity(event.target.value);
+};
+
+function isValidClass(item) {
+  return /^[2-9][0-9]{3}$/.test(item);
+}
+//originName validation
+const handlFlightClass = event => {
+  if (!isValidClass(event.target.value)) {
+    setError5('باید اعداد بین 2000تا9999 را وارد کنید');
+  } 
+  else{
+    setError5(null)
+  }
+
+  setFlightNumber(event.target.value);
+};
+
+function isValidWeight(item) {
+  return /^[0-9]{2}$/.test(item);
+}
+//originName validation
+const handlWeight = event => {
+  if (!isValidWeight(event.target.value)) {
+    setError7('باید اعداد بین 99-10 را وارد کنید');
+  } 
+  else{
+    setError7(null)
+  }
+
+  setAllowedLoggage(event.target.value);
+};
+
+function isValidftime(item) {
+  return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(item);
+}
+//originName validation
+const handlfTime = event => {
+  if (!isValidftime(event.target.value)) {
+    setError8(' فرمت صحیح HH:MM است ');
+  } 
+  else{
+    setError8(null)
+  }
+
+  setDepartureTime(event.target.value);
+};
+function isValidsTime(item) {
+  return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(item);
+}
+//originName validation
+const handlesTime = event => {
+  if (!isValidsTime(event.target.value)) {
+    setError9(' فرمت صحیح HH:MM است ');
+  } 
+  else{
+    setError9(null)
+  }
+
+  setArrivalTime(event.target.value);
+};
+
+function isValidsPrice(item) {
+  return /^[+-]?([0-9]*[.])?[0-9]+$/.test(item);
+}
+//originName validation
+const handlePrice = event => {
+  if (!isValidsPrice(event.target.value)) {
+    setError10('فرمت وارد شده صحیح نیست');
+  } 
+  else{
+    setError10(null)
+  }
+
+  setPrice(event.target.value);
+};
+
+
+
+
+
+const flightid = window.localStorage.getItem(FLIGHT_ID)
+
+console.log(flightid,'jjjjjjjjjjj')
+
   return (
     <>
-      <div className='d-flex flex-column flex-wrap my-2'>
 
+    
+      <div className='d-flex flex-column flex-wrap my-2'>
+    
         <div className={styles.headername}>
           مبدا و مقصد
         </div>
@@ -118,36 +339,62 @@ const AirplaneContent = () => {
             <input
               type='text'
               value={originName}
-              onChange={e => setOriginName(e.target.value)}
+              onChange={ handlename }
+
               className={styles.inputcss}
+              name='originName'
             />
+            {error? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
+
+
           </div>
+
           <div className={styles.content}>
             <label> شهر مقصد</label>
             <input
               type='text'
               value={destinationName}
-              onChange={e => setDestinationName(e.target.value)}
+              onChange={handlename1}
               className={styles.inputcss}
             />
+               {error1? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error1}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
+
           <div className={styles.content}>
             <label>فرودگاه مبدا</label>
             <input
               type='text'
               value={originAirport}
-              onChange={e => setOriginAirport(e.target.value)}
+              onChange={handlename2}
               className={styles.inputcss}
             />
+                {error2? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error2}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
           <div className={styles.content}>
             <label>فرودگاه مقصد</label>
             <input
               type='text'
               value={destinationAirport}
-              onChange={e => setDestinationAirport(e.target.value)}
+              onChange={handlename3}
               className={styles.inputcss}
             />
+               {error3? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error3}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
 
         </div>
@@ -162,18 +409,28 @@ const AirplaneContent = () => {
             <input
               type='text'
               value={departureTime}
-              onChange={e => setDepartureTime(e.target.value)}
+              onChange={handlfTime}
               className={styles.inputcss}
             />
+              {error8? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error8}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
           <div className={styles.content}>
             <label>   ساعت  رسیدن</label>
             <input
               type='text'
               value={arrivalTime}
-              onChange={e => setArrivalTime(e.target.value)}
+              onChange={handlesTime}
               className={styles.inputcss}
             />
+                 {error9? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error9}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
           <div className={styles.content}>
             <label>    تاریخ  پرواز</label>
@@ -186,6 +443,13 @@ const AirplaneContent = () => {
               calendarPosition='bottom-right'
               placeholder='تاریخ پرواز'
             />
+            {startDate == null ?
+           <>
+             <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>
+             این فیلد ضروری هست
+             </small> </div>
+           </>:null
+          }
           </div>
 
         </div>
@@ -200,33 +464,54 @@ const AirplaneContent = () => {
             <input
               type='text'
               value={airplaneModel}
-              onChange={e => setAirplaneModel(e.target.value)}
+              onChange={handlename4}
               className={styles.inputcss}
             />
+             {error6? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error6}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
           <div className={styles.content}>
             <label>     شماره پرواز </label>
             <input
               value={flightNumber}
-              onChange={e => setFlightNumber(e.target.value)}
+              onChange={handlFlightClass}
               className={styles.inputcss}
             />
+             {error5? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error5}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
           <div className={styles.content}>
-            <label>    شماره صندلی</label>
+            <label>    ظرفیت </label>
             <input
               value={capacity}
-              onChange={e => setCapacity(e.target.value)}
+              onChange={handlecapacity}
               className={styles.inputcss}
             />
+   {error4? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error4}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
+
           <div className={styles.content}>
             <label>   قیمت</label>
             <input
               value={price}
-              onChange={e => setPrice(e.target.value)}
+              onChange={handlePrice}
               className={styles.inputcss}
             />
+             {error10? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error10}</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
 
           <div className={styles.content}>
@@ -239,6 +524,7 @@ const AirplaneContent = () => {
                 setShowAirplaneCompany(e.target.value)
               }}
             >
+            
               {airplaneCompany.map((name, index) => (
                 <option value={name} key={index}>{name}
                 </option>
@@ -266,9 +552,14 @@ const AirplaneContent = () => {
             <label>      بار مجاز </label>
             <input
               value={allowedLoggage}
-              onChange={e => setAllowedLoggage(e.target.value)}
+              onChange={handlWeight}
               className={styles.inputcss}
             />
+               {error7? 
+                        <div  className={styles.fontcss} ><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle'/>{error7 }</small> </div>
+:            <div  className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>
+
+            }
           </div>
 
         </div>
@@ -304,15 +595,20 @@ const AirplaneContent = () => {
 
         </div>
 
-        <button
-          onClick={handleCreateAlert}
-          className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
-        >
-          اضافه کردن
-        </button>
-        <ToastContainer />
-
+     
+     
+           
+           <button
+            onClick={handleCreateAlert}
+            className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
+          >
+            اضافه کردن
+          </button>
+          <ToastContainer />
+          {/* {flightid?rows:null} */}
+      
       </div>
+    
 
     </>
   )
