@@ -1,57 +1,54 @@
 import { Modal } from 'reactstrap'
+import SeatNumber from './airplane/SeatNumber'
+import { FLIGHT_CAPACITY } from '../../constants/auth'
+import img from '../../assets/img/bg/Capturewee.JPG'
 
 const NotesModal = (props) => {
+  const capacityf = window.localStorage.getItem(FLIGHT_CAPACITY)
+
+  const rows = []
+
+  for (let i = 0; i < capacityf; i++) {
+    rows.push(<SeatNumber key={i} />)
+  }
+
   return (
     <>
       <Modal
         size='sm'
         isOpen={props.isOpen}
+        className=' '
         toggle={() => {
           props.setIsOpen()
         }}
       >
-        <div className='modal-header py-2 border-0'>
-          <h6 className='modal-title mt-0' id='mySmallModalLabel'>
-            نکات مهم
+        <div
+          className='modal-header    py-2 border-0'
+          style={{ backgroundColor: '#CECEF6' }}
+        >
+
+          <h6 className='modal-title mt-0' style={{ fontFamily: 'Vazir' }}>
+            اضافه کردن  صندلی
           </h6>
-          <button
+          <i
+            className='fa fa-close btn-sm rounded-circle  btn-light text-danger  my-2 py-2  fa-lg mx-2 '
             onClick={() => {
               props.setIsOpen(false)
             }}
-            type='button'
-            className='close'
-            data-dismiss='modal'
-            aria-label='Close'
-          >
-            <span aria-hidden='true'>&times;</span>
-          </button>
+          />
         </div>
-        <div className='modal-body'>
-          <div className='ms-3'>
-            <label htmlFor='RSI'>llllllll </label>
 
-            <input
-              id='RSI'
-              type='number'
-              className='border border-2 border-primary w-25 rounded-3 py-1 ms-2'
-            />
-          </div>
-          <div className='modal-footer d-flex justify-content-end border-0 mt-3'>
-            <button
-              type='button'
-              className='btn bg-white border border-secondary px-3'
-              onClick={() => props.setIsOpen(false)}
-            >
-              Cancle
-            </button>
-            <button
-              type='button'
-            // onClick={() => { setBuySubmit([indicatorname, buyNumber]); props.customeStrategybuy([indicatorname, buyNumber]); props.setIsOpen(false) }}
-              className='btn btn-primary w-25'
-            >
-              Ok
-            </button>
-          </div>
+        <div className='modal-body'>
+
+          {rows}
+
+        </div>
+        <div
+          className=''
+          style={{ backgroundColor: '#A9E2F3' }}
+        >
+          <img src={img} style={{ width: '100%', height: '50px' }} />
+
         </div>
       </Modal>
     </>

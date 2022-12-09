@@ -107,6 +107,18 @@ textarea:hover{
     position: none;
 }
 
+.iconmove{
+    color:	#4682b4;
+    width:20px;
+    height:20px;
+    float: left;
+    position:none; 
+    margin:0px 10px
+}
+
+
+
+
 
 .headername{
     font-family: Vazir;
@@ -128,6 +140,11 @@ textarea:hover{
     border:none;
     border-radius: 20px;
     background-color: #e3e1e154; 
+    font-family: Arial;
+ }
+
+ .btncss{
+    
  }
 
  

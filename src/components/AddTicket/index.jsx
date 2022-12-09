@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
 import AirplaneContent from './airplane/AirplaneContent'
 import BusContent from './bus/BusContent.jsx'
 import TrainContent from './train/TrainContent.jsx'
 import { FaBusAlt, FaSubway, FaPlane, FaHotel } from 'react-icons/fa'
+import { MdSettings } from 'react-icons/md'
 import styles from '../../assets/styles/TrainContent.module.css'
 import HotelContent from './hotel/HotelContent'
 import { AUTH_TOKEN, USER_ID } from '../../constants/auth'
@@ -19,8 +20,11 @@ const AddTicketAccordion = () => {
   const [col2, setCol2] = useState(false)
   const [col3, setCol3] = useState(false)
   const [col4, setCol4] = useState(false)
+  const [showSingleTimeCandleModal, setShowSingleTimeCandleModal] =
+    useState(false)
   const [showCustomStrategyModalForBuy, setShowCustomStrategyModalForBuy] =
   useState(false)
+  const [showData, setShowData] = useState()
 
   // ACCORDION'S TOGGLE FUNCTIONS
   const toggleCol1 = () => {
@@ -49,6 +53,12 @@ const AddTicketAccordion = () => {
     setCol2(false)
     setCol3(false)
   }
+
+  // console.log(showData,'hhhhhhhhh')
+
+  const handleshow = useCallback((data) => {
+    setShowData(data)
+  })
 
   return (
     <>
@@ -112,7 +122,7 @@ const AddTicketAccordion = () => {
                   collapsed: !col1
                 })}
                 type='button'
-                onClick={toggleCol1}
+                // onClick={toggleCol1}
                 style={{
                   cursor: 'pointer',
                   backgroundColor: '#EFF2F7',
@@ -128,10 +138,38 @@ const AddTicketAccordion = () => {
                 <FaPlane className={styles.iconCss} />
 
                 افزودن بلیط هواپیما
-                {col1 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+
+                {col1
+                  ? <i
+                      onClick={toggleCol1}
+                      className='fa fa-angle-down fa-lg ' style={{ float: 'left' }}
+                    />
+                  : <i
+                      onClick={toggleCol1}
+                      className='fa fa-angle-up fa-lg ' style={{ float: 'left' }}
+                    />}
+
+                <MdSettings
+                  className={styles.iconmove}
+                  onClick={() => {
+                    if (!showSingleTimeCandleModal) {
+                      setShowSingleTimeCandleModal(true)
+                    }
+                  }}
+                />
+                {showSingleTimeCandleModal && (
+                  <NotesModal
+                    isOpen={showSingleTimeCandleModal}
+                    setIsOpen={setShowSingleTimeCandleModal}
+                  />
+                )}
+
               </button>
             </h2>
-            <Collapse isOpen={col1} style={{ width: '80%', margin: '0px auto' }}><AirplaneContent /></Collapse>
+            <Collapse isOpen={col1} style={{ width: '80%', margin: '0px auto' }}><AirplaneContent
+              datas={handleshow}
+                                                                                 />
+            </Collapse>
           </div>
 
           <div className='accordion-item mb-2 border-0'>
