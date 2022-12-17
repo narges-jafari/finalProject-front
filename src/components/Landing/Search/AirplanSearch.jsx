@@ -1,16 +1,24 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
-
+import { useLazyQuery, useQuery } from '@apollo/client'
+import flightQueries from '../../../Apollo/Query/flightQueries'
 import styles from '../../../assets/styles/Transport.module.css'
 import AirplanePassenger from '../Passenger/AirplanePassenger'
+import {
+  FLIGHT_ORIGINNAME,
+  FLIGHT_DATE,
+  FLIGHT_DESNAME,
+  FLIGHT_CLASS
+
+} from '../../../constants/auth'
 
 const AirplanSearch = () => {
-  const [destinationName, setDestinationName] = useState()
-  const [originName, setOriginName] = useState()
+  const [destinationname, setDestinationname] = useState('')
+  const [originname, setOriginname] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
   const [showPassenger, setShowPassenger] = useState([])
@@ -28,6 +36,33 @@ const AirplanSearch = () => {
     setShowClass(name)
   }, [])
 
+  const [SearchFlight] = useLazyQuery(flightQueries.SEARCHFLIGHT)
+
+  const handleSearch = () => {
+    SearchFlight({
+      variables: {
+        originName: originname,
+        destinationName: destinationname,
+        flightClass: showClass,
+        date: startDate.toString()
+
+      }
+    })
+      .then(({ data }) => {
+        if (data.searchFlight !== null) {
+          window.location.href = '/resultairplane'
+        }
+      })
+  }
+
+  useEffect(() => {
+    { window.localStorage.setItem('FlightOriginName', originname)
+    };
+    { window.localStorage.setItem('FlightDestinationName', JSON.stringify(destinationname)) }
+    { window.localStorage.setItem('FlightDate', JSON.stringify(startDate.toString())) }
+    { window.localStorage.setItem('FlightClass', JSON.stringify(showClass)) }
+  }, [originname, destinationname, showClass, startDate])
+
   return (
     <>
       <div className='d-flex flex-row flex-wrap my-5 justify-content-center'>
@@ -36,7 +71,8 @@ const AirplanSearch = () => {
           <input
             type='text'
             placeholder=' پرواز از'
-            onChange={e => setOriginName(e.target.value)}
+            value={originname}
+            onChange={e => setOriginname(e.target.value)}
             className={styles.transportInputCss}
           />
 
@@ -45,8 +81,9 @@ const AirplanSearch = () => {
 
           <input
             type='text'
+            value={destinationname}
             placeholder=' پرواز به'
-            onChange={e => setDestinationName(e.target.value)}
+            onChange={e => setDestinationname(e.target.value)}
             className={styles.transportInputCss}
           />
 
@@ -60,6 +97,7 @@ const AirplanSearch = () => {
             locale={persianfa}
             calendarPosition='bottom-right'
             placeholder='تاریخ پرواز'
+            format='YYYY/MM/DD'
           />
         </div>
         <div className='accordion' id='accordion'>
@@ -103,7 +141,12 @@ const AirplanSearch = () => {
         </div>
       </div>
       <div style={{ margin: '30px auto', width: '73%' }}>
-        <button className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}>جستجو</button>
+        <button
+          onClick={handleSearch}
+          className='btn btn-sm btn-danger my-1  w-100  py-3'
+          style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}
+        >جستجو
+        </button>
       </div>
     </>
   )

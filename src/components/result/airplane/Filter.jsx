@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
@@ -9,15 +9,18 @@ import logo3 from '../../../assets/img/logo2.JPG'
 import logo4 from '../../../assets/img/logo3.JPG'
 import logo5 from '../../../assets/img/logo4.JPG'
 import logo6 from '../../../assets/img/logo1.JPG'
+import { buttons } from './buttons'
 
 import styles from '../../../assets/styles/Filter.module.css'
+import { printIntrospectionSchema } from 'graphql'
 
-const Filter = () => {
+const Filter = (props) => {
   // STATE VARIABLES
   const [col1, setCol1] = useState(false)
   const [col2, setCol2] = useState(false)
   const [col3, setCol3] = useState(false)
   const [money, setMoney] = useState()
+  const [input, setInput] = useState('')
 
   // this function will be called when a radio button is checked
   const handleMoneyChange = (e) => {
@@ -41,6 +44,49 @@ const Filter = () => {
     setCol1(false)
     setCol2(false)
   }
+  // const filtername=props.filterItem.filter(person => person.airplaneCompany == 'تابان')
+
+  const [searchValue, setSearchValue] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const filteredClient = useMemo(() => {
+    if (searchTerm) {
+      return props.filterItem.filter((name) => {
+        return (
+          <>
+            {name.airplaneCompany === searchTerm}
+          </>
+        )
+      })
+    }
+    return props.filterItem
+  }, [searchTerm, props.filterItem])
+
+  const [countries, setCountries] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [search, setSearch] = useState('')
+  const [filteredCountries, setFilteredCountries] = useState([])
+
+  // useEffect(() => {
+  //   setLoading(true);
+  // }, []);
+
+  useEffect(() => {
+    setCountries(props.filterItem)
+
+    setFilteredCountries(
+      countries.filter((country) =>
+        country.airplaneCompany.includes(search)
+      )
+    )
+  }, [search, countries])
+
+  // if (loading) {
+  //   return <p>Loading countries...</p>;
+  // }
+
+  // console.log(getCategories,';;;;;;;;')
+
   return (
     <>
       <div className='accordion  py-0 rounded-3 ' id='accordion' style={{ border: '1px solid #dddddd6b ', backgroundColor: '#dddddd6b', fontFamily: 'Yekan' }}>
@@ -247,14 +293,30 @@ const Filter = () => {
 
           <Collapse isOpen={col3}>
             <div className='d-flex flex-column '>
+              <input
+                type='text'
+                className='w-25'
+                placeholder='جستجو نام شرکت'
+                onChange={e => { setSearch(e.target.value) }}
+                onChange={e => { setSearch(e.target.value); props.customeStrategySell(filteredCountries) }}
+              />
               <div className='d-flex flex-row my-1 mx-3 '><img src={logo1} className={styles.logoCss} /><span className='mx-1'>ایران ایرتور</span></div>
               <div className='d-flex flex-row my-1 mx-3'><img src={logo2} className={styles.logoCss} /><span className='mx-1'>آسمان </span></div>
               <div className='d-flex flex-row my-1 mx-3'><img src={logo3} className={styles.logoCss} /><span className='mx-1'> تابان</span></div>
               <div className='d-flex flex-row my-1 mx-3'><img src={logo4} className={styles.logoCss} /><span className='mx-1'>کاسپین</span></div>
               <div className='d-flex flex-row my-1 mx-3'><img src={logo5} className={styles.logoCss} /><span className='mx-1'>کیش</span></div>
               <div className='d-flex flex-row my-1 mx-3'><img src={logo6} className={styles.logoCss} /><span className='mx-1'>زاگرس</span></div>
-              {/* <div className='d-flex flex-row '><img/><span></span></div> */}
             </div>
+
+            <div className='App'>
+
+              {filteredCountries.map((country, idx) => (
+                <div key={idx} className='text-white'>
+                  {country.price}
+                </div>
+              ))}
+            </div>
+
           </Collapse>
         </div>
 

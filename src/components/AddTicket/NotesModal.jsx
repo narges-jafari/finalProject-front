@@ -15,9 +15,9 @@ const NotesModal = (props) => {
   return (
     <>
       <Modal
-        size='sm'
+        size='md'
         isOpen={props.isOpen}
-        className=' '
+        className=' border-4'
         toggle={() => {
           props.setIsOpen()
         }}
@@ -31,7 +31,7 @@ const NotesModal = (props) => {
             اضافه کردن  صندلی
           </h6>
           <i
-            className='fa fa-close btn-sm rounded-circle  btn-light text-danger  my-2 py-2  fa-lg mx-2 '
+            className='fa fa-close  rounded-circle   text-danger  my-2 py-2  fa-lg '
             onClick={() => {
               props.setIsOpen(false)
             }}
@@ -47,7 +47,7 @@ const NotesModal = (props) => {
           className=''
           style={{ backgroundColor: '#A9E2F3' }}
         >
-          <img src={img} style={{ width: '100%', height: '50px' }} />
+          <img src={img} style={{ width: '100%', height: '70px' }} />
 
         </div>
       </Modal>

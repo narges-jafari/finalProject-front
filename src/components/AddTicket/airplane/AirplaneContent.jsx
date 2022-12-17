@@ -3,14 +3,13 @@ import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
 import { airplaneCompany, flightClasses } from '../../../constants/airplane'
-import { USER_ID ,FLIGHT_ID ,FLIGHT_CAPACITY} from '../../../constants/auth'
+import { USER_ID, FLIGHT_ID, FLIGHT_CAPACITY } from '../../../constants/auth'
 import { property } from '../../../constants/property'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import SeatNumber from './SeatNumber'
 
 const AirplaneContent = (props) => {
   // STATES
@@ -46,7 +45,7 @@ const AirplaneContent = (props) => {
   })
   const [showData, setShowData] = useState([])
 
-  //REF
+  // REF
   const firstUpdate = useRef(true)
 
   // get day
@@ -115,20 +114,20 @@ const AirplaneContent = (props) => {
       e.preventDefault()
       createFlights({
         variables: {
-          originName: 'originName',
-          destinationName: 'destinationName',
-          capacity: 6,
+          originName: originName,
+          destinationName: destinationName,
+          capacity: parseInt(capacity),
           date: startDate.toString(),
-          airportDestination: 'destinationAirport',
-          airportOrigin: 'originAirport',
-          departureTime: 'departureTime',
-          arrivalTime: 'arrivalTime',
-          price: 23.90,
-          airplaneModel: 'airplaneModel',
-          flightNumber: 3333,
-          flightClass: 'flightClass',
-          airplaneCompany: 'showairplaneCompany',
-          allowedLoggage: 30,
+          airportDestination: destinationAirport,
+          airportOrigin: originAirport,
+          departureTime: departureTime,
+          arrivalTime: arrivalTime,
+          price: parseFloat(price),
+          airplaneModel: airplaneModel,
+          flightNumber: parseInt(flightNumber),
+          flightClass: flightClass,
+          airplaneCompany: showairplaneCompany,
+          allowedLoggage: parseInt(allowedLoggage),
           // airline:airline,
           information: userinfo.response,
           creator: JSON.parse(userid)
@@ -400,6 +399,7 @@ const AirplaneContent = (props) => {
               type='text'
               value={departureTime}
               onChange={handlfTime}
+
               className={styles.inputcss}
             />
             {error8
@@ -429,7 +429,7 @@ const AirplaneContent = (props) => {
               defaultValue=''
               calendarPosition='bottom-right'
               placeholder='تاریخ پرواز'
-              format='YYYY/MM/DD'
+              format='YYYY-MM-DD'
             />
             {startDate == null
               ? <>
