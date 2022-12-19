@@ -9,183 +9,157 @@ import logo3 from '../../../assets/img/logo2.JPG'
 import logo4 from '../../../assets/img/logo3.JPG'
 import logo5 from '../../../assets/img/logo4.JPG'
 import logo6 from '../../../assets/img/logo1.JPG'
-import { buttons } from './buttons'
+import moment from 'moment/moment'
 
 import styles from '../../../assets/styles/Filter.module.css'
-import { printIntrospectionSchema } from 'graphql'
 
 const Filter = (props) => {
   // STATE VARIABLES
   const [col1, setCol1] = useState(false)
   const [col2, setCol2] = useState(false)
-  const [col3, setCol3] = useState(false)
   const [money, setMoney] = useState()
-  const [input, setInput] = useState('')
+  const [items, setItems] = useState([])
+  const [search, setSearch] = useState('')
+  const [filteredTicketsMoney, setFilteredTicketsMoney] = useState([])
+
+  const [items1, setItems1] = useState([])
+  const [filteredTicketsName, setFilteredTicketsName] = useState([])
+  const [items2, setItems2] = useState([])
+  const [filteredTicketsNamePrice, setFilteredTicketsNamePrice] = useState([])
 
   // this function will be called when a radio button is checked
   const handleMoneyChange = (e) => {
     setMoney(e.target.value)
   }
 
+  const handleNameChange = (e) => {
+    setSearch(e.target.value)
+  }
+
+  // reset function
+  const reset = () => {
+    setMoney()
+    setSearch()
+  }
+
+  const resetMoney = () => {
+    setMoney()
+  }
+  const resetName = () => {
+    setSearch()
+  }
+
   // ACCORDION'S TOGGLE FUNCTIONS
   const toggleCol1 = () => {
     setCol1(!col1)
     setCol2(false)
-    setCol3(false)
   }
 
   const toggleCol2 = () => {
     setCol2(!col2)
     setCol1(false)
-    setCol3(false)
   }
-  const toggleCol3 = () => {
-    setCol3(!col3)
-    setCol1(false)
-    setCol2(false)
-  }
-  // const filtername=props.filterItem.filter(person => person.airplaneCompany == 'تابان')
 
-  const [searchValue, setSearchValue] = useState('')
-  const [searchTerm, setSearchTerm] = useState('')
+  const found = props.filterItem.map(item => item._id)
 
-  const filteredClient = useMemo(() => {
-    if (searchTerm) {
-      return props.filterItem.filter((name) => {
-        return (
-          <>
-            {name.airplaneCompany === searchTerm}
-          </>
-        )
-      })
+  function statusCounter (inputs) {
+    let counter = 0
+    for (const input of inputs) {
+      if (input._id !== null) counter += 1
     }
-    return props.filterItem
-  }, [searchTerm, props.filterItem])
+    return counter
+  }
 
-  const [countries, setCountries] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [search, setSearch] = useState('')
-  const [filteredCountries, setFilteredCountries] = useState([])
+  // console.log(search,filteredTicketsMoney,'kkkljqffiuo202939')
 
-  // useEffect(() => {
-  //   setLoading(true);
-  // }, []);
-
+  console.log(search, filteredTicketsName, 'mom')
   useEffect(() => {
-    setCountries(props.filterItem)
+    setItems(props.filterItem)
 
-    setFilteredCountries(
-      countries.filter((country) =>
-        country.airplaneCompany.includes(search)
+    setFilteredTicketsName(
+      items.filter((item) =>
+        item.airplaneCompany.replace(/"/g, '') == (search)
       )
     )
-  }, [search, countries])
+  }, [search, items, props.customeStrategySell1(filteredTicketsName)])
+  useEffect(() => {
+    setItems1(props.filterItem)
 
-  // if (loading) {
-  //   return <p>Loading countries...</p>;
-  // }
+    setFilteredTicketsMoney(
+      items1.filter(
+        user => (user.price) >= money - 500000 && (user.price) <= money
+      )
+    )
+  }, [money, items1, props.customeStrategySell(filteredTicketsMoney)
+  ])
 
-  // console.log(getCategories,';;;;;;;;')
-
+  console.log(filteredTicketsNamePrice, 'price')
   return (
     <>
+
       <div className='accordion  py-0 rounded-3 ' id='accordion' style={{ border: '1px solid #dddddd6b ', backgroundColor: '#dddddd6b', fontFamily: 'Yekan' }}>
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
-            <span> نتایج33 </span>
-            <span>لغو فیلتر‌ها</span>
+            <span>
+              {statusCounter(found)}
+              {/* {(() => {
+              if(filteredTicketsMoney.length ==0 && filteredTicketsName.length==0){
+                return(
+                  <>
+                  {statusCounter(found)}
+                  </>
+                  )
+              }else if(filteredTicketsMoney.length !==0 && filteredTicketsName.length ==0){
+                return(
+                  <>
+                  {statusCounter(filteredTicketsMoney)}
+                  </>
+                  )
+              }else if(filteredTicketsName.length !==0 && filteredTicketsMoney.length ==0){
+                return(
+                  <>
+                  {statusCounter(filteredTicketsName)}
+                  </>
+                  )
+              }
+              else{
+                return(
+                  <>
+                  {statusCounter(found)}
+                  </>
+                  )
+              }
+
+              })()} */}
+            </span>
+            <button className='btn btn-sm btn-outline-danger' onClick={reset}>لغو فیلتر‌ها</button>
           </div>
           <div>
             {money == null
               ? null
-              : <div className='border border-1 border-primary w-75 mx-3 my-2 px-1 rounded-3'>
+              : <div className='border border-1 border-secondary w-25 mx-3 my-2 px-1 rounded-3'>
                 <span>قیمت{money}</span>
-                <i className='fa fa-close text-danger ' />
+                <i onClick={resetMoney} className='fa fa-close text-danger ' />
                 </div>}
+            {/* {search !==''
+              ? <div className='border border-1 border-secondary w-25 mx-3 my-2 px-1 rounded-3'>
+              <span>نام{search}</span>
+              <i onClick={resetName} className='fa fa-close text-danger ' />
+              </div>
+              :null } */}
 
           </div>
 
         </div>
 
         <div className='accordion-item border-0 '>
-          <h2 className='accordion-header' id='headingOne'>
+
+          <h2 className='accordion-header' id='headingtwo'>
             <button
               className={classnames('fw-medium', 'text-end', 'border-0', {
                 collapsed: !col1
               })}
               type='button'
-              onClick={toggleCol1}
-              style={{
-                cursor: 'pointer',
-                backgroundColor: '#FFFF',
-                borderRadius: '0.8rem',
-                width: '100%',
-                padding: '0.9rem 1.25rem',
-                fontSize: '1.01125rem',
-                color: '#405057',
-                direction: 'rtl'
-
-              }}
-            >
-              ساعت
-              {col1 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
-            </button>
-          </h2>
-
-          <Collapse isOpen={col1}>
-
-            <div className='d-flex flex-column '>
-              <div className='d-flex flex-row mx-1 my-1 justify-content-around'>
-                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
-                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
-                  <span>
-                    12 تا 5
-                  </span>
-                  <br />
-                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>صبح زود</span>
-
-                </div>
-                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
-                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
-                  <span>
-                    5 تا 12
-                  </span>
-                  <br />
-                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>صبح </span>
-
-                </div>
-              </div>
-              <div className='d-flex flex-row mx-1 my-1 justify-content-around'>
-                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
-                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
-                  <span>
-                    12 تا 5
-                  </span>
-                  <br />
-                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>  بعد از ظهر</span>
-
-                </div>
-                <div className='mx-1 px-2 rounded-3' style={{ backgroundColor: '#9293921b', width: '35%' }}>
-                  <i className='fa fa-sun-o text-warning px-1 mt-2' />
-                  <span>
-                    5تا 12
-                  </span>
-                  <br />
-                  <span className='text-secondary mx-3 px-2' style={{ fontSize: '12px' }}>شب </span>
-
-                </div>
-              </div>
-
-            </div>
-          </Collapse>
-
-          <h2 className='accordion-header' id='headingtwo'>
-            <button
-              className={classnames('fw-medium', 'text-end', 'border-0', {
-                collapsed: !col2
-              })}
-              type='button'
-              onClick={toggleCol2}
               style={{
                 cursor: 'pointer',
                 backgroundColor: '#FFFF',
@@ -200,11 +174,20 @@ const Filter = (props) => {
               }}
             >
               رنج قیمت
-              {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+              {col1
+                ? <i
+                    onClick={toggleCol1}
+                    className='fa fa-angle-down fa-lg' style={{ float: 'left' }}
+                  />
+
+                : <i
+                    onClick={toggleCol1}
+                    className='fa fa-angle-up fa-lg' style={{ float: 'left' }}
+                  />}
             </button>
           </h2>
 
-          <Collapse isOpen={col2} className={styles.inputnumber}>
+          <Collapse isOpen={col1} className={styles.inputnumber}>
             <div>
               <form>
                 <fieldset>
@@ -214,9 +197,10 @@ const Filter = (props) => {
                     name='age'
                     className='mx-2'
                     id='age-range-1'
-                    value='0-1000000'
+                    value='1000000'
                     onChange={handleMoneyChange}
-                    checked={money === '0-1000000'}
+
+                    checked={money === '1000000'}
                   />
                   <label htmlFor='age-range-1 '>0-1000000 تومان</label><br />
 
@@ -224,10 +208,12 @@ const Filter = (props) => {
                     type='radio'
                     name='age'
                     id='age-range-2'
-                    value='1000000-1500000'
+                    value='1500000'
                     onChange={handleMoneyChange}
+                    // onChange={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
+
                     className='mx-2'
-                    checked={money === '1000000-1500000'}
+                    checked={money === '1500000'}
                   />
                   <label htmlFor='age-range-2'>1000000-1500000 تومان</label><br />
 
@@ -235,33 +221,38 @@ const Filter = (props) => {
                     type='radio'
                     name='age'
                     id='age-range-3'
-                    value='1500000-2000000'
+                    value='2000000'
                     onChange={handleMoneyChange}
+                    // onClick={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
+
                     className='mx-2'
-                    checked={money === '1500000-2000000'}
+                    checked={money === '2000000'}
                   />
                   <label htmlFor='age-range-3'>1500000-2000000 تومان</label><br />
                   <input
                     type='radio'
                     name='age'
                     id='age-range-3'
-                    value='2000000-3000000'
+                    value='2500000'
                     onChange={handleMoneyChange}
+                    // onChange={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
                     className='mx-2'
-                    checked={money === '2000000-3000000'}
+                    checked={money === '2500000'}
                   />
-                  <label htmlFor='age-range-3'>2000000-3000000تومان</label><br />
+                  <label htmlFor='age-range-3'>2000000-2500000تومان</label><br />
 
                   <input
                     type='radio'
                     name='age'
                     id='age-range-7'
-                    value='30000000+'
+                    value='3000000'
                     onChange={handleMoneyChange}
+                    // onChange={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
+
                     className='mx-2'
-                    checked={money === '30000000+'}
+                    checked={money === '3000000'}
                   />
-                  <label htmlFor='age-range-7'>30000000+تومان</label><br />
+                  <label htmlFor='age-range-3'>2500000-3000000تومان</label><br />
                 </fieldset>
               </form>
             </div>
@@ -269,10 +260,9 @@ const Filter = (props) => {
           <h2 className='accordion-header' id='headingthree'>
             <button
               className={classnames('fw-medium', 'text-end', 'border-0', {
-                collapsed: !col3
+                collapsed: !col2
               })}
               type='button'
-              onClick={toggleCol3}
               style={{
                 cursor: 'pointer',
                 backgroundColor: '#FFFF',
@@ -287,34 +277,106 @@ const Filter = (props) => {
               }}
             >
               شرکت‌های هواپیمایی
-              {col3 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+              {col2
+                ? <i
+                    onClick={toggleCol2}
+                    className='fa fa-angle-down fa-lg'
+                    style={{ float: 'left' }}
+                  />
+                : <i
+                    onClick={toggleCol2}
+
+                    className='fa fa-angle-up fa-lg' style={{ float: 'left' }}
+                  />}
             </button>
           </h2>
 
-          <Collapse isOpen={col3}>
+          <Collapse isOpen={col2}>
+
             <div className='d-flex flex-column '>
-              <input
-                type='text'
-                className='w-25'
-                placeholder='جستجو نام شرکت'
-                onChange={e => { setSearch(e.target.value) }}
-                onChange={e => { setSearch(e.target.value); props.customeStrategySell(filteredCountries) }}
-              />
-              <div className='d-flex flex-row my-1 mx-3 '><img src={logo1} className={styles.logoCss} /><span className='mx-1'>ایران ایرتور</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo2} className={styles.logoCss} /><span className='mx-1'>آسمان </span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo3} className={styles.logoCss} /><span className='mx-1'> تابان</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo4} className={styles.logoCss} /><span className='mx-1'>کاسپین</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo5} className={styles.logoCss} /><span className='mx-1'>کیش</span></div>
-              <div className='d-flex flex-row my-1 mx-3'><img src={logo6} className={styles.logoCss} /><span className='mx-1'>زاگرس</span></div>
-            </div>
+              <form>
+                <fieldset>
+                  <div className='d-flex flex-row my-1 mx-3'>
+                    <input
+                      type='radio'
+                      name='age'
+                      className='mx-2'
+                      id='age-range-1'
+                      value='ایران ایرتور'
+                      onChange={handleNameChange}
+                      checked={search === 'ایران ایرتور'}
+                    />
+                    <img src={logo1} className={styles.logoCss} />
+                    <span className='mx-1'> ایران ایرتور</span>
+                  </div>
+                  <div className='d-flex flex-row my-1 mx-3'>
+                    <input
+                      type='radio'
+                      name='age'
+                      className='mx-2'
+                      id='age-range-1'
+                      value=' آسمان'
+                      onChange={handleNameChange}
+                      checked={search === ' آسمان'}
+                    />
+                    <img src={logo2} className={styles.logoCss} />
+                    <span className='mx-1'> آسمان</span>
+                  </div>
+                  <div className='d-flex flex-row my-1 mx-3'>
+                    <input
+                      type='radio'
+                      name='age'
+                      className='mx-2'
+                      id='age-range-1'
+                      value=' تابان'
+                      onChange={handleNameChange}
+                      checked={search === ' تابان'}
+                    />
+                    <img src={logo3} className={styles.logoCss} />
+                    <span className='mx-1'> تابان</span>
+                  </div>
+                  <div className='d-flex flex-row my-1 mx-3'>
+                    <input
+                      type='radio'
+                      name='age'
+                      className='mx-2'
+                      id='age-range-1'
+                      value=' کاسپین'
+                      onChange={handleNameChange}
+                      checked={search === ' کاسپین'}
+                    />
+                    <img src={logo4} className={styles.logoCss} />
+                    <span className='mx-1'> کاسپین</span>
+                  </div>
+                  <div className='d-flex flex-row my-1 mx-3'>
+                    <input
+                      type='radio'
+                      name='age'
+                      className='mx-2'
+                      id='age-range-1'
+                      value=' کیش'
+                      onChange={handleNameChange}
+                      checked={search === ' کیش'}
+                    />
+                    <img src={logo5} className={styles.logoCss} />
+                    <span className='mx-1'> کیش</span>
+                  </div>
+                  <div className='d-flex flex-row my-1 mx-3'>
+                    <input
+                      type='radio'
+                      name='age'
+                      className='mx-2'
+                      id='age-range-1'
+                      value=' زاگرس'
+                      onChange={handleNameChange}
+                      checked={search === ' زاگرس'}
+                    />
+                    <img src={logo6} className={styles.logoCss} />
+                    <span className='mx-1'> زاگرس</span>
+                  </div>
 
-            <div className='App'>
-
-              {filteredCountries.map((country, idx) => (
-                <div key={idx} className='text-white'>
-                  {country.price}
-                </div>
-              ))}
+                </fieldset>
+              </form>
             </div>
 
           </Collapse>

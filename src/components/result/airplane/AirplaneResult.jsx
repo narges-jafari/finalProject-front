@@ -1,21 +1,15 @@
 import React, { useState, useCallback } from 'react'
 import styles1 from '../../../assets/styles/AirplaneResult.module.css'
-import AirplanSearch from '../../Landing/Search/AirplanSearch'
-import AirplaneList from './AirplaneList'
 import Filter from './Filter'
 import Header from './Header'
 import img from '../../../assets/img/logo1.JPG'
 import styles from '../../../assets/styles/AirplaneList.module.css'
 import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
-
 import Info from './Info'
 import NotFound from './NotFound'
-
 import { useQuery } from '@apollo/client'
 import flightQueries from '../../../Apollo/Query/flightQueries'
-import { GiCommercialAirplane } from 'react-icons/gi'
-import moment from 'moment'
 
 const AirplaneResult = () => {
   const [showEdit, setShowEdit] = useState('')
@@ -24,11 +18,19 @@ const AirplaneResult = () => {
   const [airplaneItem, setAirplaneItem] = useState([])
   const [clickedItem, setClickedItem] = useState(false)
   const [showSellData, setShowSellData] = useState([])
+  const [showSellData1, setShowSellData1] = useState([])
+  const [showSellData2, setShowSellData2] = useState([])
+
+  const [objectsToShow] = useState(airplaneItem)
 
   const handleSellData = useCallback((sell) => {
     setShowSellData(sell)
   }, [])
+  const handleSellData1 = useCallback((sell) => {
+    setShowSellData1(sell)
+  }, [])
 
+  // customeStrategySell
   console.log(showSellData, 'showdata')
 
   const originName = window.localStorage.getItem('FlightOriginName').replace(/"/g, '')
@@ -45,6 +47,8 @@ const AirplaneResult = () => {
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
 
+  // console.log(originName,destinationName,flightclass,'o')
+
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
     variables: {
@@ -56,27 +60,18 @@ const AirplaneResult = () => {
 
     onCompleted: (res) => {
       setAirplaneItem(res.searchFlight)
+      // console.log(res.searchFlight,'بگرد')
     },
     onError: () => {
       setAirplaneItem([])
     }
   })
 
-  const newArr = airplaneItem.map((item) => {
-    return item.price
-  })
+  // const newArr = airplaneItem.map((item) => {
+  //   return item.price
+  // })
 
-  console.log(newArr, 'snk')
-
-  const okk = newArr.sort((a, b) => (a.price > b.price) ? 1 : -1)
-
-  console.log(okk, 'klklklklk')
-
-  const numAscending = [...airplaneItem].sort((a, b) => a.price - b.price)
-  console.log(numAscending, 'lllppppp')
-
-  const [objectsToShow, setToShow] = useState(airplaneItem)
-
+  // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
     if (a < b) {
       return ascendingOrder ? -1 : 1
@@ -106,7 +101,7 @@ const AirplaneResult = () => {
       setAirplaneItem([...airplaneItem])
     }
   }
-  console.log(objectsToShow, 'show')
+  console.log(showSellData, 'show')
   return (
     <>
       <div className={styles1.headerCss}>
@@ -117,13 +112,17 @@ const AirplaneResult = () => {
           <Filter
             filterItem={airplaneItem}
             customeStrategySell={handleSellData}
+            customeStrategySell1={handleSellData1}
           />
         </div>
         <div className={styles1.airCss}>
           <>
 
             {airplaneItem.length == 0
-              ? <NotFound />
+              ? <NotFound
+                  info={showSellData}
+                  info1={showSellData1}
+                />
               : <>
                 <div>
                   <button
@@ -151,7 +150,7 @@ const AirplaneResult = () => {
                 <div className='d-flex flex-column '>
 
                   {(() => {
-                    if (showSellData.length == 0) {
+                    if (showSellData.length == 0 && showSellData1.length == 0) {
                       return (
                         <div>
                           {airplaneItem.map((item, index) => {
@@ -223,7 +222,7 @@ const AirplaneResult = () => {
                           })}
                         </div>
                       )
-                    } else {
+                    } else if (showSellData.length !== 0 && showSellData1.length == 0) {
                       return (
                         <div className='App'>
 
@@ -295,6 +294,90 @@ const AirplaneResult = () => {
                               </div>
                             )
                           })}
+                        </div>
+                      )
+                    } else if (showSellData.length == 0 && showSellData1.length !== 0) {
+                      return (
+                        <div className='App'>
+
+                          {showSellData1.map((item, index) => {
+                            return (
+                              <div className={styles.content} key={index}>
+                                <div className={styles.contentItem}>
+                                  <div>
+                                    <img src={img} className={styles.imgCss} />
+                                    <span> {item.airplaneCompany} </span>
+
+                                  </div>
+                                  <div className={styles.chaircss}>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity}  </span>
+                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+
+                                  </div>
+                                </div>
+                                <div className={styles.contentItem}>
+                                  <div>
+                                    <span className={styles.fontCss}>{item.originName}</span>
+                                    <span className={styles.clockcss}> {item.departureTime}</span>
+                                  </div>
+                                  <div><i className=' fa fa-plane' style={{ transform: 'rotate(226deg)' }} /></div>
+                                  <div>
+                                    <span className={styles.fontCss}>{item.destinationName}</span>
+                                    <span className={styles.clockcss}> {item.arrivalTime}</span>
+                                  </div>
+                                </div>
+                                <div className={styles.contentItem1}>
+                                  <div>
+                                    <span>  {item.airportOrigin}</span>
+                                    <span> {dayOfWeekName + day + monthName}   </span>
+                                  </div>
+                                  <div>
+                                    <span> {new Date().getTime(item.arrivalTime).toString()} </span>
+                                  </div>
+                                  <div>
+                                    <span>{item.airportDestination}</span>
+                                    <span>   {dayOfWeekName + day + monthName}  </span>
+                                  </div>
+                                </div>
+                                <div className={styles.contentIte3}>
+                                  <div className='d-flex flex-column'>
+                                    <span className='mt-1 text-center'>قیمت هر مسافر </span>
+                                    <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  {item.price} </span>
+                                  </div>
+                                  <span
+                                    className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                    onClick={() => {
+                                      setShowInfoModal(true)
+                                      setClickedItem(item._id)
+                                    }}
+                                    style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
+                                  >جزییات
+                                  </span>
+                                  {showInfoModal && (
+                                    <Info
+                                      isOpen={showInfoModal}
+                                      setIsOpen={setShowInfoModal}
+                                      info={clickedItem}
+                                    />
+
+                                  )}
+                                  <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
+
+                                </div>
+
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )
+                    } else {
+                      return (
+                        <div className='App'>
+                          <NotFound
+                            info={showSellData}
+                            info1={showSellData1}
+                          />
+
                         </div>
                       )
                     }
