@@ -50,6 +50,64 @@ const flightQueries = {
       
     }
   }
+`,
+  SEARCHFLIGHTBYDATE: gql`
+query searchFlightbyDate(
+
+  $date:String!
+  ) {
+    searchFlightbyDate(
+
+    date:$date
+    ) {
+      _id
+      originName
+destinationName
+price 
+date 
+flightClass
+departureTime
+arrivalTime 
+flightNumber
+capacity
+airportOrigin
+airportDestination
+information 
+airplaneModel 
+allowedLoggage
+airplaneCompany 
+    
+  }
+}
+`,
+  SEARCHFLIGHTBYNAME: gql`
+query searchFlightbyName(
+
+  $originName:String!
+  ) {
+    searchFlightbyName(
+
+      originName:$originName
+    ) {
+      _id
+      originName
+destinationName
+price 
+date 
+flightClass
+departureTime
+arrivalTime 
+flightNumber
+capacity
+airportOrigin
+airportDestination
+information 
+airplaneModel 
+allowedLoggage
+airplaneCompany 
+    
+  }
+}
 `
 
 }

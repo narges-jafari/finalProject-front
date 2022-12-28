@@ -1,6 +1,35 @@
+import React, { useState, useCallback, useEffect } from 'react'
+
 import styles from '../../../assets/styles/SuggestionList.module.css'
 
 const SuggestionList = () => {
+  const [flightName, setflightName] = useState()
+  const handleNameChange = (e) => {
+    setflightName(e.target.value)
+    window.location.href = '/resultfastairplane'
+  }
+
+  const [trainName, setTrainName] = useState()
+  const handleTrainNameChange = (e) => {
+    setTrainName(e.target.value)
+    window.location.href = '/resultfasttrain'
+  }
+
+  const [cityName, setCityName] = useState()
+  const handleHotelCityChange = (e) => {
+    setCityName(e.target.value)
+    window.location.href = '/resultfasthotel'
+  }
+
+  useEffect(() => {
+    { window.localStorage.setItem('FlightOriginName', flightName)
+      window.localStorage.setItem('TrainOriginName', trainName)
+      window.localStorage.setItem('HotelCityName', cityName)
+    }
+  }, [flightName, trainName, cityName])
+
+  console.log(trainName, ';;;')
+
   return (
     <>
       <div className={styles.content}>
@@ -8,72 +37,146 @@ const SuggestionList = () => {
           <span className={styles.spanHeader}>
             رزرو هتل
           </span>
-          <span className={styles.spanItem}>
-            رزرو هتل تهران
-          </span>
-          <span className={styles.spanItem}>
-            رزرو هتل شیراز
-          </span>
-          <span className={styles.spanItem}>
-            رزرو هتل مشهد
-          </span>
-          <span className={styles.spanItem}>
-            رزرو هتل تبریز
-          </span>
-          <span className={styles.spanItem}>
-            رزرو هتل اصفهان
-          </span>
-          <span className={styles.spanItem}>
-            رزرو هتل   یزد
-          </span>
+          <button
+            value='تهران'
+            onClick={handleHotelCityChange}
+            className={styles.spanItem}
+          >
+            هتل  تهران
+          </button>
+          <button
+            value='مشهد'
+            onClick={handleHotelCityChange}
+            className={styles.spanItem}
+          >
+            هتل  مشهد
+          </button>
+          <button
+            value='یزد'
+            onClick={handleHotelCityChange}
+            className={styles.spanItem}
+          >
+            هتل  یزد
+          </button>
+          <button
+            value='تبریز'
+            onClick={handleHotelCityChange}
+            className={styles.spanItem}
+          >
+            هتل تبریز
+          </button>
+          <button
+            value='کیش'
+            onClick={handleHotelCityChange}
+            className={styles.spanItem}
+          >
+            هتل کیش
+          </button>
+          <button
+            value='مازندران'
+            onClick={handleHotelCityChange}
+            className={styles.spanItem}
+          >
+            هتل مازندران
+          </button>
         </div>
 
         <div className={styles.contentItem}>
           <span className={styles.spanHeader}>
             بلیط هواپیما
           </span>
-          <span className={styles.spanItem}>
+          <button
+            value='تهران'
+            onClick={handleNameChange}
+            className={styles.spanItem}
+          >
             بلیط هواپیما تهران
-          </span>
-          <span className={styles.spanItem}>
+          </button>
+
+          <button
+            value='مشهد'
+            onClick={handleNameChange}
+            className={styles.spanItem}
+          >
             بلیط هواپیما مشهد
-          </span>
-          <span className={styles.spanItem}>
-            بلیط هواپیما اردبیل
-          </span>
-          <span className={styles.spanItem}>
-            بلیط هواپیما شیراز
-          </span>
-          <span className={styles.spanItem}>
+          </button>
+          <button
+            value='اصفهان'
+            onClick={handleNameChange}
+            className={styles.spanItem}
+          >
             بلیط هواپیما اصفهان
-          </span>
-          <span className={styles.spanItem}>
+          </button>
+          <button
+            value='تبریز'
+            onClick={handleNameChange}
+            className={styles.spanItem}
+          >
+            بلیط هواپیما تبریز
+          </button>
+          <button
+            value='کیش'
+            onClick={handleNameChange}
+            className={styles.spanItem}
+          >
             بلیط هواپیما کیش
-          </span>
+          </button>
+          <button
+            value='خوزستان'
+            onClick={handleNameChange}
+            className={styles.spanItem}
+          >
+            بلیط هواپیما خوزستان
+          </button>
         </div>
 
         <div className={styles.contentItem}>
           <span className={styles.spanHeader}>
             بلیط قطار
           </span>
-          <span className={styles.spanItem}>
-            بلیط قطار زنجان
-          </span>
-          <span className={styles.spanItem}>
+          <button
+            value='تهران'
+            onClick={handleTrainNameChange}
+            className={styles.spanItem}
+          >
             بلیط قطار تهران
-          </span>
-          <span className={styles.spanItem}>
+          </button>
+
+          <button
+            value='مشهد'
+            onClick={handleTrainNameChange}
+            className={styles.spanItem}
+          >
             بلیط قطار مشهد
-          </span>
-          <span className={styles.spanItem}>
-            بلیط قطار سمنان
-          </span>
-          <span className={styles.spanItem}>
-            بلیط قطار اراک
-          </span>
-          <span className={styles.spanItem}>
+          </button>
+          <button
+            value='اصفهان'
+            onClick={handleTrainNameChange}
+            className={styles.spanItem}
+          >
+            بلیط قطار اصفهان
+          </button>
+          <button
+            value='تبریز'
+            onClick={handleTrainNameChange}
+            className={styles.spanItem}
+          >
+            بلیط قطار تبریز
+          </button>
+          <button
+            value='زنجان'
+            onClick={handleTrainNameChange}
+            className={styles.spanItem}
+          >
+            بلیط قطار زنجان
+          </button>
+          <button
+            value='خوزستان'
+            onClick={handleTrainNameChange}
+            className={styles.spanItem}
+          >
             بلیط قطار خوزستان
-          </span>
+          </button>
         </div>
 
         <div className={styles.contentItem}>

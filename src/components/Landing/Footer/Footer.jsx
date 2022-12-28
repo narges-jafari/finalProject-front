@@ -15,7 +15,6 @@ const Footer = () => {
       <div className={styles.contentFlex}>
         <div className='d-flex flex-column flex-wrap my-2  '>
           <span className='mx-3 mt-4'>   درباره‌ی تریپنو</span>
-          {/* <Link to="/about">About</Link> */}
           <Nav className='d-flex flex-column'>
             <Nav.Link href='aboutus' className='text-secondary mt-2'>
               <span>درباره‌ی‌ما </span>
@@ -59,7 +58,6 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.socialCss}>
-        {/* <div ><TbBrandInstagram className='fa-2x mx-2 my-2' /></div> */}
         <div className='mx-2'><TbBrandInstagram className={styles.instagram} /></div>
         <div className='mx-2'><TbBrandTelegram className={styles.telegram} /></div>
         <div className='mx-2'><TbBrandWhatsapp className={styles.whatsapp} /></div>

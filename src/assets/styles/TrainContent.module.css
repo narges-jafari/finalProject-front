@@ -50,14 +50,75 @@ textarea{
 
 }
 
-.content select{
-  background-color: red;
-  padding-right: 40px;
-  padding-top:5px;
-  padding-bottom:5px;
+
+
+.contentNumber{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 10px;
+    width: 100%;
+}
+.contentNumber input{
+  
+    margin-top:-2px;
+    width:100%;
+    height:50px;
+    border-radius: 5px;
+    border:none;
+    border-radius: 20px;
+    background-color: #e3e1e154;
+    font-family:Yekan;
+    font-weight: bold;
+    font-size: 20px;
+  
+  }
+
+  .contentNumber button{
+    margin:10px auto;
+    width:100%;
+    height:50px;
+    border-radius: 5px;
+    border:none;
+    border-radius: 20px;
+    background-color: #CECEF6;
+    font-family:Yekan;
+    font-weight: bold;
+    font-size: 20px; 
+  }
+
+  .imgCssModal{
+    width:100%;
+  }
+
+
+
+
+  .headerCss{
+    font-family: Yekan;
+  }
+  .headerCss1{
+    font-family: Vazir;
+  }
+
+  .contentNumber button::after{
+    margin:10px auto;
+    width:100%;
+    height:50px;
+    border-radius: 5px;
+    border:none;
+    border-radius: 20px;
+    background-color: #8282f7;
+    font-family:Yekan;
+    font-weight: bold;
+    font-size: 20px; 
+  }
+
+.contentNumber select{
+
   margin-top:-2px;
-  width:230px;
-  height:70px;
+  width:100%;
+  height:50px;
   border-radius: 5px;
   border:none;
   border-radius: 20px;
@@ -67,6 +128,26 @@ textarea{
   font-size: 20px;
 
 }
+
+.optionCss{
+    border: 1px solid blue;
+}
+.content select{
+    padding-right: 40px;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-top:-2px;
+    width:230px;
+    height:70px;
+    border-radius: 5px;
+    border:none;
+    border-radius: 20px;
+    background-color: #e3e1e154;
+    font-family:Yekan;
+    font-weight: bold;
+    font-size: 20px;
+  
+  }
 
 .inputcss{
     padding-right: 40px;
@@ -143,12 +224,6 @@ textarea:hover{
     font-family: Arial;
  }
 
- .btncss{
-    
- }
-
- 
-
   @media screen and (max-width: 800px) {
 
     .content{
@@ -157,6 +232,8 @@ width:100%
     .content select{
         width:100%
             }
+
+             
 
 
   

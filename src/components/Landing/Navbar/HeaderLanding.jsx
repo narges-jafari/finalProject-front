@@ -5,8 +5,7 @@ import styles from '../../../assets/styles/HeaderLanding.module.css'
 import img from '../../../assets/img/16.png'
 
 import Header from './Header'
-import { useQuery } from '@apollo/client'
-import userQueries from '../../../Apollo/Query/userQueries'
+
 import { useNavigate } from 'react-router-dom'
 import {
   USER_ID,
@@ -16,7 +15,7 @@ import {
 
 const HeaderLanding = () => {
   const [showusername, setShowUsername] = useState(false)
-  const [isloggin, setIsLogin] = useState(false)
+  const [setIsLogin] = useState(false)
   const navigate = useNavigate()
 
   const [headerChange, setHeaderChange] = useState(false)

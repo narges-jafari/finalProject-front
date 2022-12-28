@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
@@ -9,7 +9,6 @@ import logo3 from '../../../assets/img/logo2.JPG'
 import logo4 from '../../../assets/img/logo3.JPG'
 import logo5 from '../../../assets/img/logo4.JPG'
 import logo6 from '../../../assets/img/logo1.JPG'
-import moment from 'moment/moment'
 
 import styles from '../../../assets/styles/Filter.module.css'
 
@@ -19,15 +18,13 @@ const Filter = (props) => {
   const [col2, setCol2] = useState(false)
   const [money, setMoney] = useState()
   const [items, setItems] = useState([])
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState()
   const [filteredTicketsMoney, setFilteredTicketsMoney] = useState([])
 
   const [items1, setItems1] = useState([])
   const [filteredTicketsName, setFilteredTicketsName] = useState([])
-  const [items2, setItems2] = useState([])
-  const [filteredTicketsNamePrice, setFilteredTicketsNamePrice] = useState([])
 
-  // this function will be called when a radio button is checked
+  // FUNCTIONS FOR SET VALUE
   const handleMoneyChange = (e) => {
     setMoney(e.target.value)
   }
@@ -36,7 +33,7 @@ const Filter = (props) => {
     setSearch(e.target.value)
   }
 
-  // reset function
+  // RESET FUNCTIONS
   const reset = () => {
     setMoney()
     setSearch()
@@ -62,6 +59,7 @@ const Filter = (props) => {
 
   const found = props.filterItem.map(item => item._id)
 
+  // COUNTER FUNCTION
   function statusCounter (inputs) {
     let counter = 0
     for (const input of inputs) {
@@ -69,10 +67,6 @@ const Filter = (props) => {
     }
     return counter
   }
-
-  // console.log(search,filteredTicketsMoney,'kkkljqffiuo202939')
-
-  console.log(search, filteredTicketsName, 'mom')
   useEffect(() => {
     setItems(props.filterItem)
 
@@ -92,69 +86,71 @@ const Filter = (props) => {
     )
   }, [money, items1, props.customeStrategySell(filteredTicketsMoney)
   ])
-
-  console.log(filteredTicketsNamePrice, 'price')
   return (
     <>
 
-      <div className='accordion  py-0 rounded-3 ' id='accordion' style={{ border: '1px solid #dddddd6b ', backgroundColor: '#dddddd6b', fontFamily: 'Yekan' }}>
+      <div className='accordion  py-0 rounded-3 my-1 ' id='accordion' style={{ border: '1px solid #dddddd6b ', backgroundColor: '#dddddd6b', fontFamily: 'Yekan' }}>
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span>
-              {statusCounter(found)}
-              {/* {(() => {
-              if(filteredTicketsMoney.length ==0 && filteredTicketsName.length==0){
-                return(
-                  <>
-                  {statusCounter(found)}
-                  </>
-                  )
-              }else if(filteredTicketsMoney.length !==0 && filteredTicketsName.length ==0){
-                return(
-                  <>
-                  {statusCounter(filteredTicketsMoney)}
-                  </>
-                  )
-              }else if(filteredTicketsName.length !==0 && filteredTicketsMoney.length ==0){
-                return(
-                  <>
-                  {statusCounter(filteredTicketsName)}
-                  </>
-                  )
-              }
-              else{
-                return(
-                  <>
-                  {statusCounter(found)}
-                  </>
-                  )
-              }
+              {/* {statusCounter(found)} */}
 
-              })()} */}
+              {(() => {
+                if (filteredTicketsMoney.length == 0 && filteredTicketsName.length == 0) {
+                  return (
+                    <>
+                      تعداد نتایج : {statusCounter(found)}
+
+                    </>
+                  )
+                } else if (filteredTicketsMoney.length !== 0 && filteredTicketsName.length == 0) {
+                  return (
+                    <>
+                      تعداد نتایج:  {statusCounter(filteredTicketsMoney)}
+
+                    </>
+                  )
+                } else if (filteredTicketsName.length !== 0 && filteredTicketsMoney.length == 0) {
+                  return (
+                    <>
+                      تعداد نتایج: {statusCounter(filteredTicketsName)}
+
+                    </>
+                  )
+                } else {
+                  return (
+                    null
+                  )
+                }
+              })()}
             </span>
             <button className='btn btn-sm btn-outline-danger' onClick={reset}>لغو فیلتر‌ها</button>
           </div>
           <div>
             {money == null
               ? null
-              : <div className='border border-1 border-secondary w-25 mx-3 my-2 px-1 rounded-3'>
-                <span>قیمت{money}</span>
+              : <div className='border border-1 border-secondary w-50 mx-3 my-2 px-1 rounded-3'>
+                <span>
+                  قیمت{money}
+                </span>
                 <i onClick={resetMoney} className='fa fa-close text-danger ' />
                 </div>}
-            {/* {search !==''
-              ? <div className='border border-1 border-secondary w-25 mx-3 my-2 px-1 rounded-3'>
-              <span>نام{search}</span>
-              <i onClick={resetName} className='fa fa-close text-danger ' />
-              </div>
-              :null } */}
+            {search == null
+              ? null
+              : <div className='border border-1 border-secondary w-50 mx-3 my-2 px-1 rounded-3'>
+                <span>
+                  نام : {search}
+                </span>
+                <i onClick={resetName} className='fa fa-close text-danger ' />
+              </div>}
 
           </div>
 
         </div>
 
-        <div className='accordion-item border-0 '>
+        <div className='accordion-item  '>
 
-          <h2 className='accordion-header' id='headingtwo'>
+          <h2 className='accordion-header ' id='headingtwo'>
             <button
               className={classnames('fw-medium', 'text-end', 'border-0', {
                 collapsed: !col1
@@ -270,9 +266,8 @@ const Filter = (props) => {
                 width: '100%',
                 padding: '0.9rem 1.25rem',
                 fontSize: '1.01125rem',
-                color: '#405057',
+                color: '#405057'
                 // boxShadow: '0 0 4px 1px #ddd',
-                border: '1px solid red'
 
               }}
             >

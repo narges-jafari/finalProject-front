@@ -4,26 +4,20 @@ import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
-import { useLazyQuery, useQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 import flightQueries from '../../../Apollo/Query/flightQueries'
 import styles from '../../../assets/styles/Transport.module.css'
 import AirplanePassenger from '../Passenger/AirplanePassenger'
-import {
-  FLIGHT_ORIGINNAME,
-  FLIGHT_DATE,
-  FLIGHT_DESNAME,
-  FLIGHT_CLASS
-
-} from '../../../constants/auth'
 
 const AirplanSearch = () => {
+  // STATES
   const [destinationname, setDestinationname] = useState('')
   const [originname, setOriginname] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
   const [showPassenger, setShowPassenger] = useState([])
   const [showClass, setShowClass] = useState([])
-
+  // ACCORDIAN TOGGLE FUNCTION
   const toggleCol1 = () => {
     setCol1(!col1)
   }
@@ -35,7 +29,7 @@ const AirplanSearch = () => {
   const handleClass = useCallback((name) => {
     setShowClass(name)
   }, [])
-
+  // apollo query
   const [SearchFlight] = useLazyQuery(flightQueries.SEARCHFLIGHT)
 
   const handleSearch = () => {

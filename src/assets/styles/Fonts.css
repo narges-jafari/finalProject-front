@@ -20,9 +20,44 @@
     }
 
     @font-face {
+        font-family: Vazir;
+        font-style: normal;
+        font-weight: bold;
+        src: url("../fonts/Vazir-Thin.eot");
+        src: url("../fonts/Vazir-Thin.woff") format("woff"),
+          url("../fonts/Vazir-Thin.ttf") format("ttf"),
+          url("../fonts/Vazir-Thin.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: Vazir;
+        font-style: normal;
+        font-weight: bold;
+        src: url("../fonts/Vazir-Light.eot");
+        src: url("../fonts/Vazir-Light.woff") format("woff"),
+          url("../fonts/Vazir-Light.ttf") format("ttf"),
+          url("../fonts/Vazir-Light.woff2") format("woff2");
+      }
+      
+      @font-face {
+        font-family: Vazir;
+        font-style: normal;
+        font-weight: bold;
+        src: url("../fonts/Vazir-Regular-FD.eot");
+        src: url("../fonts/Vazir-Regular-FD.woff") format("woff"),
+          url("../fonts/Vazir-Regular-FD.ttf") format("ttf"),
+          url("../fonts/Vazir-Regular-FD.woff2") format("woff2");
+      }
+
+    @font-face {
         font-family: Yekan;
        src: url('../fonts/Yekan.ttf') format('truetype');
         font-weight: bold;
         font-style: normal;
         }
+        @font-face {
+            font-family: IRANSans;
+           src: url('../fonts/Iranian\ Sans.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+            }
         

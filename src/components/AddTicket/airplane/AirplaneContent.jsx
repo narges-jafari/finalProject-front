@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import { useMutation } from '@apollo/client'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
@@ -43,19 +43,9 @@ const AirplaneContent = (props) => {
     property: [],
     response: []
   })
-  const [showData, setShowData] = useState([])
 
   // REF
   const firstUpdate = useRef(true)
-
-  // get day
-  // const dayOfWeekName = new Date(startDate).toLocaleString(
-  //   'fa-IR', {weekday: 'long'})
-  //   console.log(dayOfWeekName);
-
-  // const dayOfWeekName = new Date(startDate).toLocaleString(
-  //   'fa-IR', {weekday: 'long'})
-  //   console.log(dayOfWeekName);
 
   // FUNCTION FOR CHECKBOXES
   const handleChange = (e) => {
@@ -78,8 +68,7 @@ const AirplaneContent = (props) => {
     }
   }
 
-  // const rows = [];
-
+  // FUNCTION FOR RESET
   const resetFields = () => {
     setDestinationName('')
     setOriginName('')
@@ -92,21 +81,14 @@ const AirplaneContent = (props) => {
     setArrivalTime('')
     setAirplaneModel('')
     setFlightNumber('')
-    setCapacity('')
     setShowAirplaneCompany('')
     setFlightClass('')
     setAllowedLoggage('')
   }
 
-  // useEffect(() => {
-  //   console.log(userinfo.property);
-  // }, [userinfo.property]);
-
   const userid = window.localStorage.getItem(USER_ID)
-  // const capacityf = window.localStorage.getItem(FLIGHT_CAPACITY)
 
-  // console.log(checkedItems)
-
+  // APOLLO MUTATION
   const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
 
   const handleCreateAlert = (e) => {
@@ -128,7 +110,6 @@ const AirplaneContent = (props) => {
           flightClass: flightClass,
           airplaneCompany: showairplaneCompany,
           allowedLoggage: parseInt(allowedLoggage),
-          // airline:airline,
           information: userinfo.response,
           creator: JSON.parse(userid)
 
@@ -152,24 +133,12 @@ const AirplaneContent = (props) => {
     }
   }
 
-  // console.log(userinfo.response,'kksdjfh')
-
-  const handleshow = useCallback((data) => {
-    setShowData(data)
-  }, [])
-
-  //   for (let i = 0; i <capacityf ; i++) {
-  //      rows.push(<SeatNumber
-  //       datas={handleshow}
-
-  //        key={i} />);
-  // }
-
-  // validation
+  // VALIDATIONS
+  // originName validation
   function isValidName (email) {
     return /^[\u0600-\u06FF\s]+$/.test(email)
   }
-  // originName validation
+
   const handlename = event => {
     if (!isValidName(event.target.value)) {
       setError('باید زبان کیبورد را عوض کنید!')
@@ -220,7 +189,7 @@ const AirplaneContent = (props) => {
 
     setDestinationAirport(event.target.value)
   }
-
+  // airplaneModel validation
   const handlename4 = event => {
     if (!isValidName(event.target.value)) {
       setError6('فقط حروف الفبای فارسی مجاز هست')
@@ -233,7 +202,7 @@ const AirplaneContent = (props) => {
     setAirplaneModel(event.target.value)
   }
 
-  // ^\d{1-6}$
+  // capacity validation
   function isValidCapacity (cp) {
     return /^\d$/.test(cp)
   }
@@ -247,11 +216,10 @@ const AirplaneContent = (props) => {
 
     setCapacity(event.target.value)
   }
-
+  // flightNumber validation
   function isValidClass (item) {
     return /^[2-9][0-9]{3}$/.test(item)
   }
-  // originName validation
   const handlFlightClass = event => {
     if (!isValidClass(event.target.value)) {
       setError5('باید اعداد بین 2000تا9999 را وارد کنید')
@@ -262,10 +230,10 @@ const AirplaneContent = (props) => {
     setFlightNumber(event.target.value)
   }
 
+  // allowedLoggage validation
   function isValidWeight (item) {
     return /^[0-9]{2}$/.test(item)
   }
-  // originName validation
   const handlWeight = event => {
     if (!isValidWeight(event.target.value)) {
       setError7('باید اعداد بین 99-10 را وارد کنید')
@@ -275,11 +243,10 @@ const AirplaneContent = (props) => {
 
     setAllowedLoggage(event.target.value)
   }
-
+  // times validation
   function isValidftime (item) {
     return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(item)
   }
-  // originName validation
   const handlfTime = event => {
     if (!isValidftime(event.target.value)) {
       setError8(' فرمت صحیح HH:MM است ')
@@ -292,7 +259,6 @@ const AirplaneContent = (props) => {
   function isValidsTime (item) {
     return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(item)
   }
-  // originName validation
   const handlesTime = event => {
     if (!isValidsTime(event.target.value)) {
       setError9(' فرمت صحیح HH:MM است ')
@@ -302,11 +268,11 @@ const AirplaneContent = (props) => {
 
     setArrivalTime(event.target.value)
   }
+  // price validation
 
   function isValidsPrice (item) {
     return /^[+-]?([0-9]*[.])?[0-9]+$/.test(item)
   }
-  // originName validation
   const handlePrice = event => {
     if (!isValidsPrice(event.target.value)) {
       setError10('فرمت وارد شده صحیح نیست')
@@ -316,10 +282,6 @@ const AirplaneContent = (props) => {
 
     setPrice(event.target.value)
   }
-
-  const flightid = window.localStorage.getItem(FLIGHT_ID)
-
-  // console.log(flightid,'jjjjjjjjjjj')
 
   return (
     <>
@@ -429,7 +391,7 @@ const AirplaneContent = (props) => {
               defaultValue=''
               calendarPosition='bottom-right'
               placeholder='تاریخ پرواز'
-              format='YYYY-MM-DD'
+              format='YYYY/MM/DD'
             />
             {startDate == null
               ? <>

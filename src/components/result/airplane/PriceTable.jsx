@@ -1,26 +1,30 @@
 import React from 'react'
-// import ReactTooltip from 'react-tooltip'
-import { Table } from 'reactstrap'
-// import styles from '../../../assets/styles/IndicatorTable.module.css'
-// import IndicatorModal from './IndicatorModal.jsx'
-// import ReactHTMLTableToExcel from 'react-html-table-to-excel'
-import { Modal } from 'reactstrap'
+import { Table, Modal } from 'reactstrap'
+
 import HelpTable from './HelpTable'
+import logo1 from '../../../assets/img/logo6.JPG'
+import logo2 from '../../../assets/img/logo5.JPG'
+import logo3 from '../../../assets/img/logo2.JPG'
+import logo4 from '../../../assets/img/logo3.JPG'
+import logo5 from '../../../assets/img/logo4.JPG'
+import logo6 from '../../../assets/img/logo1.JPG'
 
 const setCellColor = (cell) => {
+  // FUNCTION FOR SET COLORS
   const cellValue = parseFloat(cell)
-  if (cellValue < 2500000) {
+  if (cellValue < 500000) {
     return { backgroundColor: '#34C38F' }
-  } else if ((cellValue > 2500000) & (cellValue < 3500000)) {
+  } else if ((cellValue > 500000) & (cellValue < 1000000)) {
     return { backgroundColor: '#84D4B7' }
-  } else if ((cellValue > 3500000) & (cellValue < 6500000)) {
+  } else if ((cellValue > 1000000) & (cellValue < 1500000)) {
     return { backgroundColor: 'rgba(128, 128, 128, 0.148)' }
-  } else if (cellValue > 7500000) {
+  } else if (cellValue > 1700000) {
     return { backgroundColor: '#F46A6A' }
-  } else if ((cellValue > 6500000) & (cellValue < 7500000)) {
+  } else if ((cellValue > 1500000) & (cellValue < 1700000)) {
     return { backgroundColor: '#FFA2A2' }
   }
 }
+
 const PriceTable = (props) => {
   return (
     <>
@@ -33,7 +37,7 @@ const PriceTable = (props) => {
         size='lg-sm'
       >
         <div className='modal-header py-2'>
-          <h6 className='modal-title mt-0'> مشاهده قیمت ها </h6>
+          <h6 className='modal-title mt-0'>   مقایسه قیمت‌ها </h6>
           <button
             type='button'
             onClick={() => {
@@ -68,48 +72,310 @@ const PriceTable = (props) => {
 
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                {(() => {
+                  if (props.priceInfo.length == 0 && props.nameInfo.length == 0) {
+                    return (
+                      <>
+                        {props.showInfo.map((item, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
 
-                    <td>ایران ایرتور</td>
-                    <td style={setCellColor(1150000)}>1450000</td>
-                    <td>12:43بعد ازظهر</td>
-                  </tr>
-                  <tr>
+                                <td>
 
-                    <td>زاگرس </td>
-                    <td style={setCellColor(6100000)}>4450000</td>
-                    <td>12:45بعد ازظهر</td>
-                  </tr>
+                                  {(() => {
+                                    if (item.airplaneCompany.includes('   ایران ایر تور')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo1} />
+                                          {item.airplaneCompany}
+                                        </div>
 
-                  <tr>
-                    <td>تابان</td>
-                    <td style={setCellColor(7600000)}>1200000</td>
-                    <td>5:10قبل از ظهر</td>
-                  </tr>
-                  <tr>
-                    <td>کیش</td>
-                    <td style={setCellColor(6100000)}>5670000</td>
-                    <td>7:40قبل از ظهر</td>
-                  </tr>
-                </tbody>
+                                      )
+                                    } else if (item.airplaneCompany.includes('آسمان')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo2} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('تابان')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo3} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('کاسپین')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo4} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('کیش')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo5} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('زاگرس')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo6} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else {
+                                      return null
+                                    }
+                                  })()}
+                                </td>
+                                <td style={setCellColor(item.price)}>{item.price}</td>
+                                <td>{item.departureTime} </td>
+                              </tr>
+
+                            </tbody>
+                          )
+                        })}
+                      </>
+                    )
+                  } else if (props.priceInfo.length !== 0 && props.nameInfo.length == 0) {
+                    return (
+                      <>
+                        {props.priceInfo.map((item, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+
+                                <td>
+
+                                  {(() => {
+                                    if (item.airplaneCompany.includes('   ایران ایر تور')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo1} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('آسمان')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo2} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('تابان')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo3} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('کاسپین')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo4} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('کیش')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo5} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('زاگرس')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo6} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else {
+                                      return null
+                                    }
+                                  })()}
+                                </td>
+                                <td style={setCellColor(item.price)}>{item.price}</td>
+                                <td>{item.departureTime} </td>
+                              </tr>
+
+                            </tbody>
+                          )
+                        })}
+                      </>
+                    )
+                  } else if (props.priceInfo.length == 0 && props.nameInfo.length !== 0) {
+                    return (
+                      <>
+                        {props.nameInfo.map((item, index) => {
+                          return (
+                            <tbody key={index}>
+                              <tr>
+
+                                <td>
+
+                                  {(() => {
+                                    if (item.airplaneCompany.includes('   ایران ایر تور')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo1} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('آسمان')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo2} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('تابان')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo3} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('کاسپین')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo4} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('کیش')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo5} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else if (item.airplaneCompany.includes('زاگرس')) {
+                                      return (
+                                        <div>
+                                          <img style={{ width: '40px', height: '40px', borderRadius: '50%' }} src={logo6} />
+                                          {item.airplaneCompany}
+                                        </div>
+
+                                      )
+                                    } else {
+                                      return null
+                                    }
+                                  })()}
+                                </td>
+                                <td style={setCellColor(item.price)}>{item.price}</td>
+                                <td>{item.departureTime} </td>
+                              </tr>
+
+                            </tbody>
+                          )
+                        })}
+                      </>
+                    )
+                  } else {
+                    return null
+                  }
+                })()}
+                {/* {props.showInfo.map((item,index)=>{
+                  return(
+                    <tbody key={index}>
+                    <tr>
+
+                      <td>
+
+                      {(() => {
+                        if( item.airplaneCompany.includes('   ایران ایر تور')){
+                          return(
+                            <div>
+                               <img style={{width:'40px',height:'40px',borderRadius:'50%'}} src={logo1}/>
+                            {item.airplaneCompany}
+                            </div>
+
+                            )
+                        }
+                         else if(item.airplaneCompany.includes('آسمان')){
+                          return(
+                            <div>
+                               <img style={{width:'40px',height:'40px',borderRadius:'50%'}} src={logo2}/>
+                            {item.airplaneCompany}
+                            </div>
+
+                            )
+                        }
+                        else if( item.airplaneCompany.includes('تابان')){
+                          return(
+                            <div>
+                               <img style={{width:'40px',height:'40px',borderRadius:'50%'}} src={logo3}/>
+                            {item.airplaneCompany}
+                            </div>
+
+                            )
+                        }
+                        else if(item.airplaneCompany.includes('کاسپین')){
+                          return(
+                            <div>
+                               <img style={{width:'40px',height:'40px',borderRadius:'50%'}} src={logo4}/>
+                            {item.airplaneCompany}
+                            </div>
+
+                            )
+                        }
+                        else if(item.airplaneCompany.includes('کیش')){
+                          return(
+                            <div>
+                               <img style={{width:'40px',height:'40px',borderRadius:'50%'}} src={logo5}/>
+                            {item.airplaneCompany}
+                            </div>
+
+                            )
+                        }
+                        else if(item.airplaneCompany.includes('زاگرس')){
+                          return(
+                            <div>
+                               <img style={{width:'40px',height:'40px',borderRadius:'50%'}} src={logo6}/>
+                            {item.airplaneCompany}
+                            </div>
+
+                            )
+                        }else {
+                          return null
+                        }
+
+                         })()}
+                         </td>
+                      <td style={setCellColor(item.price)}>{item.price}</td>
+                      <td>{item.departureTime} </td>
+                    </tr>
+
+                  </tbody>
+                  )
+                })} */}
+
               </Table>
             </div>
           </div>
         </div>
-        <div className='modal-footer d-flex justify-content-center border-0'>
-          <button
-            type='button'
-            className='btn bg-white text-dark border border-1 border-primary py-1'
-            onClick={() => {
-              props.setIsOpen(false)
-            }}
-            data-dismiss='modal'
-          >
-            بستن
-          </button>
-
-        </div>
+        <div className='modal-footer d-flex justify-content-center border-0' />
 
       </Modal>
 

@@ -1,16 +1,15 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
 import TrainPassenger from '../Passenger/TrainPassenger '
-
-// import styles from '../../../assets/styles/HotelSearch.module.css'
-
 import styles from '../../../assets/styles/Transport.module.css'
-
+import { useLazyQuery } from '@apollo/client'
+import trainQueries from '../../../Apollo/Query/trainQueries'
 const TrainSearch = () => {
+  // STATES
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
   const [startDate, setStartDate] = useState(new Date())
@@ -18,6 +17,7 @@ const TrainSearch = () => {
   const [showClass, setShowClass] = useState([])
   const [col1, setCol1] = useState(false)
 
+  // ACCORDIAN TOGGLE FUNCTION
   const toggleCol1 = () => {
     setCol1(!col1)
   }
@@ -29,6 +29,33 @@ const TrainSearch = () => {
   const handleClass = useCallback((name) => {
     setShowClass(name)
   }, [])
+
+  // apollo query
+  const [SearchTrain] = useLazyQuery(trainQueries.SEARCHTRAIN)
+
+  const handleSearch = () => {
+    SearchTrain({
+      variables: {
+        originName: originName,
+        destinationName: destinationName,
+        hallType: showClass,
+        date: startDate.toString()
+
+      }
+    })
+      .then(({ data }) => {
+        if (data.searchTrain !== null) {
+          window.location.href = '/resulttrain'
+        }
+      })
+  }
+  useEffect(() => {
+    { window.localStorage.setItem('TrainOriginName', originName)
+    };
+    { window.localStorage.setItem('TrainDestinationName', JSON.stringify(destinationName)) }
+    { window.localStorage.setItem('TrainDate', JSON.stringify(startDate.toString())) }
+    { window.localStorage.setItem('TrainClass', JSON.stringify(showClass)) }
+  }, [originName, destinationName, showClass, startDate])
 
   return (
     <>
@@ -42,7 +69,6 @@ const TrainSearch = () => {
             className={styles.transportInputCss}
           />
 
-          {originName}
         </div>
         <div className='mx-2 my-2'>
 
@@ -53,7 +79,6 @@ const TrainSearch = () => {
             className={styles.transportInputCss}
           />
 
-          {destinationName}
         </div>
         <div className='mx-2 my-2 '>
           <DatePicker
@@ -109,7 +134,13 @@ const TrainSearch = () => {
         </div>
       </div>
       <div style={{ margin: '30px auto', width: '73%' }}>
-        <button className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}>جستجو</button>
+
+        <button
+          onClick={handleSearch}
+
+          className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}
+        >جستجو
+        </button>
       </div>
     </>
   )

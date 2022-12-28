@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Row, Col, CardBody, Card, Container, Label } from 'reactstrap'
 
@@ -9,13 +9,13 @@ import userMutations from '../../Apollo/Mutation/userMutations'
 import registerimg from '../../assets/img/Capturedjdsk.JPG'
 import { toast } from 'react-toastify'
 import {
-  AUTH_USERINFO,
   AUTH_TOKEN,
   USER_ID
 
 } from '../../constants/auth'
 
 const RegisterForm = () => {
+  // apollo mutation
   const [register, { data, loading }] = useMutation(userMutations.CREATEUSER)
   if (!loading && data) {
     if (data.createUser == null) {

@@ -14,16 +14,17 @@ import img1 from '../../../assets/img/bg/Captureddddkkk.JPG'
 import classnames from 'classnames'
 import Nav from 'react-bootstrap/Nav'
 const Info = (props) => {
+  // STATES
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
+  const [airplaneItem1, setAirplaneItem1] = useState([])
+  const [airplaneItem2, setAirplaneItem2] = useState([])
 
   // Toggle active state for Tab
   const toggle = tab => {
     if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
 
-  const [airplaneItem1, setAirplaneItem1] = useState([])
-  const [airplaneItem2, setAirplaneItem2] = useState([])
-
+  // APOLLO QUERY
   useQuery(flightQueries.SEARCH, {
     variables: {
       id: props.info
@@ -38,8 +39,6 @@ const Info = (props) => {
       setAirplaneItem2([])
     }
   })
-
-  console.log(airplaneItem2, ';;;;;;;;;;')
 
   return (
     <Modal

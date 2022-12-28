@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import styles from '../../../assets/styles/HotelSearch.module.css'
@@ -6,13 +6,19 @@ import DatePicker from 'react-multi-date-picker'
 import HotelPassenger from '../Passenger/HotelPassenger '
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
+import { useLazyQuery, useQuery } from '@apollo/client'
+import hotelQueries from '../../../Apollo/Query/hotelQueries'
 
 const HotelSearch = () => {
-  const [hotelName, setHotelName] = useState()
+  // STATES
+  const [hotelName, setHotelName] = useState('')
   const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
   const [showPassenger, setShowPassenger] = useState([])
   const [showRoom, setShowRoom] = useState([])
+
+  // ACCORDIAN TOGGLE FUNCTION
 
   const toggleCol1 = () => {
     setCol1(!col1)
@@ -25,6 +31,32 @@ const HotelSearch = () => {
   const handleRoom = useCallback((room) => {
     setShowRoom(room)
   }, [])
+  // apollo query
+
+  const [SearchHotel] = useLazyQuery(hotelQueries.SEARCHHOTEL)
+
+  const handleSearch = () => {
+    SearchHotel({
+      variables: {
+        city: hotelName,
+        startDate: startDate.toString(),
+        endDate: endDate.toString()
+
+      }
+    })
+      .then(({ data }) => {
+        if (data.searchHotel !== null) {
+          window.location.href = '/resulthotel'
+        }
+      })
+  }
+
+  useEffect(() => {
+    { window.localStorage.setItem('HotelName', hotelName)
+    };
+    { window.localStorage.setItem('HotelStartDate', JSON.stringify(startDate.toString())) }
+    { window.localStorage.setItem('HotelEndDate', JSON.stringify(endDate.toString())) }
+  }, [hotelName, startDate, endDate])
 
   return (
     <>
@@ -33,7 +65,7 @@ const HotelSearch = () => {
 
           <input
             type='text'
-            placeholder='نام هتل'
+            placeholder='نام شهر'
             value={hotelName}
             onChange={e => setHotelName(e.target.value)}
             className={styles.hotelInputCss}
@@ -53,8 +85,8 @@ const HotelSearch = () => {
         </div>
         <div className='mx-2 my-2 '>
           <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
             calendar={persian}
             inputClass={styles.inputDateCss}
             locale={persianfa}
@@ -108,7 +140,11 @@ const HotelSearch = () => {
 
       </div>
       <div style={{ margin: '30px auto', width: '73%' }}>
-        <button className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}>جستجو</button>
+        <button
+          onClick={handleSearch}
+          className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}
+        >جستجو
+        </button>
       </div>
 
     </>

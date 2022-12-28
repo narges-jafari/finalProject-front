@@ -1,6 +1,43 @@
-import styles from '../../../assets/styles/FastSearch.module.css'
+import React, { useState, useCallback } from 'react'
 
+import styles from '../../../assets/styles/FastSearch.module.css'
+import { useQuery } from '@apollo/client'
+import hotelQueries from '../../../Apollo/Query/hotelQueries'
 const HotelFast = () => {
+  const [data, setData] = useState([])
+
+  const today = new Date()
+  console.log('today => ', today)
+  const tomorrow = new Date()
+  tomorrow.setDate(today.getDate() + 1)
+  console.log('tomorrow => ', tomorrow, today)
+  const dayOfWeekName = new Date(tomorrow).toLocaleString(
+    'fa-IR', { weekday: 'long' })
+  const day = new Date(tomorrow).toLocaleString('fa-IR', { day: '2-digit' })
+  const month = new Date(tomorrow).toLocaleString('fa-IR', { month: '2-digit' })
+  const string1 = '۱۴۰۱' + '/' + month + '/' + day
+  const monthNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
+    'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
+  ]
+  const Num = string1.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+
+  const month1 = new Date(Num)
+  const monthName = monthNames[month1.getMonth()]
+
+  // apollo query
+  useQuery(hotelQueries.SEARCHHOTELBYDATE, {
+    variables: {
+      startDate: string1
+    },
+
+    onCompleted: (res) => {
+      setData(res.searchHotelbyDate)
+    },
+    onError: () => {
+      setData([])
+    }
+  })
+
   return (
     <>
       <div className={styles.headerCss}>
@@ -12,106 +49,26 @@ const HotelFast = () => {
       <div className='d-flex flex-column  justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
 
         <div className={styles.content}>
-          <div className={styles.contentItem}>
-            <div className={styles.contentItem1}>
-              <span>هتل استقلال </span>
-              <i className='fa fa-hotel ' />
-              <span> تهران </span>
-            </div>
-            <div className={styles.contentItem2}>
-              <span> شنبه 20 مرداد </span>
+          {data.slice(0, 6).map((item, index) => (
 
-            </div>
-            <div className={styles.contentItem3}>
-              <span className='px-4'>  قیمت برای یک نفر  </span>
-              <span className={styles.moneyfont}>438000تومان</span>
+            <div key={index} className={styles.contentItem}>
+              <div className={styles.contentItem1}>
+                <span>{item.name} </span>
+                <i className='fa fa-hotel ' />
+                <span> {item.city} </span>
+              </div>
+              <div className={styles.contentItem2}>
+                <span>  {dayOfWeekName + day + monthName}  </span>
 
-            </div>
-          </div>
-          <div className={styles.contentItem}>
-            <div className={styles.contentItem1}>
-              <span>هتل استقلال </span>
-              <i className='fa fa-hotel ' />
-              <span> تهران </span>
-            </div>
-            <div className={styles.contentItem2}>
-              <span> شنبه 20 مرداد </span>
+              </div>
+              <div className={styles.contentItem3}>
+                <span className='px-4'>  قیمت برای یک نفر  </span>
+                <span className={styles.moneyfont}>{item.price}</span>
 
+              </div>
             </div>
-            <div className={styles.contentItem3}>
-              <span className='px-4'>  قیمت برای یک نفر  </span>
-              <span className={styles.moneyfont}>438000تومان</span>
 
-            </div>
-          </div>
-          <div className={styles.contentItem}>
-            <div className={styles.contentItem1}>
-              <span>هتل استقلال </span>
-              <i className='fa fa-hotel ' />
-              <span> تهران </span>
-            </div>
-            <div className={styles.contentItem2}>
-              <span> شنبه 20 مرداد </span>
-
-            </div>
-            <div className={styles.contentItem3}>
-              <span className='px-4'>  قیمت برای یک نفر  </span>
-              <span className={styles.moneyfont}>438000تومان</span>
-
-            </div>
-          </div>
-
-        </div>
-        <div className={styles.content}>
-          <div className={styles.contentItem}>
-            <div className={styles.contentItem1}>
-              <span>هتل استقلال </span>
-              <i className='fa fa-hotel ' />
-              <span> تهران </span>
-            </div>
-            <div className={styles.contentItem2}>
-              <span> شنبه 20 مرداد </span>
-
-            </div>
-            <div className={styles.contentItem3}>
-              <span className='px-4'>  قیمت برای یک نفر  </span>
-              <span className={styles.moneyfont}>438000تومان</span>
-
-            </div>
-          </div>
-          <div className={styles.contentItem}>
-            <div className={styles.contentItem1}>
-              <span>هتل استقلال </span>
-              <i className='fa fa-hotel ' />
-              <span> تهران </span>
-            </div>
-            <div className={styles.contentItem2}>
-              <span> شنبه 20 مرداد </span>
-
-            </div>
-            <div className={styles.contentItem3}>
-              <span className='px-4'>  قیمت برای یک نفر  </span>
-              <span className={styles.moneyfont}>438000تومان</span>
-
-            </div>
-          </div>
-          <div className={styles.contentItem}>
-            <div className={styles.contentItem1}>
-              <span>هتل استقلال </span>
-              <i className='fa fa-hotel ' />
-              <span> تهران </span>
-            </div>
-            <div className={styles.contentItem2}>
-              <span> شنبه 20 مرداد </span>
-
-            </div>
-            <div className={styles.contentItem3}>
-              <span className='px-4'>  قیمت برای یک نفر  </span>
-              <span className={styles.moneyfont}>438000تومان</span>
-
-            </div>
-          </div>
-
+          ))}
         </div>
 
       </div>

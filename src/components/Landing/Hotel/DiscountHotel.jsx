@@ -14,7 +14,6 @@ const DiscountHotel = () => {
             <i className='fa fa-star text-danger fa-lg' />
             <i className='fa fa-star text-danger fa-lg' />
 
-            {/* <i className='fa fa-star-half-full text-danger fa-lg' /> */}
           </div>
           <img src={img} className=' px-0 py-0' />
           <span className='text-center mt-2'>هتل پارسیان استقلال</span>
@@ -48,7 +47,6 @@ const DiscountHotel = () => {
             <i className='fa fa-star text-danger fa-lg' />
             <i className='fa fa-star text-danger fa-lg' />
 
-            {/* <i className='fa fa-star-half-full text-danger fa-lg' /> */}
           </div>
           <img src={img} className=' px-0 py-0' />
           <span className='text-center mt-2'>هتل پارسیان استقلال</span>

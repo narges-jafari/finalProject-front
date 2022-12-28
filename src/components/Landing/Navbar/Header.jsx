@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import styles from '../../../assets/styles/HeaderLanding.module.css'
 import { FcHome, FcPlus, FcManager, FcMindMap } from 'react-icons/fc'
-import { useQuery } from '@apollo/client'
-import userQueries from '../../../Apollo/Query/userQueries'
-import { useNavigate } from 'react-router-dom'
 
 const Header = (props) => {
   const [show, setShow] = useState(false)

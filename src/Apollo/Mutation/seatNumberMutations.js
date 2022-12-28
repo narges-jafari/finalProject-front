@@ -22,6 +22,30 @@ number
 }
 }
     
+  `,
+  ADDTRAINSEATNUMBER: gql`
+  mutation addSeatNumberTrain(
+    $number:Int!
+    $train:String!
+    $trainCompartment:Int!
+   $hallDegree:String!
+   $hallNumber:String!
+  ){
+    addSeatNumberTrain(
+      seatnumberTrainInput:{
+        number: $number,
+        trainCompartment:$trainCompartment,
+      hallDegree:$hallDegree,
+      hallNumber:$hallNumber,
+     train: $train
+    
+  }
+  )
+{
+number
+}
+}
+    
   `
 
 }

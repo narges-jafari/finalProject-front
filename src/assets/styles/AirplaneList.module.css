@@ -55,10 +55,21 @@
     display: flex;
     flex-direction: column;  
     justify-content: space-between;
-    width: 65%;
+    width: 100%;
     /* border: 4px solid green; */
 
 
+}
+
+/* .hotelCss{
+    border: 1px solid red;
+} */
+
+.titleCss{
+    font-weight: bold;
+    font-family: Vazir;
+    font-size: 20px;
+    margin:20px 30px
 }
 
 .modalCssContent1{
@@ -102,13 +113,74 @@
     margin:20px 0px   
 }
 
-.content1{
+.contenttrain{
+    display:flex ;
+    flex-direction: row;
+    flex-wrap:wrap;
+    color:#000;
+    font-family: Vazir;
+    width:60%;
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    border-radius:19px;
+    margin:20px auto 
+}
+
+.contenthotel1{
     display:flex ;
     flex-direction: column;
     flex-wrap:wrap;
     color:#000;
     font-family: Vazir;
     width:70%;
+
+    border-radius:19px;
+
+}
+
+.contenttrain11{
+    color:#000;
+    font-family: Vazir;
+    width:60%;
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    border-radius:19px;
+    margin:20px auto ;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+
+
+}
+
+
+
+.imgboxcss{
+    width: 30%;
+}
+
+.hotelimg{
+    width:100%;
+    height: 100%;
+
+    border-radius:19px;
+
+}
+
+.addresCss{
+    width: 12.5em; /* the element needs a fixed width (in px, em, %, etc) */
+    overflow: hidden; /* make sure it hides the content that overflows */
+    white-space: nowrap; /* don't break the line */
+    text-overflow: ellipsis; 
+}
+
+.content1{
+    display:flex ;
+    flex-direction: column;
+    flex-wrap:wrap;
+    color:#000;
+    font-family: Vazir;
+    width:80%;
     /* background: red; */
     box-shadow: 0px -1px 8px #1a1a1a1f;
     border-radius:19px;
@@ -212,6 +284,18 @@ margin:10px 0px
     font-weight: bold;
     border-left: 1px solid #92919162;
     padding:1px 10px
+}
+
+.headerCsshotel{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fontCss11{
+    font-size: 16px;
+    font-weight: bold;
+    padding:1px 10px ;
+    margin: 40px 10px 0px 0px;
 }
 .clockcss{
     font-size: 20px;

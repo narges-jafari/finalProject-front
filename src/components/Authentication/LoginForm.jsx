@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, Col, Container, Row, Label } from 'reactstrap'
+import { Card, CardBody, Col, Container, Row } from 'reactstrap'
 import loginimg from '../../assets/img/Capturedjdsk.JPG'
 import styles from '../../assets/styles/Login.module.css'
 import { useLazyQuery } from '@apollo/client'
@@ -8,14 +8,12 @@ import { toast } from 'react-toastify'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import {
-  AUTH_USERINFO,
   USER_ID,
-  AUTH_TOKEN,
-  USER_INFO
-
+  AUTH_TOKEN
 } from '../../constants/auth'
 
 const LoginForm = () => {
+  // apollo query
   const [Login, { loading, data }] = useLazyQuery(userQueries.LOGIN)
   if (!loading && data) {
     window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))

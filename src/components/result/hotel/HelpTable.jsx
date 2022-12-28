@@ -1,7 +1,4 @@
-import React, { useState } from 'react'
-import classnames from 'classnames'
-import { Collapse } from 'reactstrap'
-// import styles from '../../../assets/styles/HelpTable.module.css'
+import React from 'react'
 
 const HelpTable = () => {
   return (

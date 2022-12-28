@@ -9,16 +9,14 @@ const SeatNumber = (props) => {
   // STATES
 
   const [number, setNumber] = useState(1)
-  const [addNumber] = useMutation(seatNumberMutations.ADDSEATNUMBER)
   const flightid = window.localStorage.getItem(FLIGHT_ID)
-
+  // APOLLO MUTATION
+  const [addNumber] = useMutation(seatNumberMutations.ADDSEATNUMBER)
   const handleAddSeatNumber = (e) => {
     e.preventDefault()
     addNumber({
       variables: {
         number: parseInt(number),
-        state: 2,
-        trainCompartment: 6,
         flight: JSON.parse(flightid)
 
       }

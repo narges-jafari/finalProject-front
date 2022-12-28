@@ -1,37 +1,40 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import styles1 from '../../../assets/styles/AirplaneResult.module.css'
-import Filter from './Filter'
-import Header from './Header'
-import img from '../../../assets/img/logo1.JPG'
 import styles from '../../../assets/styles/AirplaneList.module.css'
-import PriceTable from '../airplane/PriceTable'
 import { FcSalesPerformance } from 'react-icons/fc'
-import Info from './Info'
-import NotFound from './NotFound'
+import moment from 'moment'
 import { useQuery } from '@apollo/client'
 import flightQueries from '../../../Apollo/Query/flightQueries'
+import logo1 from '../../../assets/img/logo6.JPG'
+import logo2 from '../../../assets/img/logo5.JPG'
+import logo3 from '../../../assets/img/logo2.JPG'
+import logo4 from '../../../assets/img/logo3.JPG'
+import logo5 from '../../../assets/img/logo4.JPG'
+import logo6 from '../../../assets/img/logo1.JPG'
+
+import PriceTable from '../airplane/PriceTable'
+import Filter from './Filter'
+import Header from './Header'
+import Info from './Info'
+import NotFound from './NotFound'
 
 const AirplaneResult = () => {
-  const [showEdit, setShowEdit] = useState('')
+  // STATES
   const [showPriceTableModal, setShowPriceTableModal] = useState(false)
   const [showInfoModal, setShowInfoModal] = useState(false)
   const [airplaneItem, setAirplaneItem] = useState([])
   const [clickedItem, setClickedItem] = useState(false)
   const [showSellData, setShowSellData] = useState([])
   const [showSellData1, setShowSellData1] = useState([])
-  const [showSellData2, setShowSellData2] = useState([])
+  const [filteredTicketsDate, setFilteredTicketsDate] = useState([])
 
-  const [objectsToShow] = useState(airplaneItem)
-
+  // FUNCTION FOR GET DATA FROM CHILD
   const handleSellData = useCallback((sell) => {
     setShowSellData(sell)
   }, [])
   const handleSellData1 = useCallback((sell) => {
     setShowSellData1(sell)
   }, [])
-
-  // customeStrategySell
-  console.log(showSellData, 'showdata')
 
   const originName = window.localStorage.getItem('FlightOriginName').replace(/"/g, '')
   const destinationName = window.localStorage.getItem('FlightDestinationName').replace(/"/g, '')
@@ -44,10 +47,9 @@ const AirplaneResult = () => {
   const monthNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
     'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
   ]
+
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-
-  // console.log(originName,destinationName,flightclass,'o')
 
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
@@ -60,16 +62,11 @@ const AirplaneResult = () => {
 
     onCompleted: (res) => {
       setAirplaneItem(res.searchFlight)
-      // console.log(res.searchFlight,'بگرد')
     },
     onError: () => {
       setAirplaneItem([])
     }
   })
-
-  // const newArr = airplaneItem.map((item) => {
-  //   return item.price
-  // })
 
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
@@ -83,7 +80,7 @@ const AirplaneResult = () => {
   }
   const handleChange = (value) => {
     if (value == 'none') {
-      setAirplaneItem([...airplaneItem])
+      setAirplaneItem([...filteredTicketsDate])
     } else if (value) {
       let toType, toAscending
       switch (value) {
@@ -92,25 +89,37 @@ const AirplaneResult = () => {
         case 'high' : toType = false; toAscending = true; break
         case 'low' : toType = false; toAscending = false; break
       }
-      const current = [...airplaneItem]
+      const current = [...filteredTicketsDate]
       current.sort((a, b) => toType
         ? compare(a.price, b.price, toAscending)
         : compare(a.price, b.price, toAscending))
       setAirplaneItem([...current])
     } else {
-      setAirplaneItem([...airplaneItem])
+      setAirplaneItem([...filteredTicketsDate])
     }
   }
-  console.log(showSellData, 'show')
+  const daynum = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const currentDate = '۱۴۰۱' + '/' + daynum + '/' + month
+  const newDate = currentDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+  useEffect(() => {
+    setFilteredTicketsDate(
+      airplaneItem.filter((item) =>
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) > newDate
+      )
+    )
+  }, [airplaneItem])
   return (
     <>
+
       <div className={styles1.headerCss}>
         <Header />
       </div>
+
       <div className={styles1.content}>
         <div className={styles1.filterDiv}>
           <Filter
-            filterItem={airplaneItem}
+            filterItem={filteredTicketsDate}
             customeStrategySell={handleSellData}
             customeStrategySell1={handleSellData1}
           />
@@ -118,7 +127,7 @@ const AirplaneResult = () => {
         <div className={styles1.airCss}>
           <>
 
-            {airplaneItem.length == 0
+            {filteredTicketsDate.length == 0
               ? <NotFound
                   info={showSellData}
                   info1={showSellData1}
@@ -141,9 +150,12 @@ const AirplaneResult = () => {
                     <PriceTable
                       isOpen={showPriceTableModal}
                       setIsOpen={setShowPriceTableModal}
+                      showInfo={filteredTicketsDate}
+                      priceInfo={showSellData}
+                      nameInfo={showSellData1}
                     />
                   )}
-                  <button type='button' className='w-25 py-2 px-0 btn btn-خعفمهدث-primary rounded-3' value='high' onClick={(e) => handleChange(e.target.value)}>
+                  <button type='button' className='w-25 py-2 px-0 btn btn-outline-primary rounded-3' value='high' onClick={(e) => handleChange(e.target.value)}>
                     ارزان‌ترین قیمت
                   </button>
                 </div>
@@ -153,17 +165,64 @@ const AirplaneResult = () => {
                     if (showSellData.length == 0 && showSellData1.length == 0) {
                       return (
                         <div>
-                          {airplaneItem.map((item, index) => {
+                          {filteredTicketsDate.map((item, index) => {
                             return (
                               <div className={styles.content} key={index}>
                                 <div className={styles.contentItem}>
-                                  <div>
-                                    <img src={img} className={styles.imgCss} />
-                                    <span> {item.airplaneCompany} </span>
+                                  <div className='d-flex flex-row flex-wrap '>
+                                    {(() => {
+                                      if (item.airplaneCompany.includes('   ایران ایر تور')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo1} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('آسمان')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo2} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('تابان')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo3} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('کاسپین')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo4} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('کیش')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo5} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('زاگرس')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo6} />
+                                          </div>
+
+                                        )
+                                      } else {
+                                        return null
+                                      }
+                                    })()}
+
+                                    <span className='text-secondary mt-4'><h5>{item.airplaneCompany} </h5> </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -185,7 +244,35 @@ const AirplaneResult = () => {
                                     <span> {dayOfWeekName + day + monthName}   </span>
                                   </div>
                                   <div>
-                                    <span> {new Date().getTime(item.arrivalTime).toString()} </span>
+                                    <span>
+                                      {(() => {
+                                        if (item.arrivalTime) {
+                                          const time1 = moment(item.departureTime, 'hh:mm')
+                                          const time2 = moment(item.arrivalTime, 'hh:mm')
+
+                                          const hours = time1.diff(time2, 'hours')
+                                          time2.add(hours, 'hours')
+
+                                          const minutes = time1.diff(time2, 'minutes')
+                                          time2.add(minutes, 'minutes')
+
+                                          const time3 = moment(hours, 'hh').format('hh')
+                                          const time4 = moment(minutes, 'mm').format('mm')
+
+                                          return (
+                                            <div>
+                                              {time3}ساعت و
+                                              {time4}دقیقه
+                                            </div>
+                                          )
+                                        } else {
+                                          return (
+                                            <div>catch all</div>
+                                          )
+                                        }
+                                      })()}
+
+                                    </span>
                                   </div>
                                   <div>
                                     <span>{item.airportDestination}</span>
@@ -214,7 +301,13 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
+                                  {item.capacity <= 0
+                                    ? <span
+                                        className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                        style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
+                                      > انتخاب
+                                    </span>
+                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
                                 </div>
 
                               </div>
@@ -230,13 +323,59 @@ const AirplaneResult = () => {
                             return (
                               <div className={styles.content} key={index}>
                                 <div className={styles.contentItem}>
-                                  <div>
-                                    <img src={img} className={styles.imgCss} />
-                                    <span> {item.airplaneCompany} </span>
+                                  <div className='d-flex flex-row flex-wrap '>
+                                    {(() => {
+                                      if (item.airplaneCompany.includes('   ایران ایر تور')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo1} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('آسمان')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo2} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('تابان')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo3} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('کاسپین')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo4} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('کیش')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo5} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('زاگرس')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo6} />
+                                          </div>
+
+                                        )
+                                      } else {
+                                        return null
+                                      }
+                                    })()}
+                                    <span className='text-secondary mt-4'><h5>{item.airplaneCompany} </h5> </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}   </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -258,7 +397,35 @@ const AirplaneResult = () => {
                                     <span> {dayOfWeekName + day + monthName}   </span>
                                   </div>
                                   <div>
-                                    <span> {new Date().getTime(item.arrivalTime).toString()} </span>
+                                    <span>
+                                      {(() => {
+                                        if (item.arrivalTime) {
+                                          const time1 = moment(item.departureTime, 'hh:mm')
+                                          const time2 = moment(item.arrivalTime, 'hh:mm')
+
+                                          const hours = time1.diff(time2, 'hours')
+                                          time2.add(hours, 'hours')
+
+                                          const minutes = time1.diff(time2, 'minutes')
+                                          time2.add(minutes, 'minutes')
+
+                                          const time3 = moment(hours, 'hh').format('hh')
+                                          const time4 = moment(minutes, 'mm').format('mm')
+
+                                          return (
+                                            <div>
+                                              {time3}ساعت و
+                                              {time4}دقیقه
+                                            </div>
+                                          )
+                                        } else {
+                                          return (
+                                            <div>catch all</div>
+                                          )
+                                        }
+                                      })()}
+
+                                    </span>
                                   </div>
                                   <div>
                                     <span>{item.airportDestination}</span>
@@ -287,8 +454,13 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
-
+                                  {item.capacity <= 0
+                                    ? <span
+                                        className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                        style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
+                                      > انتخاب
+                                    </span>
+                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
                                 </div>
 
                               </div>
@@ -304,13 +476,59 @@ const AirplaneResult = () => {
                             return (
                               <div className={styles.content} key={index}>
                                 <div className={styles.contentItem}>
-                                  <div>
-                                    <img src={img} className={styles.imgCss} />
-                                    <span> {item.airplaneCompany} </span>
+                                  <div className='d-flex flex-row flex-wrap '>
+                                    {(() => {
+                                      if (item.airplaneCompany.includes('   ایران ایر تور')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo1} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('آسمان')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo2} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('تابان')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo3} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('کاسپین')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo4} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('کیش')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo5} />
+                                          </div>
+
+                                        )
+                                      } else if (item.airplaneCompany.includes('زاگرس')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo6} />
+                                          </div>
+
+                                        )
+                                      } else {
+                                        return null
+                                      }
+                                    })()}
+                                    <span className='text-secondary mt-4'><h5>{item.airplaneCompany} </h5> </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -332,7 +550,35 @@ const AirplaneResult = () => {
                                     <span> {dayOfWeekName + day + monthName}   </span>
                                   </div>
                                   <div>
-                                    <span> {new Date().getTime(item.arrivalTime).toString()} </span>
+                                    <span>
+                                      {(() => {
+                                        if (item.arrivalTime) {
+                                          const time1 = moment(item.departureTime, 'hh:mm')
+                                          const time2 = moment(item.arrivalTime, 'hh:mm')
+
+                                          const hours = time1.diff(time2, 'hours')
+                                          time2.add(hours, 'hours')
+
+                                          const minutes = time1.diff(time2, 'minutes')
+                                          time2.add(minutes, 'minutes')
+
+                                          const time3 = moment(hours, 'hh').format('hh')
+                                          const time4 = moment(minutes, 'mm').format('mm')
+
+                                          return (
+                                            <div>
+                                              {time3}ساعت و
+                                              {time4}دقیقه
+                                            </div>
+                                          )
+                                        } else {
+                                          return (
+                                            <div>catch all</div>
+                                          )
+                                        }
+                                      })()}
+
+                                    </span>
                                   </div>
                                   <div>
                                     <span>{item.airportDestination}</span>
@@ -361,8 +607,13 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
-
+                                  {item.capacity <= 0
+                                    ? <span
+                                        className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                        style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
+                                      > انتخاب
+                                    </span>
+                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
                                 </div>
 
                               </div>

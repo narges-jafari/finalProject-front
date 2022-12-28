@@ -14,15 +14,14 @@ import AboutUsPage from './pages/Footer/AboutUsPage'
 import RoulesPage from './pages/Footer/RoulesPage'
 import QuestionPage from './pages/Footer/QuestionPage'
 import MagazineResultPage from './pages/Footer/MagazineResultPage'
-import { AUTH_TOKEN } from './constants/auth'
+import AirplaneFastResultPage from './pages/Result/AirplaneFastResultPage'
+import TrainFastResultPage from './pages/Result/TrainFastResult'
+import InfoResultPage from './pages/Result/InfoResultPage'
+import HotelFastResultPage from './pages/Result/HotelFastResultPage'
+import InfoFastPage from './pages/Result/InfoFastPage'
 
 const App = (props) => {
-  // const showData=window.localStorage.getItem(AUTH_TOKEN)
-  // console.log(showData,'kkkkkkkkkkkkkkkkkkk')
-  // console.log(window.localStorage.getItem(AUTH_TOKEN))
-
   return (
-  // {props.AllData ?
     <>
       <Router>
         <Routes>
@@ -34,9 +33,15 @@ const App = (props) => {
           <Route path='/question' element={<QuestionPage />} />
           <Route path='/magazin' element={<MagazineResultPage />} />
           <Route path='/resultairplane' element={<AirplaneResultPage />} />
+          <Route path='/resultfastairplane' element={<AirplaneFastResultPage />} />
           <Route path='/resulttrain' element={<TrainResultPage />} />
+          <Route path='/resultfasttrain' element={<TrainFastResultPage />} />
+
           <Route path='/resultbus' element={<BusResultPage />} />
           <Route path='/resulthotel' element={<HotelResultPage />} />
+          <Route path='/resultfasthotel' element={<HotelFastResultPage />} />
+          <Route path='/infohotel' element={<InfoResultPage />} />
+          <Route path='/infofasthotel' element={<InfoFastPage />} />
 
           <Route path='/airplanepay' element={<PaymentPage />} />
           <Route path='/addticket' element={<AddTicketPage />} />

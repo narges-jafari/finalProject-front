@@ -8,12 +8,12 @@ import { FaBusAlt, FaSubway, FaPlane, FaHotel } from 'react-icons/fa'
 import { MdSettings } from 'react-icons/md'
 import styles from '../../assets/styles/TrainContent.module.css'
 import HotelContent from './hotel/HotelContent'
-import { AUTH_TOKEN, USER_ID } from '../../constants/auth'
+import { AUTH_TOKEN } from '../../constants/auth'
 import NotesModal from './NotesModal'
-import { FcOk } from 'react-icons/fc'
+import TrainSeatNumber from './TrainSeatNumber'
+import RoomModal from './RoomModal'
 
 const AddTicketAccordion = () => {
-  const userid = window.localStorage.getItem(USER_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
   // STATE VARIABLES
   const [col1, setCol1] = useState(false)
@@ -22,9 +22,12 @@ const AddTicketAccordion = () => {
   const [col4, setCol4] = useState(false)
   const [showSingleTimeCandleModal, setShowSingleTimeCandleModal] =
     useState(false)
+  const [showTrainSeatnumberModal, setShowTrainSeatnumberModal] =
+    useState(false)
   const [showCustomStrategyModalForBuy, setShowCustomStrategyModalForBuy] =
   useState(false)
-  const [showData, setShowData] = useState()
+  const [showRoomModal, setShowRoomModal] =
+  useState(false)
 
   // ACCORDION'S TOGGLE FUNCTIONS
   const toggleCol1 = () => {
@@ -54,36 +57,9 @@ const AddTicketAccordion = () => {
     setCol3(false)
   }
 
-  // console.log(showData,'hhhhhhhhh')
-
-  const handleshow = useCallback((data) => {
-    setShowData(data)
-  })
-
   return (
     <>
-      <div className={styles.modalcss}>
-        <button
-          className={styles.modalItemcss}
-          onClick={() => {
-            if (!showCustomStrategyModalForBuy) {
-              setShowCustomStrategyModalForBuy(true)
-            }
-          }}
-        >
-          <FcOk
-            size={29}
-          />
-          نکات مهم
-        </button>
 
-      </div>
-      {showCustomStrategyModalForBuy && (
-        <NotesModal
-          isOpen={showCustomStrategyModalForBuy}
-          setIsOpen={setShowCustomStrategyModalForBuy}
-        />
-      )}
       {usertoken
         ? <div className='accordion w-75 ' id='accordion' style={{ margin: '40px auto' }}>
           <div className='accordion-item border-0 mb-2'>
@@ -93,7 +69,6 @@ const AddTicketAccordion = () => {
                   collapsed: !col4
                 })}
                 type='button'
-                onClick={toggleCol4}
                 style={{
                   cursor: 'pointer',
                   backgroundColor: '#EFF2F7',
@@ -110,7 +85,30 @@ const AddTicketAccordion = () => {
                 <FaHotel className={styles.iconCss} />
 
                 افزودن بلیط هتل
-                {col4 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+                {col4
+                  ? <i
+                      onClick={toggleCol4}
+                      className='fa fa-angle-down fa-lg' style={{ float: 'left' }}
+                    />
+                  : <i
+                      onClick={toggleCol4}
+                      className='fa fa-angle-up fa-lg' style={{ float: 'left' }}
+                    />}
+
+                <MdSettings
+                  className={styles.iconmove}
+                  onClick={() => {
+                    if (!showRoomModal) {
+                      setShowRoomModal(true)
+                    }
+                  }}
+                />
+                {showRoomModal && (
+                  <RoomModal
+                    isOpen={showRoomModal}
+                    setIsOpen={setShowRoomModal}
+                  />
+                )}
               </button>
             </h2>
             <Collapse isOpen={col4} style={{ width: '80%', margin: '0px auto' }}><HotelContent /></Collapse>
@@ -122,7 +120,6 @@ const AddTicketAccordion = () => {
                   collapsed: !col1
                 })}
                 type='button'
-                // onClick={toggleCol1}
                 style={{
                   cursor: 'pointer',
                   backgroundColor: '#EFF2F7',
@@ -166,9 +163,7 @@ const AddTicketAccordion = () => {
 
               </button>
             </h2>
-            <Collapse isOpen={col1} style={{ width: '80%', margin: '0px auto' }}><AirplaneContent
-              datas={handleshow}
-                                                                                 />
+            <Collapse isOpen={col1} style={{ width: '80%', margin: '0px auto' }}><AirplaneContent />
             </Collapse>
           </div>
 
@@ -179,7 +174,6 @@ const AddTicketAccordion = () => {
                   collapsed: !col2
                 })}
                 type='button'
-                onClick={toggleCol2}
                 style={{
                   cursor: 'pointer',
                   backgroundColor: '#EFF2F7',
@@ -193,7 +187,30 @@ const AddTicketAccordion = () => {
               >
                 <FaSubway className={styles.iconCss} />
                 افزودن بلیط قطار
-                {col2 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+                {col2
+                  ? <i
+                      onClick={toggleCol2}
+                      className='fa fa-angle-down fa-lg ' style={{ float: 'left' }}
+                    />
+                  : <i
+                      onClick={toggleCol2}
+                      className='fa fa-angle-up fa-lg ' style={{ float: 'left' }}
+                    />}
+
+                <MdSettings
+                  className={styles.iconmove}
+                  onClick={() => {
+                    if (!showTrainSeatnumberModal) {
+                      setShowTrainSeatnumberModal(true)
+                    }
+                  }}
+                />
+                {showTrainSeatnumberModal && (
+                  <TrainSeatNumber
+                    isOpen={showTrainSeatnumberModal}
+                    setIsOpen={setShowTrainSeatnumberModal}
+                  />
+                )}
 
               </button>
             </h2>
