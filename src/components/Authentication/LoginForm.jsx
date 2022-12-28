@@ -1,19 +1,21 @@
-import React from 'react'
-import { Card, CardBody, Col, Container, Row } from 'reactstrap'
+import React,{useEffect} from 'react'
+import { Card, CardBody, Col, Container, Row, Label } from 'reactstrap'
 import loginimg from '../../assets/img/Capturedjdsk.JPG'
 import styles from '../../assets/styles/Login.module.css'
 import { useLazyQuery } from '@apollo/client'
 import userQueries from '../../Apollo/Query/userQueries'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import {
+  AUTH_USERINFO,
   USER_ID,
-  AUTH_TOKEN
+  AUTH_TOKEN,
+  USER_INFO
+
 } from '../../constants/auth'
 
 const LoginForm = () => {
-  // apollo query
   const [Login, { loading, data }] = useLazyQuery(userQueries.LOGIN)
   if (!loading && data) {
     window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
@@ -23,14 +25,27 @@ const LoginForm = () => {
     if (data.login.token) {
       toast.success('   ورود موفق‌آمیز')
 
-      // window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
       window.location.href = '/'
       window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
 
       window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
-    }
+    }else {
+      toast.error('نام‌کاربری یا رمزعبور اشتباه است')
   }
-  console.log(window.localStorage.getItem(AUTH_TOKEN))
+  }
+
+  const showError=()=>{
+    if(loading==false && data==undefined){
+      return(
+        toast.error('نام‌کاربری یا رمزعبور اشتباه است')
+
+      )
+
+    }else return(null)
+  }
+
+  
+
 
   return (
     <>
@@ -65,10 +80,8 @@ const LoginForm = () => {
                       onSubmit={(values) => {
                         Login({
                           variables: {
-                            // login:{
                             username: values.username,
                             password: values.password
-                            // }
                           }
 
                         })
@@ -106,14 +119,17 @@ const LoginForm = () => {
                         </div>
 
                         <button
-                          className='btn  py-2  col-12'
+                        onClick={showError}
+                          className='btn btn-outline-warning text-dark  py-2  col-12'
                           style={{ backgroundColor: '#f49107f1', border: ' none ', fontFamily: 'Vazir', fontSize: '20px' }}
                           type='submit'
                         >
                           ورود
                         </button>
+                     
                       </Form>
                     </Formik>
+                       <ToastContainer/>
                   </div>
 
                   <div className='mt-5 text-center'>
