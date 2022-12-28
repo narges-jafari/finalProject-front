@@ -44,12 +44,9 @@ const RegisterForm = () => {
 
                     <Formik
                       initialValues={{
-                        fullName: '',
                         username: '',
                         password: '',
                         email: '',
-                        birthdate: '',
-                        nationalcode: ''
                       }}
                       validationSchema={schema}
                       enableReinitialize
@@ -69,20 +66,7 @@ const RegisterForm = () => {
                       }}
                     >
                       <Form>
-                        <div className='mb-3'>
-                          <Label>نام   ونام خانوادگی</Label>
-                          <Field
-                            name='fullName'
-                            className={styles.filedcss}
-                            placeholder='نام ونام خانوادگی خود را وارد کنید'
-                            type='text'
-                          />
-                          <ErrorMessage
-                            className='alert alert-danger p-2 mt-1'
-                            component='div'
-                            name='fullName'
-                          />
-                        </div>
+                      
 
                         <div className='mb-3'>
                           <Label>نام کاربری</Label>
@@ -128,40 +112,10 @@ const RegisterForm = () => {
                             name='email'
                           />
                         </div>
-                        <div className='mb-3'>
-                          <Label>تاریخ تولد</Label>
-                          <Field
-                            name='birthdate'
-                            className={styles.filedcss}
-                            placeholder='تاریخ تولد خود را وارد کنید'
-                            type='text'
-                          />
-                          <ErrorMessage
-                            className='alert alert-danger p-2 mt-1'
-                            component='div'
-                            name='birthdate'
-                          />
-                        </div>
-
-                        <div className='mb-3'>
-
-                          <Label> کدملی</Label>
-                          <Field
-                            name='nationalcode'
-                            className={styles.filedcss}
-                            placeholder='کدملی خود را وارد کنید'
-                            type='text'
-                          />
-                          <ErrorMessage
-                            className='alert alert-danger p-2 mt-1'
-                            component='div'
-                            name='nationalcode'
-                          />
-                        </div>
-
+                       
                         <div className='mt-5'>
                           <button
-                            className='btn  py-2 col-12'
+                            className='btn btn-outline-warning text-dark  py-2 col-12'
                             style={{ backgroundColor: '#f49107f1', fontFamily: 'Vazir', fontSize: '20px' }}
                             type='submit'
                           >
