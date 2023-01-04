@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Card, CardBody, Col, Container, Row, Label } from 'reactstrap'
 import loginimg from '../../assets/img/Capturedjdsk.JPG'
 import styles from '../../assets/styles/Login.module.css'
@@ -29,23 +29,19 @@ const LoginForm = () => {
       window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
 
       window.localStorage.setItem(USER_ID, JSON.stringify(data.login.userId))
-    }else {
+    } else {
       toast.error('نام‌کاربری یا رمزعبور اشتباه است')
-  }
+    }
   }
 
-  const showError=()=>{
-    if(loading==false && data==undefined){
-      return(
+  const showError = () => {
+    if (loading == false && data == undefined) {
+      return (
         toast.error('نام‌کاربری یا رمزعبور اشتباه است')
 
       )
-
-    }else return(null)
+    } else return (null)
   }
-
-  
-
 
   return (
     <>
@@ -119,17 +115,17 @@ const LoginForm = () => {
                         </div>
 
                         <button
-                        onClick={showError}
+                          onClick={showError}
                           className='btn btn-outline-warning text-dark  py-2  col-12'
                           style={{ backgroundColor: '#f49107f1', border: ' none ', fontFamily: 'Vazir', fontSize: '20px' }}
                           type='submit'
                         >
                           ورود
                         </button>
-                     
+
                       </Form>
                     </Formik>
-                       <ToastContainer/>
+                    <ToastContainer />
                   </div>
 
                   <div className='mt-5 text-center'>

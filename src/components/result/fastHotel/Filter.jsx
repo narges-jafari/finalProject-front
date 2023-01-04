@@ -54,7 +54,7 @@ const Filter = (props) => {
 
     setFilteredTicketsStar(
       items.filter((item) =>
-        item.star === (star)
+        item.star == star
       )
     )
   }, [star, items, props.filterStar(filteredTicketsStar)])

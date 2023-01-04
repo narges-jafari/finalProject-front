@@ -53,7 +53,7 @@ const HotelResult = () => {
   useEffect(() => {
     setFilteredTicketsDate(
       showHotelInfo.filter((item) =>
-        item.startDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate
+        item.startDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&  item.capacity>0
       )
     )
   }, [showHotelInfo])

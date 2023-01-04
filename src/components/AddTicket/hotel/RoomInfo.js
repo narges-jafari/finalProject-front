@@ -15,10 +15,13 @@ const RoomInfo = (props) => {
   // STATES
 
   const [floor, setFloor] = useState(1)
-  const [roomNumber, setRoomNumber] = useState(1)
-  const [numberBed, setNumberBed] = useState(1)
+  const [item, setItem] = useState(1)
+  const [roomNumber1, setRoomNumber1] = useState(1)
+  const [roomNumber2, setRoomNumber2] = useState(1)
+  const [capacity, setCapacity] = useState(1)
   let [count, setCount] = useState(capacityf)
   const [name, setName] = useState('')
+  const [name1, setName1] = useState('')
   const [price, setPrice] = useState('')
   const [userinfo, setUserInfo] = useState({
     property: [],
@@ -52,8 +55,10 @@ const RoomInfo = (props) => {
   const resetFields = () => {
     setFloor('')
     setName('')
-    setRoomNumber('')
-    setNumberBed('')
+    setName1('')
+    setRoomNumber1('')
+    setRoomNumber2('')
+    setCapacity('')
     setPrice('')
   }
 
@@ -64,9 +69,11 @@ const RoomInfo = (props) => {
     addRoom({
       variables: {
         floor: parseInt(floor),
-        name: name,
-        roomNumber: parseInt(roomNumber),
-        numberBed: parseInt(numberBed),
+        name1: name,
+        name2: name1,
+        roomNumber1: parseInt(roomNumber1),
+        roomNumber2: parseInt(roomNumber2),
+        capacity: parseInt(capacity),
         information: userinfo.response,
         price: parseFloat(price),
         hotel: JSON.parse(hotelId)
@@ -90,127 +97,293 @@ const RoomInfo = (props) => {
     setCount(count)
   }
 
+  const decrementCount2 = () => {
+    count = count - 2
+    setCount(count)
+  }
+
+  const handleValue = (e) => {
+    setItem(e.target.value)
+  }
+
   return (
     <>
-
       {count <= 0
-        ? <div>
-          <img src={img} className={styles.imgCssModal} />
-          </div>
+        ? null
         : <>
-          <div className={styles.headerCss1}>
-            <span>
-              باید اطلاعات مربوط به
-              <span className={styles.headerCss}>
+          <button value='گروهی' onClick={handleValue}>گروهی </button>
+          <button value='تکی' onClick={handleValue}>تکی </button>
+        </>}
 
-                {count}
-              </span>
-              تا را وارد کنید
-            </span>
-          </div>
-
-          <div className='d-flex flex-column flex-wrap my-2'>
-
-            <div className='d-flex flex-row  flex-wrap justify-content-between'>
-              <div className={styles.content}>
-                <label>  شماره طبقه  </label>
-                <input
-                  type='number'
-                  value={floor}
-                  onChange={e => setFloor(e.target.value)}
-                  className={styles.inputcss}
-                />
-              </div>
-              <div className={styles.content}>
-                <label>  اسم اتاق </label>
-                <input
-                  type='text'
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  className={styles.inputcss}
-                />
-              </div>
-              <div className={styles.content}>
-                <label>  شماره اتاق </label>
-                <input
-                  type='number'
-                  value={roomNumber}
-                  onChange={e => setRoomNumber(e.target.value)}
-                  className={styles.inputcss}
-                />
-              </div>
-              <div className={styles.content}>
-                <label> تعداد تخت  </label>
-                <input
-                  type='number'
-                  value={numberBed}
-                  onChange={e => setNumberBed(e.target.value)}
-                  className={styles.inputcss}
-                />
-              </div>
-
-              <div className={styles.content}>
-                <label>    قیمت</label>
-                <input
-                  type='text'
-                  value={price}
-                  onChange={e => setPrice(e.target.value)}
-                  className={styles.inputcss}
-                />
-              </div>
-
-            </div>
-
-            <div className={styles.headername}>
-              امکانات
-            </div>
-            <div className='d-flex flex-row flex-wrap justify-content-between'>
-              <div className='d-flex flex-column justify-content-between'>
-                {hotelProperty.slice(0, 6).map((item, index) => (
-                  <div className={styles.checkboxCss} key={index}>
-                    <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
-                    <span className={styles.checkboxitem}>{item}</span>
+      {(() => {
+        if (item == 'گروهی') {
+          return (
+            <>
+              {count <= 0
+                ? <div>
+                  <img src={img} className={styles.imgCssModal} />
                   </div>
-                ))}
-              </div>
-              <div className='d-flex flex-column justify-content-between'>
-                {hotelProperty.slice(6, 12).map((item, index) => (
-                  <div className={styles.checkboxCss} key={index}>
-                    <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
-                    <span className={styles.checkboxitem}>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <div className='d-flex flex-column justify-content-between'>
-                {hotelProperty.slice(12, 18).map((item, index) => (
-                  <div className={styles.checkboxCss} key={index}>
-                    <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
-                    <span className={styles.checkboxitem}>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <div className='d-flex flex-column justify-content-between'>
-                {hotelProperty.slice(18, 24).map((item, index) => (
-                  <div className={styles.checkboxCss} key={index}>
-                    <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
-                    <span className={styles.checkboxitem}>{item}</span>
-                  </div>
-                ))}
-              </div>
+                : <>
+                  <div className={styles.headerCss1}>
+                    <span>
+                      باید اطلاعات مربوط به
+                      <span className={styles.headerCss}>
 
-            </div>
-            <div className={styles.content}>
-              <button
-                onClick={(e) => { handleAddRoom(e); decrementCount(e) }}
-                className='btn btn-sm btn-danger my-4 py-4 rounded-3  px-4 ' style={{ fontFamily: 'Vazir', fontSize: '18px', fontWeight: 'bold' }}
-              >اضافه کردن
-              </button>
-              <ToastContainer />
+                        {count}
+                      </span>
+                      تا را وارد کنید
+                    </span>
+                  </div>
 
-            </div>
+                  <div className='d-flex flex-column flex-wrap my-2'>
 
-          </div>
-          </>}
+                    <div className='d-flex flex-row  flex-wrap justify-content-between'>
+                      <div className={styles.content}>
+                        <label>  شماره طبقه  </label>
+                        <input
+                          type='number'
+                          value={floor}
+                          onChange={e => setFloor(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label>  اسم اتاق اول</label>
+                        <input
+                          type='text'
+                          value={name}
+                          onChange={e => setName(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label>  اسم اتاق دوم</label>
+                        <input
+                          type='text'
+                          value={name1}
+                          onChange={e => setName1(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label>  شماره اتاق اول</label>
+                        <input
+                          type='number'
+                          value={roomNumber1}
+                          onChange={e => setRoomNumber1(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label>  شماره اتاق دوم</label>
+                        <input
+                          type='number'
+                          value={roomNumber2}
+                          onChange={e => setRoomNumber2(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label> ظرفیت اتاق ها   </label>
+                        <input
+                          type='number'
+                          value={capacity}
+                          onChange={e => setCapacity(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+
+                      <div className={styles.content}>
+                        <label>    قیمت</label>
+                        <input
+                          type='text'
+                          value={price}
+                          onChange={e => setPrice(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+
+                    </div>
+
+                    <div className={styles.headername}>
+                      امکانات
+                    </div>
+                    <div className='d-flex flex-row flex-wrap justify-content-between'>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(0, 6).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(6, 12).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(12, 18).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(18, 24).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                    </div>
+                    <div className={styles.content}>
+                      <button
+                        onClick={(e) => { handleAddRoom(e); decrementCount2(e) }}
+                        className='btn btn-sm btn-danger my-4 py-4 rounded-3  px-4 ' style={{ fontFamily: 'Vazir', fontSize: '18px', fontWeight: 'bold' }}
+                      >اضافه کردن
+                      </button>
+                      <ToastContainer />
+
+                    </div>
+
+                  </div>
+                  </>}
+            </>
+          )
+        } else if (item === 'تکی') {
+          return (
+            <>
+              {count <= 0
+                ? <div>
+                  <img src={img} className={styles.imgCssModal} />
+                  </div>
+                : <>
+                  <div className={styles.headerCss1}>
+                    <span>
+                      باید اطلاعات مربوط به
+                      <span className={styles.headerCss}>
+
+                        {count}
+                      </span>
+                      تا را وارد کنید
+                    </span>
+                  </div>
+
+                  <div className='d-flex flex-column flex-wrap my-2'>
+
+                    <div className='d-flex flex-row  flex-wrap justify-content-between'>
+                      <div className={styles.content}>
+                        <label>  شماره طبقه  </label>
+                        <input
+                          type='number'
+                          value={floor}
+                          onChange={e => setFloor(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label>  اسم اتاق </label>
+                        <input
+                          type='text'
+                          value={name}
+                          onChange={e => setName(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label>  شماره اتاق </label>
+                        <input
+                          type='number'
+                          value={roomNumber1}
+                          onChange={e => setRoomNumber1(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <label> ظرفیت اتاق   </label>
+                        <input
+                          type='number'
+                          value={capacity}
+                          onChange={e => setCapacity(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+
+                      <div className={styles.content}>
+                        <label>    قیمت</label>
+                        <input
+                          type='text'
+                          value={price}
+                          onChange={e => setPrice(e.target.value)}
+                          className={styles.inputcss}
+                        />
+                      </div>
+
+                    </div>
+
+                    <div className={styles.headername}>
+                      امکانات
+                    </div>
+                    <div className='d-flex flex-row flex-wrap justify-content-between'>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(0, 6).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(6, 12).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(12, 18).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className='d-flex flex-column justify-content-between'>
+                        {hotelProperty.slice(18, 24).map((item, index) => (
+                          <div className={styles.checkboxCss} key={index}>
+                            <input value={item} type='checkbox' onChange={handleChange} style={{ marginLeft: '20px', marginTop: '15px' }} />
+                            <span className={styles.checkboxitem}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                    </div>
+                    <div className={styles.content}>
+                      <button
+                        onClick={(e) => { handleAddRoom(e); decrementCount(e) }}
+                        className='btn btn-sm btn-danger my-4 py-4 rounded-3  px-4 ' style={{ fontFamily: 'Vazir', fontSize: '18px', fontWeight: 'bold' }}
+                      >اضافه کردن
+                      </button>
+                      <ToastContainer />
+
+                    </div>
+
+                  </div>
+                  </>}
+            </>
+          )
+        } else {
+          return (null)
+        }
+      })()}
 
     </>
   )

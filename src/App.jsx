@@ -19,7 +19,10 @@ import TrainFastResultPage from './pages/Result/TrainFastResult'
 import InfoResultPage from './pages/Result/InfoResultPage'
 import HotelFastResultPage from './pages/Result/HotelFastResultPage'
 import InfoFastPage from './pages/Result/InfoFastPage'
-
+import HotelPaymentPage from './pages/Payment/hotel/HotelPaymentPage'
+import Finish from './pages/Finish/FinishPage'
+import MakeHotelTicketPage from './pages/MakeHotel/MakeHotelTicketPage'
+import FastHotelTicketPage from './pages/FastTicket/FastHotelTicket'
 const App = (props) => {
   return (
     <>
@@ -36,16 +39,18 @@ const App = (props) => {
           <Route path='/resultfastairplane' element={<AirplaneFastResultPage />} />
           <Route path='/resulttrain' element={<TrainResultPage />} />
           <Route path='/resultfasttrain' element={<TrainFastResultPage />} />
-
           <Route path='/resultbus' element={<BusResultPage />} />
           <Route path='/resulthotel' element={<HotelResultPage />} />
           <Route path='/resultfasthotel' element={<HotelFastResultPage />} />
           <Route path='/infohotel' element={<InfoResultPage />} />
           <Route path='/infofasthotel' element={<InfoFastPage />} />
-
+          <Route path='/hotelpay' element={<HotelPaymentPage />} />
+          <Route path='/fasthotelticket' element={<FastHotelTicketPage />} />
           <Route path='/airplanepay' element={<PaymentPage />} />
           <Route path='/addticket' element={<AddTicketPage />} />
           <Route path='/buyticket' element={<BuyTicketPage />} />
+          <Route path='/finish' element={<Finish />} />
+          <Route path='/makehotelticket' element={<MakeHotelTicketPage />} />
 
         </Routes>
       </Router>

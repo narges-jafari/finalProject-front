@@ -7,7 +7,10 @@ const Header = () => {
   const endDate = window.localStorage.getItem('HotelEndDate').replace(/"/g, '')
   const Num = startDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
   const Num1 = endDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+  const passenger = window.localStorage.getItem('Passenger').replace(/"/g, '')
+  const room = window.localStorage.getItem('Room').replace(/"/g, '')
 
+  console.log(room, 'lsdkjk')
   const dayOfWeekName = new Date(Num).toLocaleString(
     'fa-IR', { weekday: 'long' })
   console.log(dayOfWeekName)
@@ -38,6 +41,12 @@ const Header = () => {
             <span className='mx-1'> از {dayOfWeekName + day + monthName} </span>
             <span className='mx-1'>   تا {dayOfWeekName1 + day1 + monthName1}  </span>
 
+          </div>
+          <div className={styles.headerItem}>
+            <span>  {passenger} مسافر</span>
+            <span>
+              {room == '' ? <span>1 اتاق</span> : <span>{room} اتاق  </span>}
+            </span>
           </div>
 
           <div className={styles.headerItem1}>

@@ -13,9 +13,11 @@ const roomQueries = {
           ) {
             _id
               floor
-              name
-              roomNumber
-              numberBed
+              name1
+              name2
+              roomNumber1
+              roomNumber2
+              capacity
               information
               price
               isDelete
@@ -35,12 +37,15 @@ const roomQueries = {
       ) {
         _id
         floor
-        name
-        roomNumber
-        numberBed
+        name1
+        name2
+        roomNumber1
+        roomNumber2
+        capacity
         information
         price
         isDelete
+      
       
     }
   }

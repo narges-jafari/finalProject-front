@@ -38,12 +38,141 @@ const hotelMutations = {
      capacity
     address
   price
-  creator{
-    fullName
-  }
+
 }
 }
     
+  `,
+  BUYHOTEL: gql`
+  mutation hotelBuy(
+    $room:ID!
+  $hotel:ID!
+    $user:ID!
+  $name:[String!]
+    $date:[String!]
+    $gen:[String!]
+    $nationalcode:[String!]
+){
+  hotelBuy(
+      hotelId:$hotel
+  roomId:$room
+      userId:$user
+    hotelBuyInput:{
+      fullName:$name,
+      nationalCode:$nationalcode
+      birthDate:$date
+      gendere:$gen
+    }
+
+    
+  )
+  {
+  
+    
+    user{
+      _id
+      username
+      password
+      email
+    }
+    room{
+      _id
+      roomNumber1
+      roomNumber2
+      floor
+      name1
+      name2
+      capacity
+      information
+      isDelete
+      price
+    }
+    hotel{
+      _id
+      city
+      star
+       startDate
+       endDate
+       name
+       capacity
+      address
+    price
+    }
+    isDelete
+    fullName
+    birthDate
+    nationalCode
+    gendere
+    _id
+  }
+
+}
+    
+  `,
+  TICKET: gql`
+  mutation makeHotelTicket(
+    $hotelBuy:ID!
+ $date:String!
+    $serialId:Int!
+  $codeId:Int!
+  $search:String!
+){
+  makeHotelTicket(
+      hotelBuy:$hotelBuy
+
+    hotelTicketInput:{
+      date:$date
+    serialId:$serialId
+  codeId:$codeId
+  searchId:$search
+    }
+
+    
+  )
+  {
+  
+    
+  _id
+  date
+    serialId
+    codeId
+    hotelBuy{
+     
+      _id
+      fullName
+      user{
+        _id
+        email
+      }
+      room{
+        name1
+        floor
+      }
+      hotel{
+        name
+        address
+      }
+    }
+    
+  }
+
+}
+  `,
+  UPDATEHOTELCAPACITY: gql`
+  mutation updateHotelCapacity($id:ID!,$capacity:Int!){
+    updateHotelCapacity(id:$id,capacity:$capacity){
+      _id
+    city
+    star
+     startDate
+     endDate
+     name
+     capacity
+    address
+  price
+      
+    }
+  }
   `
 
 }

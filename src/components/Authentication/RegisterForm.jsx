@@ -47,6 +47,7 @@ const RegisterForm = () => {
                         username: '',
                         password: '',
                         email: '',
+                        role: ''
                       }}
                       validationSchema={schema}
                       enableReinitialize
@@ -54,19 +55,17 @@ const RegisterForm = () => {
                       onSubmit={(values) => {
                         register({
                           variables: {
-                            fullName: values.fullName,
                             username: values.username,
                             password: values.password,
                             email: values.email,
-                            birthdate: values.birthdate,
-                            nationalcode: values.nationalcode
+                            role:'کاربر'
+
                           }
 
                         })
                       }}
                     >
                       <Form>
-                      
 
                         <div className='mb-3'>
                           <Label>نام کاربری</Label>
@@ -112,7 +111,7 @@ const RegisterForm = () => {
                             name='email'
                           />
                         </div>
-                       
+
                         <div className='mt-5'>
                           <button
                             className='btn btn-outline-warning text-dark  py-2 col-12'

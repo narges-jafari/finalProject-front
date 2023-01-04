@@ -6,7 +6,7 @@ import DatePicker from 'react-multi-date-picker'
 import HotelPassenger from '../Passenger/HotelPassenger '
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
-import { useLazyQuery, useQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
 
 const HotelSearch = () => {
@@ -56,7 +56,9 @@ const HotelSearch = () => {
     };
     { window.localStorage.setItem('HotelStartDate', JSON.stringify(startDate.toString())) }
     { window.localStorage.setItem('HotelEndDate', JSON.stringify(endDate.toString())) }
-  }, [hotelName, startDate, endDate])
+    { window.localStorage.setItem('Passenger', JSON.stringify(showPassenger.toString())) }
+    { window.localStorage.setItem('Room', JSON.stringify(showRoom.toString())) }
+  }, [hotelName, startDate, endDate, showPassenger, showRoom])
 
   return (
     <>
@@ -117,7 +119,7 @@ const HotelSearch = () => {
                   <span className={styles.spanAccordion}>مسافران/ اتاق</span>
                   <div className='d-flex flex-row mx-4 px-4'>
                     {showPassenger == '' ? <span className={styles.spanAccordion}>  امسافر </span> : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
-                    {!showRoom ? <span className={styles.spanAccordion}>   ااتاق</span> : <span className={styles.spanAccordion}> {showRoom} اتاق</span>}
+                    {showRoom.length === 0 ? <span className={styles.spanAccordion}>   ااتاق</span> : <span className={styles.spanAccordion}> {showRoom} اتاق</span>}
                   </div>
                 </div>
 

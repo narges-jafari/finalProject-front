@@ -58,7 +58,7 @@ const HotelContent = () => {
       })
         .then(({ data }) => {
           if (data.createHotel !== null) {
-            toast.success('عملیات اضافه شدن بلیط هواپیما با موفقیت انجام شد')
+            toast.success('هتل با موفقیت اضافه شد')
             window.localStorage.setItem(HOTEL_ID, JSON.stringify(data.createHotel._id))
             window.localStorage.setItem(HOTEL_CAPACITY, JSON.stringify(data.createHotel.capacity))
 

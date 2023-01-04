@@ -14,7 +14,7 @@ const HotelPassenger = (props) => {
 
   return (
     <>
-      {addRoom == '0'
+      {addRoom === '0'
         ? <>
           <span className={styles.hidefont}>اتاق1</span>
           <div className='d-flex flex-column '>

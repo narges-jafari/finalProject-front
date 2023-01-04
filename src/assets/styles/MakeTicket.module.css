@@ -1,0 +1,106 @@
+@import url('./Fonts.css');
+
+.contentCss{
+    /* display: flex;
+    flex-direction:column; */
+    background-color: #fff;
+    padding: 10px;
+    border-radius:13px;
+    box-shadow: 1px 0px 2px 4px #dddddd49;
+    width:30%;
+    margin:10px ;
+    height: 70%;
+    border-top: 50px solid #80808026;
+
+
+}
+
+.headerCss{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width: 90%;
+    margin:20px auto
+}
+
+.contentCss button{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+    width:auto;
+    height:43px;
+    border-radius: 10px;
+    background-color: #cbf9c9e7;
+    color: #0b4b0b;
+    border: none;
+    padding:5px 10px;
+    margin:10px 0px 4px 0px;
+
+}
+
+.contentCss button:hover{
+    box-shadow: 1px 0px 2px 4px #cbf9c9e7;
+    background-color:#5ce05cc5 ; 
+}
+
+.topicCss {
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    margin-top: -45px;
+}
+
+.contentCss label {
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+}
+
+.inputCss{
+    width:auto;
+    height:43px;
+    border-radius: 10px;
+    background-color: #80808014;
+    border: none;
+    padding:5px 10px;
+    margin:0px 5px 0px 1px;
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+.inputCss1{
+    width:auto;
+    height:43px;
+    border-radius: 10px;
+    background-color: #80808014;
+    border: none;
+    padding:5px 10px;
+    margin:0px 5px 0px 1px;
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+
+.inputCss:hover{
+    box-shadow: 1px 0px 2px 4px #dddddd49;
+    background-color: #ffff;
+
+}
+
+
+@media screen and (max-width: 750px) {
+
+    .contentCss{
+    width:100%;
+    } 
+     
+       
+        
+     }

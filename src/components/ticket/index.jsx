@@ -8,7 +8,7 @@ import {
 
 import styles from '../../assets/styles/BuyTicket.module.css'
 
-import HotelTicket from './HotelTicket'
+import AllHotelTicket from './hotel/AllHotelTicket'
 import AirplaneTicket from './AirplaneTicket'
 import TrainTicket from './TrainTicket'
 import BusTicket from './BusTicket'
@@ -80,7 +80,7 @@ const BuyTicket = () => {
           <Row>
             <Col sm='12'>
               {/* <Trip /> */}
-              <HotelTicket />
+              <AllHotelTicket />
             </Col>
           </Row>
         </TabPane>

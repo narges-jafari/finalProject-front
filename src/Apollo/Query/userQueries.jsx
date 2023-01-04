@@ -10,7 +10,20 @@ const userQueries = {
         
       }
     }
-  `
+  `,
+  SEARCHUSERBYID: gql`
+  query searchUserById($id:ID!){
+    searchUserById(id:$id){
+    
+       
+   username
+      _id
+      password
+      email
+      }
+    }
+  
+`,
 
 }
 

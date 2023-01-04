@@ -9,9 +9,9 @@ import { useQuery } from '@apollo/client'
 import roomQueries from '../../../Apollo/Query/roomQueries'
 import img from '../../../assets/img/bg/22222.JPG'
 import img2 from '../../../assets/img/bg/floor.JPG'
+
 import classnames from 'classnames'
 import Nav from 'react-bootstrap/Nav'
-
 const Info = (props) => {
   // STATES
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
@@ -23,7 +23,7 @@ const Info = (props) => {
     if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
 
-  // APOLLO QUERY
+  // apollo query
   useQuery(roomQueries.SEARCHROOMBYID, {
     variables: {
       id: props.info
@@ -138,7 +138,14 @@ const Info = (props) => {
                       </div>
                       <div className={styles.weightCss}>
                         <img src={img2} className={styles.img1Css} />
-                        شماره اتاق:{roomData.roomNumber}
+                        {/* شماره اتاق اول :{roomData.roomNumber1} */}
+                        {/* شماره اتاق دوم  :{roomData.roomNumber1} */}
+                        {roomData.roomNumber2 == 1
+                          ? <span> شماره اتاق :{roomData.roomNumber1}</span>
+                          : <span> شماره اتاق اول  :{roomData.roomNumber1}</span>}
+                        {roomData.roomNumber2 == null
+                          ? null
+                          : <span> شماره اتاق دوم  :{roomData.roomNumber2}</span>}
 
                       </div>
                     </div>

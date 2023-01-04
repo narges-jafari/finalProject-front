@@ -26,7 +26,7 @@ const Info = (props) => {
   // apollo query
   useQuery(roomQueries.SEARCHROOMBYID, {
     variables: {
-      id: props.info
+      id: props.info[0]
     },
 
     onCompleted: (res) => {
@@ -55,7 +55,7 @@ const Info = (props) => {
             type='button'
             onClick={() => {
               props.setIsOpen(false)
-              window.location.reload()
+              // window.location.reload()
             }}
             className={styles.iconCss}
             data-dismiss='modal'
@@ -138,7 +138,14 @@ const Info = (props) => {
                       </div>
                       <div className={styles.weightCss}>
                         <img src={img2} className={styles.img1Css} />
-                        شماره اتاق:{roomData.roomNumber}
+                        {/* شماره اتاق اول :{roomData.roomNumber1} */}
+                        {/* شماره اتاق دوم  :{roomData.roomNumber1} */}
+                        {roomData.roomNumber2 == 1
+                          ? <span> شماره اتاق :{roomData.roomNumber1}</span>
+                          : <span> شماره اتاق اول  :{roomData.roomNumber1}</span>}
+                        {roomData.roomNumber2 == null
+                          ? null
+                          : <span> شماره اتاق دوم  :{roomData.roomNumber2}</span>}
 
                       </div>
                     </div>

@@ -121,7 +121,7 @@ const AirplaneContent = (props) => {
             window.localStorage.setItem(FLIGHT_ID, JSON.stringify(data.createFlight._id))
             window.localStorage.setItem(FLIGHT_CAPACITY, JSON.stringify(data.createFlight.capacity))
 
-            resetFields()
+            // resetFields()
           } else {
             toast.error(
               'خطایی در برقراری با سرور اتفاق افتاد'

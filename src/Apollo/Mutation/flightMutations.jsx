@@ -45,10 +45,6 @@ const flightMutations = {
 {
 
 
-  
-    creator{
-      fullName
-  }
   capacity
   _id
   date

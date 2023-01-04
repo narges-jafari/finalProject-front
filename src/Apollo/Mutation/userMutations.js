@@ -6,6 +6,7 @@ const userMutations = {
     $username: String!,
      $password: String!,
      $ email: String!, 
+     $role:String!
 
   ){
   createUser(
@@ -13,6 +14,7 @@ const userMutations = {
     username:  $username ,
     email: $ email ,
     password:  $password ,
+    role: $role
  
   }
   )
