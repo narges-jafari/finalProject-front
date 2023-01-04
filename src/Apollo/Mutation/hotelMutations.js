@@ -161,15 +161,9 @@ const hotelMutations = {
   UPDATEHOTELCAPACITY: gql`
   mutation updateHotelCapacity($id:ID!,$capacity:Int!){
     updateHotelCapacity(id:$id,capacity:$capacity){
-      _id
-    city
-    star
-     startDate
-     endDate
-     name
+
+
      capacity
-    address
-  price
       
     }
   }

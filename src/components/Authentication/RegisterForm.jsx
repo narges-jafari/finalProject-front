@@ -58,7 +58,7 @@ const RegisterForm = () => {
                             username: values.username,
                             password: values.password,
                             email: values.email,
-                            role:'کاربر'
+                            role: 'کاربر'
 
                           }
 

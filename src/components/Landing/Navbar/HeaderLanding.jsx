@@ -44,8 +44,8 @@ const HeaderLanding = () => {
   // })
   const logout = () => {
     localStorage.removeItem('auth-token')
-    localStorage.removeItem('user-id')
-    setIsLogin(false)
+    // localStorage.removeItem('user-id')
+    // setIsLogin(false)
   }
 
   // console.log(userid,usertoken)

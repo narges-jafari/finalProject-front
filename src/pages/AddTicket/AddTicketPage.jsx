@@ -28,7 +28,7 @@ const AddTicketPage = () => {
           </div>
           </div>
         : <div>
-       
+
           <NotLoginPage />
           </div>}
     </>

@@ -205,7 +205,8 @@ const Info = (props) => {
                     <span
                       onClick={() => {
                         setRoomInfoModal(true)
-                        setClickedItem([item._id])                      }}
+                        setClickedItem([item._id])
+                      }}
                       className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}
                     > اطلاعات
                     </span>
@@ -226,9 +227,11 @@ const Info = (props) => {
                     <span className='text-primary mx-4' style={{ fontWeight: 'bold', fontSize: '20px' }}> {item.price} </span>
 
                   </div>
-                  <button 
-                    onClick={() => { handleNameChange(); setClickedItem([item._id, hotelData._id])                    }}
-                    className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>
+                  <button
+                    onClick={() => { handleNameChange(); setClickedItem([item._id, hotelData._id]) }}
+                    className='btn btn-lg btn-danger rounded-3  my-2'
+                  > انتخاب
+                  </button>
 
                 </div>
 

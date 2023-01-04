@@ -81,7 +81,7 @@ const HotelContent = () => {
   const handlename = event => {
     if (!isValidName(event.target.value)) {
       setError('باید زبان کیبورد را عوض کنید!')
-    } else if (hotelName.length < 3) {
+    } else if (hotelName.length < 2) {
       setError('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError(null)

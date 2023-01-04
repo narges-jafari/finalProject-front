@@ -47,7 +47,7 @@ const Info = (props) => {
   useEffect(() => {
     window.localStorage.setItem('ID', JSON.stringify(clickedItem))
   }, [clickedItem])
-  console.log(clickedItem,'click')
+  console.log(clickedItem, 'click')
 
   const result =
     hotelRoomData.filter((item) =>
@@ -193,10 +193,10 @@ const Info = (props) => {
           return (
 
             <div
-              key={index} 
+              key={index}
               // onClick={() => {
               //   setClickedItem([item._id, hotelData._id])
-              // }} 
+              // }}
               className=' btn d-flex flex-column '
             >
 
@@ -235,7 +235,7 @@ const Info = (props) => {
                   </div>
                   <button
                 // onClick={handleNameChange}
-                    onClick={() => { handleNameChange(); setClickedItem([item._id, hotelData._id])                    }}
+                    onClick={() => { handleNameChange(); setClickedItem([item._id, hotelData._id]) }}
                     className='btn btn-lg btn-danger rounded-3  my-2'
                   > انتخاب
                   </button>

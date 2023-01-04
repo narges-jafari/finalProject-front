@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import styles from '../../../assets/styles/FastSearch.module.css'
 import { useQuery } from '@apollo/client'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
 const HotelFast = () => {
   const [data, setData] = useState([])
+  const [cityName, setCityName] = useState(false)
 
   const today = new Date()
   console.log('today => ', today)
@@ -37,6 +38,16 @@ const HotelFast = () => {
       setData([])
     }
   })
+  const city = data.map(item => item.city)
+  const handleNameChange = (e) => {
+    window.location.href = '/resultfasthotel'
+  }
+
+  useEffect(() => {
+    window.localStorage.setItem('HotelCityName', cityName)
+  }, [cityName])
+
+  console.log(cityName)
 
   return (
     <>
@@ -46,16 +57,20 @@ const HotelFast = () => {
         </span>
       </div>
 
-      <div className='d-flex flex-column  justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
+      <div className='d-flex flex-column   justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
 
         <div className={styles.content}>
           {data.slice(0, 6).map((item, index) => (
-
-            <div key={index} className={styles.contentItem}>
+            <button 
+            onClick={() => {
+              handleNameChange(setCityName(item.city))
+              setCityName(item.city)
+            }}
+             key={index}  className={styles.contentItem}>
               <div className={styles.contentItem1}>
                 <span>{item.name} </span>
                 <i className='fa fa-hotel ' />
-                <span> {item.city} </span>
+                <span> {city[index]} </span>
               </div>
               <div className={styles.contentItem2}>
                 <span>  {dayOfWeekName + day + monthName}  </span>
@@ -66,8 +81,8 @@ const HotelFast = () => {
                 <span className={styles.moneyfont}>{item.price}</span>
 
               </div>
-            </div>
-
+            </button>
+            
           ))}
         </div>
 

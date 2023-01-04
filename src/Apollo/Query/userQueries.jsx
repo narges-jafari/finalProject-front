@@ -20,10 +20,11 @@ const userQueries = {
       _id
       password
       email
+      role
       }
     }
   
-`,
+`
 
 }
 

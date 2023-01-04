@@ -14,4 +14,3 @@ export const HOTEL_ID = 'hotel-id'
 export const HOTEL_CAPACITY = 'hotel-capacity'
 export const HOTELBUY_ID = 'hotelbuy-id'
 export const HOTELTICKET_ID = 'hotelticket-id'
-

@@ -21,9 +21,10 @@ const HotelResult = () => {
   const [filteredTicketsDate, setFilteredTicketsDate] = useState([])
 
   const city = window.localStorage.getItem('HotelName').replace(/"/g, '')
+  // const cityName=window.localStorage.getItem('HotelCity')
   const startDate = window.localStorage.getItem('HotelStartDate').replace(/"/g, '')
   const endDate = window.localStorage.getItem('HotelEndDate').replace(/"/g, '')
-
+console.log(city)
   // THIS FUNCTIONS IS FOR GET DATA FROM CHILD
   const handleStarData = useCallback((star) => {
     setShowStarData(star)
@@ -53,7 +54,7 @@ const HotelResult = () => {
   useEffect(() => {
     setFilteredTicketsDate(
       showHotelInfo.filter((item) =>
-        item.startDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&  item.capacity>0
+        item.startDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate && item.capacity > 0
       )
     )
   }, [showHotelInfo])

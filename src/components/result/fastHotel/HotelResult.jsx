@@ -22,6 +22,7 @@ const HotelResult = () => {
 
   const city = window.localStorage.getItem('HotelCityName').replace(/"/g, '')
 
+
   // FUNCTIONS FOR GET DATA FROM CHILD
   const handleStarData = useCallback((star) => {
     setShowStarData(star)
@@ -33,7 +34,7 @@ const HotelResult = () => {
   // APOLLO QUERY
   useQuery(hotelQueries.SEARCHHOTELBYNAME, {
     variables: {
-      city: city
+      city:city
     },
 
     onCompleted: (res) => {

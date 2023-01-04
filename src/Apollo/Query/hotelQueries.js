@@ -98,7 +98,7 @@ query searchHotelbyName(
 }
 `,
 
-SEARCHHOTELBUYBYID: gql`
+  SEARCHHOTELBUYBYID: gql`
 
 query searchHotelBuyById($id:ID!){
   searchHotelBuyById(id:$id){
@@ -106,6 +106,7 @@ query searchHotelBuyById($id:ID!){
     birthDate
     gendere
     nationalCode
+    _id
     hotel{
     _id
     city
@@ -138,7 +139,7 @@ query searchHotelBuyById($id:ID!){
   }
 }
 `,
-SEARCHHOTELTICKET: gql`
+  SEARCHHOTELTICKET: gql`
 
 query searchHotelTicket($id:ID!,$date:String!){
   searchHotelTicket(hotelBuy:$id,date:$date){
@@ -180,7 +181,7 @@ query searchHotelTicket($id:ID!,$date:String!){
   }
 }
 `,
-SEARCHHOTELTICKETBYID: gql`
+  SEARCHHOTELTICKETBYID: gql`
 
 query searchHotelTicketById($id:ID!){
   searchHotelTicketById(id:$id){
@@ -227,7 +228,7 @@ query searchHotelTicketById($id:ID!){
   }
 }
 `,
-SEARCHHOTELTICKETBYUSERID: gql`
+  SEARCHHOTELTICKETBYUSERID: gql`
 
 query searchHotelTicketByUserId($id:String!){
   searchHotelTicketByUserId(userId:$id){
@@ -270,11 +271,49 @@ query searchHotelTicketByUserId($id:String!){
   }
 }
 `,
+  ALLHOTELTICKET: gql`
 
-
-
-
-
+query allHotelTicket{
+  allHotelTicket{
+    serialId
+    _id
+    codeId
+    searchId
+    date
+    hotelBuy{
+      fullName
+    birthDate
+    gendere
+    nationalCode
+    _id
+      
+    hotel{
+    _id
+    city
+    star
+     startDate
+     endDate
+     name
+     capacity
+    address
+  price
+    }
+    room{
+         _id
+      roomNumber1
+      roomNumber2
+      floor
+      name1
+      name2
+      capacity
+      information
+      isDelete
+      price
+    }
+  }
+  }
+}
+`
 
 }
 
