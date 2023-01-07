@@ -15,7 +15,10 @@ const AirplanSearch = () => {
   const [originname, setOriginname] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
-  const [showPassenger, setShowPassenger] = useState([])
+  const [showPassenger, setShowPassenger] = useState(0)
+  const [showPassenger1, setShowPassenger1] = useState(0)
+  const [showPassenger2, setShowPassenger2] = useState(0)
+
   const [showClass, setShowClass] = useState([])
   // ACCORDIAN TOGGLE FUNCTION
   const toggleCol1 = () => {
@@ -24,7 +27,13 @@ const AirplanSearch = () => {
 
   const handlePassenger = useCallback((passenger) => {
     setShowPassenger(passenger)
-  }, [])
+  })
+  const handlePassenger1 = useCallback((passenger) => {
+    setShowPassenger1(passenger)
+  })
+  const handlePassenger2 = useCallback((passenger) => {
+    setShowPassenger2(passenger)
+  })
 
   const handleClass = useCallback((name) => {
     setShowClass(name)
@@ -49,13 +58,19 @@ const AirplanSearch = () => {
       })
   }
 
+  const allPassenger = showPassenger + showPassenger1 + showPassenger2
+  console.log(showPassenger1, 'llo099')
+
   useEffect(() => {
     { window.localStorage.setItem('FlightOriginName', originname)
     };
     { window.localStorage.setItem('FlightDestinationName', JSON.stringify(destinationname)) }
     { window.localStorage.setItem('FlightDate', JSON.stringify(startDate.toString())) }
     { window.localStorage.setItem('FlightClass', JSON.stringify(showClass)) }
-  }, [originname, destinationname, showClass, startDate])
+    { window.localStorage.setItem('Capacity', JSON.stringify(showPassenger)) }
+    { window.localStorage.setItem('Capacity1', JSON.stringify(showPassenger1)) }
+    { window.localStorage.setItem('Capacity2', JSON.stringify(showPassenger2)) }
+  }, [originname, destinationname, showClass, startDate, showPassenger, showPassenger1, showPassenger2])
 
   return (
     <>
@@ -116,7 +131,7 @@ const AirplanSearch = () => {
                 <div className='d-flex flex-column my-2'>
                   <span className={styles.spanAccordion}>مسافران/ کلاس</span>
                   <div className='d-flex flex-row mx-4 px-1'>
-                    {showPassenger == '' ? null : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
+                    {allPassenger == '' ? null : <span className={styles.spanAccordion}>  {allPassenger} مسافر</span>}
                     {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}
                   </div>
                 </div>
@@ -126,6 +141,9 @@ const AirplanSearch = () => {
             <Collapse isOpen={col1} className='accordion-collapse '>
               <AirplanePassenger
                 AllPassenger={handlePassenger}
+                AllPassenger1={handlePassenger1}
+                AllPassenger2={handlePassenger2}
+
                 AllClass={handleClass}
               />
 

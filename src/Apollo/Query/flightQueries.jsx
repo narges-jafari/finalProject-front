@@ -47,6 +47,7 @@ const flightQueries = {
       ) {
         information
         allowedLoggage
+        price
       
     }
   }
@@ -108,8 +109,95 @@ airplaneCompany
     
   }
 }
+`,
+  SEARCHFLIGHTTICKETBYID: gql`
+query searchFlightTicketById($id:ID!){
+  searchFlightTicketById(id:$id){
+ 
+    flightBuy{
+      flight{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  flightClass
+  departureTime
+  arrivalTime 
+  flightNumber
+  capacity
+  airportOrigin
+  airportDestination
+  information 
+  airplaneModel 
+  allowedLoggage
+  airplaneCompany 
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+    
+  }
+}
+`,
+  SEARCHFLIGHTTICKETBYUSERID: gql`
+query searchFlightTicketByUserId($userId:String!){
+  searchFlightTicketByUserId(userId:$userId){
+      flightBuy{
+      flight{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  flightClass
+  departureTime
+  arrivalTime 
+  flightNumber
+  capacity
+  airportOrigin
+  airportDestination
+  information 
+  airplaneModel 
+  allowedLoggage
+  airplaneCompany 
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+  }
+}
 `
-
 }
 
 export default flightQueries

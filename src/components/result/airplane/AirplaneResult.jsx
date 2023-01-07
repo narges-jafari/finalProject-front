@@ -40,6 +40,10 @@ const AirplaneResult = () => {
   const destinationName = window.localStorage.getItem('FlightDestinationName').replace(/"/g, '')
   const date = window.localStorage.getItem('FlightDate').replace(/"/g, '')
   const flightclass = window.localStorage.getItem('FlightClass').replace(/"/g, '')
+  const capacity = window.localStorage.getItem('Capacity').replace(/"/g, '')
+  const capacity1 = window.localStorage.getItem('Capacity1').replace(/"/g, '')
+  const capacity2 = window.localStorage.getItem('Capacity2').replace(/"/g, '')
+  const allCapacity = parseInt(capacity1) + parseInt(capacity) + parseInt(capacity2)
   const Num = date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
   const dayOfWeekName = new Date(Num).toLocaleString(
     'fa-IR', { weekday: 'long' })
@@ -48,9 +52,21 @@ const AirplaneResult = () => {
     'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
   ]
 
+  const handleCapacity = () => {
+    if (allCapacity == '[]') {
+      return (
+        1
+      )
+    } else {
+      return (
+        allCapacity
+      )
+    }
+  }
+
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-
+  console.log(handleCapacity(), 'lklk')
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
     variables: {
@@ -67,7 +83,7 @@ const AirplaneResult = () => {
       setAirplaneItem([])
     }
   })
-
+  console.log(flightclass, 'aaaa')
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
     if (a < b) {
@@ -101,14 +117,36 @@ const AirplaneResult = () => {
   const daynum = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const currentDate = '۱۴۰۱' + '/' + daynum + '/' + month
+
   const newDate = currentDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+  const current = new Date()
+
+  const time = current.toLocaleTimeString('fa-IR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
+  const newTime = time.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+
+  // const startTime=airplaneItem.map(item=>item.startTime)
+
   useEffect(() => {
     setFilteredTicketsDate(
       airplaneItem.filter((item) =>
-        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) > newDate
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&
+        item.capacity >= handleCapacity()
       )
     )
   }, [airplaneItem])
+
+  useEffect(() => {
+    window.localStorage.setItem('AIRPLAINID', JSON.stringify(clickedItem))
+  }, [clickedItem])
+
+  const handleNameChange = (e) => {
+    window.location.href = '/airplanepay'
+    // setClickedRoom(clickedItem)
+  }
   return (
     <>
 
@@ -224,6 +262,7 @@ const AirplaneResult = () => {
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.flightClass} </span>
 
                                   </div>
                                 </div>
@@ -301,13 +340,19 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.capacity <= 0 || item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
                                       > انتخاب
                                     </span>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button
+
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>
@@ -377,6 +422,7 @@ const AirplaneResult = () => {
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}   </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.flightClass} </span>
 
                                   </div>
                                 </div>
@@ -454,13 +500,18 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.capacity <= 0 || item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
                                       > انتخاب
                                     </span>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>
@@ -530,6 +581,7 @@ const AirplaneResult = () => {
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.flightClass} </span>
 
                                   </div>
                                 </div>
@@ -607,13 +659,18 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.capacity <= 0 || item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
                                       > انتخاب
                                     </span>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>

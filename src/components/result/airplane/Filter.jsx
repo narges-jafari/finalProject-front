@@ -72,7 +72,7 @@ const Filter = (props) => {
 
     setFilteredTicketsName(
       items.filter((item) =>
-        item.airplaneCompany.replace(/"/g, '') == (search)
+        item.airplaneCompany.replace(/"/g, '') === (search)
       )
     )
   }, [search, items, props.customeStrategySell1(filteredTicketsName)])
@@ -297,9 +297,9 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value='ایران ایرتور'
+                      value='   ایران ایر تور'
                       onChange={handleNameChange}
-                      checked={search === 'ایران ایرتور'}
+                      checked={search === '   ایران ایر تور'}
                     />
                     <img src={logo1} className={styles.logoCss} />
                     <span className='mx-1'> ایران ایرتور</span>
@@ -310,9 +310,9 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value=' آسمان'
+                      value='  آسمان'
                       onChange={handleNameChange}
-                      checked={search === ' آسمان'}
+                      checked={search === '  آسمان'}
                     />
                     <img src={logo2} className={styles.logoCss} />
                     <span className='mx-1'> آسمان</span>
@@ -336,9 +336,9 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value=' کاسپین'
+                      value=' کاسپین  '
                       onChange={handleNameChange}
-                      checked={search === ' کاسپین'}
+                      checked={search === ' کاسپین  '}
                     />
                     <img src={logo4} className={styles.logoCss} />
                     <span className='mx-1'> کاسپین</span>
@@ -349,9 +349,9 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value=' کیش'
+                      value=' کیش  '
                       onChange={handleNameChange}
-                      checked={search === ' کیش'}
+                      checked={search === ' کیش  '}
                     />
                     <img src={logo5} className={styles.logoCss} />
                     <span className='mx-1'> کیش</span>

@@ -23,6 +23,10 @@ import HotelPaymentPage from './pages/Payment/hotel/HotelPaymentPage'
 import Finish from './pages/Finish/FinishPage'
 import MakeHotelTicketPage from './pages/MakeHotel/MakeHotelTicketPage'
 import FastHotelTicketPage from './pages/FastTicket/FastHotelTicket'
+import AirplanePaymentPage from './pages/Payment/airplane/AirplanePaymentPage'
+import FlightFinishPage from './pages/Finish/FlightFinishPage'
+import FastFlightTicketPage from './pages/FastTicket/FastFlightTicket'
+
 const App = (props) => {
   return (
     <>
@@ -45,11 +49,14 @@ const App = (props) => {
           <Route path='/infohotel' element={<InfoResultPage />} />
           <Route path='/infofasthotel' element={<InfoFastPage />} />
           <Route path='/hotelpay' element={<HotelPaymentPage />} />
+          <Route path='/airplanepay' element={<AirplanePaymentPage />} />
           <Route path='/fasthotelticket' element={<FastHotelTicketPage />} />
-          <Route path='/airplanepay' element={<PaymentPage />} />
+          <Route path='/fastflightticket' element={<FastFlightTicketPage />} />
           <Route path='/addticket' element={<AddTicketPage />} />
           <Route path='/buyticket' element={<BuyTicketPage />} />
           <Route path='/finish' element={<Finish />} />
+          <Route path='/finishflight' element={<FlightFinishPage />} />
+
           <Route path='/makehotelticket' element={<MakeHotelTicketPage />} />
 
         </Routes>

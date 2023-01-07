@@ -51,6 +51,141 @@ const flightMutations = {
 }
 }
     
+  `,
+
+  FLIGHTBUY: gql`
+  mutation airplaneBuy(
+    $flightId:ID!
+    $user:ID!
+  $name:[String!]
+    $date:[String!]
+    $gen:[String!]
+    $nationalcode:[String!]
+    $price:Float!
+){
+  airplaneBuy(
+      flightId:$flightId
+      userId:$user
+    airplaneBuyInput:{
+      fullName:$name,
+      nationalCode:$nationalcode
+      birthDate:$date
+      gendere:$gen
+      price: $price
+    }
+
+    
+  )
+  {
+  
+    
+    user{
+      _id
+      username
+      password
+      email
+    }
+   
+    flight{
+      _id
+flightClass
+originName
+      destinationName
+      airportOrigin
+      airportDestination
+      arrivalTime
+      departureTime
+      flightNumber
+      date
+      price
+      capacity
+      information
+      airplaneModel
+      allowedLoggage
+      airplaneCompany
+      
+    }
+    isDelete
+    fullName
+    birthDate
+    nationalCode
+    gendere
+    _id
+  }
+
+}
+    
+    
+  `,
+  FLIGHTTICKET: gql`
+  mutation makeFlightTicket(
+    $flightBuy:ID!
+ $date:String!
+    $serialId:Int!
+  $codeId:Int!
+  $seatnumber:[Int!]
+  $searchId:String!
+){
+  makeFlightTicket(
+    flightTicketInput:{
+      date:$date
+    serialId:$serialId
+  codeId:$codeId
+      seatnumber:$seatnumber
+    searchId:$searchId
+    
+  },flightBuy:$flightBuy    
+  )
+  {
+  
+    flightBuy{
+      
+   
+    user{
+      _id
+      username
+      password
+      email
+    }
+   
+    flight{
+      _id
+flightClass
+originName
+      destinationName
+      airportOrigin
+      airportDestination
+      arrivalTime
+      departureTime
+      flightNumber
+      date
+      price
+      capacity
+      information
+      airplaneModel
+      allowedLoggage
+      airplaneCompany
+      
+    }}
+    _id
+    serialId
+    codeId
+    searchId
+    date
+    seatnumber
+  }
+
+}
+    
+    
+  `,
+  UPDATEFLIGHTCAPACITY: gql`
+  mutation updateFlightCapacity($id:ID!,$capacity:Int!){
+    updateFlightCapacity(id:$id,capacity:$capacity){
+    _id
+    }
+  }
+    
   `
 
 }

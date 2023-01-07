@@ -240,7 +240,7 @@ const HotelTicket = () => {
             } else if (capacity == '') {
               return (
                 <div ref={ref}>
-                  sssssssss
+
                   <div className={styles.content}>
                     <div className={styles.ticketHeader}>
                       <div>

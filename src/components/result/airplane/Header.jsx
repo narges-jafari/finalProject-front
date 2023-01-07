@@ -25,8 +25,7 @@ const Header = (props) => {
         <div className={styles.header}>
           <div className={styles.headerItem}>
             <span>{originName}</span>
-            <IoAirplaneOutline className={styles.iconcss} />
-
+            <span className='mx-1'>به</span>
             <span>{destinationName}</span>
           </div>
           <div className={styles.headerItem}>

@@ -91,7 +91,7 @@ const AirplaneContent = (props) => {
   // APOLLO MUTATION
   const [createFlights] = useMutation(flightMutations.CREATEFLIGHT)
 
-  const handleCreateAlert = (e) => {
+  const handleCreateFlight = (e) => {
     if (!error) {
       e.preventDefault()
       createFlights({
@@ -121,7 +121,7 @@ const AirplaneContent = (props) => {
             window.localStorage.setItem(FLIGHT_ID, JSON.stringify(data.createFlight._id))
             window.localStorage.setItem(FLIGHT_CAPACITY, JSON.stringify(data.createFlight.capacity))
 
-            // resetFields()
+            resetFields()
           } else {
             toast.error(
               'خطایی در برقراری با سرور اتفاق افتاد'
@@ -142,7 +142,7 @@ const AirplaneContent = (props) => {
   const handlename = event => {
     if (!isValidName(event.target.value)) {
       setError('باید زبان کیبورد را عوض کنید!')
-    } else if (originName.length < 3) {
+    } else if (originName.length < 2) {
       setError('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError(null)
@@ -155,7 +155,7 @@ const AirplaneContent = (props) => {
   const handlename1 = event => {
     if (!isValidName(event.target.value)) {
       setError1('باید زبان کیبورد را عوض کنید!')
-    } else if (destinationName.length < 3) {
+    } else if (destinationName.length < 2) {
       setError1('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError1(null)
@@ -168,7 +168,7 @@ const AirplaneContent = (props) => {
   const handlename2 = event => {
     if (!isValidName(event.target.value)) {
       setError2('باید زبان کیبورد را عوض کنید!')
-    } else if (originAirport.length < 3) {
+    } else if (originAirport.length < 2) {
       setError2('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError2(null)
@@ -181,7 +181,7 @@ const AirplaneContent = (props) => {
   const handlename3 = event => {
     if (!isValidName(event.target.value)) {
       setError3('باید زبان کیبورد را عوض کنید!')
-    } else if (destinationAirport.length < 3) {
+    } else if (destinationAirport.length < 2) {
       setError3('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError3(null)
@@ -193,7 +193,7 @@ const AirplaneContent = (props) => {
   const handlename4 = event => {
     if (!isValidName(event.target.value)) {
       setError6('فقط حروف الفبای فارسی مجاز هست')
-    } else if (airplaneModel.length < 3) {
+    } else if (airplaneModel.length < 2) {
       setError6('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError6(null)
@@ -537,7 +537,7 @@ const AirplaneContent = (props) => {
         </div>
 
         <button
-          onClick={(e) => { handleCreateAlert(e); props.datas(capacity) }}
+          onClick={handleCreateFlight}
           className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
         >
           اضافه کردن

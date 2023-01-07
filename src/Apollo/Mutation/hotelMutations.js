@@ -52,6 +52,7 @@ const hotelMutations = {
     $date:[String!]
     $gen:[String!]
     $nationalcode:[String!]
+    $price:Float!
 ){
   hotelBuy(
       hotelId:$hotel
@@ -62,6 +63,7 @@ const hotelMutations = {
       nationalCode:$nationalcode
       birthDate:$date
       gendere:$gen
+      price:$price
     }
 
     
@@ -104,6 +106,7 @@ const hotelMutations = {
     nationalCode
     gendere
     _id
+    price
   }
 
 }

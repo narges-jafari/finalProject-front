@@ -9,7 +9,7 @@ import { MdSettings } from 'react-icons/md'
 import styles from '../../assets/styles/TrainContent.module.css'
 import HotelContent from './hotel/HotelContent'
 import { AUTH_TOKEN } from '../../constants/auth'
-import NotesModal from './NotesModal'
+import AirplaneModal from './AirplaneModal'
 import TrainSeatNumber from './TrainSeatNumber'
 import RoomModal from './RoomModal'
 
@@ -155,7 +155,7 @@ const AddTicketAccordion = () => {
                   }}
                 />
                 {showSingleTimeCandleModal && (
-                  <NotesModal
+                  <AirplaneModal
                     isOpen={showSingleTimeCandleModal}
                     setIsOpen={setShowSingleTimeCandleModal}
                   />

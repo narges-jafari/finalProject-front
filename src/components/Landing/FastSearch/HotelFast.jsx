@@ -38,7 +38,6 @@ const HotelFast = () => {
       setData([])
     }
   })
-  const city = data.map(item => item.city)
   const handleNameChange = (e) => {
     window.location.href = '/resultfasthotel'
   }
@@ -61,16 +60,18 @@ const HotelFast = () => {
 
         <div className={styles.content}>
           {data.slice(0, 6).map((item, index) => (
-            <button 
-            onClick={() => {
-              handleNameChange(setCityName(item.city))
-              setCityName(item.city)
-            }}
-             key={index}  className={styles.contentItem}>
+            <button
+              onClick={() => {
+                handleNameChange(setCityName(item.city))
+                setCityName(item.city)
+              }}
+              key={index}
+              className={styles.contentItem}
+            >
               <div className={styles.contentItem1}>
                 <span>{item.name} </span>
                 <i className='fa fa-hotel ' />
-                <span> {city[index]} </span>
+                <span> {item.city} </span>
               </div>
               <div className={styles.contentItem2}>
                 <span>  {dayOfWeekName + day + monthName}  </span>
@@ -82,7 +83,7 @@ const HotelFast = () => {
 
               </div>
             </button>
-            
+
           ))}
         </div>
 

@@ -55,14 +55,27 @@ const AirplaneResult = () => {
   const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const currentDate = '۱۴۰۱' + '/' + day + '/' + month
   const newDate = currentDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+  const current = new Date()
+
+  const time = current.toLocaleTimeString('fa-IR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
+  const newTime = time.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
 
   useEffect(() => {
     setFilteredTicketsDate(
       airplaneData.filter((item) =>
-        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&
+    item.capacity > 0
       )
     )
   }, [airplaneData])
+  useEffect(() => {
+    window.localStorage.setItem('AIRPLAINID', JSON.stringify(clickedItem))
+  }, [clickedItem])
+  // console.log(clickedItem, 'llll')
 
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
@@ -93,6 +106,10 @@ const AirplaneResult = () => {
     } else {
       setFilteredTicketsDate([...filteredTicketsDate])
     }
+  }
+
+  const handleNameChange = (e) => {
+    window.location.href = '/airplanepay'
   }
 
   return (
@@ -208,7 +225,7 @@ const AirplaneResult = () => {
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}>  {item.capacity}صندلی  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -241,16 +258,15 @@ const AirplaneResult = () => {
 
                                           const minutes = time1.diff(time2, 'minutes')
                                           time2.add(minutes, 'minutes')
-                                          const diff = [
-                                            hours,
-                                            minutes
-                                          ]
 
-                                          const time3 = moment(diff, 'hh:mm').format('hh:mm')
-                                          //
+                                          const time3 = moment(hours, 'hh').format('hh')
+                                          const time4 = moment(minutes, 'mm').format('mm')
 
                                           return (
-                                            <div>{time3}</div>
+                                            <div>
+                                              {time3}ساعت و
+                                              {time4}دقیقه
+                                            </div>
                                           )
                                         } else {
                                           return (
@@ -286,13 +302,18 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity === 0
+                                  {item.departureTime < newTime
                                     ? <button
-                                        className='btn btn-lg  rounded-3  my-2'
+                                        className='btn btn-lg text-warning  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
+                                      > حرکت کرده
                                     </button>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>
@@ -360,7 +381,7 @@ const AirplaneResult = () => {
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>} </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}>  {item.capacity}صندلی   </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -411,14 +432,19 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity == 0
+                                  {item.departureTime < newTime
                                     ? <button
-                                        className='  rounded-3  my-2'
+                                        className='  rounded-3 text-warning  my-2'
                         // className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
+                                      > حرکت کرده
                                     </button>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>
@@ -486,7 +512,7 @@ const AirplaneResult = () => {
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}>{item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}>  {item.capacity}صندلی  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -537,14 +563,19 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.departureTime < newTime
                                     ? <button
-                                        className='btn btn-lg  rounded-3  my-2'
+                                        className='btn btn-lg text-warning  rounded-3  my-2'
                         // className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
+                                      > حرکت کرده
                                     </button>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>

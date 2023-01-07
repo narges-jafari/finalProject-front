@@ -1,17 +1,8 @@
 import { Modal } from 'reactstrap'
 import SeatNumber from './airplane/SeatNumber'
-import { FLIGHT_CAPACITY } from '../../constants/auth'
+// import { FLIGHT_CAPACITY } from '../../constants/auth'
 import img from '../../assets/img/bg/Capturewee.JPG'
-
-const NotesModal = (props) => {
-  const capacityf = window.localStorage.getItem(FLIGHT_CAPACITY)
-
-  const rows = []
-
-  for (let i = 0; i < capacityf; i++) {
-    rows.push(<SeatNumber key={i} />)
-  }
-
+const AirplaneModal = (props) => {
   return (
     <>
       <Modal
@@ -34,13 +25,14 @@ const NotesModal = (props) => {
             className='fa fa-close  rounded-circle   text-danger  my-2 py-2  fa-lg '
             onClick={() => {
               props.setIsOpen(false)
+              window.location.reload()
             }}
           />
         </div>
 
         <div className='modal-body'>
 
-          {rows}
+          <SeatNumber />
 
         </div>
         <div
@@ -56,4 +48,4 @@ const NotesModal = (props) => {
   )
 }
 
-export default NotesModal
+export default AirplaneModal

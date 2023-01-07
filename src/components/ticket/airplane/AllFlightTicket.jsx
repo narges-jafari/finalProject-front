@@ -4,7 +4,7 @@ import img from '../../../assets/img/barcode.JPG'
 import logo from '../../../assets/img/16.png'
 import train from '../../../assets/img/hotel.png'
 import { useQuery } from '@apollo/client'
-import hotelQueries from '../../../Apollo/Query/hotelQueries'
+import flightQueries from '../../../Apollo/Query/flightQueries'
 import { HOTELTICKET_ID, USER_ID } from '../../../constants/auth'
 import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
@@ -12,55 +12,45 @@ import ReactTooltip from 'react-tooltip'
 const AllHotelTicket = () => {
   const [data, setData] = useState([])
 
-  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  useQuery(hotelQueries.SEARCHHOTELTICKETBYUSERID, {
+  useQuery(flightQueries.SEARCHFLIGHTTICKETBYUSERID, {
     variables: {
-      id: userId
+      userId: userId
     },
 
     onCompleted: (res) => {
-      setData(res.searchHotelTicketByUserId)
+      setData(res.searchFlightTicketByUserId)
     },
     onError: () => {
-      setData(['lll'])
+      setData([''])
     }
   })
 
-  const lastItem = data.slice(-1)
-  console.log(lastItem.hotelBuy, 'last')
-  const q = lastItem.map(item => item.hotelBuy)
-  // console.log(q.map(item => item.hotel), 'last')
-
-  const userData = lastItem.map(item => item.hotelBuy)
-  const hotelData = userData.map(item => item.hotel)
-  const hotelName = hotelData.map(item => item.name)
-  const hotelStar = hotelData.map(item => item.star)
-  const startDate = hotelData.map(item => item.startDate)
-  const endDate = hotelData.map(item => item.startDate)
-  const city = hotelData.map(item => item.city)
-
-  const roomData = userData.map(item => item.room)
-  const roomName1 = roomData.map(item => item.name1)
-  const roomName2 = roomData.map(item => item.name2)
-  const roomNumber1 = roomData.map(item => item.roomNumber1)
-  const roomNumber2 = roomData.map(item => item.roomNumber2)
-  const price = roomData.map(item => item.price)
-  const floor = roomData.map(item => item.floor)
-
-  const fullName = userData.map(item => item.fullName
-  )
+  const userData = data.map(item => item.flightBuy)
+  const fullName = userData.map(item => item.fullName)
 
   const birthDate = userData.map(item => item.birthDate)
   const nationalCode = userData.map(item => item.nationalCode)
   const gen = userData.map(item => item.gendere)
+  const price = userData.map(item => item.price)
+  const serial = data.map(item => item.serialId)
+  const code = data.map(item => item.codeId)
+  const date = data.map(item => item.date)
+  const seatnumber = data.map(item => item.seatnumber)
+  const flightData = userData.map(item => item.flight)
+  const originName = flightData.map(item => item.originName)
+  const destinationName = flightData.map(item => item.destinationName)
+  const startDate = flightData.map(item => item.date)
+  const flightClass = flightData.map(item => item.flightClass)
+  const departureTime = flightData.map(item => item.departureTime)
+  const arrivalTime = flightData.map(item => item.arrivalTime)
+  const flightNumber = flightData.map(item => item.flightNumber)
+  const airportOrigin = flightData.map(item => item.airportOrigin)
+  const airportDestination = flightData.map(item => item.airportDestination)
+  const airplaneCompany = flightData.map(item => item.airplaneCompany)
 
-  const serial = lastItem.map(item => item.serialId)
-  const code = lastItem.map(item => item.codeId)
-  const date = lastItem.map(item => item.date)
+  // console.log(originName)
 
-  console.log(nationalCode[nationalCode.length - 1], 'llll')
   const ref = React.createRef()
   return (
     <>
@@ -98,81 +88,72 @@ const AllHotelTicket = () => {
 
               </div>
             </div>
+            <div className={styles.headernamecss}>اطلاعات پرواز </div>
+            <div className={styles.contentItem}>
 
-            <div>
-
-              <div className={styles.headernamecss}>اطلاعات هتل </div>
-              <div className={styles.contentItem}>
-
-                <div>
-                  <span className={styles.spancss}>نام هتل </span>
-
-                  <span className={styles.spancss1}> {hotelName}</span>
-                </div>
-                <div>
-                  <span className={styles.spancss}>  استان</span>
-                  <span className={styles.spancss1}>{city}</span>
-
-                </div>
-
+              <div>
+                <span className={styles.spancss}> مبدا </span>
+                <span className={styles.spancss1}> {originName}</span>
               </div>
-              <div className={styles.contentItem}>
-                <div>
-                  <span className={styles.spancss}>   از تاریخ  </span>
-
-                  <span className={styles.spancss1}> {startDate}</span>
-
-                </div>
-                <div>
-                  <span className={styles.spancss}> تا تاریخ</span>
-                  <span className={styles.spancss1}>{endDate}</span>
-                </div>
-              </div>
-
-              <div className={styles.contentItem}>
-                <div>
-                  <span className={styles.spancss}> ستاره هتل </span>
-                  <span className={styles.spancss1}> {hotelStar} ستاره </span>
-                </div>
+              <div>
+                <span className={styles.spancss}>  مقصد</span>
+                <span className={styles.spancss1}>{destinationName}</span>
 
               </div>
 
             </div>
-
-            <div className={styles.headernamecss}>اطلاعات اتاق </div>
             <div className={styles.contentItem}>
-              <div>
-                <span className={styles.spancss}>  اسم اتاق </span>
-                <span className={styles.spancss1}>
-                  <span className='mx-1'>{roomName1}</span>
-                  <span>
-                    {roomName2}
-                  </span>
 
-                </span>
+              <div>
+                <span className={styles.spancss}> فرودگاه مبدا </span>
+                <span className={styles.spancss1}> {airportOrigin}</span>
               </div>
               <div>
-                <span className={styles.spancss}>  طبقه </span>
-                <span className={styles.spancss1}>{floor}</span>
+                <span className={styles.spancss}>  فرودگاه مقصد</span>
+                <span className={styles.spancss1}>{airportDestination}</span>
 
               </div>
 
             </div>
             <div className={styles.contentItem}>
               <div>
-                <span className={styles.spancss}>  شماره اتاق </span>
-                <span className={styles.spancss1}>
+                <span className={styles.spancss}>    ساعت حرکت  </span>
 
-                  <span>
-                    <span className='mx-2'>{roomNumber1}</span>
-                    {roomNumber2}
-                  </span>
+                <span className={styles.spancss1}> {departureTime}</span>
 
-                </span>
               </div>
               <div>
-                <span className={styles.spancss}>  قیمت </span>
-                <span className={styles.spancss1}>{price} تومان </span>
+                <span className={styles.spancss}>  ساعت رسیدن</span>
+                <span className={styles.spancss1}>{arrivalTime}</span>
+              </div>
+            </div>
+
+            <div className={styles.contentItem}>
+              <div>
+                <span className={styles.spancss}>  تاریخ حرکت </span>
+                <span className={styles.spancss1}> {startDate}  </span>
+              </div>
+              <div>
+                <span className={styles.spancss}>   کلاس پرواز </span>
+                <span className={styles.spancss1}> {flightClass}  </span>
+              </div>
+
+            </div>
+            <div className={styles.contentItem}>
+              <div>
+                <span className={styles.spancss}>   شماره پرواز </span>
+                <span className={styles.spancss1}> {flightNumber}  </span>
+              </div>
+              <div>
+                <span className={styles.spancss}>    شرکت هواپیمایی</span>
+                <span className={styles.spancss1}> {airplaneCompany}  </span>
+              </div>
+
+            </div>
+            <div className={styles.contentItem}>
+              <div>
+                <span className={styles.spancss}>    قیمت </span>
+                <span className={styles.spancss1}> {price}  </span>
               </div>
 
             </div>
@@ -181,14 +162,13 @@ const AllHotelTicket = () => {
             <div className={styles.contentItem}>
               <div>
                 <span className={styles.spancss}>  نام مسافر</span>
-                <span className={styles.spancss1}> {fullName.join('/ ')}</span>
+                <span className={styles.spancss1}>  {fullName.join('/ ')}</span>
 
               </div>
 
               <div>
                 <span className={styles.spancss}> کد ملی</span>
-
-                <span className={styles.spancss1}> {nationalCode.join('/ ')}</span>
+                <span className={styles.spancss1}>  {nationalCode.join('/ ')}</span>
 
               </div>
 
@@ -196,12 +176,12 @@ const AllHotelTicket = () => {
             <div className={styles.contentItem}>
               <div>
                 <span className={styles.spancss}> جنسیت </span>
-                <span className={styles.spancss1}> {gen.join('/ ')}</span>
+                <span className={styles.spancss1}>  {gen.join('/ ')}</span>
 
               </div>
               <div>
                 <span className={styles.spancss}> تاریخ تولد </span>
-                <span className={styles.spancss1}> {birthDate.join(' و  ')}</span>
+                <span className={styles.spancss1}>  {birthDate.join(' و  ')}</span>
 
               </div>
             </div>
@@ -211,7 +191,12 @@ const AllHotelTicket = () => {
                 <span className={styles.spancss}>  تاریخ صدور  </span>
                 <span className={styles.spancss1}> {date}</span>
               </div>
+              <div>
+                <span className={styles.spancss}>   شماره صندلی </span>
+                <span className={styles.spancss1}>  {seatnumber.join(' و  ')}  </span>
+              </div>
             </div>
+
             <hr />
             <div className={styles.ticketFooter}>
               <div>
@@ -231,6 +216,7 @@ const AllHotelTicket = () => {
               </div>
             </div>
           </div>
+
         </div>
 
       </>

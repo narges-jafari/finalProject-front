@@ -24,7 +24,7 @@ const HotelResult = () => {
   // const cityName=window.localStorage.getItem('HotelCity')
   const startDate = window.localStorage.getItem('HotelStartDate').replace(/"/g, '')
   const endDate = window.localStorage.getItem('HotelEndDate').replace(/"/g, '')
-console.log(city)
+  console.log(city)
   // THIS FUNCTIONS IS FOR GET DATA FROM CHILD
   const handleStarData = useCallback((star) => {
     setShowStarData(star)

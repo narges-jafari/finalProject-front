@@ -5,8 +5,9 @@ import Footer from '../../components/Landing/Footer/Footer.jsx'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 import styles from '../../assets/styles/Pages.module.css'
 import { AUTH_TOKEN, HOTELBUY_ID, FLIGHTBUY_ID, HOTEL_ID } from '../../constants/auth'
+
 import NotLoginPage from '../NotLogin.jsx'
-const FinishPage = () => {
+const FlightFinishPage = () => {
   const showData = window.localStorage.getItem(AUTH_TOKEN)
 
   return (
@@ -21,7 +22,7 @@ const FinishPage = () => {
 
           <div className=' mx-auto '>
 
-            <Finish />
+            <FlightFinish />
 
           </div>
           <div style={{ backgroundColor: 'white', marginTop: '20px' }}>
@@ -36,4 +37,4 @@ const FinishPage = () => {
   )
 }
 
-export default FinishPage
+export default FlightFinishPage

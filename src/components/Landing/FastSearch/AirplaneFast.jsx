@@ -1,19 +1,18 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../../../assets/styles/FastSearch.module.css'
 import { useQuery } from '@apollo/client'
 import flightQueries from '../../../Apollo/Query/flightQueries'
 
 const AirplaneFast = () => {
   const [data, setData] = useState([])
+  const [flightId, setFlightId] = useState(false)
+  const [filteredData, setFilteredData] = useState([])
+
   const today = new Date()
   console.log('today => ', today)
   const tomorrow = new Date()
   tomorrow.setDate(today.getDate() + 1)
   console.log('tomorrow => ', tomorrow, today)
-  if (tomorrow >= today) {
-    // Do something..
-    console.log('Working!')
-  }
 
   const dayOfWeekName = new Date(tomorrow).toLocaleString(
     'fa-IR', { weekday: 'long' })
@@ -42,6 +41,21 @@ const AirplaneFast = () => {
     }
   })
 
+  const handleNameChange = (e) => {
+    window.location.href = '/airplanepay'
+  }
+
+  useEffect(() => {
+    window.localStorage.setItem('AIRPLAINID', flightId)
+  }, [flightId])
+  useEffect(() => {
+    setFilteredData(
+      data.filter((item) =>
+        item.capacity > 0
+      )
+    )
+  }, [filteredData])
+
   return (
     <>
       <div className={styles.headerCss}>
@@ -53,9 +67,15 @@ const AirplaneFast = () => {
       <div className='d-flex flex-column  justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
 
         <div className={styles.content}>
-          {data.slice(0, 6).map((item, index) => (
+          {filteredData.slice(0, 6).map((item, index) => (
 
-            <div key={index} className={styles.contentItem}>
+            <button
+              onClick={() => {
+                handleNameChange(setFlightId(item._id))
+                setFlightId(item._id)
+              }}
+              key={index} className={styles.contentItem}
+            >
               <div className={styles.contentItem1}>
                 <span>{item.originName} </span>
                 <i className='fa fa-plane ' />
@@ -70,7 +90,7 @@ const AirplaneFast = () => {
                 <span className={styles.moneyfont}>{item.price}</span>
 
               </div>
-            </div>
+            </button>
 
           ))}
         </div>

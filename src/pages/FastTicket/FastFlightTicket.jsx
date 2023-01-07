@@ -1,39 +1,40 @@
-import Finish from '../../components/Payment/hotel/Finish.js'
-import FlightFinish from '../../components/Payment/airplane/FlightFinish.js'
-
+// UpdateRoom
+import React from 'react'
+// import Filter from '../../components/result/Filter'
 import Footer from '../../components/Landing/Footer/Footer.jsx'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'
 import styles from '../../assets/styles/Pages.module.css'
-import { AUTH_TOKEN, HOTELBUY_ID, FLIGHTBUY_ID, HOTEL_ID } from '../../constants/auth'
+import AirplaneTicket from '../../components/ticket/AirplaneTicket.jsx'
+import { AUTH_TOKEN } from '../../constants/auth'
 import NotLoginPage from '../NotLogin.jsx'
-const FinishPage = () => {
-  const showData = window.localStorage.getItem(AUTH_TOKEN)
 
+const FastFlightTicketPage = () => {
+  const showData = window.localStorage.getItem(AUTH_TOKEN)
+  console.log(showData)
   return (
     <>
       {showData
-
         ? <div className={styles.bodycss}>
           <div className={styles.content}>
             <HeaderLanding />
 
           </div>
 
-          <div className=' mx-auto '>
-
-            <Finish />
+          <div className=' w-75 mx-auto  '>
+            <AirplaneTicket />
 
           </div>
-          <div style={{ backgroundColor: 'white', marginTop: '20px' }}>
+          <div style={{ marginTop: '200px' }}>
             <Footer />
 
           </div>
           </div>
+
         : <div>
           <NotLoginPage />
-          </div>}
+        </div>}
     </>
   )
 }
 
-export default FinishPage
+export default FastFlightTicketPage
