@@ -48,13 +48,17 @@ const AllHotelTicket = () => {
   const airportOrigin = flightData.map(item => item.airportOrigin)
   const airportDestination = flightData.map(item => item.airportDestination)
   const airplaneCompany = flightData.map(item => item.airplaneCompany)
+  const allowedLoggage = flightData.map(item => item.allowedLoggage)
+  const information = flightData.map(item => item.information)
 
+  const allUserData = userData.map(item => item.user)
+  const allUserId = allUserData.map(item => item._id)
   // console.log(originName)
 
   const ref = React.createRef()
   return (
     <>
-
+{allUserId == userId?
       <>
         <ReactTooltip className='bg-light text-secondary' />
         <Pdf targetRef={ref} filename='ticket.pdf' x={4} p={3} y={0.8} scale={0.8} data-place='bottom' data-tip='excel '>
@@ -155,6 +159,10 @@ const AllHotelTicket = () => {
                 <span className={styles.spancss}>    قیمت </span>
                 <span className={styles.spancss1}> {price}  </span>
               </div>
+              <div>
+                <span className={styles.spancss}>    بار مجاز </span>
+                <span className={styles.spancss1}> {allowedLoggage} کیلوگرم  </span>
+              </div>
 
             </div>
 
@@ -196,6 +204,14 @@ const AllHotelTicket = () => {
                 <span className={styles.spancss1}>  {seatnumber.join(' و  ')}  </span>
               </div>
             </div>
+            <hr/>
+                      <div className={styles.contentItem}>
+                        <div>
+                          <span className={styles.spancss}>  امکانات  </span>
+                          <span className={styles.spancss1}> {information.slice(0, 6).join('_')}  </span>
+                        </div>
+                   
+                      </div>
 
             <hr />
             <div className={styles.ticketFooter}>
@@ -208,18 +224,26 @@ const AllHotelTicket = () => {
                 </div>
 
                 <span>
-                  1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
-                </span>
-                <span>
-                  2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
-                </span>
+                            1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
+                          </span>
+                          <span>
+                            2:  حتما یک ساعت قبل از زمان حرکت در فرودگاه حاضر باشید
+                          </span>
+                          <span>
+                            3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+                          </span>
               </div>
             </div>
           </div>
 
         </div>
 
-      </>
+      </>:
+       <div style={{ width: '70%', textAlign: 'center' }} className=' rounded-3 px-4 py-3 justify-content-center alert-info border mx-auto my-4'>
+       شما تاکنون بلیط قطار تهیه نکرده اید
+
+       </div>
+}
     </>
   )
 }

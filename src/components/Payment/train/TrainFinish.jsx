@@ -26,20 +26,17 @@ const TrainFinish = () => {
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
   const allCapacity = capacity0 + capacity1 + capacity2
   const showAllCapacity = () => {
-    if (!capacity2 && capacity0 && !capacity1)   {
+    if (!capacity2 && capacity0 && !capacity1) {
       return (
         capacity0
       )
-    } else if(!capacity1 && !capacity2 &&  !capacity0){
+    } else if (!capacity1 && !capacity2 && !capacity0) {
       return 1
-    }
-    else if(capacity1 && !capacity2 &&  capacity0){
-      return capacity0+capacity1
-    }
-    else if(!capacity1 && capacity2 &&  capacity0){
-      return capacity0+capacity2
-    }
-    else {
+    } else if (capacity1 && !capacity2 && capacity0) {
+      return capacity0 + capacity1
+    } else if (!capacity1 && capacity2 && capacity0) {
+      return capacity0 + capacity2
+    } else {
       return (
         allCapacity
       )
@@ -81,11 +78,10 @@ const TrainFinish = () => {
       })
   }
 
-  const showValue=()=>{
-    if(showAllCapacity() ==1){
+  const showValue = () => {
+    if (showAllCapacity() == 1) {
       return 1
-    }
-    else return  showAllCapacity()
+    } else return showAllCapacity()
   }
   // const showData={showAllCapacity()== 1?2:}
 
@@ -99,16 +95,14 @@ const TrainFinish = () => {
       .then(({ data }) => {
         if (data.reservedtraintSeat !== null) {
           toast.success('ظرفیت به‌روزرسانی شد')
-
         } else {
           toast.success('  شد')
-
         }
       })
   }
 
   const number = seatnumbers.map(item => item.number)
-  const numberhall =seatnumbers.map(item =>item.hallNumber )
+  const numberhall = seatnumbers.map(item => item.hallNumber)
   const numbertrain = seatnumbers.map(item => item.trainCompartment)
   const hallDegree = seatnumbers.map(item => item.hallDegree)
 
@@ -117,9 +111,7 @@ const TrainFinish = () => {
   const seatnumberId = seatnumbers.map(item => item._id)
   // const filterData=seatnumbers.map.filter(item=>item.isDelete==false)
 
-console.log(showAllCapacity(),capacity0,capacity1,trainBuyId,'hallDegree')
-
-
+  console.log(showAllCapacity(), capacity0, capacity1, trainBuyId, 'hallDegree')
 
   const [createTicket] = useMutation(trainMutations.TRAINTICKET)
   const handleCreateTicket = (e) => {
@@ -133,7 +125,7 @@ console.log(showAllCapacity(),capacity0,capacity1,trainBuyId,'hallDegree')
         seatnumber: number.slice(0, showValue()),
         hallNumber: numberhall.slice(0, showValue()),
         trainCompartment: numbertrain.slice(0, showValue()),
-        hallDegree:hallDegree.slice(0, showValue()),
+        hallDegree: hallDegree.slice(0, showValue())
 
       }
     })
@@ -164,7 +156,7 @@ console.log(showAllCapacity(),capacity0,capacity1,trainBuyId,'hallDegree')
         >
           مشاهده بلیط
         </button>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
 
     </>

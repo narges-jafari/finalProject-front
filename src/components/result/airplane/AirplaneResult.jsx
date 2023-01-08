@@ -40,10 +40,10 @@ const AirplaneResult = () => {
   const destinationName = window.localStorage.getItem('FlightDestinationName').replace(/"/g, '')
   const date = window.localStorage.getItem('FlightDate').replace(/"/g, '')
   const flightclass = window.localStorage.getItem('FlightClass').replace(/"/g, '')
-  const capacity = window.localStorage.getItem('Capacity').replace(/"/g, '')
-  const capacity1 = window.localStorage.getItem('Capacity1').replace(/"/g, '')
-  const capacity2 = window.localStorage.getItem('Capacity2').replace(/"/g, '')
-  const allCapacity = parseInt(capacity1) + parseInt(capacity) + parseInt(capacity2)
+  const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
+  const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
+  const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
+  const allCapacity = capacity + capacity1 + capacity2
   const Num = date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
   const dayOfWeekName = new Date(Num).toLocaleString(
     'fa-IR', { weekday: 'long' })
@@ -53,22 +53,25 @@ const AirplaneResult = () => {
   ]
 
   const handleCapacity = () => {
-    if (allCapacity == '[]') {
+    if (!capacity2 && capacity && !capacity1) {
       return (
-        1
+        capacity
       )
+    } else if (!capacity1 && !capacity2 && !capacity) {
+      return 1
+    } else if (capacity1 && !capacity2 && capacity) {
+      return capacity + capacity1
+    } else if (!capacity1 && capacity2 && capacity) {
+      return capacity + capacity2
     } else {
       return (
         allCapacity
       )
     }
   }
-
   const todayday = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
-
-
 
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
@@ -268,7 +271,6 @@ const AirplaneResult = () => {
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
-                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.flightClass} </span>
 
                                   </div>
                                 </div>
@@ -346,7 +348,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.date== string1  && item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
@@ -428,7 +430,6 @@ const AirplaneResult = () => {
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}   </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
-                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.flightClass} </span>
 
                                   </div>
                                 </div>
@@ -506,7 +507,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.date== string1  && item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
@@ -587,7 +588,6 @@ const AirplaneResult = () => {
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
-                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.flightClass} </span>
 
                                   </div>
                                 </div>
@@ -665,7 +665,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.date== string1  && item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}

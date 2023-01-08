@@ -50,8 +50,6 @@ const TrainResult = () => {
   const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
 
-
-
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
 
@@ -69,8 +67,8 @@ const TrainResult = () => {
 
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
-  const capacity2 =parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
-  const allCapacity = capacity+capacity1+capacity2
+  const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
+  const allCapacity = capacity + capacity1 + capacity2
   // const handleCapacity = () => {
   //   if (!capacity2 && !capacity1) {
   //     return (
@@ -86,20 +84,17 @@ const TrainResult = () => {
   //   }
   // }
   const handleCapacity = () => {
-    if (!capacity2 && capacity && !capacity1)   {
+    if (!capacity2 && capacity && !capacity1) {
       return (
         capacity
       )
-    } else if(!capacity1 && !capacity2 &&  !capacity){
+    } else if (!capacity1 && !capacity2 && !capacity) {
       return 1
-    }
-    else if(capacity1 && !capacity2 &&  capacity){
-      return capacity+capacity1
-    }
-    else if(!capacity1 && capacity2 &&  capacity){
-      return capacity+capacity2
-    }
-    else {
+    } else if (capacity1 && !capacity2 && capacity) {
+      return capacity + capacity1
+    } else if (!capacity1 && capacity2 && capacity) {
+      return capacity + capacity2
+    } else {
       return (
         allCapacity
       )
@@ -109,17 +104,17 @@ const TrainResult = () => {
     window.location.href = '/trainpay'
     // setClickedRoom(clickedItem)
   }
-  
+
   useEffect(() => {
     setFilteredTicketsDate(
       trainItem.filter((item) =>
-        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) > newDate
-        && item.capacity >= handleCapacity()
-        )
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) > newDate &&
+        item.capacity >= handleCapacity()
+      )
     )
   }, [trainItem])
 
-  console.log(handleCapacity(),capacity1,capacity,'0000')
+  console.log(handleCapacity(), capacity1, capacity, '0000')
 
   useEffect(() => {
     window.localStorage.setItem('TRAINID', JSON.stringify(clickedItem))
@@ -360,16 +355,18 @@ const TrainResult = () => {
                                     />
 
                                   )}
-                                  {item.date== string1  && item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg  text-warning rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
                                       > حرکت کرده
                                     </button>
-                                    : <button 
-                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
 
-                                    className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>
@@ -515,16 +512,18 @@ const TrainResult = () => {
                                     />
 
                                   )}
-                                  {item.date==string1  && item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg text-warning  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
                                       > حرکت کرده
                                     </button>
                                     : <button
-                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
 
-                                     className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>
@@ -669,17 +668,19 @@ const TrainResult = () => {
                                     />
 
                                   )}
-                                  {item.date== string1  && item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg text-warning  rounded-3  my-2'
                         // className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
                                       > حرکت کرده
                                     </button>
-                                    : <button 
-                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+                                    : <button
+                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
 
-                                    className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                        className='btn btn-lg btn-danger rounded-3  my-2'
+                                      > انتخاب
+                                    </button>}
                                 </div>
 
                               </div>

@@ -33,13 +33,12 @@ const TrainSearch = () => {
   }, [])
   const handlePassenger1 = useCallback((passenger) => {
     setShowPassenger1(passenger)
-  }, [])  
+  }, [])
   const handlePassenger2 = useCallback((passenger) => {
     setShowPassenger2(passenger)
   }, [])
 
   const allPassenger = showPassenger + showPassenger1 + showPassenger2
-
 
   const handleClass = useCallback((name) => {
     setShowClass(name)
@@ -49,25 +48,20 @@ const TrainSearch = () => {
   const [SearchTrain] = useLazyQuery(trainQueries.SEARCHTRAIN)
 
   const showAllCapacity = () => {
-    if (showPassenger==0 )   {
+    if (showPassenger == 0) {
       return (
-             null     
-       )
-   
-    }
-    else {
+        null
+      )
+    } else {
       return (
         allPassenger
       )
     }
   }
 
-  console.log(showPassenger,showPassenger1,'[[[[[[[[',showAllCapacity())
+  console.log(showPassenger, showPassenger1, '[[[[[[[[', showAllCapacity())
 
   const handleSearch = () => {
-   
-
- 
     SearchTrain({
       variables: {
         originName: originName,
@@ -82,7 +76,6 @@ const TrainSearch = () => {
           window.location.href = '/resulttrain'
         }
       })
-   
   }
   useEffect(() => {
     { window.localStorage.setItem('TrainOriginName', originName)
@@ -93,9 +86,8 @@ const TrainSearch = () => {
     { window.localStorage.setItem('Capacity', JSON.stringify(showPassenger)) }
     { window.localStorage.setItem('Capacity1', JSON.stringify(showPassenger1)) }
     { window.localStorage.setItem('Capacity2', JSON.stringify(showPassenger2)) }
-
-  }, [originName, destinationName, showClass, startDate,showPassenger,showPassenger1,showPassenger2])
-  console.log(allPassenger,'l')
+  }, [originName, destinationName, showClass, startDate, showPassenger, showPassenger1, showPassenger2])
+  console.log(allPassenger, 'l')
 
   return (
     <>
@@ -150,13 +142,13 @@ const TrainSearch = () => {
                   margin: '4px 0px 0px 0px'
                 }}
               >
-                <div style={{fontFamily:'Vazir'}} className='d-flex flex-column my-2'>
+                <div style={{ fontFamily: 'Vazir' }} className='d-flex flex-column my-2'>
                   <span className={styles.spanAccordion}>مسافران/ سالن</span>
                   <div className='d-flex flex-row mx-4 px-4'>
                     {/* {allPassenger == '' ? <span className={styles.spanAccordion}>1 مسافر</span> : <span className={styles.spanAccordion}>  {allPassenger} مسافر</span>} */}
-                         <span className={styles.spanAccordion}>
-                         {showAllCapacity()} مسافر
-                         </span>
+                    <span className={styles.spanAccordion}>
+                      {showAllCapacity()} مسافر
+                    </span>
                     {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}
                   </div>
 

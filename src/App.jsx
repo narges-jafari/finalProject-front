@@ -53,7 +53,7 @@ const App = (props) => {
           <Route path='/infofasthotel' element={<InfoFastPage />} />
           <Route path='/hotelpay' element={<HotelPaymentPage />} />
           <Route path='/airplanepay' element={<AirplanePaymentPage />} />
-          
+
           <Route path='/trainpay' element={<TrainPaymentPage />} />
           <Route path='/fasttrainticket' element={<FastTrainTicketPage />} />
           <Route path='/finishtrain' element={<TrainFinishPage />} />

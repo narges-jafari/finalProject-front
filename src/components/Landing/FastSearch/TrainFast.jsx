@@ -43,7 +43,7 @@ const TrainFast = () => {
     window.localStorage.setItem('TRAINID', trainId)
   }, [trainId])
 
-  const result= data.filter(item =>item.capacity>0 )
+  const result = data.filter(item => item.capacity > 0)
   const handleNameChange = (e) => {
     window.location.href = '/trainpay'
   }
@@ -56,19 +56,18 @@ const TrainFast = () => {
         </span>
       </div>
 
-
-
       <div className='d-flex flex-column  justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
 
         <div className={styles.content}>
           {result.slice(0, 6).map((item, index) => (
 
-            <button 
-            onClick={() => {
-              handleNameChange(setTrainId(item._id))
-              setTrainId(item._id)
-            }}
-            key={index} className={styles.contentItem}>
+            <button
+              onClick={() => {
+                handleNameChange(setTrainId(item._id))
+                setTrainId(item._id)
+              }}
+              key={index} className={styles.contentItem}
+            >
 
               <div className={styles.contentItem1}>
                 <span>{item.originName} </span>

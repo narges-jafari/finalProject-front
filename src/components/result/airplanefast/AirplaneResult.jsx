@@ -63,7 +63,9 @@ const AirplaneResult = () => {
     hour12: false
   })
   const newTime = time.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
-
+  const todayday = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
   useEffect(() => {
     setFilteredTicketsDate(
       airplaneData.filter((item) =>
@@ -111,6 +113,9 @@ const AirplaneResult = () => {
   const handleNameChange = (e) => {
     window.location.href = '/airplanepay'
   }
+
+
+
 
   return (
     <>
@@ -302,7 +307,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg text-warning  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
@@ -432,7 +437,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <button
                                         className='  rounded-3 text-warning  my-2'
                         // className='mt-2  rounded-3 px-4 mx-2 py-2'
@@ -563,7 +568,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.departureTime < newTime
+                                  {item.date == string1 && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg text-warning  rounded-3  my-2'
                         // className='mt-2  rounded-3 px-4 mx-2 py-2'

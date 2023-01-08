@@ -15,9 +15,9 @@ const AirplanSearch = () => {
   const [originname, setOriginname] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
-  const [showPassenger, setShowPassenger] = useState(0)
-  const [showPassenger1, setShowPassenger1] = useState(0)
-  const [showPassenger2, setShowPassenger2] = useState(0)
+  const [showPassenger, setShowPassenger] = useState([])
+  const [showPassenger1, setShowPassenger1] = useState([])
+  const [showPassenger2, setShowPassenger2] = useState([])
 
   const [showClass, setShowClass] = useState([])
   // ACCORDIAN TOGGLE FUNCTION
@@ -27,14 +27,13 @@ const AirplanSearch = () => {
 
   const handlePassenger = useCallback((passenger) => {
     setShowPassenger(passenger)
-  })
+  }, [])
   const handlePassenger1 = useCallback((passenger) => {
     setShowPassenger1(passenger)
-  })
+  }, [])
   const handlePassenger2 = useCallback((passenger) => {
     setShowPassenger2(passenger)
-  })
-
+  }, [])
   const handleClass = useCallback((name) => {
     setShowClass(name)
   }, [])
@@ -59,7 +58,18 @@ const AirplanSearch = () => {
   }
 
   const allPassenger = showPassenger + showPassenger1 + showPassenger2
-  console.log(showPassenger1, 'llo099')
+  const showAllCapacity = () => {
+    if (showPassenger == 0) {
+      return (
+        null
+      )
+    } else {
+      return (
+        allPassenger
+      )
+    }
+  }
+
 
   useEffect(() => {
     { window.localStorage.setItem('FlightOriginName', originname)
@@ -131,8 +141,10 @@ const AirplanSearch = () => {
                 <div className='d-flex flex-column my-2'>
                   <span className={styles.spanAccordion}>مسافران/ کلاس</span>
                   <div className='d-flex flex-row mx-4 px-1'>
-                    {allPassenger == '' ? null : <span className={styles.spanAccordion}>  {allPassenger} مسافر</span>}
-                    {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}
+                  <span className={styles.spanAccordion}>
+                      {showAllCapacity()} مسافر
+                    </span>         
+                  {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}
                   </div>
                 </div>
               </button>

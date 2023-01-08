@@ -48,8 +48,7 @@ const AirplaneFast = () => {
     window.localStorage.setItem('AIRPLAINID', flightId)
   }, [flightId])
 
-
-  const result= data.filter(item =>item.capacity>0)
+  const result = data.filter(item => item.capacity > 0)
 
   return (
     <>

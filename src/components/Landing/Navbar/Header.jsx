@@ -16,7 +16,7 @@ const Header = (props) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const userId = window.localStorage.getItem(USER_ID)
-  const token=window.localStorage.getItem(AUTH_TOKEN)
+  const token = window.localStorage.getItem(AUTH_TOKEN)
   const hoteliiii = window.localStorage.getItem(HOTELTICKET_ID)
 
   console.log(hoteliiii, 'kkkkkkkk')
@@ -45,11 +45,11 @@ const Header = (props) => {
 
             <div className=' my-4   '>
               <span className={styles.numberfont1}>021-41502</span>
-              {token? <span className={styles.buttonCss1}>{data.username}</span>:
-              <a href='login' className={styles.acss}>
-                <button className={styles.buttonCss1}>ورود/ثبت نام</button>
-              </a>
-}
+              {token
+                ? <span className={styles.buttonCss1}>{data.username}</span>
+                : <a href='login' className={styles.acss}>
+                  <button className={styles.buttonCss1}>ورود/ثبت نام</button>
+                  </a>}
             </div>
 
           </Offcanvas.Title>

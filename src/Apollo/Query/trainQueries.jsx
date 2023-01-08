@@ -105,7 +105,7 @@ allowedLoggage
   }
 }
 `,
-SEARCHTRAINICKETBYID: gql`
+  SEARCHTRAINICKETBYID: gql`
 query searchTrainTicketById($id:ID!){
   searchTrainTicketById(id:$id){
  
@@ -153,7 +153,7 @@ query searchTrainTicketById($id:ID!){
   }
 }
 `,
-SEARCHTRAINTICKETBYUSERID: gql`
+  SEARCHTRAINTICKETBYUSERID: gql`
 query searchTrainTicketByUserId($userId:String!){
   searchTrainTicketByUserId(userId:$userId){
     trainBuy{

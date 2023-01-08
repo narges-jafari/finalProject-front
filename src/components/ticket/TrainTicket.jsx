@@ -6,7 +6,7 @@ import train from '../../assets/img/hotel.png'
 import { useQuery } from '@apollo/client'
 import trainQueries from '../../Apollo/Query/trainQueries'
 
-import { USER_ID,TRAINTICKET_ID } from '../../constants/auth'
+import { USER_ID, TRAINTICKET_ID } from '../../constants/auth'
 import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
 
@@ -24,26 +24,22 @@ const TrainTicket = () => {
   const allCapacity = capacity + capacity1 + capacity2
 
   const showAllCapacity = () => {
-    if (!capacity2 && capacity && !capacity1)   {
+    if (!capacity2 && capacity && !capacity1) {
       return (
         capacity
       )
-    } else if(!capacity1 && !capacity2 &&  !capacity){
+    } else if (!capacity1 && !capacity2 && !capacity) {
       return 1
-    }
-    else if(capacity1 && !capacity2 &&  capacity){
-      return capacity+capacity1
-    }
-    else if(!capacity1 && capacity2 &&  capacity){
-      return capacity+capacity2
-    }
-    else {
+    } else if (capacity1 && !capacity2 && capacity) {
+      return capacity + capacity1
+    } else if (!capacity1 && capacity2 && capacity) {
+      return capacity + capacity2
+    } else {
       return (
         allCapacity
       )
     }
   }
-
 
   useQuery(trainQueries.SEARCHTRAINICKETBYID, {
     variables: {
@@ -64,8 +60,7 @@ const TrainTicket = () => {
     }
   })
 
-  console.log(showAllCapacity(),capacity,data,userId,userData._id,';;;;;;;;')
-
+  console.log(showAllCapacity(), capacity, data, userId, userData._id, ';;;;;;;;')
 
   const ref = React.createRef()
 
@@ -236,15 +231,15 @@ const TrainTicket = () => {
                           <span className={styles.spancss}>  تاریخ صدور  </span>
                           <span className={styles.spancss1}> {data.date}</span>
                         </div>
-                    
+
                       </div>
                       <hr />
                       <div className={styles.contentItem}>
                         <div>
                           <span className={styles.spancss}> امکانات    </span>
-                          <span className={styles.spancss1}> {trainData.information.slice(0,6).join('_')}</span>
+                          <span className={styles.spancss1}> {trainData.information.slice(0, 6).join('_')}</span>
                         </div>
-                    
+
                       </div>
                       <hr />
                       <div className={styles.ticketFooter}>
@@ -274,7 +269,7 @@ const TrainTicket = () => {
 
                 </div>
               )
-            } 
+            }
             // else if (showAllCapacity() ==1) {
             //   return (
             //     <div ref={ref}>
@@ -423,7 +418,7 @@ const TrainTicket = () => {
             //               <span className={styles.spancss}>  تاریخ صدور  </span>
             //               <span className={styles.spancss1}> {data.date}</span>
             //             </div>
-                    
+
             //           </div>
 
             //           <hr />

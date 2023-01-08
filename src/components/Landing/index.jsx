@@ -102,16 +102,15 @@ const Landing = () => {
 
               </div>
             )
-          
 
           default:
             return (
-            
-                <div>
-                  <HotelFast />
-  
-                </div>
-              
+
+              <div>
+                <HotelFast />
+
+              </div>
+
             )
         }
       })()}

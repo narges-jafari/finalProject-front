@@ -115,8 +115,8 @@ const HeaderLanding = () => {
 
                   </a>
                 </>}
-              <Header 
-              userUsername={showusername.username}
+              <Header
+                userUsername={showusername.username}
               />
             </div>
 

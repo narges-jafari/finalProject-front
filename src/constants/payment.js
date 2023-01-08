@@ -12,7 +12,7 @@ const showGendermen = [
 ]
 const showGenderwomen = [
   'جنسیت',
-  'زن',
+  'زن'
 
 ]
 

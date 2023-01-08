@@ -19,7 +19,24 @@ const PassengerInfo = () => {
   const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
   const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
   const [error, setError] = useState('')
-  let [count, setCount] = useState(allCapacity - 1)
+  const showAllCapacity = () => {
+    if (!capacity2 && capacity && !capacity1) {
+      return (
+        capacity
+      )
+    } else if (!capacity1 && !capacity2 && !capacity) {
+      return 1
+    } else if (capacity1 && !capacity2 && capacity) {
+      return capacity + capacity1
+    } else if (!capacity1 && capacity2 && capacity) {
+      return capacity + capacity2
+    } else {
+      return (
+        allCapacity
+      )
+    }
+  }
+  let [count, setCount] = useState(showAllCapacity() - 1)
   const [clicked, setClicked] = useState(false)
   const [seatnumbers, setSeatnumbers] = useState([])
   const [price, setPrice] = useState([])
@@ -40,8 +57,6 @@ const PassengerInfo = () => {
 
     setFormValues(newFormValues)
   }
-
-
 
   const addFormFields = () => {
     setFormValues([...formValues, { name: '', gen: '', nationalcode: '', birthDate: null, gen: '' }])
@@ -86,22 +101,23 @@ const PassengerInfo = () => {
 
 
 
-  const showAllCapacity = () => {
-    if (allCapacity == 0) {
-      return 1
-    } else return (allCapacity)
-  }
-
   const showAllPrice = () => {
-    if (allCapacity == 0) {
+    if (showAllCapacity() == capacity) {
+      return price * capacity
+    } else if (!showAllCapacity()) {
       return price
+    } else if (showAllCapacity() == 1) {
+      return price
+    } else if (showAllCapacity() == capacity + capacity1) {
+      return (price *capacity)+(price - price * 50 / 100) * capacity1
+    } else if (showAllCapacity() == capacity + capacity2) {
+      return (price *capacity)+(price - price * 75 / 100) * capacity2
     } else {
       return (
         price * capacity + (price - price * 75 / 100) * capacity2 + (price - price * 50 / 100) * capacity1
       )
     }
   }
-
 
   const [createBuyFlight] = useMutation(flightMutations.FLIGHTBUY)
   const handleCreateBuyFlight = (e) => {
@@ -137,13 +153,13 @@ const PassengerInfo = () => {
     }
   }
 
-  const data = [
-    { title: 'One', prix: 100 },
-    { title: 'Two', prix: 200 },
-    { title: 'Three', prix: 300 }
-  ]
+  // const data = [
+  //   { title: 'One', prix: 100 },
+  //   { title: 'Two', prix: 200 },
+  //   { title: 'Three', prix: 300 }
+  // ]
 
-  console.log((data.reduce((a, v) => a = a + v.prix, 0)))
+  console.log(price,showAllPrice(),capacity,capacity1,capacity+capacity1,showAllCapacity(),(price *capacity)+(price*capacity1))
 
   // GRAPHQL QUERY
 
@@ -245,7 +261,7 @@ const PassengerInfo = () => {
         </div>
 
         <div style={{ width: '70%', margin: '10px auto' }}>
-          <div className={styles.content1}>
+        <div className={styles.content1}>
             <div className='d-flex flex-row flex-wrap  my-2 text-danger justify-content-between'>
               <span> مبلغ  کل </span>
               <span>
@@ -284,6 +300,7 @@ const PassengerInfo = () => {
               </span>
             </div>
           </div>
+
 
           <div className={styles.content1}>
             <div>

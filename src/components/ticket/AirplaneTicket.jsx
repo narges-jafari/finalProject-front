@@ -21,6 +21,24 @@ const AirplaneTicket = () => {
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
   const allCapacity = capacity + capacity1 + capacity2
+
+  const showAllCapacity = () => {
+    if (!capacity2 && capacity && !capacity1) {
+      return (
+        capacity
+      )
+    } else if (!capacity1 && !capacity2 && !capacity) {
+      return 1
+    } else if (capacity1 && !capacity2 && capacity) {
+      return capacity + capacity1
+    } else if (!capacity1 && capacity2 && capacity) {
+      return capacity + capacity2
+    } else {
+      return (
+        allCapacity
+      )
+    }
+  }
   useQuery(flightQueries.SEARCHFLIGHTTICKETBYID, {
     variables: {
       id: ticketId
@@ -57,10 +75,10 @@ const AirplaneTicket = () => {
               />}
           </Pdf>
           {(() => {
-            if (allCapacity) {
+            if (showAllCapacity()) {
               const rows = []
 
-              for (let i = 0; i < allCapacity; i++) {
+              for (let i = 0; i < showAllCapacity(); i++) {
                 rows.push(
 
                   <div key={i}>
@@ -151,6 +169,10 @@ const AirplaneTicket = () => {
                           <span className={styles.spancss}>    قیمت </span>
                           <span className={styles.spancss1}> {buyData.price}  </span>
                         </div>
+                        <div>
+                          <span className={styles.spancss}>   بار مجاز  </span>
+                          <span className={styles.spancss1}> {flightData.allowedLoggage} کیلوگرم </span>
+                        </div>
 
                       </div>
 
@@ -192,6 +214,15 @@ const AirplaneTicket = () => {
                           <span className={styles.spancss1}> {data.seatnumber[i]}  </span>
                         </div>
                       </div>
+                     
+                      <hr/>
+                      <div className={styles.contentItem}>
+                        <div>
+                          <span className={styles.spancss}>  امکانات  </span>
+                          <span className={styles.spancss1}> {flightData.information.slice(0, 6).join('_')} کیلوگرم </span>
+                        </div>
+                   
+                      </div>
 
                       <hr />
                       <div className={styles.ticketFooter}>
@@ -207,7 +238,10 @@ const AirplaneTicket = () => {
                             1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
                           </span>
                           <span>
-                            2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+                            2:  حتما یک ساعت قبل از زمان حرکت در فرودگاه حاضر باشید
+                          </span>
+                          <span>
+                            3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
                           </span>
                         </div>
                       </div>
@@ -221,158 +255,159 @@ const AirplaneTicket = () => {
 
                 </div>
               )
-            } else if (allCapacity == 0) {
-              return (
-                <div ref={ref}>
-                  <div className={styles.content}>
-                    <div className={styles.ticketHeader}>
-                      <div>
-                        <span>
-                          کد رهگیری :{data.codeId}
-                        </span>
-                        <span>
-                          سریال بلیط :{data.serialId}
-                        </span>
+            } 
+            // else if (allCapacity == 0) {
+            //   return (
+            //     <div ref={ref}>
+            //       <div className={styles.content}>
+            //         <div className={styles.ticketHeader}>
+            //           <div>
+            //             <span>
+            //               کد رهگیری :{data.codeId}
+            //             </span>
+            //             <span>
+            //               سریال بلیط :{data.serialId}
+            //             </span>
 
-                      </div>
-                      <div style={{ marginTop: '-4px' }}>
-                        <img src={train} className={styles.logoCss} />
-                      </div>
-                      <div style={{ marginTop: '-5px' }}>
-                        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>تریپنو</span>
-                        <img src={logo} className={styles.logoCss} />
+            //           </div>
+            //           <div style={{ marginTop: '-4px' }}>
+            //             <img src={train} className={styles.logoCss} />
+            //           </div>
+            //           <div style={{ marginTop: '-5px' }}>
+            //             <span style={{ fontSize: '20px', fontWeight: 'bold' }}>تریپنو</span>
+            //             <img src={logo} className={styles.logoCss} />
 
-                      </div>
-                    </div>
-                    <div className={styles.headernamecss}>اطلاعات پرواز  </div>
-                    <div className={styles.contentItem}>
+            //           </div>
+            //         </div>
+            //         <div className={styles.headernamecss}>اطلاعات پرواز  </div>
+            //         <div className={styles.contentItem}>
 
-                      <div>
-                        <span className={styles.spancss}> مبدا </span>
-                        <span className={styles.spancss1}> {flightData.originName}</span>
-                      </div>
-                      <div>
-                        <span className={styles.spancss}>  مقصد</span>
-                        <span className={styles.spancss1}>{flightData.destinationName}</span>
+            //           <div>
+            //             <span className={styles.spancss}> مبدا </span>
+            //             <span className={styles.spancss1}> {flightData.originName}</span>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}>  مقصد</span>
+            //             <span className={styles.spancss1}>{flightData.destinationName}</span>
 
-                      </div>
+            //           </div>
 
-                    </div>
-                    <div className={styles.contentItem}>
+            //         </div>
+            //         <div className={styles.contentItem}>
 
-                      <div>
-                        <span className={styles.spancss}> فرودگاه مبدا </span>
-                        <span className={styles.spancss1}> {flightData.airportOrigin}</span>
-                      </div>
-                      <div>
-                        <span className={styles.spancss}>  فرودگاه مقصد</span>
-                        <span className={styles.spancss1}>{flightData.airportDestination}</span>
+            //           <div>
+            //             <span className={styles.spancss}> فرودگاه مبدا </span>
+            //             <span className={styles.spancss1}> {flightData.airportOrigin}</span>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}>  فرودگاه مقصد</span>
+            //             <span className={styles.spancss1}>{flightData.airportDestination}</span>
 
-                      </div>
+            //           </div>
 
-                    </div>
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}>    ساعت حرکت  </span>
+            //         </div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}>    ساعت حرکت  </span>
 
-                        <span className={styles.spancss1}> {flightData.departureTime}</span>
+            //             <span className={styles.spancss1}> {flightData.departureTime}</span>
 
-                      </div>
-                      <div>
-                        <span className={styles.spancss}>  ساعت رسیدن</span>
-                        <span className={styles.spancss1}>{flightData.arrivalTime}</span>
-                      </div>
-                    </div>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}>  ساعت رسیدن</span>
+            //             <span className={styles.spancss1}>{flightData.arrivalTime}</span>
+            //           </div>
+            //         </div>
 
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}>  تاریخ حرکت </span>
-                        <span className={styles.spancss1}> {flightData.date}  </span>
-                      </div>
-                      <div>
-                        <span className={styles.spancss}>   کلاس پرواز </span>
-                        <span className={styles.spancss1}> {flightData.flightClass}  </span>
-                      </div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}>  تاریخ حرکت </span>
+            //             <span className={styles.spancss1}> {flightData.date}  </span>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}>   کلاس پرواز </span>
+            //             <span className={styles.spancss1}> {flightData.flightClass}  </span>
+            //           </div>
 
-                    </div>
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}>   شماره پرواز </span>
-                        <span className={styles.spancss1}> {flightData.flightNumber}  </span>
-                      </div>
-                      <div>
-                        <span className={styles.spancss}>    شرکت هواپیمایی</span>
-                        <span className={styles.spancss1}> {flightData.airplaneCompany}  </span>
-                      </div>
+            //         </div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}>   شماره پرواز </span>
+            //             <span className={styles.spancss1}> {flightData.flightNumber}  </span>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}>    شرکت هواپیمایی</span>
+            //             <span className={styles.spancss1}> {flightData.airplaneCompany}  </span>
+            //           </div>
 
-                    </div>
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}>    قیمت </span>
-                        <span className={styles.spancss1}> {buyData.price}  </span>
-                      </div>
+            //         </div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}>    قیمت </span>
+            //             <span className={styles.spancss1}> {buyData.price}  </span>
+            //           </div>
 
-                    </div>
-                    <div className={styles.headernamecss}>اطلاعات مسافر</div>
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}>  نام مسافر</span>
-                        <span className={styles.spancss1}> {buyData.fullName}</span>
+            //         </div>
+            //         <div className={styles.headernamecss}>اطلاعات مسافر</div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}>  نام مسافر</span>
+            //             <span className={styles.spancss1}> {buyData.fullName}</span>
 
-                      </div>
+            //           </div>
 
-                      <div>
-                        <span className={styles.spancss}> کد ملی</span>
-                        <span className={styles.spancss1}> {buyData.nationalCode}</span>
+            //           <div>
+            //             <span className={styles.spancss}> کد ملی</span>
+            //             <span className={styles.spancss1}> {buyData.nationalCode}</span>
 
-                      </div>
+            //           </div>
 
-                    </div>
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}> جنسیت </span>
-                        <span className={styles.spancss1}> {buyData.gendere}</span>
+            //         </div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}> جنسیت </span>
+            //             <span className={styles.spancss1}> {buyData.gendere}</span>
 
-                      </div>
-                      <div>
-                        <span className={styles.spancss}> تاریخ تولد </span>
-                        <span className={styles.spancss1}> {buyData.birthDate}</span>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}> تاریخ تولد </span>
+            //             <span className={styles.spancss1}> {buyData.birthDate}</span>
 
-                      </div>
-                    </div>
+            //           </div>
+            //         </div>
 
-                    <div className={styles.contentItem}>
-                      <div>
-                        <span className={styles.spancss}>  تاریخ صدور  </span>
-                        <span className={styles.spancss1}> {data.date}</span>
-                      </div>
-                      <div>
-                        <span className={styles.spancss}>   شماره صندلی </span>
-                        <span className={styles.spancss1}> {data.seatnumber}  </span>
-                      </div>
-                    </div>
-                    <hr />
-                    <div className={styles.ticketFooter}>
-                      <div>
-                        <img src={img} className={styles.barcodeCss} />
-                      </div>
-                      <div className={styles.ticketFooterItem}>
-                        <div className={styles.spanCssFooter}>
-                          توضیحات:
-                        </div>
+            //         <div className={styles.contentItem}>
+            //           <div>
+            //             <span className={styles.spancss}>  تاریخ صدور  </span>
+            //             <span className={styles.spancss1}> {data.date}</span>
+            //           </div>
+            //           <div>
+            //             <span className={styles.spancss}>   شماره صندلی </span>
+            //             <span className={styles.spancss1}> {data.seatnumber}  </span>
+            //           </div>
+            //         </div>
+            //         <hr />
+            //         <div className={styles.ticketFooter}>
+            //           <div>
+            //             <img src={img} className={styles.barcodeCss} />
+            //           </div>
+            //           <div className={styles.ticketFooterItem}>
+            //             <div className={styles.spanCssFooter}>
+            //               توضیحات:
+            //             </div>
 
-                        <span>
-                          1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
-                        </span>
-                        <span>
-                          2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )
-            }
+            //             <span>
+            //               1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
+            //             </span>
+            //             <span>
+            //               2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+            //             </span>
+            //           </div>
+            //         </div>
+            //       </div>
+            //     </div>
+            //   )
+            // }
           })()}
 
           {/* )

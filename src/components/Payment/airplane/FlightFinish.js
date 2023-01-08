@@ -30,11 +30,27 @@ const FlightFinish = () => {
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
   const allCapacity = capacity0 + capacity1 + capacity2
-  console.log(allCapacity, flightId, 'مممم')
   const showAllCapacity = () => {
-    if (allCapacity == 0) {
+    if (!capacity2 && capacity0 && !capacity1) {
+      return (
+        capacity0
+      )
+    } else if (!capacity1 && !capacity2 && !capacity0) {
       return 1
-    } else return (allCapacity)
+    } else if (capacity1 && !capacity2 && capacity0) {
+      return capacity0 + capacity1
+    } else if (!capacity1 && capacity2 && capacity0) {
+      return capacity0 + capacity2
+    } else {
+      return (
+        allCapacity
+      )
+    }
+  }
+  const showValue = () => {
+    if (showAllCapacity() == 1) {
+      return 1
+    } else return showAllCapacity()
   }
   useQuery(seatnumberQueries.GETFLIGHTSEATNUMBER, {
     variables: {
@@ -76,12 +92,12 @@ const FlightFinish = () => {
 
   const seatnumberId = seatnumbers.map(item => item._id)
   // const filterData=seatnumbers.map.filter(item=>item.isDelete==false)
-  console.log(seatnumbers, 'seat')
+  console.log(seatnumbers,showValue(),showAllCapacity(), 'seat')
 
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({
       variables: {
-        id: seatnumberId.slice(0, showAllCapacity()),
+        id: seatnumberId.slice(0, showValue()),
         isDelete: true
       }
     })
@@ -103,7 +119,7 @@ const FlightFinish = () => {
         codeId: Math.floor(Math.random() * 99999999),
         searchId: userId,
         date: date,
-        seatnumber: number.slice(0, showAllCapacity())
+        seatnumber: number.slice(0, showValue())
 
       }
     })
@@ -129,7 +145,7 @@ const FlightFinish = () => {
           onClick={() => {
             handleCreateTicket()
           }}
-           className='btn btn-primary ' type='button'
+          className='btn btn-primary ' type='button'
         >
           مشاهده بلیط
         </button>

@@ -70,8 +70,8 @@ const SeatNumber = (props) => {
           </div>
         : <>
           <div className={styles.headerCss1}>
-          <span>
-              باید اطلاعات 
+            <span>
+              باید اطلاعات
               <span style={{ fontFamily: 'Yekan', fontSize: '18px' }} className='badge rounded-circle badge-light bg-danger mx-1'>
 
                 {count}
