@@ -52,6 +52,15 @@ number
     }
   }
     
+  `,
+  RESERVEDTRAINSEATNUMBER: gql`
+  mutation reservedtraintSeat($id:[String!],$isDelete:Boolean!){
+    reservedtraintSeat(id:$id,isDelete:$isDelete){
+      _id
+      
+    }
+  }
+    
   `
 
 }

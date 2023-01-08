@@ -44,6 +44,7 @@ const trainQueries = {
       ) {
         information
         allowedLoggage
+        price
       
     }
   }
@@ -100,6 +101,101 @@ railwayOrigin
 railwayDestination 
 information 
 allowedLoggage  
+    
+  }
+}
+`,
+SEARCHTRAINICKETBYID: gql`
+query searchTrainTicketById($id:ID!){
+  searchTrainTicketById(id:$id){
+ 
+    trainBuy{
+      train{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  departureTime
+  arrivalTime 
+  railCompany
+  trainNumber
+  railwayOrigin
+  railwayDestination
+  hallType
+  capacity
+  information  
+  allowedLoggage
+   
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+    hallDegree
+    hallNumber
+    trainCompartment
+    
+  }
+}
+`,
+SEARCHTRAINTICKETBYUSERID: gql`
+query searchTrainTicketByUserId($userId:String!){
+  searchTrainTicketByUserId(userId:$userId){
+    trainBuy{
+      train{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  departureTime
+  arrivalTime 
+  railCompany
+  trainNumber
+  railwayOrigin
+  railwayDestination
+  hallType
+  capacity
+  information  
+  allowedLoggage
+   
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+    hallDegree
+    hallNumber
+    trainCompartment
     
   }
 }

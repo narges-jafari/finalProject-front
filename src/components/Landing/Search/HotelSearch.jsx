@@ -53,7 +53,7 @@ const HotelSearch = () => {
 
   useEffect(() => {
     { window.localStorage.setItem('HotelName', hotelName)
-    };
+    }
     { window.localStorage.setItem('HotelStartDate', JSON.stringify(startDate.toString())) }
     { window.localStorage.setItem('HotelEndDate', JSON.stringify(endDate.toString())) }
     { window.localStorage.setItem('Passenger', JSON.stringify(showPassenger.toString())) }

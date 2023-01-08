@@ -46,10 +46,14 @@ const TrainResult = () => {
   useEffect(() => {
     setFilteredTicketsDate(
       trainItem.filter((item) =>
-        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) > newDate
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate
+        && item.capacity>0
       )
     )
   }, [trainItem])
+  useEffect(() => {
+    window.localStorage.setItem('TRAINID', JSON.stringify(clickedItem))
+  }, [clickedItem])
 
   // apollo query
   useQuery(trainQueries.SEARCHTRAINBYNAME, {
@@ -94,6 +98,24 @@ const TrainResult = () => {
       setTrainItem([...filteredTicketsDate])
     }
   }
+
+
+  const handleNameChange = (e) => {
+    window.location.href = '/trainpay'
+    // setClickedRoom(clickedItem)
+  }
+
+  const current = new Date()
+  const time = current.toLocaleTimeString('fa-IR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
+  const newTime = time.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+
+  const todayday = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
   return (
     <>
       <div className={styles1.headerCss}>
@@ -201,12 +223,11 @@ const TrainResult = () => {
                                     })()}
 
                                     <span className='text-secondary mt-4'><h5>{item.railCompany} </h5> </span>
-                                    <span className='text-secondary mt-4 mx-2'> {item.date}   </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
-                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.date} </span>
 
                                   </div>
                                 </div>
@@ -255,6 +276,7 @@ const TrainResult = () => {
                                       })()}
 
                                     </span>
+
                                   </div>
                                   <div>
                                     <span>{item.railwayDestination}</span>
@@ -262,7 +284,7 @@ const TrainResult = () => {
                                   </div>
                                 </div>
                                 <div className={styles.contentIte3}>
-                                  <div className='d-flex flex-column'>
+                                  <div className='d-flex  flex-column'>
                                     <span className='mt-1 text-center'>قیمت هر مسافر </span>
                                     <span className='text-primary' style={{ fontWeight: 'bold', fontSize: '20px' }}>  {item.price} </span>
                                   </div>
@@ -283,13 +305,16 @@ const TrainResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.date== string1  && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
+                                      > حرکت کرده
                                     </button>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button 
+                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                    className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
                                 </div>
 
                               </div>
@@ -354,12 +379,11 @@ const TrainResult = () => {
                                       }
                                     })()}
                                     <span className='text-secondary mt-4'><h5>{item.railCompany} </h5> </span>
-                                    <span> {item.date}   </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
-                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+                                    <span className='text-secondary font-weight-bold rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.date} </span>
 
                                   </div>
                                 </div>
@@ -407,6 +431,7 @@ const TrainResult = () => {
                                         }
                                       })()}
                                     </span>
+                                    <span>{item.date}</span>
                                   </div>
                                   <div>
                                     <span>{item.railwayDestination}</span>
@@ -434,13 +459,16 @@ const TrainResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.date== string1  && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
+                                      > حرکت کرده
                                     </button>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button 
+                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                    className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
                                 </div>
 
                               </div>
@@ -505,12 +533,11 @@ const TrainResult = () => {
                                       }
                                     })()}
                                     <span className='text-secondary mt-4'><h5>{item.railCompany} </h5> </span>
-                                    <span> {item.date}   </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>} </span>
-                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
+                                    <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.date} </span>
 
                                   </div>
                                 </div>
@@ -586,13 +613,16 @@ const TrainResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0
+                                  {item.date== string1  && item.departureTime < newTime
                                     ? <button
                                         className='btn btn-lg  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
+                                      > حرکت کرده
                                     </button>
-                                    : <button className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
+                                    : <button 
+                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+
+                                    className='btn btn-lg btn-danger rounded-3  my-2'> انتخاب</button>}
                                 </div>
 
                               </div>

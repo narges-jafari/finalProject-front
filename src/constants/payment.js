@@ -5,6 +5,20 @@ const showGender = [
 
 ]
 
+const showGendermen = [
+  'جنسیت',
+  'مرد'
+
+]
+const showGenderwomen = [
+  'جنسیت',
+  'زن',
+
+]
+
 export {
-  showGender
+  showGender,
+  showGendermen,
+  showGenderwomen
+
 }

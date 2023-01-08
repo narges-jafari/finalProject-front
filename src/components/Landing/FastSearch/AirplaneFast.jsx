@@ -6,7 +6,6 @@ import flightQueries from '../../../Apollo/Query/flightQueries'
 const AirplaneFast = () => {
   const [data, setData] = useState([])
   const [flightId, setFlightId] = useState(false)
-  const [filteredData, setFilteredData] = useState([])
 
   const today = new Date()
   console.log('today => ', today)
@@ -48,13 +47,9 @@ const AirplaneFast = () => {
   useEffect(() => {
     window.localStorage.setItem('AIRPLAINID', flightId)
   }, [flightId])
-  useEffect(() => {
-    setFilteredData(
-      data.filter((item) =>
-        item.capacity > 0
-      )
-    )
-  }, [filteredData])
+
+
+  const result= data.filter(item =>item.capacity>0)
 
   return (
     <>
@@ -67,7 +62,7 @@ const AirplaneFast = () => {
       <div className='d-flex flex-column  justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
 
         <div className={styles.content}>
-          {filteredData.slice(0, 6).map((item, index) => (
+          {result.slice(0, 6).map((item, index) => (
 
             <button
               onClick={() => {

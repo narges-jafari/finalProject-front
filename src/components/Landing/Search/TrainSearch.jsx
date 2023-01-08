@@ -8,12 +8,18 @@ import TrainPassenger from '../Passenger/TrainPassenger '
 import styles from '../../../assets/styles/Transport.module.css'
 import { useLazyQuery } from '@apollo/client'
 import trainQueries from '../../../Apollo/Query/trainQueries'
+import { toast, ToastContainer } from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css'
 const TrainSearch = () => {
   // STATES
   const [destinationName, setDestinationName] = useState()
   const [originName, setOriginName] = useState()
   const [startDate, setStartDate] = useState(new Date())
   const [showPassenger, setShowPassenger] = useState([])
+  const [showPassenger1, setShowPassenger1] = useState([])
+  const [showPassenger2, setShowPassenger2] = useState([])
+
   const [showClass, setShowClass] = useState([])
   const [col1, setCol1] = useState(false)
 
@@ -25,6 +31,15 @@ const TrainSearch = () => {
   const handlePassenger = useCallback((passenger) => {
     setShowPassenger(passenger)
   }, [])
+  const handlePassenger1 = useCallback((passenger) => {
+    setShowPassenger1(passenger)
+  }, [])  
+  const handlePassenger2 = useCallback((passenger) => {
+    setShowPassenger2(passenger)
+  }, [])
+
+  const allPassenger = showPassenger + showPassenger1 + showPassenger2
+
 
   const handleClass = useCallback((name) => {
     setShowClass(name)
@@ -33,7 +48,26 @@ const TrainSearch = () => {
   // apollo query
   const [SearchTrain] = useLazyQuery(trainQueries.SEARCHTRAIN)
 
+  const showAllCapacity = () => {
+    if (showPassenger==0 )   {
+      return (
+             null     
+       )
+   
+    }
+    else {
+      return (
+        allPassenger
+      )
+    }
+  }
+
+  console.log(showPassenger,showPassenger1,'[[[[[[[[',showAllCapacity())
+
   const handleSearch = () => {
+   
+
+ 
     SearchTrain({
       variables: {
         originName: originName,
@@ -48,6 +82,7 @@ const TrainSearch = () => {
           window.location.href = '/resulttrain'
         }
       })
+   
   }
   useEffect(() => {
     { window.localStorage.setItem('TrainOriginName', originName)
@@ -55,7 +90,12 @@ const TrainSearch = () => {
     { window.localStorage.setItem('TrainDestinationName', JSON.stringify(destinationName)) }
     { window.localStorage.setItem('TrainDate', JSON.stringify(startDate.toString())) }
     { window.localStorage.setItem('TrainClass', JSON.stringify(showClass)) }
-  }, [originName, destinationName, showClass, startDate])
+    { window.localStorage.setItem('Capacity', JSON.stringify(showPassenger)) }
+    { window.localStorage.setItem('Capacity1', JSON.stringify(showPassenger1)) }
+    { window.localStorage.setItem('Capacity2', JSON.stringify(showPassenger2)) }
+
+  }, [originName, destinationName, showClass, startDate,showPassenger,showPassenger1,showPassenger2])
+  console.log(allPassenger,'l')
 
   return (
     <>
@@ -106,17 +146,20 @@ const TrainSearch = () => {
                   borderRadius: '20px',
                   height: '70px',
                   width: '200px',
-                  fontSize: '0.8125rem',
                   color: 'gray',
                   margin: '4px 0px 0px 0px'
                 }}
               >
-                <div className='d-flex flex-column my-2'>
+                <div style={{fontFamily:'Vazir'}} className='d-flex flex-column my-2'>
                   <span className={styles.spanAccordion}>مسافران/ سالن</span>
                   <div className='d-flex flex-row mx-4 px-4'>
-                    {showPassenger == '' ? null : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
+                    {/* {allPassenger == '' ? <span className={styles.spanAccordion}>1 مسافر</span> : <span className={styles.spanAccordion}>  {allPassenger} مسافر</span>} */}
+                         <span className={styles.spanAccordion}>
+                         {showAllCapacity()} مسافر
+                         </span>
                     {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}
                   </div>
+
                 </div>
 
               </button>
@@ -125,6 +168,9 @@ const TrainSearch = () => {
             <Collapse isOpen={col1} className='accordion-collapse '>
               <TrainPassenger
                 AllPassenger={handlePassenger}
+                AllPassenger1={handlePassenger1}
+                AllPassenger2={handlePassenger2}
+
                 AllClass={handleClass}
               />
 

@@ -2,6 +2,9 @@
 import React, { useState } from 'react'
 
 import styles from '../../../assets/styles/HeaderLanding.module.css'
+import { useQuery } from '@apollo/client'
+import userQueries from '../../../Apollo/Query/userQueries'
+
 import img from '../../../assets/img/16.png'
 
 import Header from './Header'
@@ -31,24 +34,24 @@ const HeaderLanding = () => {
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
   const userId = window.localStorage.getItem(USER_ID)
 
-  // useQuery(userQueries.USERS, {
-  //   variables: {
-  //     creator: JSON.parse(userid)
-  //   },
-  //   onCompleted: (res) => {
-  //     setShowUsername(res.user)
-  //   },
-  //   onError: () => {
-  //     setShowUsername([])
-  //   }
-  // })
+  useQuery(userQueries.SEARCHUSERBYID, {
+    variables: {
+      id: JSON.parse(userId)
+    },
+    onCompleted: (res) => {
+      setShowUsername(res.searchUserById)
+    },
+    onError: () => {
+      setShowUsername([])
+    }
+  })
   const logout = () => {
     localStorage.removeItem('auth-token')
     // localStorage.removeItem('user-id')
     // setIsLogin(false)
   }
 
-  // console.log(userid,usertoken)
+  console.log(showusername.username)
 
   return (
     <>
@@ -71,7 +74,7 @@ const HeaderLanding = () => {
 
                 </>
                 : <>
-                  {/* <button className={styles.buttonCssChange}>{showusername.username} </button> */}
+                  <button className={styles.buttonCssChange}>{showusername.username} </button>
 
                   <a href='/'>
                     <button onClickCapture={logout} className={styles.buttonCssChange}>خروج </button>
@@ -105,14 +108,16 @@ const HeaderLanding = () => {
                 </>
 
                 : <>
-                  {/* <button className={styles.buttonCssChange1}>{showusername.username} </button> */}
+                  <button className={styles.buttonCssChange1}>{showusername.username} </button>
 
                   <a href='/'>
                     <button onClickCapture={logout} className={styles.buttonCssChange1}>خروج </button>
 
                   </a>
                 </>}
-              <Header />
+              <Header 
+              userUsername={showusername.username}
+              />
             </div>
 
           </div>

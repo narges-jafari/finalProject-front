@@ -10,7 +10,8 @@ import styles from '../../assets/styles/BuyTicket.module.css'
 
 import AllHotelTicket from './hotel/AllHotelTicket'
 import AllFlightTicket from './airplane/AllFlightTicket'
-import TrainTicket from './TrainTicket'
+import AllTrainTicket from './train/AllTrainTicket'
+
 import BusTicket from './BusTicket'
 
 const BuyTicket = () => {
@@ -96,7 +97,7 @@ const BuyTicket = () => {
           <Row>
             <Col sm='12'>
               {/* <HealthBeauty /> */}
-              <TrainTicket />
+              <AllTrainTicket />
             </Col>
           </Row>
         </TabPane>

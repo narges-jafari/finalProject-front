@@ -70,13 +70,13 @@ const SeatNumber = (props) => {
           </div>
         : <>
           <div className={styles.headerCss1}>
-            <span>
-              باید اطلاعات مربوط به
-              <span className={styles.headerCss}>
+          <span>
+              باید اطلاعات 
+              <span style={{ fontFamily: 'Yekan', fontSize: '18px' }} className='badge rounded-circle badge-light bg-danger mx-1'>
 
                 {count}
               </span>
-              تا را وارد کنید
+              تا شماره صندلی  اضافه کنید
             </span>
           </div>
 
@@ -146,7 +146,7 @@ const SeatNumber = (props) => {
                 className='btn btn-warning'
                 onClick={(e) => { handleAddSeatNumber(e); decrementCount(e) }}
               >
-                اضافه مردن
+                اضافه کردن
 
               </button>
 

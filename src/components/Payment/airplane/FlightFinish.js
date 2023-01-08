@@ -5,10 +5,10 @@ import { HOTELTICKET_ID, HOTELBUY_ID, USER_ID, FLIGHTBUY_ID, FLIGHTTICKET_ID } f
 import { useQuery, useMutation } from '@apollo/client'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
 import hotelMutations from '../../../Apollo/Mutation/hotelMutations'
-import { toast, ToastContainer } from 'react-toastify'
 import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
 import seatNumberMutations from '../../../Apollo/Mutation/seatNumberMutations'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
+import { toast, ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
 import AllHotelTicket from '../../ticket/hotel/AllHotelTicket'
@@ -128,7 +128,8 @@ const FlightFinish = () => {
         <button
           onClick={() => {
             handleCreateTicket()
-          }} className='btn btn-primary ' type='button'
+          }}
+           className='btn btn-primary ' type='button'
         >
           مشاهده بلیط
         </button>

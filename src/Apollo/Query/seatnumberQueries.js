@@ -28,6 +28,34 @@ airplaneCompany
     }
   }
   `,
+  GETTRAINSEATNUMBER: gql`
+  query getTrainSeatnumber($train:String!,$isDelete:Boolean!){
+    getTrainSeatnumber(train:$train,isDelete:$isDelete){
+      number
+      _id
+      trainCompartment
+      hallDegree
+      hallNumber
+      train{
+        _id
+        railCompany
+  originName
+        destinationName
+        railwayOrigin
+        railwayDestination
+        arrivalTime
+        departureTime
+        trainNumber
+        date
+        price
+        capacity
+        information
+        hallType
+        allowedLoggage
+      }
+    }
+  }
+  `,
   SEARCHUSERBYID: gql`
   query searchUserById($id:ID!){
     searchUserById(id:$id){

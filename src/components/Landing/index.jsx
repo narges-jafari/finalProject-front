@@ -18,7 +18,7 @@ const Landing = () => {
 
   const userid = window.localStorage.getItem(HOTELBUY_ID)
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-  console.log(userid, usertoken, 'lllhyhgdjhdfhfhj')
+  console.log(showActiveTab, 'lllhyhgdjhdfhfhj')
 
   const handleTab = useCallback((tab) => {
     setActiveTab(tab)
@@ -81,7 +81,7 @@ const Landing = () => {
       })()}
       {(() => {
         switch (showActiveTab) {
-          case '1':
+          case '1' :
             return (
               <div>
                 <HotelFast />
@@ -95,17 +95,23 @@ const Landing = () => {
 
               </div>
             )
-          case '3':
+          case '3' :
             return (
               <div>
                 <TrainFast />
 
               </div>
             )
+          
 
           default:
             return (
-              null
+            
+                <div>
+                  <HotelFast />
+  
+                </div>
+              
             )
         }
       })()}

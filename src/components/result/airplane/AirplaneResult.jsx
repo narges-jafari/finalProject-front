@@ -64,6 +64,12 @@ const AirplaneResult = () => {
     }
   }
 
+  const todayday = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
+
+
+
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
   console.log(handleCapacity(), 'lklk')
@@ -340,7 +346,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0 || item.departureTime < newTime
+                                  {item.date== string1  && item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
@@ -500,7 +506,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0 || item.departureTime < newTime
+                                  {item.date== string1  && item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
@@ -659,7 +665,7 @@ const AirplaneResult = () => {
                                     />
 
                                   )}
-                                  {item.capacity <= 0 || item.departureTime < newTime
+                                  {item.date== string1  && item.departureTime < newTime
                                     ? <span
                                         className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}

@@ -25,6 +25,7 @@ const NotesModal = (props) => {
             className='fa fa-close  rounded-circle   text-danger  my-2 py-2  fa-lg '
             onClick={() => {
               props.setIsOpen(false)
+              window.location.reload()
             }}
           />
         </div>

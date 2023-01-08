@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../../../assets/styles/FastSearch.module.css'
 import { useQuery } from '@apollo/client'
 import trainQueries from '../../../Apollo/Query/trainQueries'
 const TrainFast = () => {
   const [data, setData] = useState([])
+  const [trainId, setTrainId] = useState(false)
+
   const today = new Date()
   console.log('today => ', today)
   const tomorrow = new Date()
@@ -37,6 +39,15 @@ const TrainFast = () => {
     }
   })
 
+  useEffect(() => {
+    window.localStorage.setItem('TRAINID', trainId)
+  }, [trainId])
+
+  const result= data.filter(item =>item.capacity>0 )
+  const handleNameChange = (e) => {
+    window.location.href = '/trainpay'
+  }
+
   return (
     <>
       <div className={styles.headerCss}>
@@ -45,12 +56,20 @@ const TrainFast = () => {
         </span>
       </div>
 
+
+
       <div className='d-flex flex-column  justify-content-between' style={{ margin: '10px auto', cursor: 'pointer' }}>
 
         <div className={styles.content}>
-          {data.slice(0, 6).map((item, index) => (
+          {result.slice(0, 6).map((item, index) => (
 
-            <div key={index} className={styles.contentItem}>
+            <button 
+            onClick={() => {
+              handleNameChange(setTrainId(item._id))
+              setTrainId(item._id)
+            }}
+            key={index} className={styles.contentItem}>
+
               <div className={styles.contentItem1}>
                 <span>{item.originName} </span>
                 <i className='fa fa-train ' />
@@ -58,6 +77,7 @@ const TrainFast = () => {
               </div>
               <div className={styles.contentItem2}>
                 <span>  {dayOfWeekName + day + monthName}  </span>
+                <span className='px-3'>  {item.hallType}  </span>
 
               </div>
               <div className={styles.contentItem3}>
@@ -65,7 +85,8 @@ const TrainFast = () => {
                 <span className={styles.moneyfont}>{item.price}</span>
 
               </div>
-            </div>
+
+            </button>
 
           ))}
         </div>
