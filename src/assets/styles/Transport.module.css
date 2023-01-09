@@ -27,13 +27,55 @@
       border-radius: 5px;
       border:none;
       border-radius: 20px;
-      background-color: #e3e1e154;  
+      background-color: #e3e1e154; 
      }
 
-     .inputDateCss:hover{
+     .inputDateCss1{
+      padding-right: 40px;
+      padding-top:5px;
+      padding-bottom:5px;
+      margin-top:-2px;
+      width:100%;
+      height:35px;
+      border-radius: 5px;
+      border:none;
+      border-radius: 20px;
+      background-color: #e3e1e154;
+     }
+
+     .inputDateCss1:hover{
         background-color: #fff;
         box-shadow: 0 0 4px 1px #ddd
      }
+
+     .header{
+      margin-top: 20px;
+     }
+
+     .contentnav{
+      margin:0px 10px
+     }
+
+     .contentnavitem{
+
+margin: 0px 10px;
+     }
+
+
+.contentCss{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content:none;
+   border: 2px solid black;
+}
+
+
+.buttonHeaderCss{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
 
      ::placeholder {
         color: #797777;

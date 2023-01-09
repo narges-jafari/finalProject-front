@@ -58,7 +58,7 @@ const AllHotelTicket = () => {
   const ref = React.createRef()
   return (
     <>
-{allUserId == userId?
+      {allUserId === userId?
       <>
         <ReactTooltip className='bg-light text-secondary' />
         <Pdf targetRef={ref} filename='ticket.pdf' x={4} p={3} y={0.8} scale={0.8} data-place='bottom' data-tip='excel '>
@@ -239,11 +239,12 @@ const AllHotelTicket = () => {
         </div>
 
       </>:
-       <div style={{ width: '70%', textAlign: 'center' }} className=' rounded-3 px-4 py-3 justify-content-center alert-info border mx-auto my-4'>
-       شما تاکنون بلیط قطار تهیه نکرده اید
-
-       </div>
-}
+      <div
+        style={{ width: '70%', textAlign: 'center' }}
+        className=' rounded-3 px-4 py-3 justify-content-center alert-info border mx-auto my-4'
+      >شما تاکنون بلیط قطار تهیه نکرده اید
+      </div>
+    }
     </>
   )
 }

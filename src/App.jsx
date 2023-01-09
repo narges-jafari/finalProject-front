@@ -26,10 +26,18 @@ import FastHotelTicketPage from './pages/FastTicket/FastHotelTicket'
 import AirplanePaymentPage from './pages/Payment/airplane/AirplanePaymentPage'
 import FlightFinishPage from './pages/Finish/FlightFinishPage'
 import FastFlightTicketPage from './pages/FastTicket/FastFlightTicket'
+import FastFlighstTicketsPage from './pages/FastTicket/FastFlightsTickets'
+
 import FastTrainTicketPage from './pages/FastTicket/FastTrainTicket'
+import FirstFlightResultPage from './pages/Result/FirstFlightResoltPage'
+import SecondFlightResoltPage from './pages/Result/SecondFlightResoltPage'
 
 import TrainPaymentPage from './pages/Payment/train/TrainPaymentPage'
+import FlightPaymentPage from './pages/Payment/flights/FlightsPaymentPage'
+
 import TrainFinishPage from './pages/Finish/TrainFinishPage'
+import FlightsFinishPage from './pages/Finish/FlightsFinishPage'
+
 const App = (props) => {
   return (
     <>
@@ -53,13 +61,22 @@ const App = (props) => {
           <Route path='/infofasthotel' element={<InfoFastPage />} />
           <Route path='/hotelpay' element={<HotelPaymentPage />} />
           <Route path='/airplanepay' element={<AirplanePaymentPage />} />
+          <Route path='/firstflightresult' element={<FirstFlightResultPage />} />
+          <Route path='/secondflightresult' element={<SecondFlightResoltPage />} />
 
           <Route path='/trainpay' element={<TrainPaymentPage />} />
+          <Route path='/airplanepays' element={<FlightPaymentPage />} />
+
+          
           <Route path='/fasttrainticket' element={<FastTrainTicketPage />} />
           <Route path='/finishtrain' element={<TrainFinishPage />} />
+          <Route path='/finishflights' element={<FlightsFinishPage />} />
 
           <Route path='/fasthotelticket' element={<FastHotelTicketPage />} />
           <Route path='/fastflightticket' element={<FastFlightTicketPage />} />
+          <Route path='/fastflightstickets' element={<FastFlighstTicketsPage />} />
+
+
           <Route path='/addticket' element={<AddTicketPage />} />
           <Route path='/buyticket' element={<BuyTicketPage />} />
           <Route path='/finish' element={<Finish />} />

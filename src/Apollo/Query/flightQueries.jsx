@@ -155,6 +155,20 @@ query searchFlightTicketById($id:ID!){
   }
 }
 `,
+GETLASTFLIGHTBUY: gql`
+query getAllFlightBuy{
+  getAllFlightBuy{
+    _id
+  }
+}
+`,
+GETALLFLIGHTTICKET: gql`
+query getAllFlightTicket{
+  getAllFlightTicket{
+    _id
+  }
+}
+`,
   SEARCHFLIGHTTICKETBYUSERID: gql`
 query searchFlightTicketByUserId($userId:String!){
   searchFlightTicketByUserId(userId:$userId){
