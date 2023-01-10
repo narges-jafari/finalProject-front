@@ -1,27 +1,20 @@
 import React, { useState } from 'react'
 import img from '../../../assets/img/bg/finish.JPG'
 import styles from '../../../assets/styles/PassengerInfo.module.css'
-import { HOTELTICKET_ID, HOTELBUY_ID, USER_ID, FLIGHTBUY_ID, FLIGHTTICKET_ID } from '../../../constants/auth'
+import { USER_ID, FLIGHTTICKET_ID } from '../../../constants/auth'
 import { useQuery, useMutation } from '@apollo/client'
-import hotelQueries from '../../../Apollo/Query/hotelQueries'
-import hotelMutations from '../../../Apollo/Mutation/hotelMutations'
 import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
 import seatNumberMutations from '../../../Apollo/Mutation/seatNumberMutations'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
-import { toast, ToastContainer } from 'react-toastify'
-
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import AllHotelTicket from '../../ticket/hotel/AllHotelTicket'
-import HotelTicket from '../../ticket/HotelTicket'
+
 import flightQueries from '../../../Apollo/Query/flightQueries'
 const FlightFinish = () => {
   // STATES
-  const [data, setData] = useState(false)
-  const id = window.localStorage.getItem(HOTELBUY_ID).replace(/"/g, '')
   const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  // const flightTicketId = window.localStorage.getItem(FLIGHTTICKET_ID).replace(/"/g, '')
   const [seatnumbers, setSeatnumbers] = useState([])
   const [seatnumbers1, setSeatnumbers1] = useState([])
   const [flightBuyId, setFlightBuyId] = useState([])
@@ -66,7 +59,7 @@ const FlightFinish = () => {
     }
   })
 
-  const newflightBuyId=flightBuyId.map(item=>item._id)
+  const newflightBuyId = flightBuyId.map(item => item._id)
   useQuery(seatnumberQueries.GETFLIGHTSEATNUMBER, {
     variables: {
       flight: flightId,
@@ -102,7 +95,6 @@ const FlightFinish = () => {
   const capacitysecond = seatnumbers1.map(item => item.flight.capacity)
 
   const seatnumberId1 = seatnumbers1.map(item => item._id)
-
 
   const [updateFlightCapacity] = useMutation(flightMutations.UPDATEFLIGHTCAPACITY)
   const handleUpdateFlight = () => {
@@ -195,11 +187,10 @@ const FlightFinish = () => {
           window.localStorage.setItem(FLIGHTTICKET_ID, JSON.stringify(data.makeFlightTicket._id))
           handleDeleteSeatnumber1()
           handleUpdateFlight1()
-          // window.location.href = 'fastflightticket'
+          window.location.href = 'fastflightstickets'
         }
       })
   }
-
 
   const [createTicket] = useMutation(flightMutations.FLIGHTTICKET)
   const handleCreateTicket = (e) => {
@@ -224,7 +215,6 @@ const FlightFinish = () => {
         }
       })
   }
-  console.log(data)
   return (
     <>
 

@@ -102,9 +102,9 @@ const PassengerInfo = () => {
     } else if (showAllCapacity() == 1) {
       return price
     } else if (showAllCapacity() == capacity + capacity1) {
-      return (price *capacity)+(price - price * 50 / 100) * capacity1
+      return (price * capacity) + (price - price * 50 / 100) * capacity1
     } else if (showAllCapacity() == capacity + capacity2) {
-      return (price *capacity)+(price - price * 75 / 100) * capacity2
+      return (price * capacity) + (price - price * 75 / 100) * capacity2
     } else {
       return (
         price * capacity + (price - price * 75 / 100) * capacity2 + (price - price * 50 / 100) * capacity1

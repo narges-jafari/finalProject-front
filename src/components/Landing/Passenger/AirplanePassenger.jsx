@@ -15,7 +15,7 @@ const AirplanePassenger = (props) => {
         <div className='d-flex flex-row flex-wrap my-2 justify-content-between'>
           <span className={styles.fontCss}>بزرگسال</span>
           <div className='d-flex flex-row flex-wrap  justify-content-between mx-2'>
-            <i className='fa fa-plus btn btn-primary   fa-lg mx-2 ' onClick={e => { setNum(num + 1); props.AllPassenger(num+1) }} style={{ width: '25px', height: '25px', borderRadius: '50%', textAlign: 'center', padding: '7px 0px 0px 0px', color: 'white' }} />
+            <i className='fa fa-plus btn btn-primary   fa-lg mx-2 ' onClick={e => { setNum(num + 1); props.AllPassenger(num + 1) }} style={{ width: '25px', height: '25px', borderRadius: '50%', textAlign: 'center', padding: '7px 0px 0px 0px', color: 'white' }} />
             <span style={{ fontFamily: 'Yekan', fontWeight: 'bold', fontSize: '16px' }}>{num}</span>
             <i className='fa fa-minus btn btn-primary  fa-lg mx-2 ' onClick={e => { setNum(num - 1); props.AllPassenger(num - 1) }} style={{ width: '25px', height: '25px', borderRadius: '50%', textAlign: 'center', padding: '7px 0px 0px 0px', color: 'white' }} />
           </div>

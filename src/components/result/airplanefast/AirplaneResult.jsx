@@ -114,9 +114,6 @@ const AirplaneResult = () => {
     window.location.href = '/airplanepay'
   }
 
-
-
-
   return (
     <>
 

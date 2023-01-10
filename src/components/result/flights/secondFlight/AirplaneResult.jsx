@@ -79,7 +79,7 @@ const AirplaneResult = () => {
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
     variables: {
-      originName:destinationName ,
+      originName: destinationName,
       destinationName: originName,
       flightClass: flightclass,
       date: date
@@ -92,7 +92,7 @@ const AirplaneResult = () => {
       setAirplaneItem([])
     }
   })
-  
+
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
     if (a < b) {
@@ -157,7 +157,7 @@ const AirplaneResult = () => {
     // setClickedRoom(clickedItem)
   }
 
-console.log(window.localStorage.getItem('AIRPLAINID'),'fffffff')
+  console.log(window.localStorage.getItem('AIRPLAINID'), 'fffffff')
   return (
     <>
 

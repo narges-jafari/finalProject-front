@@ -99,8 +99,6 @@ const PassengerInfo = () => {
     }
   })
 
-
-
   const showAllPrice = () => {
     if (showAllCapacity() == capacity) {
       return price * capacity
@@ -109,9 +107,9 @@ const PassengerInfo = () => {
     } else if (showAllCapacity() == 1) {
       return price
     } else if (showAllCapacity() == capacity + capacity1) {
-      return (price *capacity)+(price - price * 50 / 100) * capacity1
+      return (price * capacity) + (price - price * 50 / 100) * capacity1
     } else if (showAllCapacity() == capacity + capacity2) {
-      return (price *capacity)+(price - price * 75 / 100) * capacity2
+      return (price * capacity) + (price - price * 75 / 100) * capacity2
     } else {
       return (
         price * capacity + (price - price * 75 / 100) * capacity2 + (price - price * 50 / 100) * capacity1
@@ -159,7 +157,7 @@ const PassengerInfo = () => {
   //   { title: 'Three', prix: 300 }
   // ]
 
-  console.log(price,showAllPrice(),capacity,capacity1,capacity+capacity1,showAllCapacity(),(price *capacity)+(price*capacity1))
+  console.log(price, showAllPrice(), capacity, capacity1, capacity + capacity1, showAllCapacity(), (price * capacity) + (price * capacity1))
 
   // GRAPHQL QUERY
 
@@ -261,7 +259,7 @@ const PassengerInfo = () => {
         </div>
 
         <div style={{ width: '70%', margin: '10px auto' }}>
-        <div className={styles.content1}>
+          <div className={styles.content1}>
             <div className='d-flex flex-row flex-wrap  my-2 text-danger justify-content-between'>
               <span> مبلغ  کل </span>
               <span>
@@ -300,7 +298,6 @@ const PassengerInfo = () => {
               </span>
             </div>
           </div>
-
 
           <div className={styles.content1}>
             <div>

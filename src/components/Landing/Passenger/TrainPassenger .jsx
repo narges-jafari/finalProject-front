@@ -8,8 +8,6 @@ const TrainPassenger = (props) => {
   const [num2, setNum2] = useState(0)
   const [name, setName] = useState('')
 
-
-
   return (
     <>
 

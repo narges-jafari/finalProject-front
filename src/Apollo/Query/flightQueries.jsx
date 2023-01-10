@@ -155,17 +155,55 @@ query searchFlightTicketById($id:ID!){
   }
 }
 `,
-GETLASTFLIGHTBUY: gql`
+  GETLASTFLIGHTBUY: gql`
 query getAllFlightBuy{
   getAllFlightBuy{
     _id
   }
 }
 `,
-GETALLFLIGHTTICKET: gql`
+  GETALLFLIGHTTICKET: gql`
 query getAllFlightTicket{
   getAllFlightTicket{
+    flightBuy{
+      flight{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  flightClass
+  departureTime
+  arrivalTime 
+  flightNumber
+  capacity
+  airportOrigin
+  airportDestination
+  information 
+  airplaneModel 
+  allowedLoggage
+  airplaneCompany 
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
     _id
+    date
+  
+
   }
 }
 `,

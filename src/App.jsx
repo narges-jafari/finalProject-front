@@ -67,7 +67,6 @@ const App = (props) => {
           <Route path='/trainpay' element={<TrainPaymentPage />} />
           <Route path='/airplanepays' element={<FlightPaymentPage />} />
 
-          
           <Route path='/fasttrainticket' element={<FastTrainTicketPage />} />
           <Route path='/finishtrain' element={<TrainFinishPage />} />
           <Route path='/finishflights' element={<FlightsFinishPage />} />
@@ -75,7 +74,6 @@ const App = (props) => {
           <Route path='/fasthotelticket' element={<FastHotelTicketPage />} />
           <Route path='/fastflightticket' element={<FastFlightTicketPage />} />
           <Route path='/fastflightstickets' element={<FastFlighstTicketsPage />} />
-
 
           <Route path='/addticket' element={<AddTicketPage />} />
           <Route path='/buyticket' element={<BuyTicketPage />} />

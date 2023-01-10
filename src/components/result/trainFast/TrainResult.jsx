@@ -229,7 +229,6 @@ const TrainResult = () => {
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.date} </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.hallType} </span>
 
-
                                   </div>
                                 </div>
                                 <div className={styles.contentItem}>
@@ -388,7 +387,6 @@ const TrainResult = () => {
                                     <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary font-weight-bold rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.date} </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> {item.hallType} </span>
-
 
                                   </div>
                                 </div>

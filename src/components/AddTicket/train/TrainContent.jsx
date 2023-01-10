@@ -43,7 +43,6 @@ const TrainContent = () => {
     response: []
   })
 
-
   const userid = window.localStorage.getItem(USER_ID)
 
   // REF
@@ -60,20 +59,16 @@ const TrainContent = () => {
     if (checked) {
       setUserInfo({
         property: [...property, value],
-        response: [...property, value],
+        response: [...property, value]
       })
       console.log(value)
-
     } else {
-
       setUserInfo({
         property: property.filter((e) => e !== value),
         response: property.filter((e) => e !== value)
       })
     }
-  
   }
-
 
   // reset function
   const resetFields = () => {
@@ -90,7 +85,6 @@ const TrainContent = () => {
     setShowTrainClass('')
     setShowTrainCompany('')
     setAllowedLoggage('')
-
   }
   // apollo mutation
   const [createTrains] = useMutation(trainMutations.CREATETRAIN)
@@ -507,8 +501,8 @@ const TrainContent = () => {
         </div>
 
         <button
-          // onClick={(e) => handleCreateTrain(e)}
-          onClick={resetFields}
+          onClick={(e) => handleCreateTrain(e)}
+          // onClick={resetFields}
           className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
         >
           اضافه کردن

@@ -7,7 +7,7 @@ import flightQueries from '../../../Apollo/Query/flightQueries'
 
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { USER_ID, FLIGHTBUY_ID,FLIGHTBUYSECOND_ID } from '../../../constants/auth'
+import { USER_ID, FLIGHTBUY_ID, FLIGHTBUYSECOND_ID } from '../../../constants/auth'
 import { showGender } from '../../../constants/payment'
 import ReactTooltip from 'react-tooltip'
 const PassengerInfo = () => {
@@ -18,7 +18,7 @@ const PassengerInfo = () => {
   const allCapacity = capacity + capacity1 + capacity2
   const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
   const flightId2 = window.localStorage.getItem('AIRPLAINIDSECOND').replace(/"/g, '')
-console.log(flightId,flightId2,'ffffffffff')
+  console.log(flightId, flightId2, 'ffffffffff')
   const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
   const [error, setError] = useState('')
   const showAllCapacity = () => {
@@ -41,10 +41,8 @@ console.log(flightId,flightId2,'ffffffffff')
   let [count, setCount] = useState(showAllCapacity() - 1)
   const [clicked, setClicked] = useState(false)
 
-
   const [price, setPrice] = useState([])
   const [price2, setPrice2] = useState([])
-
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
@@ -77,7 +75,6 @@ console.log(flightId,flightId2,'ffffffffff')
   }
   const userId = window.localStorage.getItem(USER_ID)
 
-
   useQuery(flightQueries.SEARCH, {
     variables: {
       id: flightId
@@ -103,9 +100,9 @@ console.log(flightId,flightId2,'ffffffffff')
     }
   })
 
-  console.log(price,flightId,price2,flightId2,'ddddddd')
+  console.log(price, flightId, price2, flightId2, 'ddddddd')
 
-const newPrice=price+price2
+  const newPrice = price + price2
 
   const showAllPrice = () => {
     if (showAllCapacity() == capacity) {
@@ -115,48 +112,44 @@ const newPrice=price+price2
     } else if (showAllCapacity() == 1) {
       return newPrice
     } else if (showAllCapacity() == capacity + capacity1) {
-      return (newPrice *capacity)+(newPrice - newPrice * 50 / 100) * capacity1
+      return (newPrice * capacity) + (newPrice - newPrice * 50 / 100) * capacity1
     } else if (showAllCapacity() == capacity + capacity2) {
-      return (newPrice *capacity)+(newPrice - newPrice * 75 / 100) * capacity2
+      return (newPrice * capacity) + (newPrice - newPrice * 75 / 100) * capacity2
     } else {
       return (
-        newPrice * capacity + (newPrice - newPrice * 75 / 100) * newPrice + (newPrice - newPrice * 50 / 100) * capacity1
+        newPrice * capacity + (newPrice - newPrice * 75 / 100) * capacity2 + (newPrice - newPrice * 50 / 100) * capacity1
       )
     }
   }
 
- 
   const [createBuyFlightSecond] = useMutation(flightMutations.FLIGHTBUY)
   const handleCreateBuyFlightSecond = (e) => {
-
-      createBuyFlightSecond({
-        variables: {
-          flightId: flightId2,
-          user: JSON.parse(userId),
-          name: formValues.map(item => item.name),
-          date: formValues.map(item => item.birthDate),
-          nationalcode: formValues.map(item => item.nationalcode),
-          gen: formValues.map(item => item.gen),
-          price: showAllPrice()
-        }
-      })
-        .then(({ data }) => {
-          if (data.airplaneBuy !== null) {
-            // toast.success('بلیط هواپیما با موفقیت خریداری شد')
-            window.localStorage.setItem(FLIGHTBUYSECOND_ID, JSON.stringify(data.airplaneBuy._id))
-            // window.localStorage.setItem(HOTEL_CAPACITY, JSON.stringify(data.createHotel.capacity))
-            // window.location.href = '/finishflight'
-            window.location.href = '/finishflights'
-
+    createBuyFlightSecond({
+      variables: {
+        flightId: flightId2,
+        user: JSON.parse(userId),
+        name: formValues.map(item => item.name),
+        date: formValues.map(item => item.birthDate),
+        nationalcode: formValues.map(item => item.nationalcode),
+        gen: formValues.map(item => item.gen),
+        price: showAllPrice()
+      }
+    })
+      .then(({ data }) => {
+        if (data.airplaneBuy !== null) {
+          // toast.success('بلیط هواپیما با موفقیت خریداری شد')
+          window.localStorage.setItem(FLIGHTBUYSECOND_ID, JSON.stringify(data.airplaneBuy._id))
+          // window.localStorage.setItem(HOTEL_CAPACITY, JSON.stringify(data.createHotel.capacity))
+          // window.location.href = '/finishflight'
+          window.location.href = '/finishflights'
 
           // resetFields()
-          } else {
-            toast.error(
-              'خطایی در برقراری با سرور اتفاق افتاد'
-            )
-          }
-        })
-    
+        } else {
+          toast.error(
+            'خطایی در برقراری با سرور اتفاق افتاد'
+          )
+        }
+      })
   }
 
   const [createBuyFlight] = useMutation(flightMutations.FLIGHTBUY)
@@ -177,10 +170,9 @@ const newPrice=price+price2
           if (data.airplaneBuy !== null) {
             toast.success('بلیط هواپیما با موفقیت خریداری شد')
             // window.localStorage.setItem(HOTEL_CAPACITY, JSON.stringify(data.createHotel.capacity))
-          // resetFields()
-          handleCreateBuyFlightSecond()
-          window.location.href = '/finishflights'
-
+            // resetFields()
+            handleCreateBuyFlightSecond()
+            window.location.href = '/finishflights'
           } else {
             toast.error(
               'خطایی در برقراری با سرور اتفاق افتاد'
@@ -192,15 +184,13 @@ const newPrice=price+price2
     }
   }
 
-
-
   // const data = [
   //   { title: 'One', prix: 100 },
   //   { title: 'Two', prix: 200 },
   //   { title: 'Three', prix: 300 }
   // ]
 
-  console.log(price,showAllPrice(),capacity,capacity1,capacity+capacity1,showAllCapacity(),(price *capacity)+(price*capacity1))
+  console.log(price, showAllPrice(), capacity, capacity1, capacity + capacity1, showAllCapacity(), (price * capacity) + (price * capacity1))
 
   // GRAPHQL QUERY
 
@@ -302,7 +292,7 @@ const newPrice=price+price2
         </div>
 
         <div style={{ width: '70%', margin: '10px auto' }}>
-        <div className={styles.content1}>
+          <div className={styles.content1}>
             <div className='d-flex flex-row flex-wrap  my-2 text-danger justify-content-between'>
               <span> مبلغ  کل </span>
               <span>
@@ -310,63 +300,61 @@ const newPrice=price+price2
               </span>
             </div>
             <>
-            <div>مسیر رفت</div>
-            {capacity
-              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
-               
-                <span>   مسافر بزرگسال  {capacity}</span>
-                <span>
-                  {price * capacity} تومان
-                </span>
-                </div>
-              : null}
-            {capacity1
-              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
-                <span>   مسافر کودک  {capacity1}</span>
-                <span>
-                  {(price - price * 50 / 100) * capacity1} تومان
-                </span>
-                </div>
-              : null}
-            {capacity2
-              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
-                <span>   مسافر نوزاد  {capacity2}</span>
-                <span>
-                  {(price - price * 75 / 100) * capacity2} تومان
-                </span>
-                </div>
-              : null}
-</>
-<>
-            <div>مسیر برگشت</div>
-            {capacity
-              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
-               
-                <span>   مسافر بزرگسال  {capacity}</span>
-                <span>
-                  {price2 * capacity} تومان
-                </span>
-                </div>
-              : null}
-            {capacity1
-              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
-                <span>   مسافر کودک  {capacity1}</span>
-                <span>
-                  {(price2 - price2 * 50 / 100) * capacity1} تومان
-                </span>
-                </div>
-              : null}
-            {capacity2
-              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
-                <span>   مسافر نوزاد  {capacity2}</span>
-                <span>
-                  {(price2 - price2 * 75 / 100) * capacity2} تومان
-                </span>
-                </div>
-              : null}
-</>
+              <div>مسیر رفت</div>
+              {capacity
+                ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
 
+                  <span>   مسافر بزرگسال  {capacity}</span>
+                  <span>
+                    {price * capacity} تومان
+                  </span>
+                </div>
+                : null}
+              {capacity1
+                ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                  <span>   مسافر کودک  {capacity1}</span>
+                  <span>
+                    {(price - price * 50 / 100) * capacity1} تومان
+                  </span>
+                </div>
+                : null}
+              {capacity2
+                ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                  <span>   مسافر نوزاد  {capacity2}</span>
+                  <span>
+                    {(price - price * 75 / 100) * capacity2} تومان
+                  </span>
+                </div>
+                : null}
+            </>
+            <>
+              <div>مسیر برگشت</div>
+              {capacity
+                ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
 
+                  <span>   مسافر بزرگسال  {capacity}</span>
+                  <span>
+                    {price2 * capacity} تومان
+                  </span>
+                </div>
+                : null}
+              {capacity1
+                ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                  <span>   مسافر کودک  {capacity1}</span>
+                  <span>
+                    {(price2 - price2 * 50 / 100) * capacity1} تومان
+                  </span>
+                </div>
+                : null}
+              {capacity2
+                ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                  <span>   مسافر نوزاد  {capacity2}</span>
+                  <span>
+                    {(price2 - price2 * 75 / 100) * capacity2} تومان
+                  </span>
+                </div>
+                : null}
+            </>
 
             <div className='d-flex flex-row flex-wrap  my-2 text-success justify-content-between'>
               <span> مبلغ  قابل پرداخت </span>
@@ -375,7 +363,6 @@ const newPrice=price+price2
               </span>
             </div>
           </div>
-
 
           <div className={styles.content1}>
             <div>

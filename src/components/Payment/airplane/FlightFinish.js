@@ -92,7 +92,7 @@ const FlightFinish = () => {
 
   const seatnumberId = seatnumbers.map(item => item._id)
   // const filterData=seatnumbers.map.filter(item=>item.isDelete==false)
-  console.log(seatnumbers,showValue(),showAllCapacity(), 'seat')
+  console.log(seatnumbers, showValue(), showAllCapacity(), 'seat')
 
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({

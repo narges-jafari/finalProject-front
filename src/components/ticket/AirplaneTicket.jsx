@@ -62,8 +62,8 @@ const AirplaneTicket = () => {
 
   return (
     <>
-      {userData._id === userId ? 
-        <>
+      {userData._id === userId
+        ? <>
           <ReactTooltip className='bg-light text-secondary' />
           <Pdf targetRef={ref} filename='ticket.pdf' x={4} p={3} y={0.8} scale={0.8} data-place='bottom' data-tip='excel '>
             {({ toPdf }) =>
@@ -214,14 +214,14 @@ const AirplaneTicket = () => {
                           <span className={styles.spancss1}> {data.seatnumber[i]}  </span>
                         </div>
                       </div>
-                     
-                      <hr/>
+
+                      <hr />
                       <div className={styles.contentItem}>
                         <div>
                           <span className={styles.spancss}>  امکانات  </span>
                           <span className={styles.spancss1}> {flightData.information.slice(0, 6).join('_')} کیلوگرم </span>
                         </div>
-                   
+
                       </div>
 
                       <hr />
@@ -255,7 +255,7 @@ const AirplaneTicket = () => {
 
                 </div>
               )
-            } 
+            }
           })()}
 
           {/* )
