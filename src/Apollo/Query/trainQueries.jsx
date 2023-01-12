@@ -49,6 +49,61 @@ const trainQueries = {
     }
   }
 `,
+GETLASTTRAINBUY: gql`
+query getAllTrainBuy{
+  getAllTrainBuy{
+    _id
+  }
+}
+`,
+
+GETALLTRAINTICKET: gql`
+query getAllTrainTicket{
+  getAllTrainTicket{
+    trainBuy{
+      train{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  departureTime
+  arrivalTime 
+  railCompany
+  trainNumber
+  railwayOrigin
+  railwayDestination
+  hallType
+  capacity
+  information  
+  allowedLoggage
+   
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+    hallDegree
+    hallNumber
+    trainCompartment
+    
+  }
+}
+`,
   SEARCHTRAINBYDATE: gql`
 query searchTrainbyDate(
 

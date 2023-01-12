@@ -70,15 +70,13 @@ const BusResult = () => {
   const monthName = monthNames[month1.getMonth()]
   console.log(busItem, 'lklk')
   // apollo query
-  useQuery(busQueries.SEARCHBUS, {
+  useQuery(busQueries.SEARCHBUSBYNAME, {
     variables: {
       originName: originName,
-      destinationName: destinationName,
-      date: date
     },
 
     onCompleted: (res) => {
-      setBusItem(res.searchBus)
+      setBusItem(res.searchBusbyName)
     },
     onError: () => {
       setBusItem([])

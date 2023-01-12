@@ -11,8 +11,8 @@ import styles from '../../assets/styles/BuyTicket.module.css'
 import AllHotelTicket from './hotel/AllHotelTicket'
 import AllFlightTicket from './airplane/AllFlightTicket'
 import AllTrainTicket from './train/AllTrainTicket'
+import AllBusTicket from './bus/AllBusTicket'
 
-import BusTicket from './BusTicket'
 
 const BuyTicket = () => {
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
@@ -104,7 +104,7 @@ const BuyTicket = () => {
         <TabPane tabId='4'>
           <Row>
             <Col sm='12'>
-              <BusTicket />
+              <AllBusTicket />
             </Col>
           </Row>
         </TabPane>

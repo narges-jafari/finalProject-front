@@ -388,9 +388,7 @@ const AirplaneContent = (props) => {
               onChange={(date) => setStartDate(date)}
               calendar={persian}
               locale={persianfa}
-              defaultValue=''
               calendarPosition='bottom-right'
-              placeholder='تاریخ پرواز'
               format='YYYY/MM/DD'
             />
             {startDate == null

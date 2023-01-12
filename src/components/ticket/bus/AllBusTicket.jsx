@@ -4,32 +4,29 @@ import img from '../../../assets/img/barcode.JPG'
 import logo from '../../../assets/img/16.png'
 import train from '../../../assets/img/hotel.png'
 import { useQuery } from '@apollo/client'
-import trainQueries from '../../../Apollo/Query/trainQueries'
-import { USER_ID } from '../../../constants/auth'
+import busQueries from '../../../Apollo/Query/busQueries'
+import {USER_ID } from '../../../constants/auth'
 import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
 
-const AllTrainTicket = () => {
+const AllBusTicket = () => {
   const [data, setData] = useState([])
 
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  useQuery(trainQueries.SEARCHTRAINTICKETBYUSERID, {
+  useQuery(busQueries.SEARCHBUSICKETBYUSERID, {
     variables: {
       userId: userId
     },
 
     onCompleted: (res) => {
-      setData(res.searchTrainTicketByUserId)
+      setData(res.searchBusTicketByUserId)
     },
     onError: () => {
       setData([])
     }
   })
 
-  console.log(data, userId)
-
-
-  const userData = data.map(item => item.trainBuy)
+  const userData = data.map(item => item.busBuy)
   const fullName = userData.map(item => item.fullName)
 
   const birthDate = userData.map(item => item.birthDate)
@@ -39,36 +36,29 @@ const AllTrainTicket = () => {
   const serial = data.map(item => item.serialId)
   const code = data.map(item => item.codeId)
   const date = data.map(item => item.date)
-  const trainCompartment = data.map(item => item.trainCompartment)
-  const hallDegree = data.map(item => item.hallDegree)
-  const hallNumber = data.map(item => item.hallNumber)
   const seatnumber = data.map(item => item.seatnumber)
+  const busData = userData.map(item => item.bus)
+  const originName = busData.map(item => item.originName)
+  const destinationName = busData.map(item => item.destinationName)
+  const startDate = busData.map(item => item.date)
+  const busCompany = busData.map(item => item.busCompany)
+  const departureTime = busData.map(item => item.departureTime)
+  const arrivalTime = busData.map(item => item.arrivalTime)
+  const busNumber = busData.map(item => item.busNumber)
+  const originTerminal = busData.map(item => item.originTerminal)
+  const destinationTerminal = busData.map(item => item.destinationTerminal)
 
-  const trainData = userData.map(item => item.train)
-  const originName = trainData.map(item => item.originName)
-  const destinationName = trainData.map(item => item.destinationName)
-  const startDate = trainData.map(item => item.date)
-  const hallType = trainData.map(item => item.hallType)
-  const departureTime = trainData.map(item => item.departureTime)
-  const arrivalTime = trainData.map(item => item.arrivalTime)
-  const trainNumber = trainData.map(item => item.trainNumber)
-  const railwayOrigin = trainData.map(item => item.railwayOrigin)
-  const railwayDestination = trainData.map(item => item.railwayDestination)
-  const allowedLoggage = trainData.map(item => item.allowedLoggage)
-  const information = trainData.map(item => item.information)
-  const railCompany=trainData.map(item => item.railCompany)
+  const information = busData.map(item => item.information)
+
   const allUserData = userData.map(item => item.user)
   const allUserId = allUserData.map(item => item._id)
-  
-
-  console.log(allUserId)
-
+  // console.log(originName)
+console.log(data,'data',allUserId)
   const ref = React.createRef()
   return (
     <>
-      {allUserId[0] == userId
+      {allUserId[0] === userId
         ? <>
-
           <ReactTooltip className='bg-light text-secondary' />
           <Pdf targetRef={ref} filename='ticket.pdf' x={4} p={3} y={0.8} scale={0.8} data-place='bottom' data-tip='excel '>
             {({ toPdf }) =>
@@ -101,7 +91,7 @@ const AllTrainTicket = () => {
 
                 </div>
               </div>
-              <div className={styles.headernamecss}>اطلاعات قطار </div>
+              <div className={styles.headernamecss}>اطلاعات اتوبوس </div>
               <div className={styles.contentItem}>
 
                 <div>
@@ -118,12 +108,12 @@ const AllTrainTicket = () => {
               <div className={styles.contentItem}>
 
                 <div>
-                  <span className={styles.spancss}> راه‌آهن مبدا </span>
-                  <span className={styles.spancss1}> {railwayOrigin[0]}</span>
+                  <span className={styles.spancss}> ترمینال مبدا </span>
+                  <span className={styles.spancss1}> {originTerminal[0]}</span>
                 </div>
                 <div>
-                  <span className={styles.spancss}>  راه‌آهن مقصد</span>
-                  <span className={styles.spancss1}>{railwayDestination[0]}</span>
+                  <span className={styles.spancss}>  ترمینال مقصد</span>
+                  <span className={styles.spancss1}>{destinationTerminal[0]}</span>
 
                 </div>
 
@@ -147,26 +137,15 @@ const AllTrainTicket = () => {
                   <span className={styles.spancss1}> {startDate[0]}  </span>
                 </div>
                 <div>
-                  <span className={styles.spancss}>    نام سالن </span>
-                  <span className={styles.spancss1}> {hallType[0]}  </span>
+                  <span className={styles.spancss}>    شرکت اتوبوسرانی </span>
+                  <span className={styles.spancss1}> {busCompany[0]}  </span>
                 </div>
 
               </div>
               <div className={styles.contentItem}>
                 <div>
-                  <span className={styles.spancss}>   شماره سالن </span>
-                  <span className={styles.spancss1}> {hallNumber[0].join(' _ ')}  </span>
-                </div>
-                <div>
-                  <span className={styles.spancss}>    شماره کوپه</span>
-                  <span className={styles.spancss1}> {trainCompartment[0].join(' _')}  </span>
-                </div>
-              </div>
-              <div className={styles.contentItem}>
-                <div>
-
-                  <span className={styles.spancss}>   شماره صندلی </span>
-                  <span className={styles.spancss1}>  {seatnumber[0].join('_ ')}  </span>
+                  <span className={styles.spancss}>   شماره اتوبوس </span>
+                  <span className={styles.spancss1}> {busNumber[0]}  </span>
                 </div>
                 <div>
                   <span className={styles.spancss}>    قیمت </span>
@@ -174,31 +153,19 @@ const AllTrainTicket = () => {
                 </div>
 
               </div>
-
-              <div className={styles.contentItem}>
-                <div>
-                  <span className={styles.spancss}>   شماره قطار </span>
-                  <span className={styles.spancss1}> {trainNumber[0]}  </span>
-                </div>
-                <div>
-                  <span className={styles.spancss}>    شرکت ریلی</span>
-                  <span className={styles.spancss1}> {railCompany[0]}  </span>
-                </div>
-
-              </div>
+             
 
               <div className={styles.headernamecss}>اطلاعات مسافر</div>
-
               <div className={styles.contentItem}>
                 <div>
                   <span className={styles.spancss}>  نام مسافر</span>
-                  <span className={styles.spancss1}>  {fullName[0].join('_ ')}</span>
+                  <span className={styles.spancss1}>  {fullName[0].join('/ ')}</span>
 
                 </div>
 
                 <div>
                   <span className={styles.spancss}> کد ملی</span>
-                  <span className={styles.spancss1}>  {nationalCode[0].join('_')}</span>
+                  <span className={styles.spancss1}>  {nationalCode[0].join('/ ')}</span>
 
                 </div>
 
@@ -206,12 +173,12 @@ const AllTrainTicket = () => {
               <div className={styles.contentItem}>
                 <div>
                   <span className={styles.spancss}> جنسیت </span>
-                  <span className={styles.spancss1}>  {gen[0].join('_ ')}</span>
+                  <span className={styles.spancss1}>  {gen[0].join('/ ')}</span>
 
                 </div>
                 <div>
                   <span className={styles.spancss}> تاریخ تولد </span>
-                  <span className={styles.spancss1}>  {birthDate[0].join(' _ ')}</span>
+                  <span className={styles.spancss1}>  {birthDate[0].join(' و  ')}</span>
 
                 </div>
               </div>
@@ -221,14 +188,16 @@ const AllTrainTicket = () => {
                   <span className={styles.spancss}>  تاریخ صدور  </span>
                   <span className={styles.spancss1}> {date[0]}</span>
                 </div>
-
+                <div>
+                  <span className={styles.spancss}>   شماره صندلی </span>
+                  <span className={styles.spancss1}>  {seatnumber[0].join(' و  ')}  </span>
+                </div>
               </div>
-
               <hr />
               <div className={styles.contentItem}>
                 <div>
-                  <span className={styles.spancss}>   اطلاعات  </span>
-                  <span className={styles.spancss1}> {information[0].join('_')}</span>
+                  <span className={styles.spancss}>  امکانات  </span>
+                  <span className={styles.spancss1}> {information[0].slice(0, 6).join('_')}  </span>
                 </div>
 
               </div>
@@ -244,10 +213,13 @@ const AllTrainTicket = () => {
                   </div>
 
                   <span>
-                    1: ارائه کارت‌شناسایی معتبر برای سوار شدن در  قطار ضروری است
+                    1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
                   </span>
                   <span>
-                    2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+                    2:  حتما یک ساعت قبل از زمان حرکت در فرودگاه حاضر باشید
+                  </span>
+                  <span>
+                    3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
                   </span>
                 </div>
               </div>
@@ -272,7 +244,7 @@ const AllTrainTicket = () => {
 
                 </div>
               </div>
-              <div className={styles.headernamecss}>اطلاعات قطار </div>
+              <div className={styles.headernamecss}>اطلاعات اتوبوس </div>
               <div className={styles.contentItem}>
 
                 <div>
@@ -289,12 +261,12 @@ const AllTrainTicket = () => {
               <div className={styles.contentItem}>
 
                 <div>
-                  <span className={styles.spancss}> راه‌آهن مبدا </span>
-                  <span className={styles.spancss1}> {railwayOrigin[1]}</span>
+                  <span className={styles.spancss}> ترمینال مبدا </span>
+                  <span className={styles.spancss1}> {originTerminal[1]}</span>
                 </div>
                 <div>
-                  <span className={styles.spancss}>  راه‌آهن مقصد</span>
-                  <span className={styles.spancss1}>{railwayDestination[1]}</span>
+                  <span className={styles.spancss}>  ترمیتال مقصد</span>
+                  <span className={styles.spancss1}>{destinationTerminal[1]}</span>
 
                 </div>
 
@@ -318,26 +290,15 @@ const AllTrainTicket = () => {
                   <span className={styles.spancss1}> {startDate[1]}  </span>
                 </div>
                 <div>
-                  <span className={styles.spancss}>    نام سالن </span>
-                  <span className={styles.spancss1}> {hallType[1]}  </span>
+                  <span className={styles.spancss}>    شرکت اتوبوسرانی </span>
+                  <span className={styles.spancss1}> {busCompany[1]}  </span>
                 </div>
 
               </div>
               <div className={styles.contentItem}>
                 <div>
-                  <span className={styles.spancss}>   شماره سالن </span>
-                  <span className={styles.spancss1}> {hallNumber[1].join(' _ ')}  </span>
-                </div>
-                <div>
-                  <span className={styles.spancss}>    شماره کوپه</span>
-                  <span className={styles.spancss1}> {trainCompartment[1].join(' _')}  </span>
-                </div>
-              </div>
-              <div className={styles.contentItem}>
-                <div>
-
-                  <span className={styles.spancss}>   شماره صندلی </span>
-                  <span className={styles.spancss1}>  {seatnumber[1].join('_ ')}  </span>
+                  <span className={styles.spancss}>   شماره اتوبوس </span>
+                  <span className={styles.spancss1}> {busNumber[1]}  </span>
                 </div>
                 <div>
                   <span className={styles.spancss}>    قیمت </span>
@@ -346,30 +307,17 @@ const AllTrainTicket = () => {
 
               </div>
 
-              <div className={styles.contentItem}>
-                <div>
-                  <span className={styles.spancss}>   شماره قطار </span>
-                  <span className={styles.spancss1}> {trainNumber[1]}  </span>
-                </div>
-                <div>
-                  <span className={styles.spancss}>    شرکت ریلی</span>
-                  <span className={styles.spancss1}> {railCompany[1]}  </span>
-                </div>
-
-              </div>
-
               <div className={styles.headernamecss}>اطلاعات مسافر</div>
-
               <div className={styles.contentItem}>
                 <div>
                   <span className={styles.spancss}>  نام مسافر</span>
-                  <span className={styles.spancss1}>  {fullName[1].join('_ ')}</span>
+                  <span className={styles.spancss1}>  {fullName[1].join('/ ')}</span>
 
                 </div>
 
                 <div>
                   <span className={styles.spancss}> کد ملی</span>
-                  <span className={styles.spancss1}>  {nationalCode[1].join('_')}</span>
+                  <span className={styles.spancss1}>  {nationalCode[1].join('/ ')}</span>
 
                 </div>
 
@@ -377,12 +325,12 @@ const AllTrainTicket = () => {
               <div className={styles.contentItem}>
                 <div>
                   <span className={styles.spancss}> جنسیت </span>
-                  <span className={styles.spancss1}>  {gen[1].join('_ ')}</span>
+                  <span className={styles.spancss1}>  {gen[1].join('/ ')}</span>
 
                 </div>
                 <div>
                   <span className={styles.spancss}> تاریخ تولد </span>
-                  <span className={styles.spancss1}>  {birthDate[1].join(' _ ')}</span>
+                  <span className={styles.spancss1}>  {birthDate[1].join(' و  ')}</span>
 
                 </div>
               </div>
@@ -390,16 +338,18 @@ const AllTrainTicket = () => {
               <div className={styles.contentItem}>
                 <div>
                   <span className={styles.spancss}>  تاریخ صدور  </span>
-                  <span className={styles.spancss1}> {date}</span>
+                  <span className={styles.spancss1}> {date[1]}</span>
                 </div>
-
+                <div>
+                  <span className={styles.spancss}>   شماره صندلی </span>
+                  <span className={styles.spancss1}>  {seatnumber[1].join(' و  ')}  </span>
+                </div>
               </div>
-
               <hr />
               <div className={styles.contentItem}>
                 <div>
-                  <span className={styles.spancss}>   اطلاعات  </span>
-                  <span className={styles.spancss1}> {information[1].join('_')}</span>
+                  <span className={styles.spancss}>  امکانات  </span>
+                  <span className={styles.spancss1}> {information[1].slice(0, 6).join('_')}  </span>
                 </div>
 
               </div>
@@ -415,10 +365,13 @@ const AllTrainTicket = () => {
                   </div>
 
                   <span>
-                    1: ارائه کارت‌شناسایی معتبر برای سوار شدن در  قطار ضروری است
+                    1: ارائه کارت‌شناسایی معتبر برای اقامت در  هتل  ضروری است
                   </span>
                   <span>
-                    2:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
+                    2:  حتما یک ساعت قبل از زمان حرکت در فرودگاه حاضر باشید
+                  </span>
+                  <span>
+                    3:  تلفن گویای ثبت نظرات 32345-021 می‌باشد
                   </span>
                 </div>
               </div>
@@ -426,13 +379,14 @@ const AllTrainTicket = () => {
 
           </div>
 
-          </>
-        : <div style={{ width: '70%', textAlign: 'center' }} className=' rounded-3 px-4 py-3 justify-content-center alert-info border mx-auto my-4'>
-          شما تاکنون بلیط قطار تهیه نکرده اید
-
+        </>
+        : <div
+            style={{ width: '70%', textAlign: 'center' }}
+            className=' rounded-3 px-4 py-3 justify-content-center alert-info border mx-auto my-4'
+          >شما تاکنون بلیط قطار تهیه نکرده اید
           </div>}
     </>
   )
 }
 
-export default AllTrainTicket
+export default AllBusTicket

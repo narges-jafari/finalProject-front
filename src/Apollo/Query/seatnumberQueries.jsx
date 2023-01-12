@@ -28,6 +28,31 @@ airplaneCompany
     }
   }
   `,
+
+  GETBUSSEATNUMBER: gql`
+  query getBusSeatnumber($bus:String!,$isDelete:Boolean!){
+    getBusSeatnumber(bus:$bus,isDelete:$isDelete){
+      number
+      _id
+      bus{
+        _id
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  busCompany
+  departureTime
+  arrivalTime 
+  busNumber
+  capacity
+  originTerminal
+  destinationTerminal
+  information 
+      }
+    }
+  }
+  `,
   GETTRAINSEATNUMBER: gql`
   query getTrainSeatnumber($train:String!,$isDelete:Boolean!){
     getTrainSeatnumber(train:$train,isDelete:$isDelete){

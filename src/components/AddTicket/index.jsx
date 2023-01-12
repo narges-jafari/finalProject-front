@@ -12,6 +12,7 @@ import { AUTH_TOKEN } from '../../constants/auth'
 import AirplaneModal from './AirplaneModal'
 import TrainSeatNumber from './TrainSeatNumber'
 import RoomModal from './RoomModal'
+import BusSeatNumberModal from './BusSeatNumberModal'
 
 const AddTicketAccordion = () => {
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
@@ -25,6 +26,8 @@ const AddTicketAccordion = () => {
   const [showTrainSeatnumberModal, setShowTrainSeatnumberModal] =
     useState(false)
   const [showCustomStrategyModalForBuy, setShowCustomStrategyModalForBuy] =
+  useState(false)
+  const [showBusSeatnumberModal, setShowBusSeatnumberModal] =
   useState(false)
   const [showRoomModal, setShowRoomModal] =
   useState(false)
@@ -224,7 +227,6 @@ const AddTicketAccordion = () => {
                   collapsed: !col3
                 })}
                 type='button'
-                onClick={toggleCol3}
                 style={{
                   cursor: 'pointer',
                   backgroundColor: '#EFF2F7',
@@ -239,7 +241,30 @@ const AddTicketAccordion = () => {
                 <FaBusAlt className={styles.iconCss} />
 
                 افزودن بلیط اتوبوس
-                {col3 ? <i className='fa fa-angle-down fa-lg' style={{ float: 'left' }} /> : <i className='fa fa-angle-up fa-lg' style={{ float: 'left' }} />}
+                {col3
+                  ? <i
+                      onClick={toggleCol3}
+                      className='fa fa-angle-down fa-lg ' style={{ float: 'left' }}
+                    />
+                  : <i
+                      onClick={toggleCol3}
+                      className='fa fa-angle-up fa-lg ' style={{ float: 'left' }}
+                    />}
+
+                <MdSettings
+                  className={styles.iconmove}
+                  onClick={() => {
+                    if (!showBusSeatnumberModal) {
+                      setShowBusSeatnumberModal(true)
+                    }
+                  }}
+                />
+                {showBusSeatnumberModal && (
+                  <BusSeatNumberModal
+                    isOpen={showBusSeatnumberModal}
+                    setIsOpen={setShowBusSeatnumberModal}
+                  />
+                )}
 
               </button>
             </h2>

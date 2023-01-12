@@ -1,18 +1,22 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback,useEffect } from 'react'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
 import BusPassenger from '../Passenger/BusPassenger '
+import { useLazyQuery } from '@apollo/client'
+import busQueries from '../../../Apollo/Query/busQueries'
 
 import styles from '../../../assets/styles/Transport.module.css'
 
 const BusSearch = () => {
-  const [destinationName, setDestinationName] = useState()
-  const [originName, setOriginName] = useState()
+  const [destinationName, setDestinationName] = useState('')
+  const [originName, setOriginName] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [showPassenger, setShowPassenger] = useState([])
+  const [showPassenger1, setShowPassenger1] = useState([])
+  const [showPassenger2, setShowPassenger2] = useState([])
   const [col1, setCol1] = useState(false)
 
   const toggleCol1 = () => {
@@ -22,6 +26,54 @@ const BusSearch = () => {
   const handlePassenger = useCallback((passenger) => {
     setShowPassenger(passenger)
   }, [])
+  const handlePassenger1 = useCallback((passenger) => {
+    setShowPassenger1(passenger)
+  }, [])
+  const handlePassenger2 = useCallback((passenger) => {
+    setShowPassenger2(passenger)
+  }, [])
+
+
+  const [SearchBus] = useLazyQuery(busQueries.SEARCHBUS)
+
+  const handleSearch = () => {
+    SearchBus({
+      variables: {
+        originName: originName,
+        destinationName: destinationName,
+        date: startDate.toString()
+
+      }
+    })
+      .then(({ data }) => {
+        if (data.searchBus !== null) {
+          window.location.href = '/resultbus'
+        }
+      })
+  }
+
+  const allPassenger = showPassenger + showPassenger1 + showPassenger2
+  const showAllCapacity = () => {
+    if (showPassenger === 0) {
+      return (
+        null
+      )
+    } else {
+      return (
+        allPassenger
+      )
+    }
+  }
+
+  useEffect(() => {
+    window.localStorage.setItem('BusOriginName', originName)
+    window.localStorage.setItem('BusDestinationName', JSON.stringify(destinationName))
+    window.localStorage.setItem('BusDate', JSON.stringify(startDate.toString()))
+    window.localStorage.setItem('Capacity', JSON.stringify(showPassenger))
+    window.localStorage.setItem('Capacity1', JSON.stringify(showPassenger1))
+    window.localStorage.setItem('Capacity2', JSON.stringify(showPassenger2))
+  }, [originName, destinationName, startDate, showPassenger, showPassenger1, showPassenger2])
+
 
   return (
     <>
@@ -81,7 +133,7 @@ const BusSearch = () => {
               >
                 <div className='d-flex flex-column my-2'>
                   <span className={styles.spanAccordion}>  مسافران </span>
-                  {showPassenger == '' ? null : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
+                  {showAllCapacity()} مسافر
                 </div>
               </button>
             </h2>
@@ -89,6 +141,9 @@ const BusSearch = () => {
             <Collapse isOpen={col1} className='accordion-collapse '>
               <BusPassenger
                 AllPassenger={handlePassenger}
+                AllPassenger1={handlePassenger1}
+                AllPassenger2={handlePassenger2}
+
               />
 
             </Collapse>
@@ -98,7 +153,9 @@ const BusSearch = () => {
 
       </div>
       <div style={{ margin: '30px auto', width: '73%' }}>
-        <button className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}>جستجو</button>
+        <button 
+        onClick={handleSearch}
+        className='btn btn-sm btn-danger my-1  w-100  py-3' style={{ borderRadius: '20px', fontSize: '30px', fontFamily: 'Vazir', fontWeight: 'bold' }}>جستجو</button>
       </div>
     </>
   )

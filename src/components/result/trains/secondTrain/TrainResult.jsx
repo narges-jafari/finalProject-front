@@ -1,42 +1,43 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import styles1 from '../../../assets/styles/AirplaneResult.module.css'
-import styles from '../../../assets/styles/AirplaneList.module.css'
-import { FcSalesPerformance } from 'react-icons/fc'
-import moment from 'moment'
-import { useQuery } from '@apollo/client'
-import busQueries from '../../../Apollo/Query/busQueries'
-
-import PriceTable from './PriceTable'
+import styles1 from '../../../../assets/styles/AirplaneResult.module.css'
 import Filter from './Filter'
-import Header from './Header'
-import Info from './Info'
+import { useQuery } from '@apollo/client'
 import NotFound from './NotFound'
+import styles from '../../../../assets/styles/AirplaneList.module.css'
+import PriceChart from './PriceChart'
+import { FcSalesPerformance } from 'react-icons/fc'
+import Header from './Header'
+import moment from 'moment'
+import Info from './Info'
+import trainQueries from '../../../../Apollo/Query/trainQueries'
+import logo1 from '../../../../assets/img/bg/tlogo.JPG'
+import logo2 from '../../../../assets/img/bg/tlogo1.JPG'
+import logo3 from '../../../../assets/img/bg/tlogo2.JPG'
+import logo4 from '../../../../assets/img/bg/tlogo3.JPG'
+import logo5 from '../../../../assets/img/bg/tlogo4.JPG'
+import logo6 from '../../../../assets/img/bg/tlogo5.JPG'
 
-const BusResult = () => {
+const TrainResult = () => {
   // STATES
   const [showPriceTableModal, setShowPriceTableModal] = useState(false)
   const [showInfoModal, setShowInfoModal] = useState(false)
-  const [busItem, setBusItem] = useState([])
+  const [trainItem, setTrainItem] = useState([])
   const [clickedItem, setClickedItem] = useState(false)
-  const [showPrice, setShowPrice] = useState([])
-  const [showName, setShowName] = useState([])
+  const [showSellData, setShowSellData] = useState([])
+  const [showSellData1, setShowSellData1] = useState([])
   const [filteredTicketsDate, setFilteredTicketsDate] = useState([])
-
-  // FUNCTION FOR GET DATA FROM CHILD
-  const handleShowPrice = useCallback((sell) => {
-    setShowPrice(sell)
+  // FUNCTIONS FOR GET DATA FROM CHILD
+  const handleSellData = useCallback((sell) => {
+    setShowSellData(sell)
   }, [])
-  const handleShowName = useCallback((sell) => {
-    setShowName(sell)
+  const handleSellData1 = useCallback((sell) => {
+    setShowSellData1(sell)
   }, [])
 
-  const originName = window.localStorage.getItem('BusOriginName').replace(/"/g, '')
-  const destinationName = window.localStorage.getItem('BusDestinationName').replace(/"/g, '')
-  const date = window.localStorage.getItem('BusDate').replace(/"/g, '')
-  const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
-  const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
-  const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
-  const allCapacity = capacity + capacity1 + capacity2
+  const originName = window.localStorage.getItem('TrainOriginName').replace(/"/g, '')
+  const destinationName = window.localStorage.getItem('TrainDestinationName').replace(/"/g, '')
+  const date = window.localStorage.getItem('TrainDateCome').replace(/"/g, '')
+  const trainClass = window.localStorage.getItem('TrainClass').replace(/"/g, '')
   const Num = date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
   const dayOfWeekName = new Date(Num).toLocaleString(
     'fa-IR', { weekday: 'long' })
@@ -45,6 +46,43 @@ const BusResult = () => {
     'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
   ]
 
+  const todayday = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
+
+  const month1 = new Date(Num)
+  const monthName = monthNames[month1.getMonth()]
+
+  const daynum = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const currentDate = '۱۴۰۱' + '/' + daynum + '/' + month
+  const newDate = currentDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+  const current = new Date()
+  const time = current.toLocaleTimeString('fa-IR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
+  const newTime = time.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+
+  const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
+  const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
+  const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
+  const allCapacity = capacity + capacity1 + capacity2
+  // const handleCapacity = () => {
+  //   if (!capacity2 && !capacity1) {
+  //     return (
+  //       capacity
+  //     )
+  //   } else if(!capacity1 && !capacity2 &&  !capacity){
+  //     return 1
+  //   }
+  //   else {
+  //     return (
+  //       allCapacity
+  //     )
+  //   }
+  // }
   const handleCapacity = () => {
     if (!capacity2 && capacity && !capacity1) {
       return (
@@ -62,26 +100,37 @@ const BusResult = () => {
       )
     }
   }
-  const todayday = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
-  const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
 
-  const month1 = new Date(Num)
-  const monthName = monthNames[month1.getMonth()]
-  console.log(busItem, 'lklk')
+
+  useEffect(() => {
+    setFilteredTicketsDate(
+      trainItem.filter((item) =>
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) > newDate &&
+        item.capacity >= handleCapacity()
+      )
+    )
+  }, [trainItem])
+
+  console.log(handleCapacity(), capacity1, capacity, '0000')
+
+  useEffect(() => {
+    window.localStorage.setItem('TRAINSECONDID', JSON.stringify(clickedItem))
+  }, [clickedItem])
+
   // apollo query
-  useQuery(busQueries.SEARCHBUS, {
+  useQuery(trainQueries.SEARCHTRAIN, {
     variables: {
-      originName: originName,
-      destinationName: destinationName,
+      originName: destinationName ,
+      destinationName: originName,
+      hallType: trainClass,
       date: date
     },
 
     onCompleted: (res) => {
-      setBusItem(res.searchBus)
+      setTrainItem(res.searchTrain)
     },
     onError: () => {
-      setBusItem([])
+      setTrainItem([])
     }
   })
   // SORT FUNCTION
@@ -94,12 +143,9 @@ const BusResult = () => {
     }
     return 0
   }
-
-
-
   const handleChange = (value) => {
-    if (value == 'none') {
-      setBusItem([...filteredTicketsDate])
+    if (value === 'none') {
+      setTrainItem([...filteredTicketsDate])
     } else if (value) {
       let toType, toAscending
       switch (value) {
@@ -112,46 +158,17 @@ const BusResult = () => {
       current.sort((a, b) => toType
         ? compare(a.price, b.price, toAscending)
         : compare(a.price, b.price, toAscending))
-        setBusItem([...current])
+      setTrainItem([...current])
     } else {
-      setBusItem([...filteredTicketsDate])
+      setTrainItem([...filteredTicketsDate])
     }
   }
-  const daynum = new Date().toLocaleString('fa-IR', { month: '2-digit' })
-  const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const currentDate = '۱۴۰۱' + '/' + daynum + '/' + month
-
-  const newDate = currentDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
-  const current = new Date()
-
-  const time = current.toLocaleTimeString('fa-IR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  })
-  const newTime = time.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
-
-
-  useEffect(() => {
-    setFilteredTicketsDate(
-      busItem.filter((item) =>
-        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&
-        item.capacity >= handleCapacity()
-      )
-    )
-  }, [busItem])
-
-  useEffect(() => {
-    window.localStorage.setItem('BUSID', JSON.stringify(clickedItem))
-  }, [clickedItem])
 
   const handleNameChange = (e) => {
-    window.location.href = '/buspay'
-    // setClickedRoom(clickedItem)
+    window.location.href = '/trainpays'
   }
   return (
     <>
-
       <div className={styles1.headerCss}>
         <Header />
       </div>
@@ -160,17 +177,16 @@ const BusResult = () => {
         <div className={styles1.filterDiv}>
           <Filter
             filterItem={filteredTicketsDate}
-            handlePrice={handleShowPrice}
-            handleName={handleShowName}
+            customeStrategySell={handleSellData}
+            customeStrategySell1={handleSellData1}
           />
         </div>
         <div className={styles1.airCss}>
           <>
-
-            {filteredTicketsDate.length == 0
+            {filteredTicketsDate.length === 0
               ? <NotFound
-                  info={handleShowPrice}
-                  info1={handleShowName}
+                  info={showSellData}
+                  info1={showSellData1}
                 />
               : <>
                 <div>
@@ -187,22 +203,21 @@ const BusResult = () => {
                     <FcSalesPerformance className='fa-lg' /> مقایسه قیمت‌ها
                   </button>
                   {showPriceTableModal && (
-                    <PriceTable
+                    <PriceChart
                       isOpen={showPriceTableModal}
                       setIsOpen={setShowPriceTableModal}
                       showInfo={filteredTicketsDate}
-                      priceInfo={showPrice}
-                      nameInfo={showName}
+                      priceInfo={showSellData}
+                      nameInfo={showSellData1}
                     />
                   )}
-                  <button type='button' className='w-25 py-2 px-0 btn btn-outline-primary rounded-3' value='none' onClick={(e) => handleChange(e.target)}>
+                  <button type='button' className='w-25 py-2 px-0 btn btn-outline-primary rounded-3' value='high' onClick={(e) => handleChange(e.target.value)}>
                     ارزان‌ترین قیمت
                   </button>
                 </div>
                 <div className='d-flex flex-column '>
-
                   {(() => {
-                    if (showPrice.length == 0 && showName.length == 0) {
+                    if (showSellData.length === 0 && showSellData1.length === 0) {
                       return (
                         <div>
                           {filteredTicketsDate.map((item, index) => {
@@ -210,12 +225,59 @@ const BusResult = () => {
                               <div className={styles.content} key={index}>
                                 <div className={styles.contentItem}>
                                   <div className='d-flex flex-row flex-wrap '>
-                                  
-                                    <span className='text-secondary mt-4'><h5>{item.busCompany} </h5> </span>
+                                    {(() => {
+                                      if (item.railCompany.includes('رجا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo1} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('فدک')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo2} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('ریل ترابر سبا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo3} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('ریل سیر کوثر')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo4} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('نورالرضا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo5} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('بن ریل')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo6} />
+                                          </div>
+
+                                        )
+                                      } else {
+                                        return null
+                                      }
+                                    })()}
+
+                                    <span className='text-secondary mt-4'><h5>{item.railCompany} </h5> </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}>{item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -225,7 +287,7 @@ const BusResult = () => {
                                     <span className={styles.fontCss}>{item.originName}</span>
                                     <span className={styles.clockcss}> {item.departureTime}</span>
                                   </div>
-                                  <div><i className=' fa fa-bus'  /></div>
+                                  <div><i className=' fa fa-train' /></div>
                                   <div>
                                     <span className={styles.fontCss}>{item.destinationName}</span>
                                     <span className={styles.clockcss}> {item.arrivalTime}</span>
@@ -233,7 +295,7 @@ const BusResult = () => {
                                 </div>
                                 <div className={styles.contentItem1}>
                                   <div>
-                                    <span>  {item.originTerminal}</span>
+                                    <span>  {item.railwayOrigin}</span>
                                     <span> {dayOfWeekName + day + monthName}   </span>
                                   </div>
                                   <div>
@@ -268,7 +330,7 @@ const BusResult = () => {
                                     </span>
                                   </div>
                                   <div>
-                                    <span>{item.destinationTerminal}</span>
+                                    <span>{item.railwayDestination}</span>
                                     <span>   {dayOfWeekName + day + monthName}  </span>
                                   </div>
                                 </div>
@@ -295,14 +357,13 @@ const BusResult = () => {
 
                                   )}
                                   {item.date == string1 && item.departureTime < newTime
-                                    ? <span
-                                        className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                    ? <button
+                                        className='btn btn-lg  text-warning rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
-                                    </span>
+                                      > حرکت کرده
+                                    </button>
                                     : <button
-
-                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
 
                                         className='btn btn-lg btn-danger rounded-3  my-2'
                                       > انتخاب
@@ -314,21 +375,67 @@ const BusResult = () => {
                           })}
                         </div>
                       )
-                    } else if (showPrice.length !== 0 && showName.length == 0) {
+                    } else if (showSellData.length !== 0 && showSellData1.length === 0) {
                       return (
                         <div className='App'>
 
-                          {showPrice.map((item, index) => {
+                          {showSellData.map((item, index) => {
                             return (
                               <div className={styles.content} key={index}>
                                 <div className={styles.contentItem}>
                                   <div className='d-flex flex-row flex-wrap '>
-                              
-                                    <span className='text-secondary mt-4'><h5>{item.busCompany} </h5> </span>
+                                    {(() => {
+                                      if (item.railCompany.includes('رجا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo1} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('فدک')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo2} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('ریل ترابر سبا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo3} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('ریل سیر کوثر')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo4} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('نورالرضا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo5} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('بن ریل')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo6} />
+                                          </div>
+
+                                        )
+                                      } else {
+                                        return null
+                                      }
+                                    })()}
+                                    <span className='text-secondary mt-4'><h5>{item.railCompany} </h5> </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}   </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}>{item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -338,7 +445,7 @@ const BusResult = () => {
                                     <span className={styles.fontCss}>{item.originName}</span>
                                     <span className={styles.clockcss}> {item.departureTime}</span>
                                   </div>
-                                  <div><i className=' fa fa-bus'  /></div>
+                                  <div><i className=' fa fa-train' /></div>
                                   <div>
                                     <span className={styles.fontCss}>{item.destinationName}</span>
                                     <span className={styles.clockcss}> {item.arrivalTime}</span>
@@ -346,7 +453,7 @@ const BusResult = () => {
                                 </div>
                                 <div className={styles.contentItem1}>
                                   <div>
-                                    <span>  {item.originTerminal}</span>
+                                    <span>  {item.railwayOrigin}</span>
                                     <span> {dayOfWeekName + day + monthName}   </span>
                                   </div>
                                   <div>
@@ -377,11 +484,10 @@ const BusResult = () => {
                                           )
                                         }
                                       })()}
-
                                     </span>
                                   </div>
                                   <div>
-                                    <span>{item.destinationTerminal}</span>
+                                    <span>{item.railwayDestination}</span>
                                     <span>   {dayOfWeekName + day + monthName}  </span>
                                   </div>
                                 </div>
@@ -408,13 +514,13 @@ const BusResult = () => {
 
                                   )}
                                   {item.date == string1 && item.departureTime < newTime
-                                    ? <span
-                                        className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                    ? <button
+                                        className='btn btn-lg text-warning  rounded-3  my-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
-                                    </span>
+                                      > حرکت کرده
+                                    </button>
                                     : <button
-                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
 
                                         className='btn btn-lg btn-danger rounded-3  my-2'
                                       > انتخاب
@@ -426,21 +532,67 @@ const BusResult = () => {
                           })}
                         </div>
                       )
-                    } else if (showPrice.length == 0 && showName.length !== 0) {
+                    } else if (showSellData.length === 0 && showSellData1.length !== 0) {
                       return (
                         <div className='App'>
 
-                          {showName.map((item, index) => {
+                          {showSellData1.map((item, index) => {
                             return (
                               <div className={styles.content} key={index}>
                                 <div className={styles.contentItem}>
                                   <div className='d-flex flex-row flex-wrap '>
+                                    {(() => {
+                                      if (item.railCompany.includes('رجا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo1} />
+                                          </div>
 
-                                    <span className='text-secondary mt-4'><h5>{item.busCompany} </h5> </span>
+                                        )
+                                      } else if (item.railCompany.includes('فدک')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo2} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('ریل ترابر سبا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo3} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('ریل سیر کوثر')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo4} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('نورالرضا')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo5} />
+                                          </div>
+
+                                        )
+                                      } else if (item.railCompany.includes('بن ریل')) {
+                                        return (
+                                          <div>
+                                            <img className={styles.imgCss} src={logo6} />
+                                          </div>
+
+                                        )
+                                      } else {
+                                        return null
+                                      }
+                                    })()}
+                                    <span className='text-secondary mt-4'><h5>{item.railCompany} </h5> </span>
 
                                   </div>
                                   <div className={styles.chaircss}>
-                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>}  </span>
+                                    <span className='text-danger rounded-3 mx-2 px-2' style={{ border: '1px solid #ddd' }}> {item.capacity <= 0 ? <span className='text-danger'>ظرفیت تکمیل</span> : <> {item.capacity}صندلی </>} </span>
                                     <span className='text-secondary rounded-3 mx-2 px-2 border' style={{ border: '1px solid #ddd' }}> سیستمی </span>
 
                                   </div>
@@ -450,7 +602,7 @@ const BusResult = () => {
                                     <span className={styles.fontCss}>{item.originName}</span>
                                     <span className={styles.clockcss}> {item.departureTime}</span>
                                   </div>
-                                  <div><i className=' fa fa-bus' /></div>
+                                  <div><i className=' fa fa-train' /></div>
                                   <div>
                                     <span className={styles.fontCss}>{item.destinationName}</span>
                                     <span className={styles.clockcss}> {item.arrivalTime}</span>
@@ -458,7 +610,7 @@ const BusResult = () => {
                                 </div>
                                 <div className={styles.contentItem1}>
                                   <div>
-                                    <span>  {item.originTerminal}</span>
+                                    <span>  {item.railwayOrigin}</span>
                                     <span> {dayOfWeekName + day + monthName}   </span>
                                   </div>
                                   <div>
@@ -476,7 +628,6 @@ const BusResult = () => {
 
                                           const time3 = moment(hours, 'hh').format('hh')
                                           const time4 = moment(minutes, 'mm').format('mm')
-
                                           return (
                                             <div>
                                               {time3}ساعت و
@@ -489,11 +640,10 @@ const BusResult = () => {
                                           )
                                         }
                                       })()}
-
                                     </span>
                                   </div>
                                   <div>
-                                    <span>{item.destinationTerminal}</span>
+                                    <span>{item.railwayDestination}</span>
                                     <span>   {dayOfWeekName + day + monthName}  </span>
                                   </div>
                                 </div>
@@ -520,13 +670,14 @@ const BusResult = () => {
 
                                   )}
                                   {item.date == string1 && item.departureTime < newTime
-                                    ? <span
-                                        className='mt-2  rounded-3 px-4 mx-2 py-2'
+                                    ? <button
+                                        className='btn btn-lg text-warning  rounded-3  my-2'
+                        // className='mt-2  rounded-3 px-4 mx-2 py-2'
                                         style={{ fontFamily: 'Vazir', backgroundColor: '#1a1a1a0c', fontSize: '17px', height: '47px' }}
-                                      > انتخاب
-                                    </span>
+                                      > حرکت کرده
+                                    </button>
                                     : <button
-                                        onClick={() => { handleNameChange(); setClickedItem(item._id) }}
+                                    onClick={() => { handleNameChange(); setClickedItem(item._id) }}
 
                                         className='btn btn-lg btn-danger rounded-3  my-2'
                                       > انتخاب
@@ -542,18 +693,19 @@ const BusResult = () => {
                       return (
                         <div className='App'>
                           <NotFound
-                            info={showPrice}
-                            info1={showName}
+                            info={showSellData}
+                            info1={showSellData1}
                           />
 
                         </div>
                       )
                     }
                   })()}
-
                 </div>
-              </>}
+
+                </>}
           </>
+
         </div>
 
       </div>
@@ -562,4 +714,4 @@ const BusResult = () => {
   )
 }
 
-export default BusResult
+export default TrainResult

@@ -3,9 +3,14 @@ import React, { useState, useEffect } from 'react'
 import { Collapse } from 'reactstrap'
 
 import classnames from 'classnames'
+import logo1 from '../../../../assets/img/bg/tlogo.JPG'
+import logo2 from '../../../../assets/img/bg/tlogo1.JPG'
+import logo3 from '../../../../assets/img/bg/tlogo2.JPG'
+import logo4 from '../../../../assets/img/bg/tlogo3.JPG'
+import logo5 from '../../../../assets/img/bg/tlogo4.JPG'
+import logo6 from '../../../../assets/img/bg/tlogo5.JPG'
 
-
-import styles from '../../../assets/styles/Filter.module.css'
+import styles from '../../../../assets/styles/Filter.module.css'
 
 const Filter = (props) => {
   // STATE VARIABLES
@@ -15,7 +20,6 @@ const Filter = (props) => {
   const [items, setItems] = useState([])
   const [search, setSearch] = useState()
   const [filteredTicketsMoney, setFilteredTicketsMoney] = useState([])
-
   const [items1, setItems1] = useState([])
   const [filteredTicketsName, setFilteredTicketsName] = useState([])
 
@@ -28,7 +32,7 @@ const Filter = (props) => {
     setSearch(e.target.value)
   }
 
-  // RESET FUNCTIONS
+  // reset function
   const reset = () => {
     setMoney()
     setSearch()
@@ -53,7 +57,6 @@ const Filter = (props) => {
   }
 
   const found = props.filterItem.map(item => item._id)
-
   // COUNTER FUNCTION
   function statusCounter (inputs) {
     let counter = 0
@@ -62,15 +65,16 @@ const Filter = (props) => {
     }
     return counter
   }
+
   useEffect(() => {
     setItems(props.filterItem)
 
     setFilteredTicketsName(
       items.filter((item) =>
-        item.busCompany.replace(/"/g, '') === (search)
+        item.railCompany.replace(/"/g, '') === (search)
       )
     )
-  }, [search, items, props.handleName(filteredTicketsName)])
+  }, [search, items, props.customeStrategySell1(filteredTicketsName)])
   useEffect(() => {
     setItems1(props.filterItem)
 
@@ -79,7 +83,7 @@ const Filter = (props) => {
         user => (user.price) >= money - 300000 && (user.price) <= money
       )
     )
-  }, [money, items1, props.handlePrice(filteredTicketsMoney)
+  }, [money, items1, props.customeStrategySell(filteredTicketsMoney)
   ])
   return (
     <>
@@ -88,24 +92,22 @@ const Filter = (props) => {
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span>
-              {/* {statusCounter(found)} */}
-
               {(() => {
-                if (filteredTicketsMoney.length == 0 && filteredTicketsName.length == 0) {
+                if (filteredTicketsMoney.length === 0 && filteredTicketsName.length === 0) {
                   return (
                     <>
                       تعداد نتایج : {statusCounter(found)}
 
                     </>
                   )
-                } else if (filteredTicketsMoney.length !== 0 && filteredTicketsName.length == 0) {
+                } else if (filteredTicketsMoney.length !== 0 && filteredTicketsName.length === 0) {
                   return (
                     <>
                       تعداد نتایج:  {statusCounter(filteredTicketsMoney)}
 
                     </>
                   )
-                } else if (filteredTicketsName.length !== 0 && filteredTicketsMoney.length == 0) {
+                } else if (filteredTicketsName.length !== 0 && filteredTicketsMoney.length === 0) {
                   return (
                     <>
                       تعداد نتایج: {statusCounter(filteredTicketsName)}
@@ -190,7 +192,6 @@ const Filter = (props) => {
                     id='age-range-1'
                     value='300000'
                     onChange={handleMoneyChange}
-
                     checked={money === '300000'}
                   />
                   <label htmlFor='age-range-1 '>0-300000 تومان</label><br />
@@ -201,8 +202,6 @@ const Filter = (props) => {
                     id='age-range-2'
                     value='600000'
                     onChange={handleMoneyChange}
-                    // onChange={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
-
                     className='mx-2'
                     checked={money === '600000'}
                   />
@@ -214,36 +213,31 @@ const Filter = (props) => {
                     id='age-range-3'
                     value='900000'
                     onChange={handleMoneyChange}
-                    // onClick={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
-
                     className='mx-2'
                     checked={money === '900000'}
                   />
-                  <label htmlFor='age-range-3'>900000-1200000 تومان</label><br />
+                  <label htmlFor='age-range-3'>600000-900000 تومان</label><br />
                   <input
                     type='radio'
                     name='age'
                     id='age-range-3'
-                    value='1500000'
+                    value='1200000'
                     onChange={handleMoneyChange}
-                    // onChange={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
                     className='mx-2'
-                    checked={money === '1500000'}
+                    checked={money === '1200000'}
                   />
-                  <label htmlFor='age-range-3'>1200000-1500000 تومان</label><br />
+                  <label htmlFor='age-range-3'>900000-1200000تومان</label><br />
 
                   <input
                     type='radio'
                     name='age'
                     id='age-range-7'
-                    value='1800000'
+                    value='1500000'
                     onChange={handleMoneyChange}
-                    // onChange={e => { setMoney(e.target.value); props.customeStrategySell(filteredCountries1) }}
-
                     className='mx-2'
-                    checked={money === '1800000'}
+                    checked={money === '1500000'}
                   />
-                  <label htmlFor='age-range-3'>1500000-1800000 تومان</label><br />
+                  <label htmlFor='age-range-3'>1200000-1500000تومان</label><br />
                 </fieldset>
               </form>
             </div>
@@ -266,7 +260,7 @@ const Filter = (props) => {
 
               }}
             >
-              شرکت‌های اتوبوسرانی
+              شرکت‌های راه‌آهن
               {col2
                 ? <i
                     onClick={toggleCol2}
@@ -275,7 +269,6 @@ const Filter = (props) => {
                   />
                 : <i
                     onClick={toggleCol2}
-
                     className='fa fa-angle-up fa-lg' style={{ float: 'left' }}
                   />}
             </button>
@@ -292,11 +285,12 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value= 'آسوده سفر ترمینال غرب'
+                      value='رجا'
                       onChange={handleNameChange}
-                      checked={search ===  'آسوده سفر ترمینال غرب'}
+                      checked={search === 'رجا'}
                     />
-                    <span className='mx-1'> آسوده سفر ترمینال غرب </span>
+                    <img src={logo1} className={styles.logoCss} />
+                    <span className='mx-1'>  رجا</span>
                   </div>
                   <div className='d-flex flex-row my-1 mx-3'>
                     <input
@@ -304,11 +298,12 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value=  'تک سفر ایرانیان'
+                      value=' فدک'
                       onChange={handleNameChange}
-                      checked={search ===   'تک سفر ایرانیان'}
+                      checked={search === 'فدک'}
                     />
-                    <span className='mx-1'> تک سفر ایرانیان</span>
+                    <img src={logo2} className={styles.logoCss} />
+                    <span className='mx-1'> فدک</span>
                   </div>
                   <div className='d-flex flex-row my-1 mx-3'>
                     <input
@@ -316,11 +311,12 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value='تعاونی 1 ایران پیما'
+                      value='ریل ترابر سبا'
                       onChange={handleNameChange}
-                      checked={search === 'تعاونی 1 ایران پیما'}
+                      checked={search === 'ریل ترابر سبا'}
                     />
-                    <span className='mx-1'> تعاونی 1 ایران پیما</span>
+                    <img src={logo3} className={styles.logoCss} />
+                    <span className='mx-1'> ریل ترابر سبا</span>
                   </div>
                   <div className='d-flex flex-row my-1 mx-3'>
                     <input
@@ -328,11 +324,12 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value='تعاونی 17 پیک صبا'
+                      value='ریل سیر کوثر'
                       onChange={handleNameChange}
-                      checked={search === 'تعاونی 17 پیک صبا'}
+                      checked={search === 'ریل سیر کوثر'}
                     />
-                    <span className='mx-1'> تعاوی 17 پیک صبا</span>
+                    <img src={logo4} className={styles.logoCss} />
+                    <span className='mx-1'> ریل سیر کوثر</span>
                   </div>
                   <div className='d-flex flex-row my-1 mx-3'>
                     <input
@@ -340,11 +337,12 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value= 'مارال سیر'
+                      value='نورالرضا'
                       onChange={handleNameChange}
-                      checked={search === 'مارال سیر'}
+                      checked={search === 'نورالرضا'}
                     />
-                    <span className='mx-1'> مارال سیر </span>
+                    <img src={logo5} className={styles.logoCss} />
+                    <span className='mx-1'> نورالرضا</span>
                   </div>
                   <div className='d-flex flex-row my-1 mx-3'>
                     <input
@@ -352,11 +350,12 @@ const Filter = (props) => {
                       name='age'
                       className='mx-2'
                       id='age-range-1'
-                      value=  'میهن نور'
+                      value='بن ریل'
                       onChange={handleNameChange}
-                      checked={search ===  'میهن نور'}
+                      checked={search === 'بن ریل'}
                     />
-                    <span className='mx-1'> میهن نور</span>
+                    <img src={logo6} className={styles.logoCss} />
+                    <span className='mx-1'> بن ریل</span>
                   </div>
 
                 </fieldset>

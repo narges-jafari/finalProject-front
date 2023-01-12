@@ -5,20 +5,36 @@ import { property } from '../../../constants/property'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
 import DatePicker from 'react-multi-date-picker'
+import busMutations from '../../../Apollo/Mutation/busMutations'
+import { useMutation } from '@apollo/client'
+import { USER_ID, BUS_ID, BUS_CAPACITY } from '../../../constants/auth'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const BusContent = () => {
   // STATES
-  const [destinationName, setDestinationName] = useState()
-  const [originName, setOriginName] = useState()
+  const [destinationName, setDestinationName] = useState('')
+  const [originName, setOriginName] = useState('')
   const [startDate, setStartDate] = useState(new Date())
   const [endTime, setEndTime] = useState('')
   const [startTime, setStartTime] = useState('')
   const [originTerminal, setOriginTerminal] = useState('')
   const [destinationTerminal, setDestinationTerminal] = useState('')
   const [showSeatNumber, setShowSeatNumber] = useState('')
-  const [showPrice, setShowPrice] = useState()
+  const [showPrice, setShowPrice] = useState('')
+  const [showCapacity, setShowCapacity] = useState('')
   const [showBusNumber, setShowBusNumber] = useState('')
   const [showBusCompany, setShowBusCompany] = useState('')
+  const [error, setError] = useState(null)
+  const [error1, setError1] = useState(null)
+  const [error2, setError2] = useState(null)
+  const [error3, setError3] = useState(null)
+  const [error4, setError4] = useState(null)
+  const [error5, setError5] = useState(null)
+  const [error6, setError6] = useState(null)
+  const [error7, setError7] = useState(null)
+  const [error8, setError8] = useState(null)
+
   const [userinfo, setUserInfo] = useState({
     property: [],
     response: []
@@ -47,6 +63,175 @@ const BusContent = () => {
 
   // REF
   const firstUpdate = useRef(true)
+  const userid = window.localStorage.getItem(USER_ID).replace(/"/g, '')
+
+console.log(userid)
+  const [createBuses] = useMutation(busMutations.CREATEBUS)
+
+  const handleCreateBus = (e) => {
+    if (!error) {
+      e.preventDefault()
+      createBuses({
+        variables: {
+          originName: originName,
+          destinationName: destinationName,
+          capacity: parseInt(showCapacity),
+          date: startDate.toString(),
+          destinationTerminal: destinationTerminal,
+          originTerminal: originTerminal,
+          departureTime:startTime ,
+          arrivalTime:endTime ,
+          price: parseFloat(showPrice),
+          busCompany: showBusCompany,
+          busNumber: parseInt(showBusNumber),
+          information: userinfo.response,
+          creator:userid
+
+        }
+      })
+        .then(({ data }) => {
+          if (data.createBus !== null) {
+            toast.success('عملیات اضافه شدن بلیط اتوبوس با موفقیت انجام شد')
+            window.localStorage.setItem(BUS_ID, JSON.stringify(data.createBus._id))
+            window.localStorage.setItem(BUS_CAPACITY, JSON.stringify(data.createBus.capacity))
+
+          } else {
+            toast.error(
+              'خطایی در برقراری با سرور اتفاق افتاد'
+            )
+          }
+        })
+    } else {
+      toast.warning('خطایی رخ داد از دوباره تلاش کنید')
+    }
+  }
+
+    // VALIDATIONS
+  // originName validation
+  function isValidName (email) {
+    return /^[\u0600-\u06FF\s]+$/.test(email)
+  }
+
+  const handlename = event => {
+    if (!isValidName(event.target.value)) {
+      setError('باید زبان کیبورد را عوض کنید!')
+    } else if (originName.length < 2) {
+      setError('حداقل باید سه حرف وارد کنید!  ')
+    } else {
+      setError(null)
+    }
+
+    setOriginName(event.target.value)
+  }
+
+  // destinationName validation
+  const handlename1 = event => {
+    if (!isValidName(event.target.value)) {
+      setError1('باید زبان کیبورد را عوض کنید!')
+    } else if (destinationName.length < 2) {
+      setError1('حداقل باید سه حرف وارد کنید!  ')
+    } else {
+      setError1(null)
+    }
+
+    setDestinationName(event.target.value)
+  }
+
+  // setOriginAirport validation
+  const handlename2 = event => {
+    if (!isValidName(event.target.value)) {
+      setError2('باید زبان کیبورد را عوض کنید!')
+    } else if (originTerminal.length < 2) {
+      setError2('حداقل باید سه حرف وارد کنید!  ')
+    } else {
+      setError2(null)
+    }
+
+    setOriginTerminal(event.target.value)
+  }
+
+  // setDestinationAirport
+  const handlename3 = event => {
+    if (!isValidName(event.target.value)) {
+      setError3('باید زبان کیبورد را عوض کنید!')
+    } else if (destinationTerminal.length < 2) {
+      setError3('حداقل باید سه حرف وارد کنید!  ')
+    } else {
+      setError3(null)
+    }
+
+    setDestinationTerminal(event.target.value)
+  }
+
+
+  // capacity validation
+  function isValidCapacity (cp) {
+    return /^\d$/.test(cp)
+  }
+
+  const handlecapacity = event => {
+    if (!isValidCapacity(event.target.value)) {
+      setError4(' باید اعداد بین 9-1 را وارد کنید')
+    } else {
+      setError4(null)
+    }
+
+    setShowCapacity(event.target.value)
+  }
+  // busNumber validation
+  function isValidClass (item) {
+    return /^[2-9][0-9]{3}$/.test(item)
+  }
+  const handlBusNumber = event => {
+    if (!isValidClass(event.target.value)) {
+      setError5('باید اعداد بین 2000تا9999 را وارد کنید')
+    } else {
+      setError5(null)
+    }
+
+    setShowBusNumber(event.target.value)
+  }
+
+  // times validation
+  function isValidftime (item) {
+    return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(item)
+  }
+  const handlfTime = event => {
+    if (!isValidftime(event.target.value)) {
+      setError6(' فرمت صحیح HH:MM است ')
+    } else {
+      setError6(null)
+    }
+
+    setStartTime(event.target.value)
+  }
+  function isValidsTime (item) {
+    return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(item)
+  }
+  const handlesTime = event => {
+    if (!isValidsTime(event.target.value)) {
+      setError7(' فرمت صحیح HH:MM است ')
+    } else {
+      setError7(null)
+    }
+
+    setEndTime(event.target.value)
+  }
+  // price validation
+
+  function isValidsPrice (item) {
+    return /^[+-]?([0-9]*[.])?[0-9]+$/.test(item)
+  }
+  const handlePrice = event => {
+    if (!isValidsPrice(event.target.value)) {
+      setError8('فرمت وارد شده صحیح نیست')
+    } else {
+      setError8(null)
+    }
+
+    setShowPrice(event.target.value)
+  }
+
 
   return (
     <>
@@ -61,36 +246,52 @@ const BusContent = () => {
             <input
               type='text'
               value={originName}
-              onChange={e => setOriginName(e.target.value)}
+              onChange={handlename}
               className={styles.inputcss}
             />
+               {error
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label> شهر مقصد</label>
             <input
               type='text'
               value={destinationName}
-              onChange={e => setDestinationName(e.target.value)}
+              onChange={handlename1}
               className={styles.inputcss}
             />
+               {error1
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error1}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label>پایانه  مبدا</label>
             <input
               type='text'
               value={originTerminal}
-              onChange={e => setOriginTerminal(e.target.value)}
+              onChange={handlename2}
               className={styles.inputcss}
             />
+               {error2
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error2}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label>پایانه  مقصد</label>
             <input
               type='text'
               value={destinationTerminal}
-              onChange={e => setDestinationTerminal(e.target.value)}
+              onChange={handlename3}
               className={styles.inputcss}
             />
+               {error3
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error3}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
         </div>
         <div className={styles.headername}>
@@ -104,18 +305,26 @@ const BusContent = () => {
             <input
               type='text'
               value={startTime}
-              onChange={e => setStartTime(e.target.value)}
+              onChange={handlfTime }
               className={styles.inputcss}
             />
+               {error6
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error6}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label>   ساعت  رسیدن</label>
             <input
               type='text'
               value={endTime}
-              onChange={e => setEndTime(e.target.value)}
+              onChange={handlesTime}
               className={styles.inputcss}
             />
+               {error7
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error7}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label>   تاریخ</label>
@@ -140,27 +349,39 @@ const BusContent = () => {
             <input
               type='text'
               value={showPrice}
-              onChange={e => setShowPrice(e.target.value)}
+              onChange={handlePrice}
               className={styles.inputcss}
             />
+               {error8
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error8}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label>     شماره اتوبوس </label>
             <input
               type='text'
               value={showBusNumber}
-              onChange={e => setShowBusNumber(e.target.value)}
+              onChange={handlBusNumber}
               className={styles.inputcss}
             />
+               {error5
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error5}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
-            <label>    شماره صندلی</label>
+            <label>    ظرفیت </label>
             <input
               type='text'
-              value={showSeatNumber}
-              onChange={e => setShowSeatNumber(e.target.value)}
+              value={showCapacity}
+              onChange={handlecapacity}
               className={styles.inputcss}
             />
+               {error4
+              ? <div className={styles.fontcss}><small className='text-danger rounded-3 p-2  mt-1'><i className='fa fa-exclamation-triangle' />{error4}</small> </div>
+              : <div className='alert alert-white rounded-2 p-2 mt-1'>{null}</div>}
+
           </div>
           <div className={styles.content}>
             <label>    نام شرکت </label>
@@ -208,12 +429,15 @@ const BusContent = () => {
               </div>
             ))}
           </div>
-          {userinfo.response}
 
         </div>
 
         <div>
-          <button className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '>جستجو</button>
+          <button 
+              onClick={handleCreateBus}
+          className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '>جستجو</button>
+                  <ToastContainer />
+
         </div>
 
       </div>

@@ -20,6 +20,25 @@ isDelete
 }
     
   `,
+  ADDBUSSEATNUMBER: gql`
+  mutation addSeatNumberBus(
+    $number:Int!
+    $bus:String! 
+  ){
+    addSeatNumberBus(
+      seatnumberInputBus:{
+      number:  $number
+      bus:$bus 
+    
+  }
+  )
+{
+number
+isDelete
+}
+}
+    
+  `,
   ADDTRAINSEATNUMBER: gql`
   mutation addSeatNumberTrain(
     $number:Int!
@@ -47,6 +66,16 @@ number
   RESERVEDSEATNUMBER: gql`
   mutation reservedFlightSeat($id:[String!],$isDelete:Boolean!){
     reservedFlightSeat(id:$id,isDelete:$isDelete){
+      _id
+      
+    }
+  }
+    
+  `,
+
+  RESERVEDBUSSEATNUMBER: gql`
+  mutation reservedBusSeat($id:[String!],$isDelete:Boolean!){
+    reservedBusSeat(id:$id,isDelete:$isDelete){
       _id
       
     }

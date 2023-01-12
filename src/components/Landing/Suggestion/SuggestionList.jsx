@@ -21,12 +21,20 @@ const SuggestionList = () => {
     window.location.href = '/resultfasthotel'
   }
 
+  const [busName, setBusName] = useState()
+  const handleBusNameChange = (e) => {
+    setBusName(e.target.value)
+    window.location.href = '/resultfastbus'
+  }
+
   useEffect(() => {
     { window.localStorage.setItem('FlightOriginName', flightName)
       window.localStorage.setItem('TrainOriginName', trainName)
       window.localStorage.setItem('HotelCityName', cityName)
+      window.localStorage.setItem('BusOriginName', busName)
+
     }
-  }, [flightName, trainName, cityName])
+  }, [flightName, trainName, cityName, busName])
 
   console.log(trainName, ';;;')
 
@@ -183,24 +191,49 @@ const SuggestionList = () => {
           <span className={styles.spanHeader}>
             بلیط اتوبوس
           </span>
-          <span className={styles.spanItem}>
-            بلیط اتوبوس میانه
-          </span>
-          <span className={styles.spanItem}>
-            بلیط اتوبوس همدان
-          </span>
-          <span className={styles.spanItem}>
-            بلیط اتوبوس قزوین
-          </span>
-          <span className={styles.spanItem}>
-            بلیط اتوبوس ساوه
-          </span>
-          <span className={styles.spanItem}>
-            بلیط اتوبوس ارومیه
-          </span>
-          <span className={styles.spanItem}>
-            بلیط اتوبوس شیراز
-          </span>
+          <button
+            value='تهران'
+            onClick={handleBusNameChange}
+            className={styles.spanItem}
+          >
+            بلیط اتوبوس تهران
+          </button>
+
+          <button
+            value='مشهد'
+            onClick={handleBusNameChange}
+            className={styles.spanItem}
+          >
+            بلیط اتوبوس مشهد
+          </button>
+          <button
+            value='اصفهان'
+            onClick={handleBusNameChange}
+            className={styles.spanItem}
+          >
+            بلیط اتوبوس اصفهان
+          </button>
+          <button
+            value='تبریز'
+            onClick={handleBusNameChange}
+            className={styles.spanItem}
+          >
+            بلیط اتوبوس تبریز
+          </button>
+          <button
+            value='زنجان'
+            onClick={handleBusNameChange}
+            className={styles.spanItem}
+          >
+            بلیط اتوبوس زنجان
+          </button>
+          <button
+            value='خوزستان'
+            onClick={handleBusNameChange}
+            className={styles.spanItem}
+          >
+            بلیط اتوبوس خوزستان
+          </button>
         </div>
 
       </div>
