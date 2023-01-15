@@ -1,4 +1,4 @@
-import BusFinish from '../../components/Payment/bus/BusFinish'
+import BusFinish from '../../components/Payment/bus/BusFinish.jsx'
 
 import Footer from '../../components/Landing/Footer/Footer.jsx'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'

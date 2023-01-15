@@ -192,6 +192,7 @@ const TrainSearch = () => {
                             margin: '4px 0px 0px 0px'
                           }}
                         >
+
                           <div className='d-flex flex-column my-2'>
                             <span className={styles.spanAccordion}>مسافران/ کلاس</span>
                             <div className='d-flex flex-row mx-4 px-1'>
@@ -300,7 +301,7 @@ const TrainSearch = () => {
                             margin: '4px 0px 0px 0px'
                           }}
                         >
-                          <div className='d-flex flex-column my-2'>
+                           <div className='d-flex flex-column my-2'>
                             <span className={styles.spanAccordion}>مسافران/ کلاس</span>
                             <div className='d-flex flex-row mx-4 px-1'>
                               <span className={styles.spanAccordion}>

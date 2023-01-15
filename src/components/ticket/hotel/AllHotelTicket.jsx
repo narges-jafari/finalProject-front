@@ -209,7 +209,7 @@ const AllHotelTicket = () => {
             <div className={styles.contentItem}>
               <div>
                 <span className={styles.spancss}>  تاریخ صدور  </span>
-                <span className={styles.spancss1}> {date}</span>
+                <span className={styles.spancss1}> {date[0]}</span>
               </div>
             </div>
             <hr />

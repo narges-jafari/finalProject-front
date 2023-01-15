@@ -51,6 +51,8 @@ const AirplaneResult = () => {
   const monthNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
     'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
   ]
+  const month1 = new Date(Num)
+  const monthName = monthNames[month1.getMonth()]
 
   const handleCapacity = () => {
     if (!capacity2 && capacity && !capacity1) {
@@ -73,8 +75,7 @@ const AirplaneResult = () => {
   const todaymonth = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
 
-  const month1 = new Date(Num)
-  const monthName = monthNames[month1.getMonth()]
+
   console.log(handleCapacity(), 'lklk')
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {

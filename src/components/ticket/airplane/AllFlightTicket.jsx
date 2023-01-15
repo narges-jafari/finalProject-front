@@ -235,6 +235,7 @@ console.log(data,'data',allUserId)
                 </div>
               </div>
             </div>
+            {fullName[1]?
             <div className={styles.content}>
               <div className={styles.ticketHeader}>
                 <div>
@@ -397,7 +398,7 @@ console.log(data,'data',allUserId)
                   </span>
                 </div>
               </div>
-            </div>
+            </div>:null}
 
           </div>
 

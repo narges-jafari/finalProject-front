@@ -55,7 +55,7 @@ const Info = (props) => {
             type='button'
             onClick={() => {
               props.setIsOpen(false)
-              // window.location.reload()
+              window.location.reload()
             }}
             className={styles.iconCss}
             data-dismiss='modal'

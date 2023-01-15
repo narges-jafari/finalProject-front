@@ -1,5 +1,4 @@
-import Finish from '../../components/Payment/hotel/Finish.js'
-import FlightFinish from '../../components/Payment/flights/FlightFinish.js'
+import FlightFinish from '../../components/Payment/flights/FlightFinish.jsx'
 
 import Footer from '../../components/Landing/Footer/Footer.jsx'
 import HeaderLanding from '../../components/Landing/Navbar/HeaderLanding.jsx'

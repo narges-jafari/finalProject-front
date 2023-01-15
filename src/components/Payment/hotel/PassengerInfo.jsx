@@ -18,13 +18,51 @@ import { schema } from '../../../Utils/Form'
 import ReactTooltip from 'react-tooltip'
 
 const PassengerInfo = () => {
-  const passenger = window.localStorage.getItem('Passenger').replace(/"/g, '')
+  const capacity = parseInt(window.localStorage.getItem('Passenger').replace(/"/g, ''))
+  const capacity1 = parseInt(window.localStorage.getItem('Passenger1').replace(/"/g, ''))
+  const capacity2 = parseInt(window.localStorage.getItem('Passenger2').replace(/"/g, ''))
+  const allCapacity = capacity + capacity1 + capacity2
+  const showAllCapacity = () => {
+    if (!capacity2 && capacity && !capacity1) {
+      return (
+        capacity
+      )
+    } else if (!capacity1 && !capacity2 && !capacity) {
+      return 1
+    } else if (capacity1 && !capacity2 && capacity) {
+      return capacity + capacity1
+    } else if (!capacity1 && capacity2 && capacity) {
+      return capacity + capacity2
+    } else {
+      return (
+        allCapacity
+      )
+    }
+  }
+
+  const showAllPrice = () => {
+    if (showAllCapacity() == capacity) {
+      return price * capacity
+    } else if (!showAllCapacity()) {
+      return price
+    } else if (showAllCapacity() == 1) {
+      return price
+    } else if (showAllCapacity() == capacity + capacity1) {
+      return (price * capacity) + (price - price * 50 / 100) * capacity1
+    } else if (showAllCapacity() == capacity + capacity2) {
+      return (price * capacity) + (price - price * 75 / 100) * capacity2
+    } else {
+      return (
+        price * capacity + (price - price * 75 / 100) * capacity2 + (price - price * 50 / 100) * capacity1
+      )
+    }
+  }
 
   const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
   const [error, setError] = useState('')
-  let [count, setCount] = useState(passenger - 1)
+  let [count, setCount] = useState(showAllCapacity() - 1)
   const [clicked, setClicked] = useState(false)
-  const [data, setData] = useState([])
+  const [price, setPrice] = useState([])
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
@@ -76,7 +114,8 @@ const PassengerInfo = () => {
           name: formValues.map(item => item.name),
           date: formValues.map(item => item.birthDate),
           nationalcode: formValues.map(item => item.nationalcode),
-          gen: formValues.map(item => item.gen)
+          gen: formValues.map(item => item.gen),
+          price: showAllPrice()
         }
       })
         .then(({ data }) => {
@@ -104,13 +143,12 @@ const PassengerInfo = () => {
     },
 
     onCompleted: (res) => {
-      setData(res.searchRoomById.price)
+      setPrice(res.searchRoomById.price)
     },
     onError: () => {
-      setData([])
+      setPrice([])
     }
   })
-  console.log(data, 'price')
 
   return (
     <>
@@ -206,19 +244,46 @@ const PassengerInfo = () => {
 
         </div>
         <div style={{ width: '70%', margin: '10px auto' }}>
-          <div className={styles.content1}>
+        <div className={styles.content1}>
             <div className='d-flex flex-row flex-wrap  my-2 text-danger justify-content-between'>
-              <span> مبلغ قابل پرداخت </span>
+              <span> مبلغ  کل </span>
               <span>
-                {data} تومان
+                {price * showAllCapacity()} تومان
               </span>
             </div>
+            {capacity
+              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                <span>   مسافر بزرگسال  {capacity}</span>
+                <span>
+                  {price * capacity} تومان
+                </span>
+                </div>
+              : null}
+            {capacity1
+              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                <span>   مسافر کودک  {capacity1}</span>
+                <span>
+                  {(price - price * 50 / 100) * capacity1} تومان
+                </span>
+                </div>
+              : null}
+            {capacity2
+              ? <div className='d-flex flex-row flex-wrap  my-2 text-secondary justify-content-between'>
+                <span>   مسافر نوزاد  {capacity2}</span>
+                <span>
+                  {(price - price * 75 / 100) * capacity2} تومان
+                </span>
+                </div>
+              : null}
 
-            {/* <div className='d-flex flex-row flex-wrap  my-2 text-danger justify-content-between'>
-
-              </div> */}
-
+            <div className='d-flex flex-row flex-wrap  my-2 text-success justify-content-between'>
+              <span> مبلغ  قابل پرداخت </span>
+              <span>
+                {showAllPrice()} تومان
+              </span>
+            </div>
           </div>
+
 
           <div className={styles.content1}>
             <div>

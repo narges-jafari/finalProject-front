@@ -16,6 +16,9 @@ import QuestionPage from './pages/Footer/QuestionPage'
 import MagazineResultPage from './pages/Footer/MagazineResultPage'
 import AirplaneFastResultPage from './pages/Result/AirplaneFastResultPage'
 import FastBusTicketsPage from './pages/FastTicket/FastBusTicket'
+import DashboardPage from './pages/FastTicket/DashboardPage'
+
+
 
 import TrainFastResultPage from './pages/Result/TrainFastResult'
 import InfoResultPage from './pages/Result/InfoResultPage'
@@ -71,6 +74,8 @@ const App = (props) => {
           <Route path='/resultairplane' element={<AirplaneResultPage />} />
           <Route path='/resultfastairplane' element={<AirplaneFastResultPage />} />
           <Route path='/fastbusticket' element={<FastBusTicketsPage />} />
+          <Route path='/dashboard' element={<DashboardPage />} />
+
 
           <Route path='/resulttrain' element={<TrainResultPage />} />
           <Route path='/resultfasttrain' element={<TrainFastResultPage />} />

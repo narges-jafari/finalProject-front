@@ -1,0 +1,228 @@
+@import url('./Fonts.css');
+
+.showAllCss{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+ 
+  }
+
+.iconCss{
+    width: 80px;
+}
+
+.showAllCssItem1{
+    display:flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.showAllCssItem{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    padding: 20px 40px;
+
+margin:20px;
+font-family: 'Yekan';
+font-weight: bold;
+font-size: 17px;
+border-radius: 20px;
+}
+
+
+
+
+
+.chartCss{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.pieChartCss{
+    display: flex;
+    flex-direction: column;
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    margin: 20px auto;
+    width: 93%;
+    border-radius: 20px;
+
+}
+
+.pieChartCssItem{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0px;
+
+}
+
+
+
+.chartCssItem{
+    /* position: relative; */
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    padding: 0px 40px;
+    width: 35%;
+    margin:0px auto;
+    border-radius: 20px;
+    height: 380px;
+}
+
+
+.chartCssItem div{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px 5px;
+}
+
+.headerCss{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px 5px;
+
+}
+
+.chartCssItem1{
+    width: 50%;
+  justify-content: center;
+  background: #FAFBFC;
+  box-shadow: 0px -1px 8px #1a1a1a1f;
+  padding: 0px 50px 40px 0px ;
+  margin:0px auto;
+  border-radius: 20px;
+  height: 380px;
+
+}
+
+.chartCssItem1 div{
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px 5px;
+}
+
+
+
+.showContent{
+    width: 76%;
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    margin-right: 24%;
+    margin-bottom: 30px;
+
+}
+.dashboardContent{
+    background: #FAFBFC;
+    box-shadow: 0px -1px 8px #1a1a1a1f;
+    position: fixed;
+    width:24%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+height: 500px;
+/* border: 2px solid red; */
+top: 100px;
+
+
+    
+}
+
+.dashboardContentItem{
+    margin:10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.dashboardContentItem1{
+    margin:20px ;
+    text-align: center;
+    font-weight: bold;
+    font-family: Vazir;
+    font-size: 16px;
+
+}
+.dashboardContentItem button{
+    background-color: white;
+    border: none;
+    font-weight: bold;
+    font-family: Vazir;
+    font-size: 16px;
+}
+
+
+
+.allContentCss{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+@media screen and (max-width:700px) {
+    .chartCssItem{
+        width:70%;
+        height:500px;
+        margin:10px auto
+
+    }
+
+    .chartCssItem1{
+        margin:10px auto;
+        width:70%;
+
+        
+    }
+
+}
+
+@media screen and (max-width:400px) {
+    .chartCssItem{
+        width:70%;
+        height:300px;
+        margin:10px auto
+
+    }
+
+    .chartCssItem1{
+        margin:10px auto;
+        width:70%;
+        padding: 60px 10px;
+
+        
+    }
+
+    .dashboardContent{
+        width: 100%;
+        position: inherit;
+    }
+
+    .showContent{
+        margin:20px auto
+    }
+
+}
+
+
+

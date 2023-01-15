@@ -26,6 +26,27 @@ const hotelQueries = {
       }
     }
   `,
+
+  GETALLHOTELTICKETBYDATE: gql`
+query allHotelTicketbyDate($date:String!){
+  allHotelTicketbyDate(date:$date){
+    hotelBuy{
+      hotel{
+        _id
+        city
+  name
+      }
+      user{
+        username
+      }
+    }
+    serialId
+    date
+  
+
+  }
+}
+`,
   SEARCHHOTELBYID: gql`
   query searchHotelById(
  

@@ -118,7 +118,7 @@ const TrainContent = () => {
             window.localStorage.setItem(TRAIN_ID, JSON.stringify(data.createTrain._id))
             window.localStorage.setItem(TRAIN_CAPACITY, JSON.stringify(data.createTrain.capacity))
 
-            resetFields()
+            // resetFields()
           } else {
             toast.error(
               'خطایی در برقراری با سرور اتفاق افتاد'

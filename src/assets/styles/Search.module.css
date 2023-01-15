@@ -11,6 +11,15 @@
 
 }
 
+
+
+.headerChart{
+    margin:50px auto 10px auto;
+    font-family: Vazir;
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .divhotelCss{
     background-image: url('../img/bg/bghotel.jpg');
     background-repeat: no-repeat;

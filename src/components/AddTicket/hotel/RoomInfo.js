@@ -111,7 +111,7 @@ const RoomInfo = (props) => {
       {count <= 0
         ? null
         : <>
-          <button value='گروهی' onClick={handleValue}>گروهی </button>
+          <button  value='گروهی' onClick={handleValue}>گروهی </button>
           <button value='تکی' onClick={handleValue}>تکی </button>
         </>}
 

@@ -1,4 +1,3 @@
-import Finish from '../../components/Payment/hotel/Finish.js'
 import TrainFinish from '../../components/Payment/trains/TrainFinish'
 
 import Footer from '../../components/Landing/Footer/Footer.jsx'

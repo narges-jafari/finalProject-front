@@ -81,7 +81,8 @@ const HeaderLanding = () => {
 
                   </a>
                   </>}
-              <Header />
+                  <Header />
+
 
             </div>
 
@@ -115,9 +116,10 @@ const HeaderLanding = () => {
 
                   </a>
                 </>}
-              <Header
+                <Header
                 userUsername={showusername.username}
               />
+           
             </div>
 
           </div>

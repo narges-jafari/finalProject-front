@@ -35,6 +35,12 @@ const Header = (props) => {
   })
 
   console.log(data.username)
+    const logout = () => {
+    localStorage.removeItem('auth-token')
+    window.location.reload()
+    // localStorage.removeItem('user-id')
+    // setIsLogin(false)
+  }
   return (
     <>
       <i className='fa fa-bars fa-lg mx-2 text-center py-0 text-secondary   ' onClick={handleShow} />
@@ -44,11 +50,12 @@ const Header = (props) => {
           <Offcanvas.Title>
 
             <div className=' my-4   '>
+             
               <span className={styles.numberfont1}>021-41502</span>
               {token
-                ? <span className={styles.buttonCss1}>{data.username}</span>
+                ? <button onClickCapture={logout}   className={styles.buttonCss1}>{data.username}</button>
                 : <a href='login' className={styles.acss}>
-                  <button className={styles.buttonCss1}>ورود/ثبت نام</button>
+                  <button  className={styles.buttonCss1}>ورود/ثبت نام</button>
                   </a>}
             </div>
 
@@ -72,19 +79,12 @@ const Header = (props) => {
                   </span>
                 </a>
 
-                <a href='makehotelticket' className={styles.acss}>
-                  <FcAbout className='mx-2  fa-lg' />
-
-                  <span>
-                    ایجاد بلیط
-                  </span>
-                </a>
               </>
               : null}
-            <a href='buyticket' className={styles.acss}>
+            <a href='dashboard' className={styles.acss}>
               <span className='my-1'>
                 <FcTodoList className='mx-2 fa-lg' />
-                بلیط‌های خریداری شده
+                  صفحه مدیریت
               </span>
             </a>
             <a href='aboutus' className={styles.acss}>

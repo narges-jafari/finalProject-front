@@ -187,6 +187,26 @@ information
   }
 }
 `,
+GETALLBUSTICKETBYDATE: gql`
+query allBusTicketbyDate($date:String!){
+  allBusTicketbyDate(date:$date){
+    busBuy{
+      bus{
+        _id
+        originName
+  destinationName
+      }
+      user{
+        username
+      }
+    }
+    serialId
+    date
+  
+
+  }
+}
+`,
   SEARCHBUSICKETBYUSERID: gql`
 query searchBusTicketByUserId($userId:String!){
   searchBusTicketByUserId(userId:$userId){

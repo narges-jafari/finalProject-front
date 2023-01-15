@@ -16,6 +16,9 @@ const HotelSearch = () => {
   const [endDate, setEndDate] = useState(new Date())
   const [col1, setCol1] = useState(false)
   const [showPassenger, setShowPassenger] = useState([])
+  const [showPassenger1, setShowPassenger1] = useState([])
+  const [showPassenger2, setShowPassenger2] = useState([])
+
   const [showRoom, setShowRoom] = useState([])
 
   // ACCORDIAN TOGGLE FUNCTION
@@ -27,6 +30,13 @@ const HotelSearch = () => {
   const handlePassenger = useCallback((passenger) => {
     setShowPassenger(passenger)
   }, [])
+  const handlePassenger1 = useCallback((passenger) => {
+    setShowPassenger1(passenger)
+  }, [])
+  const handlePassenger2 = useCallback((passenger) => {
+    setShowPassenger2(passenger)
+  }, [])
+
 
   const handleRoom = useCallback((room) => {
     setShowRoom(room)
@@ -50,6 +60,20 @@ const HotelSearch = () => {
         }
       })
   }
+  const allPassenger = showPassenger + showPassenger1 + showPassenger2
+  console.log(allPassenger,'ppppppppppppppppppppppppp')
+  const showAllCapacity = () => {
+    if (showPassenger === 0) {
+      return (
+        null
+      )
+    }
+     else {
+      return (
+        allPassenger
+      )
+    }
+  }
 
   useEffect(() => {
     { window.localStorage.setItem('HotelName', hotelName)
@@ -57,8 +81,11 @@ const HotelSearch = () => {
     { window.localStorage.setItem('HotelStartDate', JSON.stringify(startDate.toString())) }
     { window.localStorage.setItem('HotelEndDate', JSON.stringify(endDate.toString())) }
     { window.localStorage.setItem('Passenger', JSON.stringify(showPassenger.toString())) }
+    { window.localStorage.setItem('Passenger1', JSON.stringify(showPassenger1.toString())) }
+    { window.localStorage.setItem('Passenger2', JSON.stringify(showPassenger2.toString())) }
+
     { window.localStorage.setItem('Room', JSON.stringify(showRoom.toString())) }
-  }, [hotelName, startDate, endDate, showPassenger, showRoom])
+  }, [hotelName, startDate, endDate, showPassenger, showPassenger1,showPassenger2,showRoom])
 
   return (
     <>
@@ -115,13 +142,17 @@ const HotelSearch = () => {
                   margin: '4px 0px 0px 0px'
                 }}
               >
+        
+
                 <div className='d-flex flex-column my-2'>
-                  <span className={styles.spanAccordion}>مسافران/ اتاق</span>
-                  <div className='d-flex flex-row mx-4 px-4'>
-                    {showPassenger == '' ? <span className={styles.spanAccordion}>  امسافر </span> : <span className={styles.spanAccordion}>  {showPassenger} مسافر</span>}
-                    {showRoom.length === 0 ? <span className={styles.spanAccordion}>   ااتاق</span> : <span className={styles.spanAccordion}> {showRoom} اتاق</span>}
-                  </div>
-                </div>
+                            <span className={styles.spanAccordion}>مسافران/ اتاق</span>
+                            <div className='d-flex flex-row mx-4 px-1'>
+                              <span style={{fontFamily:'Yekan'}} className={styles.spanAccordion}>
+                                {showAllCapacity()} مسافر
+                              </span>
+                              {showRoom.length === 0 ? <span style={{fontFamily:'Yekan'}} className={styles.spanAccordion}>   ااتاق</span> : <span  style={{fontFamily:'Yekan'}} className={styles.spanAccordion}> {showRoom} اتاق</span>}
+                            </div>
+                          </div>
 
               </button>
             </h2>
@@ -129,6 +160,9 @@ const HotelSearch = () => {
             <Collapse isOpen={col1} className='accordion-collapse '>
               <HotelPassenger
                 AllPassenger={handlePassenger}
+                AllPassenger1={handlePassenger1}
+                AllPassenger2={handlePassenger2}
+
                 AllRoom={handleRoom}
               />
 

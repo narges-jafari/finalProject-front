@@ -167,7 +167,7 @@ const Info = (props) => {
               }
             })()}
 
-            <span className='px-4' style={{ fontFamily: 'Yekan' }}><h4>  قیمت : {hotelData.price}</h4></span>
+            <span className='px-4' style={{ fontFamily: 'Yekan' }}><h4>  قیمت    : {hotelData.price}</h4></span>
           </div>
           <div className={styles.imgboxcss}>
             <img className={styles.hotelimg} src={img} />
@@ -229,7 +229,7 @@ const Info = (props) => {
 
                 <div className={styles.contentIte3}>
                   <div className='d-flex flex-column'>
-                    <span className='mt-1 text-center'>قیمت   </span>
+                    <span className='mt-1 text-center'>قیمت برای یک بزرگسال   </span>
                     <span className='text-primary mx-4' style={{ fontWeight: 'bold', fontSize: '20px' }}> {item.price} </span>
 
                   </div>

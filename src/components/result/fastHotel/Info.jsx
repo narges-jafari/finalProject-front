@@ -15,6 +15,18 @@ const Info = (props) => {
   const [filterData, setFilterData] = useState()
 
   const roomid = window.localStorage.getItem('HID').replace(/"/g, '')
+  const roomId = window.localStorage.getItem('HotelId').replace(/"/g, '')
+
+
+  const handleRoomId=()=>{
+    if(roomId.length>6 ){
+      return roomId
+    }
+    else return roomid
+  }
+  console.log(handleRoomId(),roomId.length,roomid.length,'kkkkkkkkkkkkkkkkkkkkkkkk')
+
+
   const passenger = window.localStorage.getItem('Passenger').replace(/"/g, '')
   const room = window.localStorage.getItem('Room').replace(/"/g, '')
 
@@ -22,7 +34,7 @@ const Info = (props) => {
   // APOLLO QUERY
   useQuery(roomQueries.SEARCHROOMBYHOTELID, {
     variables: {
-      hotel: roomid
+      hotel: handleRoomId()
     },
 
     onCompleted: (res) => {
@@ -35,7 +47,7 @@ const Info = (props) => {
   })
   useQuery(hotelQueries.SEARCHHOTELBYID, {
     variables: {
-      id: roomid
+      id: handleRoomId()
     },
 
     onCompleted: (res) => {
@@ -88,7 +100,7 @@ const Info = (props) => {
   useEffect(() => {
     window.localStorage.setItem('ID', JSON.stringify(clickedItem))
   }, [clickedItem])
-  console.log(hotelRoomData, 'llll')
+  console.log(clickedItem, 'llll')
 
   return (
 

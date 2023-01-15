@@ -70,13 +70,12 @@ const TrainPassenger = (props) => {
             <span className={styles.hidefont}>  تا 2 سال    </span>
             </>}
 
-        <div className='d-flex flex-row justify-content-around'>
+        <div className='d-flex flex-row justify-content-between mx-2'>
           <button value='ویژه خواهران' onClick={e => { setName(e.target.value); props.AllClass(e.target.value) }} style={{ width: '80px' }} className='btn btn-sm btn-primary my-1'> ویژه‌خواهران </button>
           <button style={{ width: '80px' }} value='ویژه برادران' onClick={e => { setName(e.target.value); props.AllClass(e.target.value) }} className='btn btn-sm btn-primary my-1'> ویژه‌برادران </button>
         </div>
-        <div className='d-flex flex-row justify-content-around'>
+        <div className='d-flex flex-row justify-content-start mx-2 '>
           <button style={{ width: '80px' }} value='معمولی' onClick={e => { setName(e.target.value); props.AllClass(e.target.value) }} className='btn btn-sm btn-primary my-1'> معمولی </button>
-          <button style={{ width: '80px' }} value='کوپه' onClick={e => { setName(e.target.value); props.AllClass(e.target.value) }} className='btn btn-sm btn-primary my-1'> کوپه </button>
 
         </div>
 

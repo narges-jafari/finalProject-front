@@ -207,6 +207,28 @@ query getAllFlightTicket{
   }
 }
 `,
+
+GETALLFLIGHTTICKETBYDATE: gql`
+query allFlightTicketbyDate($date:String!){
+  allFlightTicketbyDate(date:$date){
+    flightBuy{
+      flight{
+        _id
+        originName
+  destinationName
+      }
+      user{
+        username
+      }
+      price
+    }
+    serialId
+    date
+  
+
+  }
+}
+`,
   SEARCHFLIGHTTICKETBYUSERID: gql`
 query searchFlightTicketByUserId($userId:String!){
   searchFlightTicketByUserId(userId:$userId){

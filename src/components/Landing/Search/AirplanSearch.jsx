@@ -184,7 +184,7 @@ const AirplanSearch = () => {
                           <div className='d-flex flex-column my-2'>
                             <span className={styles.spanAccordion}>مسافران/ کلاس</span>
                             <div className='d-flex flex-row mx-4 px-1'>
-                              <span className={styles.spanAccordion}>
+                              <span   className={styles.spanAccordion}>
                                 {showAllCapacity()} مسافر
                               </span>
                               {!showClass ? null : <span className={styles.spanAccordion}> {showClass} </span>}

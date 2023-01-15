@@ -49,6 +49,27 @@ const trainQueries = {
     }
   }
 `,
+
+GETALLTRAINTICKETBYDATE: gql`
+query allTrainTicketbyDate($date:String!){
+  allTrainTicketbyDate(date:$date){
+    trainBuy{
+      train{
+        _id
+        originName
+  destinationName
+      }
+      user{
+        username
+      }
+    }
+    serialId
+    date
+  
+
+  }
+}
+`,
 GETLASTTRAINBUY: gql`
 query getAllTrainBuy{
   getAllTrainBuy{

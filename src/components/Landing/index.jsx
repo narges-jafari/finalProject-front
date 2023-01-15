@@ -102,6 +102,10 @@ const Landing = () => {
 
               </div>
             )
+            case '4' :
+              return (
+               null
+              )
 
           default:
             return (
@@ -147,7 +151,12 @@ const Landing = () => {
         }
       })()}
 
+  
+
+   
       <SuggestionList />
+
+      {/* <AllCharts/> */}
 
       <div style={{ marginTop: '20px', backgroundColor: 'white' }}>
         <Footer />

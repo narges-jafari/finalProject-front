@@ -390,7 +390,7 @@ const AllTrainTicket = () => {
               <div className={styles.contentItem}>
                 <div>
                   <span className={styles.spancss}>  تاریخ صدور  </span>
-                  <span className={styles.spancss1}> {date}</span>
+                  <span className={styles.spancss1}> {date[1]}</span>
                 </div>
 
               </div>

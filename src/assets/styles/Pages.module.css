@@ -13,6 +13,10 @@
 
 }
 
+.foterCss{
+    margin-right: 24%;
+}
+
 .acss{
     text-decoration: none;
     width:60%;
@@ -80,3 +84,11 @@ font-size: 15px;
         }
         
           }
+
+          @media screen and (max-width: 400px) {
+
+          .foterCss{
+            margin:0px
+          }
+            
+              }

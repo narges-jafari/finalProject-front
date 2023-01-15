@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
 const HotelFast = () => {
   const [data, setData] = useState([])
-  const [cityName, setCityName] = useState(false)
+  const [hotelId, setHotelId] = useState(false)
 
   const today = new Date()
   console.log('today => ', today)
@@ -39,14 +39,13 @@ const HotelFast = () => {
     }
   })
   const handleNameChange = (e) => {
-    window.location.href = '/resultfasthotel'
+    window.location.href = '/infofasthotel'
   }
 
   useEffect(() => {
-    window.localStorage.setItem('HotelCityName', cityName)
-  }, [cityName])
+    window.localStorage.setItem('HotelId', hotelId)
+  }, [hotelId])
 
-  console.log(cityName)
 
   return (
     <>
@@ -62,8 +61,8 @@ const HotelFast = () => {
           {data.slice(0, 6).map((item, index) => (
             <button
               onClick={() => {
-                handleNameChange(setCityName(item.city))
-                setCityName(item.city)
+                handleNameChange(setHotelId(item._id))
+                setHotelId(item._id)
               }}
               key={index}
               className={styles.contentItem}

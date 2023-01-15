@@ -1,0 +1,15 @@
+.sidebar {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;  
+  }
+  
+  .is-sticky {
+    position: fixed;
+    top: 10px;
+    z-index: 999;
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  }

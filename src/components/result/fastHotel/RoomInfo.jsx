@@ -23,10 +23,13 @@ const Info = (props) => {
     if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
 
+
+  console.log(props.info[0],'lllllllllllllllllllll')
+
   // apollo query
   useQuery(roomQueries.SEARCHROOMBYID, {
     variables: {
-      id: props.info
+      id: props.info[0]
     },
 
     onCompleted: (res) => {
