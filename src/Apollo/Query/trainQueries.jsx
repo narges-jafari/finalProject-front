@@ -70,6 +70,83 @@ query allTrainTicketbyDate($date:String!){
   }
 }
 `,
+
+SEARCHALLTRAINTICKET: gql`
+query searchAllTrainTicke{
+  searchAllTrainTicke{
+    trainBuy{
+      train{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  departureTime
+  arrivalTime 
+  railCompany
+  trainNumber
+  railwayOrigin
+  railwayDestination
+  hallType
+  capacity
+  information  
+  allowedLoggage
+   
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+    hallDegree
+    hallNumber
+    trainCompartment
+    
+  
+
+  }
+}
+`,
+
+GETALLTRAIN: gql`
+query trains
+
+   {
+    trains
+
+    {
+      _id
+      originName
+destinationName
+price 
+date 
+departureTime
+arrivalTime 
+railCompany
+trainNumber
+railwayOrigin
+railwayDestination
+hallType
+capacity
+information  
+allowedLoggage
+    
+  }
+}
+`,
 GETLASTTRAINBUY: gql`
 query getAllTrainBuy{
   getAllTrainBuy{

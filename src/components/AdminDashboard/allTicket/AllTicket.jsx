@@ -10,7 +10,7 @@ const AllTicket = (props) => {
   return (
     <>
     <div className={styles.tablecontent}>
-    <AllFlightTicket/> 
+      <AllFlightTicket/> 
      <AllBusTicket/>
     <AllTrainTicket/>
     <AllHotelTicket/>

@@ -81,6 +81,34 @@ airplaneCompany
   }
 }
 `,
+GETALLFLIGHT: gql`
+query flights
+
+   {
+    flights
+
+    {
+      _id
+      originName
+destinationName
+price 
+date 
+flightClass
+departureTime
+arrivalTime 
+flightNumber
+capacity
+airportOrigin
+airportDestination
+information 
+airplaneModel 
+allowedLoggage
+airplaneCompany 
+    
+  }
+}
+`,
+
   SEARCHFLIGHTBYNAME: gql`
 query searchFlightbyName(
 
@@ -207,6 +235,52 @@ query getAllFlightTicket{
   }
 }
 `,
+SEARCHALLFLIGHTTICKET: gql`
+query searchAllFlightTicke{
+  searchAllFlightTicke{
+    flightBuy{
+      flight{
+        _id
+        originName
+  destinationName
+  price 
+  date 
+  flightClass
+  departureTime
+  arrivalTime 
+  flightNumber
+  capacity
+  airportOrigin
+  airportDestination
+  information 
+  airplaneModel 
+  allowedLoggage
+  airplaneCompany 
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+  
+
+  }
+}
+`,
+
 
 GETALLFLIGHTTICKETBYDATE: gql`
 query allFlightTicketbyDate($date:String!){

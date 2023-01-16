@@ -79,7 +79,7 @@ const BusResult = () => {
       setBusItem(res.searchBusbyName)
     },
     onError: () => {
-      setBusItem([])
+      setBusItem(['llllllll'])
     }
   })
   // SORT FUNCTION
@@ -115,6 +115,8 @@ const BusResult = () => {
       setBusItem([...filteredTicketsDate])
     }
   }
+
+  console.log(originName,busItem,';;;;;;;;')
   const daynum = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const currentDate = '۱۴۰۱' + '/' + daynum + '/' + month

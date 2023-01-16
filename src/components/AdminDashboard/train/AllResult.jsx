@@ -2,7 +2,16 @@
 import React, { useState, useCallback } from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import { FcDoNotMix,FcSalesPerformance,FcMultipleInputs } from "react-icons/fc";
-const AllResult=()=>{
+const AllResult=(props)=>{
+
+    const allTrain=props.AllTrain.reduce((a,v) =>  a = a + v.capacity , 0 )
+    function statusCounter (inputs) {
+      let counter = 0
+      for (const input of inputs) {
+        if (input._id !== null) counter += 1
+      }
+      return counter
+    }
 
     return(
         <>
@@ -13,7 +22,7 @@ const AllResult=()=>{
                 </div>
                 <div className={styles.showAllCssItem1}>
                     <span> کل بلیط </span>
-                    <span>330</span>
+                    <span>{allTrain}</span>
                 </div>
             </div>
             <div className={styles.showAllCssItem}>
@@ -22,7 +31,7 @@ const AllResult=()=>{
                 </div>
                 <div className={styles.showAllCssItem1}>
                     <span>فروخته شده </span>
-                    <span>230</span>
+                    <span>{statusCounter(props.AllData)}</span>
                 </div>
             </div>
             <div className={styles.showAllCssItem}>
@@ -31,7 +40,7 @@ const AllResult=()=>{
                 </div>
                 <div className={styles.showAllCssItem1}>
                     <span> فروخته نشده  </span>
-                    <span>100</span>
+                    <span>{allTrain-statusCounter(props.AllData)}</span>
                 </div>
             </div>
         </div>

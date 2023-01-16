@@ -3,10 +3,15 @@ import styles from '../../assets/styles/Dashboard.module.css'
 import AllTicket from './allTicket/AllTicket'
 import ShowAllResult from './airplane/index'
 import ShowAllResultTrain from './train/index'
+import ShowAllResultBus from './bus/index'
+import ShowAllResultHotel from './hotel/index'
+
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import HeaderLanding from '../Landing/Navbar/HeaderLanding';
+import AllUsers from './users/AllUsers'
 
 
 
@@ -80,7 +85,7 @@ const Dashboard = () => {
    >کاربران </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-building text-primary mt-1 fa-lg'/>
+   <i className='fa fa-hotel text-primary mt-1 fa-lg'/>
 
    <button
      value=' هتل ها'
@@ -88,21 +93,21 @@ const Dashboard = () => {
    >   هتل ها</button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-car text-primary mt-1 fa-lg'/>
+   <i className='fa fa-plane text-primary mt-1 fa-lg'/>
    <button
      value='  هواپیما'
      onClick={handleNameChange}
    >      هواپیما  </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-car text-primary mt-1 fa-lg'/>
+   <i className='fa fa-train text-primary mt-1 fa-lg'/>
    <button
      value='  قطار'
      onClick={handleNameChange}
    >      قطار  </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-car text-primary mt-1 fa-lg'/>
+   <i className='fa fa-bus text-primary mt-1 fa-lg'/>
    <button
      value='  اتوبوس'
      onClick={handleNameChange}
@@ -127,8 +132,26 @@ const Dashboard = () => {
       return (
           <ShowAllResultTrain/>
       )
-  }
+  }else if(name===' کاربران'){
+    return (
+        <AllUsers/>
+    )
+}else if(name==='  اتوبوس'){
+  return (
+      <ShowAllResultBus/>
+  )
+}else if(name===' هتل ها'){
+  return (
+      <ShowAllResultHotel/>
+  )
+}else {
+  return(
+    <AllTicket/>
+
+  )
+}
         })()}
+        
  </div>
  </div>
  </>

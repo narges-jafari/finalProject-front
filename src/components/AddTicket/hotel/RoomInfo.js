@@ -83,7 +83,7 @@ const RoomInfo = (props) => {
       .then(({ data }) => {
         if (data.addRoomInfo !== null) {
           toast.success(' اتاق با موفقیت اضافه شد')
-          resetFields()
+          // resetFields()
         } else {
           toast.error(
             'خطایی در برقراری با سرور اتفاق افتاد'

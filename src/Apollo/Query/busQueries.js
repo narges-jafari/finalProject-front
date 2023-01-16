@@ -145,9 +145,80 @@ query searchBusTicketById($id:ID!){
 }
 `,
 
+
+
+
   GETALLBUSTICKET: gql`
 query getAllBusTicket{
   getAllBusTicket{
+    busBuy{
+      bus{
+        _id
+        originName
+destinationName
+price 
+date 
+busCompany
+departureTime
+arrivalTime 
+busNumber
+capacity
+originTerminal
+destinationTerminal
+information 
+      }
+      user{
+        username
+        password
+        email
+        _id
+      }
+      fullName
+      nationalCode
+      birthDate
+      gendere
+      price
+    }
+    seatnumber
+    serialId
+    codeId
+    searchId
+    _id
+    date
+  
+
+  }
+}
+`,
+
+GETALLBUS: gql`
+query buses
+
+   {
+    buses
+
+    {
+      _id
+      originName
+destinationName
+price 
+date 
+busCompany
+departureTime
+arrivalTime 
+busNumber
+capacity
+originTerminal
+destinationTerminal
+information 
+    
+  }
+}
+`,
+
+SEARCHALLBUSTICKET: gql`
+query searchAllBusTicke{
+  searchAllBusTicke{
     busBuy{
       bus{
         _id

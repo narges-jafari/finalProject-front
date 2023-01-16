@@ -2,22 +2,20 @@
 import React, { useState, useCallback } from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import { FcDoNotMix,FcSalesPerformance,FcMultipleInputs } from "react-icons/fc";
-import { useQuery } from '@apollo/client'
-import flightQueries from '../../../Apollo/Query/flightQueries'
-
 const AllResult=(props)=>{
 
-
-      const allFlight=props.AllFlight.reduce((a,v) =>  a = a + v.capacity , 0 )
-      function statusCounter (inputs) {
-        let counter = 0
-        for (const input of inputs) {
-          if (input._id !== null) counter += 1
-        }
-        return counter
+    const allBus=props.AllBus.reduce((a,v) =>  a = a + v.capacity , 0 )
+    function statusCounter (inputs) {
+      let counter = 0
+      for (const input of inputs) {
+        if (input._id !== null) counter += 1
       }
+      return counter
+    }
 
     return(
+
+
         <>
         <div className={styles.showAllCss}>
             <div className={styles.showAllCssItem}>
@@ -26,7 +24,7 @@ const AllResult=(props)=>{
                 </div>
                 <div className={styles.showAllCssItem1}>
                     <span> کل بلیط </span>
-                    <span>{allFlight}</span>
+                    <span>{allBus}</span>
                 </div>
             </div>
             <div className={styles.showAllCssItem}>
@@ -44,7 +42,7 @@ const AllResult=(props)=>{
                 </div>
                 <div className={styles.showAllCssItem1}>
                     <span> فروخته نشده  </span>
-                    <span>{allFlight-statusCounter(props.AllData)}</span>
+                    <span>{allBus-statusCounter(props.AllData)}</span>
                 </div>
             </div>
         </div>

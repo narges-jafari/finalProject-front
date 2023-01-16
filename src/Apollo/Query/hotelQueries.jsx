@@ -119,6 +119,49 @@ query searchHotelbyName(
 }
 `,
 
+SEARCHALLHOTELTICKET: gql`
+query searchAllHotelTicke{
+  searchAllHotelTicke{
+    serialId
+    _id
+    codeId
+    date
+    hotelBuy{
+    hotel{
+    _id
+    city
+    star
+     startDate
+     endDate
+     name
+     capacity
+    address
+  price
+    }
+    room{
+         _id
+      roomNumber1
+      roomNumber2
+      floor
+      name1
+      name2
+      capacity
+      information
+      isDelete
+      price
+    }
+        user{
+      _id
+      username
+      password
+      email
+    }
+  }
+
+  }
+}
+`,
+
   SEARCHHOTELBUYBYID: gql`
 
 query searchHotelBuyById($id:ID!){

@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react'
+import React from "react";
 import {Bar,Pie ,Doughnut} from "react-chartjs-2";
 import styles from '../../../assets/styles/Dashboard.module.css'
-import { useQuery } from '@apollo/client'
-import flightQueries from '../../../Apollo/Query/flightQueries'
+import * as Chartjs from "chart.js";
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -32,11 +32,10 @@ import {
 
 
 
+function BestBus(props) {
 
-function BestAirplane(props) {
 
-
-  const names=props.AllData.map(item=>item.flightBuy.flight.destinationName)
+  const names=props.AllData.map(item=>item.busBuy.bus.destinationName)
   const result= names.filter((item, 
     index) => names.indexOf(item) === index);
     var duplicateCount = {};
@@ -54,8 +53,8 @@ function BestAirplane(props) {
     }
 
 
-const data = {
-    labels:numDescending.slice(0,3),
+  const data = {
+    labels: numDescending.slice(0,3),
     datasets: [{
       data: countCity.slice(0,3),
       backgroundColor: [
@@ -78,26 +77,7 @@ const data = {
   
   return (
     <>
-{/*     <div>
-      <Line
-        data={{
-          // x-axis label values
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"],
-          datasets: [
-            {
-              label: "# of Calories Lost",
-              // y-axis data plotting values
-              data: [200, 300, 1300, 520, 2000, 350,150],
-              fill: false,
-              borderWidth:4,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor:'green',
-              responsive:true
-            },
-          ],
-        }}
-      />
-    </div> */}
+
 <div className={styles.chartCss}>
   <div className={styles.chartCssItem}>
     <div className={styles.headerCss}>
@@ -107,20 +87,22 @@ const data = {
 </div>
 <div className={styles.chartCssItem1}>
 <div className={styles.headerCss}>
-      بلیط های فروخته شده برای شرکت های هواپیمایی 
+      بلیط های فروخته شده برای شرکت های ریلی 
     </div>
 <Bar
 
           data={{
             // Name of the variables on x-axies for each bar
-            labels: ["زاگرس"," ایران ایر تور","آسمان ",  "تابان", "کاسپین", "کیش  "],
+            labels: ['آسوده سفر ترمینال غرب', 'تک سفر ایرانیان', 'آسیا سفر', 'تعاونی 17 پیک صبا',
+            'تعاونی 1 ایران پیما','مارال سیر',  'میهن نور'],
             datasets: [
               {
                 // Label for bars
 
                 // Data or value of your each variable
-                data: [statusCounter(props.flightName),statusCounter(props.flightName1),statusCounter(props.flightName2)
-                  ,statusCounter(props.flightName3),statusCounter(props.flightName4),statusCounter(props.flightName5)],
+                data: [statusCounter(props.busName),statusCounter(props.busName1),statusCounter(props.busName2)
+                  ,statusCounter(props.busName3),statusCounter(props.busName4),statusCounter(props.busName5)
+                  ,statusCounter(props.busName6)],
                
                 // Color of each bar
                 backgroundColor: [ "#F62CA3 ", "#1A5276 ", "#F1C40F","#BDC3C7","#40E0D0","#F39C12"],
@@ -134,7 +116,6 @@ const data = {
           height={400}
           options={{
             maintainAspectRatio: false,
-          
             plugins: {
               legend: {
                   display: false,
@@ -176,4 +157,4 @@ const data = {
   );
 }
 
-export default BestAirplane
+export default BestBus

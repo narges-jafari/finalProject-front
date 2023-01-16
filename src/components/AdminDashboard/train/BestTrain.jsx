@@ -29,89 +29,55 @@ import {
     );
 
 
-const data = {
-  labels: [
-    'مشهد',
-    'تهران',
-    'اصفهان',
+
+
+
+function BestAirplane(props) {
+  const names=props.AllData.map(item=>item.trainBuy.train.destinationName)
+  const result= names.filter((item, 
+    index) => names.indexOf(item) === index);
+    var duplicateCount = {};
+    names.forEach(e => duplicateCount[e] = duplicateCount[e] ? duplicateCount[e] + 1 : 1);
+
+    var countCity = Object.keys(duplicateCount).map(e => {return (duplicateCount[e])});
+    const numDescending = [...result].sort((a, b) => b - a);
+
+    function statusCounter (inputs) {
+      let counter = 0
+      for (const input of inputs) {
+        if (input._id !== null) counter += 1
+      }
+      return counter
+    }
+
+
+    console.log(statusCounter(props.trainName5))
+
+
+  const data = {
+    labels:numDescending.slice(0,3),
+    datasets: [{
+      data: countCity.slice(0,3),
+      backgroundColor: [
+        "#F1C40F", "#BDC3C7", "#34495E  ",
+      ],
+      hoverBackgroundColor: [
+        "#F1C40F", "#BDC3C7", "#34495E  "
+      ]
+    }]
+  };
   
-  ],
-  datasets: [{
-    data: [300, 50, 100],
-    backgroundColor: [
-      "#F1C40F", "#BDC3C7", "#34495E  ",
-    ],
-    hoverBackgroundColor: [
-      "#F1C40F", "#BDC3C7", "#34495E  "
-    ]
-  }]
-};
-
-const options = {
-  maintainAspectRatio: false,
-  responsive: true,
-  label:'kkkkk',
- 
- 
-    
-}
-const data1 = {
-  labels: [
-    'مشهد',
-    'تهران',
-    'اصفهان',
-    'مشهد',
-    'تهران',
-    'اصفهان',
-  ],
-  datasets: [{
-    data: [300, 50, 100,300, 50, 100],
-    backgroundColor: [
-      "#F1C40F", "#BDC3C7", "#34495E  ",
-    ],
-    hoverBackgroundColor: [
-      "#F1C40F", "#BDC3C7", "#34495E  "
-    ]
-  }]
-};
-
-const options1 = {
-  maintainAspectRatio: false,
-  responsive: true,
-  label:'kkkkk',
-  plugins: {
-    legend: {
-        display: false,
-     } }  ,
- 
- 
-    
-}
-
-
-function BestAirplane() {
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+    label:'kkkkk',
+   
+   
+      
+  }
   return (
     <>
-{/*     <div>
-      <Line
-        data={{
-          // x-axis label values
-          labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"],
-          datasets: [
-            {
-              label: "# of Calories Lost",
-              // y-axis data plotting values
-              data: [200, 300, 1300, 520, 2000, 350,150],
-              fill: false,
-              borderWidth:4,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor:'green',
-              responsive:true
-            },
-          ],
-        }}
-      />
-    </div> */}
+
 <div className={styles.chartCss}>
   <div className={styles.chartCssItem}>
     <div className={styles.headerCss}>
@@ -127,14 +93,18 @@ function BestAirplane() {
 
           data={{
             // Name of the variables on x-axies for each bar
-            labels: ["فدک", "ریل ترابر سبا", "رجا", "نوالرضا","بن ریل","ریل سیر کوثر"],
+            labels: ["فدک", "ریل ترابر سبا", "رجا", "نورالرضا","بن ریل","ریل سیر کوثر"],
             datasets: [
               {
                 // Label for bars
-                label: "بیشترین بلیط های فروخته شده بر اساس شرکت های ریلی",
 
                 // Data or value of your each variable
-                data: [1552, 780, 613, 1400,230,990],
+                data: [statusCounter(props.trainName),
+                  statusCounter(props.trainName2),statusCounter(props.trainName1)
+                  ,statusCounter(props.trainName3),statusCounter(props.trainName4),statusCounter(props.trainName5)
+               
+                ],
+               
                 // Color of each bar
                 backgroundColor: [ "#F62CA3 ", "#1A5276 ", "#F1C40F","#BDC3C7","#40E0D0","#F39C12"],
                 // Border color of each bar
@@ -155,12 +125,22 @@ function BestAirplane() {
                 x: {
                   grid: {
                     display: false      
-                  }
+                  },
+                  ticks: {
+                    font: {
+                        family: 'Vazir', // Your font family
+                    },
+                },
                 },
                 y: {
                   grid: {
                     display: false      
-                  }
+                  },
+                  ticks: {
+                    font: {
+                        family: 'Yekan', // Your font family
+                    },
+                },
                 }
               },
             legend: {

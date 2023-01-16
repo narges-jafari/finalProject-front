@@ -54,7 +54,7 @@ const AllBusTicket = (props) => {
 
       >
    
-        <Table  className='w-75  mx-auto'>
+        <Table responsive  className='w-75   mx-auto'>
           <thead >
             <tr   className='shadow p-3 mb-5 bg-white rounded'>
             <th   className='  text-dark'> ردیف
@@ -75,7 +75,7 @@ const AllBusTicket = (props) => {
             </tr>
           </thead>
        
-          <tbody>
+          <tbody >
           {data.map((item,index)=>{
                     return(
             <tr key={index} className='shadow p-3 mb-5 bg-white rounded' style={{ backgroundColor: 'white' }}>

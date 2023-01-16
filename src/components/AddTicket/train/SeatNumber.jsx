@@ -47,7 +47,7 @@ const SeatNumber = (props) => {
       .then(({ data }) => {
         if (data.addSeatNumberTrain !== null) {
           toast.success('شماره صندلی با موفقیت اضافه شد')
-          resetFields()
+          // resetFields()
         } else {
           toast.error(
             'خطایی در برقراری با سرور اتفاق افتاد'
