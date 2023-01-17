@@ -1,7 +1,6 @@
 import React from "react";
-import {Bar,Pie ,Doughnut} from "react-chartjs-2";
+import {Bar,Pie } from "react-chartjs-2";
 import styles from '../../../assets/styles/Dashboard.module.css'
-import * as Chartjs from "chart.js";
 
 import {
     Chart as ChartJS,
@@ -52,7 +51,7 @@ function BestBus(props) {
       return counter
     }
 
-
+// data for pie chart
   const data = {
     labels: numDescending.slice(0,3),
     datasets: [{
@@ -87,7 +86,7 @@ function BestBus(props) {
 </div>
 <div className={styles.chartCssItem1}>
 <div className={styles.headerCss}>
-      بلیط های فروخته شده برای شرکت های ریلی 
+      بلیط های فروخته شده برای شرکت های اتوبوسرانی 
     </div>
 <Bar
 

@@ -11,12 +11,13 @@ import { USER_ID, FLIGHTBUY_ID } from '../../../constants/auth'
 import { showGender } from '../../../constants/payment'
 import ReactTooltip from 'react-tooltip'
 const PassengerInfo = () => {
-  // const passenger = window.localStorage.getItem('Capacity').replace(/"/g, '')
+
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
   const allCapacity = capacity + capacity1 + capacity2
   const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
+  //states
   const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
   const [error, setError] = useState('')
   const showAllCapacity = () => {
@@ -36,9 +37,8 @@ const PassengerInfo = () => {
       )
     }
   }
-  let [count, setCount] = useState(showAllCapacity() - 1)
+  const [count, setCount] = useState(showAllCapacity() - 1)
   const [clicked, setClicked] = useState(false)
-  const [seatnumbers, setSeatnumbers] = useState([])
   const [price, setPrice] = useState([])
 
   function iaValidDate (code) {
@@ -72,20 +72,7 @@ const PassengerInfo = () => {
   }
   const userId = window.localStorage.getItem(USER_ID)
 
-  useQuery(seatnumberQueries.GETFLIGHTSEATNUMBER, {
-    variables: {
-      flight: flightId,
-      isDelete: false
-
-    },
-
-    onCompleted: (res) => {
-      setSeatnumbers(res.getFlightSeatnumber)
-    },
-    onError: () => {
-      setSeatnumbers([])
-    }
-  })
+//apollo query
   useQuery(flightQueries.SEARCH, {
     variables: {
       id: flightId
@@ -116,7 +103,7 @@ const PassengerInfo = () => {
       )
     }
   }
-
+//apollo mutation
   const [createBuyFlight] = useMutation(flightMutations.FLIGHTBUY)
   const handleCreateBuyFlight = (e) => {
     if (clicked == true) {
@@ -151,15 +138,6 @@ const PassengerInfo = () => {
     }
   }
 
-  // const data = [
-  //   { title: 'One', prix: 100 },
-  //   { title: 'Two', prix: 200 },
-  //   { title: 'Three', prix: 300 }
-  // ]
-
-  console.log(price, showAllPrice(), capacity, capacity1, capacity + capacity1, showAllCapacity(), (price * capacity) + (price * capacity1))
-
-  // GRAPHQL QUERY
 
   return (
     <>

@@ -1,7 +1,9 @@
 import { Modal } from 'reactstrap'
 import BusSeatnumber from './bus/BusSeatnumber'
-// import { FLIGHT_CAPACITY } from '../../constants/auth'
 import img from '../../assets/img/bg/Capturewee.JPG'
+
+
+
 const BusSeatNumberModal = (props) => {
   return (
     <>

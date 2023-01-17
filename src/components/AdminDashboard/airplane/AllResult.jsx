@@ -1,14 +1,13 @@
 
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import { FcDoNotMix,FcSalesPerformance,FcMultipleInputs } from "react-icons/fc";
-import { useQuery } from '@apollo/client'
-import flightQueries from '../../../Apollo/Query/flightQueries'
 
 const AllResult=(props)=>{
 
 
       const allFlight=props.AllFlight.reduce((a,v) =>  a = a + v.capacity , 0 )
+      //COUNTER FUNCTION
       function statusCounter (inputs) {
         let counter = 0
         for (const input of inputs) {

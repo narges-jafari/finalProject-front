@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/PassengerInfo.module.css'
 import { useMutation, useQuery } from '@apollo/client'
-import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
 import trainMutations from '../../../Apollo/Mutation/trainMutations'
-
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { USER_ID, TRAINBUY_ID } from '../../../constants/auth'
@@ -12,21 +10,23 @@ import ReactTooltip from 'react-tooltip'
 import trainQueries from '../../../Apollo/Query/trainQueries'
 
 const PassengerInfo = () => {
-  // const passenger = window.localStorage.getItem('Capacity').replace(/"/g, '')
+
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
-  const allCapacity = capacity + capacity1 + capacity2
   const trainId = window.localStorage.getItem('TRAINID').replace(/"/g, '')
   const trainClass = window.localStorage.getItem('TrainClass').replace(/"/g, '')
-  const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
-  const [error, setError] = useState('')
-  const [clicked, setClicked] = useState(false)
-  const [price, setPrice] = useState([])
+  const userId = window.localStorage.getItem(USER_ID)
+
+  const allCapacity = capacity + capacity1 + capacity2
+
+
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
   }
+
+  //ref
   const firstUpdate = useRef(true)
 
   const showAllCapacity = () => {
@@ -47,7 +47,14 @@ const PassengerInfo = () => {
     }
   }
 
-  let [count, setCount] = useState(showAllCapacity() - 1)
+    //states
+    const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
+    const [error, setError] = useState('')
+    const [clicked, setClicked] = useState(false)
+    const [price, setPrice] = useState([])
+    const [count, setCount] = useState(showAllCapacity() - 1)
+  
+
 
   const handleChange = (i, e) => {
     const newFormValues = [...formValues]
@@ -73,7 +80,6 @@ const PassengerInfo = () => {
     count = count + 1
     setCount(count)
   }
-  const userId = window.localStorage.getItem(USER_ID)
 
   useQuery(trainQueries.SEARCHTRAINBYID, {
     variables: {
@@ -88,11 +94,6 @@ const PassengerInfo = () => {
     }
   })
 
-  // const showAllCapacity = () => {
-  //   if (allCapacity == 0) {
-  //     return 1
-  //   } else return (allCapacity)
-  // }
 
   const showAllPrice = () => {
     if (showAllCapacity() == capacity) {
@@ -111,8 +112,9 @@ const PassengerInfo = () => {
       )
     }
   }
-  // console.log(showAllCapacity(), trainId, showAllPrice(), 'kkkkkkkkk', capacity, capacity1, capacity2, allCapacity, 'price')
 
+
+  //apollo mutation
   const [createBuyTrain] = useMutation(trainMutations.TRAINBUY)
   const handleCreateBuyTrain = (e) => {
     if (clicked == true) {

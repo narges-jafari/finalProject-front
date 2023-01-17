@@ -9,19 +9,17 @@ import img from '../../../assets/img/16.png'
 
 import Header from './Header'
 
-import { useNavigate } from 'react-router-dom'
 import {
   USER_ID,
   AUTH_TOKEN
-
 } from '../../../constants/auth'
 
 const HeaderLanding = () => {
+  //state
   const [showusername, setShowUsername] = useState(false)
-  const [setIsLogin] = useState(false)
-  const navigate = useNavigate()
-
   const [headerChange, setHeaderChange] = useState(false)
+
+
   const changeNavbarColor = () => {
     if (window.scrollY >= 10) {
       setHeaderChange(true)
@@ -33,7 +31,7 @@ const HeaderLanding = () => {
 
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
   const userId = window.localStorage.getItem(USER_ID)
-
+//apollo query
   useQuery(userQueries.SEARCHUSERBYID, {
     variables: {
       id: JSON.parse(userId)
@@ -45,13 +43,14 @@ const HeaderLanding = () => {
       setShowUsername([])
     }
   })
+
+  //function for logout
   const logout = () => {
     localStorage.removeItem('auth-token')
-    // localStorage.removeItem('user-id')
-    // setIsLogin(false)
+
+
   }
 
-  console.log(showusername.username)
 
   return (
     <>

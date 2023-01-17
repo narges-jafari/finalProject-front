@@ -245,6 +245,24 @@ query searchHotelTicket($id:ID!,$date:String!){
   }
 }
 `,
+
+ALLHOTEL: gql`
+
+query hotels{
+  hotels{
+     _id
+    city
+    star
+     startDate
+     endDate
+     name
+     capacity
+    address
+  price
+ 
+  }
+}
+`,
   SEARCHHOTELTICKETBYID: gql`
 
 query searchHotelTicketById($id:ID!){

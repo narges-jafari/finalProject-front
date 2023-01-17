@@ -17,7 +17,7 @@ const Header = (props) => {
 
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-  console.log(monthName, 'llll')
+  
   return (
     <>
       <div className={styles.headerCss}>

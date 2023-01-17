@@ -3,14 +3,14 @@ import styles from '../../../assets/styles/FastSearch.module.css'
 import { useQuery } from '@apollo/client'
 import trainQueries from '../../../Apollo/Query/trainQueries'
 const TrainFast = () => {
+
+  //states
   const [data, setData] = useState([])
   const [trainId, setTrainId] = useState(false)
 
   const today = new Date()
-  console.log('today => ', today)
   const tomorrow = new Date()
   tomorrow.setDate(today.getDate() + 1)
-  console.log('tomorrow => ', tomorrow, today)
 
   const dayOfWeekName = new Date(tomorrow).toLocaleString(
     'fa-IR', { weekday: 'long' })

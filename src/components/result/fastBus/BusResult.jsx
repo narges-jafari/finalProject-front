@@ -68,7 +68,6 @@ const BusResult = () => {
 
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-  console.log(busItem, 'lklk')
   // apollo query
   useQuery(busQueries.SEARCHBUSBYNAME, {
     variables: {
@@ -116,7 +115,6 @@ const BusResult = () => {
     }
   }
 
-  console.log(originName,busItem,';;;;;;;;')
   const daynum = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const currentDate = '۱۴۰۱' + '/' + daynum + '/' + month

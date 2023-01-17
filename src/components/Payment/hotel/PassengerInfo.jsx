@@ -1,26 +1,20 @@
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/PassengerInfo.module.css'
-import persian from 'react-date-object/calendars/persian'
-import persianfa from 'react-date-object/locales/persian_fa'
-import DatePicker from 'react-multi-date-picker'
 import { useMutation, useQuery } from '@apollo/client'
-
 import roomQueries from '../../../Apollo/Query/roomQueries'
 import hotelMutations from '../../../Apollo/Mutation/hotelMutations'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { USER_ID, HOTELBUY_ID } from '../../../constants/auth'
 import { showGender } from '../../../constants/payment'
-
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-import { schema } from '../../../Utils/Form'
 import ReactTooltip from 'react-tooltip'
 
 const PassengerInfo = () => {
   const capacity = parseInt(window.localStorage.getItem('Passenger').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Passenger1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Passenger2').replace(/"/g, ''))
+  const userId = window.localStorage.getItem(USER_ID)
+  const id = window.localStorage.getItem('ID')
   const allCapacity = capacity + capacity1 + capacity2
   const showAllCapacity = () => {
     if (!capacity2 && capacity && !capacity1) {
@@ -57,16 +51,18 @@ const PassengerInfo = () => {
       )
     }
   }
-
+//states
   const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
   const [error, setError] = useState('')
-  let [count, setCount] = useState(showAllCapacity() - 1)
+  const [count, setCount] = useState(showAllCapacity() - 1)
   const [clicked, setClicked] = useState(false)
   const [price, setPrice] = useState([])
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
   }
+
+  //ref
   const firstUpdate = useRef(true)
 
   const handleChange = (i, e) => {
@@ -81,10 +77,7 @@ const PassengerInfo = () => {
     setFormValues(newFormValues)
   }
 
-  console.log(formValues.map(item => item.gen), 'kjkjkj')
-  const nn = formValues.map(item => item.fullName)
 
-  console.log(clicked, 'll')
 
   const addFormFields = () => {
     setFormValues([...formValues, { name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
@@ -99,10 +92,8 @@ const PassengerInfo = () => {
     count = count + 1
     setCount(count)
   }
-  const userId = window.localStorage.getItem(USER_ID)
-  const id = window.localStorage.getItem('ID')
+//apollo mutation
   const [createBuyHotel] = useMutation(hotelMutations.BUYHOTEL)
-  console.log(id, 'majid')
   const handleCreateBuyHotel = (e) => {
     if (clicked == true) {
       e.preventDefault()

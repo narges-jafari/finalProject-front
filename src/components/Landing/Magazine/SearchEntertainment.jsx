@@ -4,9 +4,7 @@ import {
   NavItem, NavLink, Row, Col
 } from 'reactstrap'
 import { FcShop, FcLandscape, FcBusinesswoman, FcSportsMode, FcFactory } from 'react-icons/fc'
-
 import classnames from 'classnames'
-
 import styles from '../../../assets/styles/Entertainment.module.css'
 import Trip from './Trip'
 import Shopping from './Shopping'

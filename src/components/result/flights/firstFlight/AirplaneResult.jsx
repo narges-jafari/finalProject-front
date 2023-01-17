@@ -75,7 +75,6 @@ const AirplaneResult = () => {
 
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-  console.log(handleCapacity(), 'lklk')
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
     variables: {
@@ -92,7 +91,6 @@ const AirplaneResult = () => {
       setAirplaneItem([])
     }
   })
-  console.log(flightclass, 'aaaa')
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
     if (a < b) {

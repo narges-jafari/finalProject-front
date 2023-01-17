@@ -1,7 +1,6 @@
 import React from "react";
-import {Bar,Pie ,Doughnut} from "react-chartjs-2";
+import {Bar,Pie } from "react-chartjs-2";
 import styles from '../../../assets/styles/Dashboard.module.css'
-import * as Chartjs from "chart.js";
 
 import {
     Chart as ChartJS,
@@ -51,9 +50,8 @@ function BestAirplane(props) {
     }
 
 
-    console.log(statusCounter(props.trainName5))
 
-
+//data for pie chart
   const data = {
     labels:numDescending.slice(0,3),
     datasets: [{

@@ -75,7 +75,6 @@ const AirplaneResult = () => {
 
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-  console.log(handleCapacity(), 'lklk')
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
     variables: {
@@ -157,7 +156,6 @@ const AirplaneResult = () => {
     // setClickedRoom(clickedItem)
   }
 
-  console.log(window.localStorage.getItem('AIRPLAINID'), 'fffffff')
   return (
     <>
 

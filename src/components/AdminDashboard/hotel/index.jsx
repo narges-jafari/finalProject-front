@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import BestHotel from './BestHotel'
 

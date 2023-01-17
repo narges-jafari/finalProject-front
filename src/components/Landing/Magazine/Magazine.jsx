@@ -1,10 +1,7 @@
-// import img from '../../../assets/img/need/2.JPG'
 import img from '../../../assets/img/travel.jpg'
-
 import img1 from '../../../assets/img/need/22.JPG'
 import img2 from '../../../assets/img/need/4.JPG'
 import img3 from '../../../assets/img/need/3.JPG'
-
 import styles from '../../../assets/styles/Landing.module.css'
 
 const Magazine = () => {

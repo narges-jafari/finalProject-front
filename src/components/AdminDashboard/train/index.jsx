@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import AllResult from './AllResult'
 import BestTrain from './BestTrain'
@@ -8,10 +8,10 @@ import { useQuery } from '@apollo/client'
 import trainQueries from '../../../Apollo/Query/trainQueries'
 
 const ShowAllResult=()=>{
-
+   //states
     const [trainData,setTrainData]=useState([])
     const [trainTicket,setTrainTicket]=useState([])
-
+   //apollo query
     useQuery(trainQueries.SEARCHALLTRAINTICKET, {
    
 

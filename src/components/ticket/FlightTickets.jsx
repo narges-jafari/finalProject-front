@@ -10,9 +10,9 @@ import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
 
 const FlightTickets = () => {
+   //state
   const [data, setData] = useState([])
 
-  //   const ticketId = window.localStorage.getItem(FLIGHTTICKET_ID).replace(/"/g, '')
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
@@ -36,7 +36,7 @@ const FlightTickets = () => {
       )
     }
   }
-
+  //apollo query
   useQuery(flightQueries.GETALLFLIGHTTICKET, {
 
     onCompleted: (res) => {
@@ -73,7 +73,7 @@ const FlightTickets = () => {
   const information = flightData.map(item => item.information)
   const allUserData = userData.map(item => item.user)
   const allUserId = allUserData.map(item => item._id)
-
+//ref
   const ref = React.createRef()
 
   return (

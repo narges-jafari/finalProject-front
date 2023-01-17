@@ -7,12 +7,17 @@ import ReactTooltip from 'react-tooltip'
 import styles from '../../../assets/styles/Ticket.module.css'
 
 const AllTrainTickets = (props) => {
+  //states
     const [data,setData]=useState([])
+
+    //ref
     const ref = React.createRef()
 
     const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
     const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
     const date = '۱۴۰۱' + '/' + month + '/' + day
+
+    //apollo query
     useQuery(trainQueries.GETALLTRAINTICKETBYDATE, {
         variables: {
           date: date
@@ -22,11 +27,10 @@ const AllTrainTickets = (props) => {
           setData(res.allTrainTicketbyDate)
         },
         onError: () => {
-          setData([''])
+          setData([])
         }
       })
 
-      console.log(data,'llll')
     
     return (
       <>

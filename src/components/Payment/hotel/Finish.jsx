@@ -6,22 +6,24 @@ import { useQuery, useMutation } from '@apollo/client'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
 import hotelMutations from '../../../Apollo/Mutation/hotelMutations'
 import roomMutations from '../../../Apollo/Mutation/roomMutations'
-
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const Finish = () => {
   // STATES
   const [data, setData] = useState(false)
-  const [roomId, setRoomId] = useState([])
   const [hotelId, setHotelId] = useState([])
+
   const hotelBuyId = window.localStorage.getItem(HOTELBUY_ID).replace(/"/g, '')
-  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
-  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  const date = '۱۴۰۱' + '/' + month + '/' + day
   const id= window.localStorage.getItem('ID').replace(/"/g, '')
   const room = window.localStorage.getItem('Room').replace(/"/g, '')
+  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
+
+
+  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const date = '۱۴۰۱' + '/' + month + '/' + day
+
 
 
   const handleRoom = () => {
@@ -29,19 +31,7 @@ const Finish = () => {
       return 2
     }
   }
-
-  useQuery(hotelQueries.SEARCHHOTELBUYBYID, {
-    variables: {
-      id: hotelBuyId
-    },
-
-    onCompleted: (res) => {
-      setRoomId(res.searchHotelBuyById.room)
-    },
-    onError: () => {
-      setRoomId(['kkk'])
-    }
-  })
+//apollo query
   useQuery(hotelQueries.SEARCHHOTELBUYBYID, {
     variables: {
       id: hotelBuyId
@@ -56,6 +46,8 @@ const Finish = () => {
   })
   const [updateHotelCapacity] = useMutation(hotelMutations.UPDATEHOTELCAPACITY)
   const [deleteRoom] = useMutation(roomMutations.RESERVEDROOM)
+  const [createTicket] = useMutation(hotelMutations.TICKET)
+
   const handleDeleteRoom = (e) => {
     deleteRoom({
       variables: {
@@ -72,7 +64,6 @@ const Finish = () => {
       })
   }
 
-  console.log( hotelId.capacity-handleRoom(),id.slice(1, 25),id.slice(26, 50),';;;;;;')
 
   const handleUpdateHotel = () => {
     updateHotelCapacity({
@@ -94,7 +85,6 @@ const Finish = () => {
   }
 
 
-  const [createTicket] = useMutation(hotelMutations.TICKET)
   const handleCreateTicket = (e) => {
     createTicket({
       variables: {
@@ -115,7 +105,6 @@ const Finish = () => {
         }
       })
   }
-  console.log(data)
   return (
     <>
 

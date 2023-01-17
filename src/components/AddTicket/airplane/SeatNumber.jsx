@@ -38,6 +38,8 @@ const SeatNumber = () => {
       })
   }
 
+  //COUNTER FUNCTION
+
   const decrementCount = () => {
     count = count - 1
     setCount(count)

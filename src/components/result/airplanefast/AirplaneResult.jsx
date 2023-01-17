@@ -77,7 +77,6 @@ const AirplaneResult = () => {
   useEffect(() => {
     window.localStorage.setItem('AIRPLAINID', JSON.stringify(clickedItem))
   }, [clickedItem])
-  // console.log(clickedItem, 'llll')
 
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {

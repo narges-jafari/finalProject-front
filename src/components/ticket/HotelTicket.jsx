@@ -11,6 +11,7 @@ import ReactTooltip from 'react-tooltip'
 import AllHotelTicket from './hotel/AllHotelTicket'
 
 const HotelTicket = () => {
+   //states
   const [data, setData] = useState([])
   const [userData, setUserData] = useState([])
   const [hotelData, setHotelData] = useState([])
@@ -42,8 +43,7 @@ const HotelTicket = () => {
     }
   }
   const room = window.localStorage.getItem('Room').replace(/"/g, '')
-
-  console.log(capacity, 'kkkمنمنن')
+//apollo query
   useQuery(hotelQueries.SEARCHHOTELTICKETBYID, {
     variables: {
       id: ticketId
@@ -64,9 +64,8 @@ const HotelTicket = () => {
       setBuyData([])
     }
   })
-
+//ref
   const ref = React.createRef()
-  console.log(userData._id, ';kd')
   return (
     <>
       {userData._id == userId

@@ -5,9 +5,7 @@ import img1 from '../../../assets/img/entertainment/g2.JPG'
 import img2 from '../../../assets/img/entertainment/g3.jpg'
 import img3 from '../../../assets/img/entertainment/g4.JPG'
 import img4 from '../../../assets/img/entertainment/g5.JPG'
-
 import Nav from 'react-bootstrap/Nav'
-
 import styles from '../../../assets/styles/Entertainment.module.css'
 
 const Trip = () => {

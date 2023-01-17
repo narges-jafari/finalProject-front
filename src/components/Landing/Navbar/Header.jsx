@@ -1,25 +1,27 @@
 import React, { useState } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import styles from '../../../assets/styles/HeaderLanding.module.css'
-import { FcHome, FcPlus, FcManager, FcMindMap, FcAbout, FcTodoList } from 'react-icons/fc'
+import { FcHome, FcPlus, FcManager, FcMindMap, FcTodoList } from 'react-icons/fc'
 import {
   USER_ID,
-  AUTH_TOKEN,
-  HOTELTICKET_ID
-
+  AUTH_TOKEN
 } from '../../../constants/auth'
 import { useQuery } from '@apollo/client'
 import userQueries from '../../../Apollo/Query/userQueries'
+
+
 const Header = (props) => {
+
+  //states
   const [show, setShow] = useState(false)
   const [data, setData] = useState(false)
+
+
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const userId = window.localStorage.getItem(USER_ID)
   const token = window.localStorage.getItem(AUTH_TOKEN)
-  const hoteliiii = window.localStorage.getItem(HOTELTICKET_ID)
 
-  console.log(hoteliiii, 'kkkkkkkk')
   // apollo query
   useQuery(userQueries.SEARCHUSERBYID, {
     variables: {
@@ -34,12 +36,10 @@ const Header = (props) => {
     }
   })
 
-  console.log(data.username)
     const logout = () => {
     localStorage.removeItem('auth-token')
     window.location.reload()
-    // localStorage.removeItem('user-id')
-    // setIsLogin(false)
+
   }
   return (
     <>
@@ -78,15 +78,24 @@ const Header = (props) => {
                     اضافه کردن بلیط
                   </span>
                 </a>
-
-              </>
-              : null}
-            <a href='dashboard' className={styles.acss}>
+                <a href='dashboard' className={styles.acss}>
               <span className='my-1'>
-                <FcTodoList className='mx-2 fa-lg' />
+                < FcManager className='mx-2 fa-lg' />
                   صفحه مدیریت
               </span>
             </a>
+
+              </>
+              : null}
+              {data.role == 'مدیر' ?null:
+                <a href='buyticket' className={styles.acss}>
+                <span className='my-1'>
+                  <FcTodoList className='mx-2 fa-lg' />
+                    بلیط‌ها 
+                </span>
+              </a>
+              }
+          
             <a href='aboutus' className={styles.acss}>
               <span className='my-1'>
                 <FcMindMap className='mx-2 fa-lg' />

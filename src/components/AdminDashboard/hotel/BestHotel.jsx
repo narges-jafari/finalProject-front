@@ -35,9 +35,11 @@ import {
 
 
 function BestHotel() {
+
+  //states
   const [hotelData,setHotelData]=useState([])
 
-
+//apollo query
   useQuery(hotelQueries.SEARCHALLHOTELTICKET, {
    
 
@@ -59,7 +61,6 @@ function BestHotel() {
 var duplicateCount1 = {};
 hotelName.forEach(e => duplicateCount1[e] = duplicateCount1[e] ? duplicateCount1[e] + 1 : 1);
 var countHotel = Object.keys(duplicateCount1).map(e => {return (duplicateCount1[e])});
-console.log(countHotel)
 
 
 

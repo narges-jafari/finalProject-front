@@ -68,23 +68,6 @@ const AirplaneContent = (props) => {
     }
   }
 
-  // FUNCTION FOR RESET
-  const resetFields = () => {
-    setDestinationName('')
-    setOriginName('')
-    setCapacity('')
-    setStartDate(new Date(''))
-    setDestinationAirport('')
-    setOriginAirport('')
-    setPrice('')
-    setDepartureTime('')
-    setArrivalTime('')
-    setAirplaneModel('')
-    setFlightNumber('')
-    setShowAirplaneCompany('')
-    setFlightClass('')
-    setAllowedLoggage('')
-  }
 
   const userid = window.localStorage.getItem(USER_ID)
 
@@ -117,19 +100,17 @@ const AirplaneContent = (props) => {
       })
         .then(({ data }) => {
           if (data.createFlight !== null) {
-            toast.success('عملیات اضافه شدن بلیط هواپیما با موفقیت انجام شد')
+            toast.success(' بلیط هواپیما با موفقیت اضافه شد')
             window.localStorage.setItem(FLIGHT_ID, JSON.stringify(data.createFlight._id))
             window.localStorage.setItem(FLIGHT_CAPACITY, JSON.stringify(data.createFlight.capacity))
-
-            resetFields()
           } else {
             toast.error(
-              'خطایی در برقراری با سرور اتفاق افتاد'
+              'خطایی در برقراری با سرور اتفاق‌ افتاد'
             )
           }
         })
     } else {
-      toast.warning('خطایی رخ داد از دوباره تلاش کنید')
+      toast.warning('خطایی رخ داد دوباره تلاش کنید')
     }
   }
 
@@ -285,17 +266,16 @@ const AirplaneContent = (props) => {
 
   return (
     <>
-
       <div className='d-flex flex-column flex-wrap my-2'>
 
         <div className={styles.headername}>
-          مبدا و مقصد
+        مبدأ و مقصد
         </div>
 
         <div className='d-flex flex-row  flex-wrap justify-content-between'>
 
           <div className={styles.content}>
-            <label>  شهر مبدا</label>
+            <label> شهر مبدأ</label>
             <input
               type='text'
               value={originName}
@@ -324,7 +304,7 @@ const AirplaneContent = (props) => {
           </div>
 
           <div className={styles.content}>
-            <label>فرودگاه مبدا</label>
+            <label>فرودگاه مبدأ</label>
             <input
               type='text'
               value={originAirport}
@@ -541,7 +521,6 @@ const AirplaneContent = (props) => {
           اضافه کردن
         </button>
         <ToastContainer />
-        {/* {flightid?rows:null} */}
 
       </div>
 

@@ -33,7 +33,7 @@ const BusSearch = () => {
     setShowPassenger2(passenger)
   }, [])
 
-
+//apollo query
   const [SearchBus] = useLazyQuery(busQueries.SEARCHBUS)
 
   const handleSearch = () => {

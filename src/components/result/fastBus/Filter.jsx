@@ -1,10 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Collapse } from 'reactstrap'
-
 import classnames from 'classnames'
-
-
 import styles from '../../../assets/styles/Filter.module.css'
 
 const Filter = (props) => {

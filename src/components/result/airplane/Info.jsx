@@ -10,10 +10,10 @@ import flightQueries from '../../../Apollo/Query/flightQueries'
 import img from '../../../assets/img/bg/Capture222222.JPG'
 import img2 from '../../../assets/img/bg/Captureeeeeeeeee.JPG'
 import img1 from '../../../assets/img/bg/Captureddddkkk.JPG'
-
 import classnames from 'classnames'
 import Nav from 'react-bootstrap/Nav'
 const Info = (props) => {
+  
   // STATES
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
   const [airplaneItem1, setAirplaneItem1] = useState([])

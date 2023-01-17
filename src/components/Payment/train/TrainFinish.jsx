@@ -12,18 +12,18 @@ import trainMutations from '../../../Apollo/Mutation/trainMutations'
 
 const TrainFinish = () => {
   // STATES
-  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+ 
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  // const flightTicketId = window.localStorage.getItem(FLIGHTTICKET_ID).replace(/"/g, '')
   const trainBuyId = window.localStorage.getItem(TRAINBUY_ID).replace(/"/g, '')
-  const [seatnumbers, setSeatnumbers] = useState([])
-
-  const date = '۱۴۰۱' + '/' + month + '/' + day
   const trainId = window.localStorage.getItem('TRAINID').replace(/"/g, '')
   const capacity0 = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
+
+  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const date = '۱۴۰۱' + '/' + month + '/' + day
+
   const allCapacity = capacity0 + capacity1 + capacity2
   const showAllCapacity = () => {
     if (!capacity2 && capacity0 && !capacity1) {
@@ -42,7 +42,10 @@ const TrainFinish = () => {
       )
     }
   }
+//apollo state
+  const [seatnumbers, setSeatnumbers] = useState([])
 
+//apollo query
   useQuery(seatnumberQueries.GETTRAINSEATNUMBER, {
     variables: {
       train: trainId,
@@ -57,8 +60,12 @@ const TrainFinish = () => {
     }
   })
 
+
+  //apollo mutation
   const [updateTrainCapacity] = useMutation(trainMutations.UPDATETRAINCAPACITY)
   const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDTRAINSEATNUMBER)
+  const [createTicket] = useMutation(trainMutations.TRAINTICKET)
+
   const handleUpdateTrain = () => {
     updateTrainCapacity({
       variables: {
@@ -83,7 +90,6 @@ const TrainFinish = () => {
       return 1
     } else return showAllCapacity()
   }
-  // const showData={showAllCapacity()== 1?2:}
 
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({
@@ -109,11 +115,8 @@ const TrainFinish = () => {
   const capacity = seatnumbers.map(item => item.train.capacity)
 
   const seatnumberId = seatnumbers.map(item => item._id)
-  // const filterData=seatnumbers.map.filter(item=>item.isDelete==false)
 
-  console.log(showAllCapacity(), capacity0, capacity1, trainBuyId, 'hallDegree')
 
-  const [createTicket] = useMutation(trainMutations.TRAINTICKET)
   const handleCreateTicket = (e) => {
     createTicket({
       variables: {

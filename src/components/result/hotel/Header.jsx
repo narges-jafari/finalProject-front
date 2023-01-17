@@ -10,12 +10,9 @@ const Header = () => {
   const passenger = window.localStorage.getItem('Passenger').replace(/"/g, '')
   const room = window.localStorage.getItem('Room').replace(/"/g, '')
 
-  console.log(room, 'lsdkjk')
   const dayOfWeekName = new Date(Num).toLocaleString(
     'fa-IR', { weekday: 'long' })
-  console.log(dayOfWeekName)
   const day = new Date(Num).getDate().toLocaleString('fa-IR', { day: '2-digit' })
-  // const time= new Date(Num).getTime().toLocaleString('fa-IR',{day:'2-digit'})
 
   const monthNames = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
     'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'

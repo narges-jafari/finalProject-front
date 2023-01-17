@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import { Collapse } from 'reactstrap'
 import classnames from 'classnames'
 import AirplaneContent from './airplane/AirplaneContent'
@@ -10,9 +10,10 @@ import styles from '../../assets/styles/TrainContent.module.css'
 import HotelContent from './hotel/HotelContent'
 import { AUTH_TOKEN } from '../../constants/auth'
 import AirplaneModal from './AirplaneModal'
-import TrainSeatNumber from './TrainSeatNumber'
+import TrainSeatNumberModal from './TrainSeatNumberModal'
 import RoomModal from './RoomModal'
 import BusSeatNumberModal from './BusSeatNumberModal'
+
 
 const AddTicketAccordion = () => {
   const usertoken = window.localStorage.getItem(AUTH_TOKEN)
@@ -21,12 +22,10 @@ const AddTicketAccordion = () => {
   const [col2, setCol2] = useState(false)
   const [col3, setCol3] = useState(false)
   const [col4, setCol4] = useState(false)
-  const [showSingleTimeCandleModal, setShowSingleTimeCandleModal] =
+  const [showFlightSeatnumberModal, setShowFlightSeatnumberModal] =
     useState(false)
   const [showTrainSeatnumberModal, setShowTrainSeatnumberModal] =
     useState(false)
-  const [showCustomStrategyModalForBuy, setShowCustomStrategyModalForBuy] =
-  useState(false)
   const [showBusSeatnumberModal, setShowBusSeatnumberModal] =
   useState(false)
   const [showRoomModal, setShowRoomModal] =
@@ -62,7 +61,7 @@ const AddTicketAccordion = () => {
 
   return (
     <>
-
+   
       {usertoken
         ? <div className='accordion w-75 ' id='accordion' style={{ margin: '40px auto' }}>
           <div className='accordion-item border-0 mb-2'>
@@ -97,7 +96,7 @@ const AddTicketAccordion = () => {
                       onClick={toggleCol4}
                       className='fa fa-angle-up fa-lg' style={{ float: 'left' }}
                     />}
-
+              
                 <MdSettings
                   className={styles.iconmove}
                   onClick={() => {
@@ -114,7 +113,8 @@ const AddTicketAccordion = () => {
                 )}
               </button>
             </h2>
-            <Collapse isOpen={col4} style={{ width: '80%', margin: '0px auto' }}><HotelContent /></Collapse>
+            <Collapse isOpen={col4} style={{ width: '80%', margin: '0px auto' }}><HotelContent 
+            /></Collapse>
           </div>
           <div className='accordion-item border-0 mb-2'>
             <h2 className='accordion-header' id='headingOne'>
@@ -152,15 +152,15 @@ const AddTicketAccordion = () => {
                 <MdSettings
                   className={styles.iconmove}
                   onClick={() => {
-                    if (!showSingleTimeCandleModal) {
-                      setShowSingleTimeCandleModal(true)
+                    if (!showFlightSeatnumberModal) {
+                      setShowFlightSeatnumberModal(true)
                     }
                   }}
                 />
-                {showSingleTimeCandleModal && (
+                {showFlightSeatnumberModal && (
                   <AirplaneModal
-                    isOpen={showSingleTimeCandleModal}
-                    setIsOpen={setShowSingleTimeCandleModal}
+                    isOpen={showFlightSeatnumberModal}
+                    setIsOpen={setShowFlightSeatnumberModal}
                   />
                 )}
 
@@ -209,7 +209,7 @@ const AddTicketAccordion = () => {
                   }}
                 />
                 {showTrainSeatnumberModal && (
-                  <TrainSeatNumber
+                  <TrainSeatNumberModal
                     isOpen={showTrainSeatnumberModal}
                     setIsOpen={setShowTrainSeatnumberModal}
                   />

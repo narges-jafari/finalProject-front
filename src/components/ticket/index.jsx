@@ -15,6 +15,7 @@ import AllBusTicket from './bus/AllBusTicket'
 
 
 const BuyTicket = () => {
+  //state
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
 
   // Toggle active state for Tab

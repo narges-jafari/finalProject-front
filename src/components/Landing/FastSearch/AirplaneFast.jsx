@@ -4,14 +4,14 @@ import { useQuery } from '@apollo/client'
 import flightQueries from '../../../Apollo/Query/flightQueries'
 
 const AirplaneFast = () => {
+
+  //states
   const [data, setData] = useState([])
   const [flightId, setFlightId] = useState(false)
 
   const today = new Date()
-  console.log('today => ', today)
   const tomorrow = new Date()
   tomorrow.setDate(today.getDate() + 1)
-  console.log('tomorrow => ', tomorrow, today)
 
   const dayOfWeekName = new Date(tomorrow).toLocaleString(
     'fa-IR', { weekday: 'long' })

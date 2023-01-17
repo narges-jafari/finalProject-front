@@ -6,17 +6,16 @@ import { useQuery, useMutation } from '@apollo/client'
 import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
 import seatNumberMutations from '../../../Apollo/Mutation/seatNumberMutations'
 import busMutations from '../../../Apollo/Mutation/busMutations'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
 const BusFinish = () => {
-  // STATES
-  const [data, setData] = useState(false)
+  
   const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  // const flightTicketId = window.localStorage.getItem(FLIGHTTICKET_ID).replace(/"/g, '')
   const busBuyId = window.localStorage.getItem(BUSBUY_ID).replace(/"/g, '')
+  // STATES
   const [seatnumbers, setSeatnumbers] = useState([])
 
   const date = '۱۴۰۱' + '/' + month + '/' + day
@@ -47,6 +46,8 @@ const BusFinish = () => {
       return 1
     } else return showAllCapacity()
   }
+
+  //apollo query
   useQuery(seatnumberQueries.GETBUSSEATNUMBER, {
     variables: {
       bus: busId,
@@ -57,10 +58,10 @@ const BusFinish = () => {
       setSeatnumbers(res.getBusSeatnumber)
     },
     onError: () => {
-      setSeatnumbers(['lll'])
+      setSeatnumbers([])
     }
   })
-
+//apollo mutation
   const [updateBusCapacity] = useMutation(busMutations.UPDATEBUSCAPACITY)
   const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDBUSSEATNUMBER)
   const handleUpdateBus = () => {
@@ -72,8 +73,7 @@ const BusFinish = () => {
     })
       .then(({ data }) => {
         if (data.updateBusCapacity !== null) {
-          // toast.success('ظرفیت به‌روزرسانی شد')
-          // window.location.reload()
+
         } else {
           toast.error(
             'خطایی در برقراری با سرور اتفاق افتاد'
@@ -86,8 +86,6 @@ const BusFinish = () => {
   const capacity = seatnumbers.map(item => item.bus.capacity)
 
   const seatnumberId = seatnumbers.map(item => item._id)
-  // const filterData=seatnumbers.map.filter(item=>item.isDelete==false)
-  console.log(seatnumbers,busId, 'seat')
 
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({

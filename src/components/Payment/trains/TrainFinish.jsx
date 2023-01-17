@@ -8,23 +8,30 @@ import seatNumberMutations from '../../../Apollo/Mutation/seatNumberMutations'
 import trainMutations from '../../../Apollo/Mutation/trainMutations'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
 import trainQueries from '../../../Apollo/Query/trainQueries'
-const TrainFinish = () => {
-  // STATES
-  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
-  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  const [seatnumbers, setSeatnumbers] = useState([])
-  const [seatnumbers1, setSeatnumbers1] = useState([])
-  const [trainBuyId, setTrainBuyId] = useState([])
 
-  const date = '۱۴۰۱' + '/' + month + '/' + day
+
+const TrainFinish = () => {
+
+
+  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
   const trainId = window.localStorage.getItem('TRAINID').replace(/"/g, '')
   const trainId2 = window.localStorage.getItem('TRAINSECONDID').replace(/"/g, '')
   const capacity0 = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
+
+
+    // STATES
+    const [seatnumbers, setSeatnumbers] = useState([])
+    const [seatnumbers1, setSeatnumbers1] = useState([])
+    const [trainBuyId, setTrainBuyId] = useState([])
+
+
+  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const date = '۱۴۰۱' + '/' + month + '/' + day
+
   const allCapacity = capacity0 + capacity1 + capacity2
   const showAllCapacity = () => {
     if (!capacity2 && capacity0 && !capacity1) {
@@ -48,7 +55,7 @@ const TrainFinish = () => {
       return 1
     } else return showAllCapacity()
   }
-
+//apollo query
   useQuery(trainQueries.GETLASTTRAINBUY, {
 
     onCompleted: (res) => {
@@ -60,6 +67,7 @@ const TrainFinish = () => {
   })
 
   const newTrainBuyId = trainBuyId.map(item => item._id)
+  //apollo query
   useQuery(seatnumberQueries.GETTRAINSEATNUMBER, {
     variables: {
       train: trainId,
@@ -101,7 +109,15 @@ const TrainFinish = () => {
   const hallDegree1=seatnumbers1.map(item => item.hallDegree)
   const hallNumber1=seatnumbers1.map(item => item.hallNumber)
 
+
+  //apollo mutations
   const [updateTrainCapacity] = useMutation(trainMutations.UPDATETRAINCAPACITY)
+  const [updateTrainCapacity1] = useMutation(trainMutations.UPDATETRAINCAPACITY)
+  const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDTRAINSEATNUMBER)
+  const [deleteSeatnumber1] = useMutation(seatNumberMutations.RESERVEDTRAINSEATNUMBER)
+  const [createTicket1] = useMutation(trainMutations.TRAINTICKET)
+  const [createTicket] = useMutation(trainMutations.TRAINTICKET)
+
   const handleUpdateTrain = () => {
     updateTrainCapacity({
       variables: {
@@ -121,9 +137,7 @@ const TrainFinish = () => {
       })
   }
 
-  console.log(seatnumbers,seatnumbers1,trainId,trainId2,capacitysecond[0]- showAllCapacity(),'lllllllll')
 
-  const [updateTrainCapacity1] = useMutation(trainMutations.UPDATETRAINCAPACITY)
   const handleUpdateTrain1 = () => {
     updateTrainCapacity1({
       variables: {
@@ -143,9 +157,7 @@ const TrainFinish = () => {
       })
   }
 
-  const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDTRAINSEATNUMBER)
-  const [deleteSeatnumber1] = useMutation(seatNumberMutations.RESERVEDTRAINSEATNUMBER)
-
+ 
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({
       variables: {
@@ -176,7 +188,8 @@ const TrainFinish = () => {
         }
       })
   }
-  const [createTicket1] = useMutation(trainMutations.TRAINTICKET)
+
+
   const handleCreateTicket1 = (e) => {
     createTicket1({
       variables: {
@@ -203,7 +216,6 @@ const TrainFinish = () => {
       })
   }
 
-  const [createTicket] = useMutation(trainMutations.TRAINTICKET)
   const handleCreateTicket = (e) => {
     createTicket({
       variables: {

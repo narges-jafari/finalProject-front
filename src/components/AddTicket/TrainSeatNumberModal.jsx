@@ -2,7 +2,7 @@ import { Modal } from 'reactstrap'
 import SeatNumber from './train/SeatNumber'
 import img from '../../assets/img/bg/Capturewee.JPG'
 
-const NotesModal = (props) => {
+const TrainSeatNumberModal = (props) => {
   return (
     <>
       <Modal
@@ -48,4 +48,4 @@ const NotesModal = (props) => {
   )
 }
 
-export default NotesModal
+export default TrainSeatNumberModal

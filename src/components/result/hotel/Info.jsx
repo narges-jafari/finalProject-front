@@ -47,7 +47,6 @@ const Info = (props) => {
   useEffect(() => {
     window.localStorage.setItem('ID', JSON.stringify(clickedItem))
   }, [clickedItem])
-  console.log(clickedItem, 'click')
 
   const result =
     hotelRoomData.filter((item) =>
@@ -57,9 +56,7 @@ const Info = (props) => {
   // FUNCTION FOR GO ANOTHER PAGE
   const handleNameChange = (e) => {
     window.location.href = '/hotelpay'
-    // setClickedRoom(clickedItem)
   }
-  // console.log( setClickedRoom(clickedItem),'llllllllllll')
 
   const compare = (a, b, ascendingOrder) => {
     if (a < b) {

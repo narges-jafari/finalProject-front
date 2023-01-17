@@ -1,35 +1,30 @@
 import React, { useState } from 'react'
 import img from '../../../assets/img/bg/finish.JPG'
 import styles from '../../../assets/styles/PassengerInfo.module.css'
-import { HOTELTICKET_ID, HOTELBUY_ID, USER_ID, FLIGHTBUY_ID, FLIGHTTICKET_ID } from '../../../constants/auth'
+import { HOTELBUY_ID, USER_ID, FLIGHTBUY_ID, FLIGHTTICKET_ID } from '../../../constants/auth'
 import { useQuery, useMutation } from '@apollo/client'
-import hotelQueries from '../../../Apollo/Query/hotelQueries'
-import hotelMutations from '../../../Apollo/Mutation/hotelMutations'
 import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
 import seatNumberMutations from '../../../Apollo/Mutation/seatNumberMutations'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
-import { toast, ToastContainer } from 'react-toastify'
-
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import AllHotelTicket from '../../ticket/hotel/AllHotelTicket'
-import HotelTicket from '../../ticket/HotelTicket'
-const FlightFinish = () => {
-  // STATES
-  const [data, setData] = useState(false)
-  const id = window.localStorage.getItem(HOTELBUY_ID).replace(/"/g, '')
-  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
-  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  // const flightTicketId = window.localStorage.getItem(FLIGHTTICKET_ID).replace(/"/g, '')
-  const flightBuyId = window.localStorage.getItem(FLIGHTBUY_ID).replace(/"/g, '')
-  const [seatnumbers, setSeatnumbers] = useState([])
 
-  const date = '۱۴۰۱' + '/' + month + '/' + day
-  const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
+const FlightFinish = () => {
   const capacity0 = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
   const allCapacity = capacity0 + capacity1 + capacity2
+  // STATE
+  const [seatnumbers, setSeatnumbers] = useState([])
+
+  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
+  const flightBuyId = window.localStorage.getItem(FLIGHTBUY_ID).replace(/"/g, '')
+
+  const date = '۱۴۰۱' + '/' + month + '/' + day
+  const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
+
   const showAllCapacity = () => {
     if (!capacity2 && capacity0 && !capacity1) {
       return (
@@ -52,6 +47,8 @@ const FlightFinish = () => {
       return 1
     } else return showAllCapacity()
   }
+
+  //apollo query
   useQuery(seatnumberQueries.GETFLIGHTSEATNUMBER, {
     variables: {
       flight: flightId,
@@ -65,6 +62,9 @@ const FlightFinish = () => {
       setSeatnumbers(['ll'])
     }
   })
+
+
+  //apollo mutations
 
   const [updateFlightCapacity] = useMutation(flightMutations.UPDATEFLIGHTCAPACITY)
   const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDSEATNUMBER)
@@ -91,8 +91,6 @@ const FlightFinish = () => {
   const capacity = seatnumbers.map(item => item.flight.capacity)
 
   const seatnumberId = seatnumbers.map(item => item._id)
-  // const filterData=seatnumbers.map.filter(item=>item.isDelete==false)
-  console.log(seatnumbers, showValue(), showAllCapacity(), 'seat')
 
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({
@@ -132,7 +130,6 @@ const FlightFinish = () => {
         }
       })
   }
-  console.log(data)
   return (
     <>
 

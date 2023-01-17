@@ -24,7 +24,6 @@ const Info = (props) => {
   }
 
 
-  console.log(props.info[0],'lllllllllllllllllllll')
 
   // apollo query
   useQuery(roomQueries.SEARCHROOMBYID, {

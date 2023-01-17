@@ -67,9 +67,6 @@ const Filter = (props) => {
     return counter
   }
 
-  // console.log(search,filteredTicketsMoney,'kkkljqffiuo202939')
-
-  console.log(search, filteredTicketsName, 'mom')
   useEffect(() => {
     setItems(props.filterItem)
 
@@ -89,8 +86,7 @@ const Filter = (props) => {
     )
   }, [money, items1, props.customeStrategySell(filteredTicketsMoney)
   ])
-  // #dddddd6b
-  console.log(search, filteredTicketsName, 'price')
+
   return (
     <>
 
@@ -98,7 +94,6 @@ const Filter = (props) => {
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span>
-              {/* {statusCounter(found)} */}
 
               {(() => {
                 if (filteredTicketsMoney.length === 0 && filteredTicketsName.length === 0) {

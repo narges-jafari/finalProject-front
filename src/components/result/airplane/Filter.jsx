@@ -93,7 +93,6 @@ const Filter = (props) => {
         <div style={{ fontSize: '14px' }}>
           <div className='d-flex py-2 flex-row  flex-wrap justify-content-around'>
             <span>
-              {/* {statusCounter(found)} */}
 
               {(() => {
                 if (filteredTicketsMoney.length == 0 && filteredTicketsName.length == 0) {

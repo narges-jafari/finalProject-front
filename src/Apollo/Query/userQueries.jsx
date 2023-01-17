@@ -11,6 +11,15 @@ const userQueries = {
       }
     }
   `,
+  GETALLUSERS: gql`
+  query users{
+    users {
+      _id
+      username
+      
+    }
+  }
+`,
   SEARCHUSERBYID: gql`
   query searchUserById($id:ID!){
     searchUserById(id:$id){

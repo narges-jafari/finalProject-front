@@ -12,7 +12,6 @@ const Info = (props) => {
   const [hotelRoomData, setHotelRoomData] = useState([])
   const [roomInfoModal, setRoomInfoModal] = useState()
   const [clickedItem, setClickedItem] = useState(false)
-  const [filterData, setFilterData] = useState()
 
   const roomid = window.localStorage.getItem('HID').replace(/"/g, '')
   const roomId = window.localStorage.getItem('HotelId').replace(/"/g, '')
@@ -24,13 +23,7 @@ const Info = (props) => {
     }
     else return roomid
   }
-  console.log(handleRoomId(),roomId.length,roomid.length,'kkkkkkkkkkkkkkkkkkkkkkkk')
 
-
-  const passenger = window.localStorage.getItem('Passenger').replace(/"/g, '')
-  const room = window.localStorage.getItem('Room').replace(/"/g, '')
-
-  console.log(roomid, 'room')
   // APOLLO QUERY
   useQuery(roomQueries.SEARCHROOMBYHOTELID, {
     variables: {
@@ -100,7 +93,6 @@ const Info = (props) => {
   useEffect(() => {
     window.localStorage.setItem('ID', JSON.stringify(clickedItem))
   }, [clickedItem])
-  console.log(clickedItem, 'llll')
 
   return (
 

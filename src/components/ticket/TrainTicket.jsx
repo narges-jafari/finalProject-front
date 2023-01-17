@@ -11,6 +11,7 @@ import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
 
 const TrainTicket = () => {
+  //state
   const [data, setData] = useState([])
   const [userData, setUserData] = useState([])
   const [trainData, setTrainData] = useState([])
@@ -40,7 +41,7 @@ const TrainTicket = () => {
       )
     }
   }
-
+   //apollo query
   useQuery(trainQueries.SEARCHTRAINICKETBYID, {
     variables: {
       id: ticketId
@@ -60,8 +61,7 @@ const TrainTicket = () => {
     }
   })
 
-  console.log(showAllCapacity(), capacity, data, userId, userData._id, ';;;;;;;;')
-
+//ref
   const ref = React.createRef()
 
   return (

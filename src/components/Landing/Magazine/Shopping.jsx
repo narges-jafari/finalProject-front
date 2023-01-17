@@ -2,9 +2,7 @@ import React from 'react'
 import shop from '../../../assets/img/entertainment/shopping.jpg'
 import img1 from '../../../assets/img/entertainment/s2.JPG'
 import img2 from '../../../assets/img/entertainment/s3.JPG'
-
 import Nav from 'react-bootstrap/Nav'
-
 import styles from '../../../assets/styles/Entertainment.module.css'
 
 const Shopping = () => {

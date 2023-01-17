@@ -76,7 +76,6 @@ const AirplaneResult = () => {
   const string1 = '۱۴۰۱' + '/' + todaymonth + '/' + todayday
 
 
-  console.log(handleCapacity(), 'lklk')
   // apollo query
   useQuery(flightQueries.SEARCHFLIGHT, {
     variables: {
@@ -93,7 +92,6 @@ const AirplaneResult = () => {
       setAirplaneItem([])
     }
   })
-  console.log(flightclass, 'aaaa')
   // SORT FUNCTION
   const compare = (a, b, ascendingOrder) => {
     if (a < b) {

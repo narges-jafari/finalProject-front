@@ -1,10 +1,12 @@
 
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import { FcDoNotMix,FcSalesPerformance,FcMultipleInputs } from "react-icons/fc";
 const AllResult=(props)=>{
 
     const allTrain=props.AllTrain.reduce((a,v) =>  a = a + v.capacity , 0 )
+
+    //counter function
     function statusCounter (inputs) {
       let counter = 0
       for (const input of inputs) {

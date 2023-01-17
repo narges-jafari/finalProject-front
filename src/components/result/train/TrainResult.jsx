@@ -114,7 +114,6 @@ const TrainResult = () => {
     )
   }, [trainItem])
 
-  console.log(handleCapacity(), capacity1, capacity, '0000')
 
   useEffect(() => {
     window.localStorage.setItem('TRAINID', JSON.stringify(clickedItem))

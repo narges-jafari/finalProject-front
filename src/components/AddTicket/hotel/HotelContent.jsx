@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import styles from '../../../assets/styles/TrainContent.module.css'
 import persian from 'react-date-object/calendars/persian'
 import persianfa from 'react-date-object/locales/persian_fa'
@@ -9,7 +9,7 @@ import { USER_ID, HOTEL_ID, HOTEL_CAPACITY } from '../../../constants/auth'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const HotelContent = () => {
+const HotelContent = (props) => {
   // STATES
 
   const [hotelName, setHotelName] = useState('')
@@ -24,16 +24,7 @@ const HotelContent = () => {
   const [error1, setError1] = useState(null)
   const [error2, setError2] = useState(null)
   const [error3, setError3] = useState(null)
-  // FUNCTION FOR RESET
-  const resetFields = () => {
-    setHotelName('')
-    setEndDate('')
-    setStartDate('')
-    setCityName('')
-    setShowStar('')
-    setShowPrice('')
-    setShowAddress('')
-  }
+
 
   const userid = window.localStorage.getItem(USER_ID)
   // APOLLO MUTATION
@@ -61,8 +52,6 @@ const HotelContent = () => {
             toast.success('هتل با موفقیت اضافه شد')
             window.localStorage.setItem(HOTEL_ID, JSON.stringify(data.createHotel._id))
             window.localStorage.setItem(HOTEL_CAPACITY, JSON.stringify(data.createHotel.capacity))
-
-            // resetFields()
           } else {
             toast.error(
               'خطایی در برقراری با سرور اتفاق افتاد'

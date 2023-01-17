@@ -18,7 +18,6 @@ const HotelSearch = () => {
   const [showPassenger, setShowPassenger] = useState([])
   const [showPassenger1, setShowPassenger1] = useState([])
   const [showPassenger2, setShowPassenger2] = useState([])
-
   const [showRoom, setShowRoom] = useState([])
 
   // ACCORDIAN TOGGLE FUNCTION
@@ -41,6 +40,7 @@ const HotelSearch = () => {
   const handleRoom = useCallback((room) => {
     setShowRoom(room)
   }, [])
+
   // apollo query
 
   const [SearchHotel] = useLazyQuery(hotelQueries.SEARCHHOTEL)
@@ -61,7 +61,7 @@ const HotelSearch = () => {
       })
   }
   const allPassenger = showPassenger + showPassenger1 + showPassenger2
-  console.log(allPassenger,'ppppppppppppppppppppppppp')
+  
   const showAllCapacity = () => {
     if (showPassenger === 0) {
       return (

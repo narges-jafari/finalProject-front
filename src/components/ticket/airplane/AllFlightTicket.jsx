@@ -10,9 +10,11 @@ import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
 
 const AllHotelTicket = () => {
+  //state
   const [data, setData] = useState([])
 
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
+  //apollo query
   useQuery(flightQueries.SEARCHFLIGHTTICKETBYUSERID, {
     variables: {
       userId: userId
@@ -53,8 +55,7 @@ const AllHotelTicket = () => {
 
   const allUserData = userData.map(item => item.user)
   const allUserId = allUserData.map(item => item._id)
-  // console.log(originName)
-console.log(data,'data',allUserId)
+//ref
   const ref = React.createRef()
   return (
     <>

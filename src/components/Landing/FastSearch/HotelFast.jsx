@@ -4,14 +4,14 @@ import styles from '../../../assets/styles/FastSearch.module.css'
 import { useQuery } from '@apollo/client'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
 const HotelFast = () => {
+
+  //states
   const [data, setData] = useState([])
   const [hotelId, setHotelId] = useState(false)
 
   const today = new Date()
-  console.log('today => ', today)
   const tomorrow = new Date()
   tomorrow.setDate(today.getDate() + 1)
-  console.log('tomorrow => ', tomorrow, today)
   const dayOfWeekName = new Date(tomorrow).toLocaleString(
     'fa-IR', { weekday: 'long' })
   const day = new Date(tomorrow).toLocaleString('fa-IR', { day: '2-digit' })

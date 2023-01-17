@@ -40,13 +40,12 @@ const TrainResult = () => {
   const day = new Date().toLocaleString('fa-IR', { month: '2-digit' })
   const month = new Date().toLocaleString('fa-IR', { day: '2-digit' })
   const currentDate = '۱۴۰۱' + '/' + day + '/' + month
-  // console.log('۱۴۰۱'+'/'+f+'/'+f1,'kkkkkkkkkkkkkkkkkkkk')
   const newDate = currentDate.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
 
   useEffect(() => {
     setFilteredTicketsDate(
       trainItem.filter((item) =>
-        // item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&
+        item.date.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) >= newDate &&
         item.capacity > 0
       )
     )

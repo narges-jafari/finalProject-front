@@ -50,7 +50,6 @@ const Filter = (props) => {
     setStar()
   }
 
-  console.log(filteredTicketsStar, 'star')
 
   useEffect(() => {
     setItems(props.filterItem)

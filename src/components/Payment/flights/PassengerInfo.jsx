@@ -1,26 +1,35 @@
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/PassengerInfo.module.css'
 import { useMutation, useQuery } from '@apollo/client'
-import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
 import flightQueries from '../../../Apollo/Query/flightQueries'
-
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { USER_ID, FLIGHTBUY_ID, FLIGHTBUYSECOND_ID } from '../../../constants/auth'
+import { USER_ID, FLIGHTBUYSECOND_ID } from '../../../constants/auth'
 import { showGender } from '../../../constants/payment'
 import ReactTooltip from 'react-tooltip'
 const PassengerInfo = () => {
-  // const passenger = window.localStorage.getItem('Capacity').replace(/"/g, '')
+
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
-  const allCapacity = capacity + capacity1 + capacity2
   const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
   const flightId2 = window.localStorage.getItem('AIRPLAINIDSECOND').replace(/"/g, '')
-  console.log(flightId, flightId2, 'ffffffffff')
+  const userId = window.localStorage.getItem(USER_ID)
+
+  
+  const allCapacity = capacity + capacity1 + capacity2
+
+
+  //states
   const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
   const [error, setError] = useState('')
+  const [count, setCount] = useState(showAllCapacity() - 1)
+  const [clicked, setClicked] = useState(false)
+
+  const [price, setPrice] = useState([])
+  const [price2, setPrice2] = useState([])
+  
   const showAllCapacity = () => {
     if (!capacity2 && capacity && !capacity1) {
       return (
@@ -38,15 +47,13 @@ const PassengerInfo = () => {
       )
     }
   }
-  let [count, setCount] = useState(showAllCapacity() - 1)
-  const [clicked, setClicked] = useState(false)
 
-  const [price, setPrice] = useState([])
-  const [price2, setPrice2] = useState([])
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
   }
+
+  //ref
   const firstUpdate = useRef(true)
 
   const handleChange = (i, e) => {
@@ -73,8 +80,9 @@ const PassengerInfo = () => {
     count = count + 1
     setCount(count)
   }
-  const userId = window.localStorage.getItem(USER_ID)
 
+
+  //apollo query
   useQuery(flightQueries.SEARCH, {
     variables: {
       id: flightId
@@ -100,7 +108,6 @@ const PassengerInfo = () => {
     }
   })
 
-  console.log(price, flightId, price2, flightId2, 'ddddddd')
 
   const newPrice = price + price2
 
@@ -122,7 +129,11 @@ const PassengerInfo = () => {
     }
   }
 
+  //apollo mutation
+
   const [createBuyFlightSecond] = useMutation(flightMutations.FLIGHTBUY)
+  const [createBuyFlight] = useMutation(flightMutations.FLIGHTBUY)
+
   const handleCreateBuyFlightSecond = (e) => {
     createBuyFlightSecond({
       variables: {
@@ -152,7 +163,6 @@ const PassengerInfo = () => {
       })
   }
 
-  const [createBuyFlight] = useMutation(flightMutations.FLIGHTBUY)
   const handleCreateBuyFlight = (e) => {
     if (clicked == true) {
       createBuyFlight({
@@ -184,15 +194,6 @@ const PassengerInfo = () => {
     }
   }
 
-  // const data = [
-  //   { title: 'One', prix: 100 },
-  //   { title: 'Two', prix: 200 },
-  //   { title: 'Three', prix: 300 }
-  // ]
-
-  console.log(price, showAllPrice(), capacity, capacity1, capacity + capacity1, showAllCapacity(), (price * capacity) + (price * capacity1))
-
-  // GRAPHQL QUERY
 
   return (
     <>

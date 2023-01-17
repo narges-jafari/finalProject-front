@@ -1,7 +1,6 @@
 import React from "react";
-import {Bar,Pie ,Doughnut} from "react-chartjs-2";
+import {Doughnut} from "react-chartjs-2";
 import styles from '../../../assets/styles/Dashboard.module.css'
-import * as Chartjs from "chart.js";
 
 import {
     Chart as ChartJS,
@@ -31,7 +30,7 @@ import {
 
 
 
-function DoughnutChart(props) {
+ const DoughnutChart=(props)=>{
 
 
 
@@ -79,8 +78,7 @@ function DoughnutChart(props) {
               var countTrainName5 = {};
               trainName5.forEach(e => countTrainName5[e] = countTrainName5[e] ? countTrainName5[e] + 1 : 1);
               var countTrainName5= Object.keys(countTrainName5).map(e => {return (countTrainName5[e])});
-              console.log(result4,trainName4,countTrainName4,'kkkkkkkkk')
-
+// data for each chart
   const data = {
     labels: result,
     datasets: [{
@@ -176,7 +174,7 @@ function DoughnutChart(props) {
         "#F1C40F", "#BDC3C7", "#34495E  "
       ]
     }]
-  };
+  }
   
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Card, CardBody, Col, Container, Row, Label } from 'reactstrap'
 import loginimg from '../../assets/img/Capturedjdsk.JPG'
 import styles from '../../assets/styles/Login.module.css'
@@ -8,14 +8,14 @@ import { toast, ToastContainer } from 'react-toastify'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import {
-  AUTH_USERINFO,
   USER_ID,
   AUTH_TOKEN,
-  USER_INFO
 
 } from '../../constants/auth'
 
 const LoginForm = () => {
+
+  //apollo query
   const [Login, { loading, data }] = useLazyQuery(userQueries.LOGIN)
   if (!loading && data) {
     window.localStorage.setItem(AUTH_TOKEN, JSON.stringify(data.login.token))
@@ -34,14 +34,7 @@ const LoginForm = () => {
     }
   }
 
-  const showError = () => {
-    if (loading == false && data == undefined) {
-      return (
-        toast.error('نام‌کاربری یا رمزعبور اشتباه است')
 
-      )
-    } else return (null)
-  }
 
   return (
     <>
@@ -115,7 +108,6 @@ const LoginForm = () => {
                         </div>
 
                         <button
-                          onClick={showError}
                           className='btn btn-outline-warning text-dark  py-2  col-12'
                           style={{ backgroundColor: '#f49107f1', border: ' none ', fontFamily: 'Vazir', fontSize: '20px' }}
                           type='submit'

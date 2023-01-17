@@ -3,22 +3,25 @@ import styles from '../../../assets/styles/PassengerInfo.module.css'
 import { useMutation, useQuery } from '@apollo/client'
 import trainMutations from '../../../Apollo/Mutation/trainMutations'
 import trainQueries from '../../../Apollo/Query/trainQueries'
-
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { USER_ID } from '../../../constants/auth'
 import { showGender } from '../../../constants/payment'
 import ReactTooltip from 'react-tooltip'
 const PassengerInfo = () => {
-  // const passenger = window.localStorage.getItem('Capacity').replace(/"/g, '')
+
+
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
-  const allCapacity = capacity + capacity1 + capacity2
   const trainId = window.localStorage.getItem('TRAINID').replace(/"/g, '')
   const trainId2 = window.localStorage.getItem('TRAINSECONDID').replace(/"/g, '')
-  const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
-  const [error, setError] = useState('')
+  const userId = window.localStorage.getItem(USER_ID)
+
+
+  const allCapacity = capacity + capacity1 + capacity2
+
+
   const showAllCapacity = () => {
     if (!capacity2 && capacity && !capacity1) {
       return (
@@ -36,15 +39,22 @@ const PassengerInfo = () => {
       )
     }
   }
-  let [count, setCount] = useState(showAllCapacity() - 1)
-  const [clicked, setClicked] = useState(false)
 
+  //states
+  const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
+  const [error, setError] = useState('')
+  const  [count, setCount] = useState(showAllCapacity() - 1)
+  const [clicked, setClicked] = useState(false)
   const [price, setPrice] = useState([])
   const [price2, setPrice2] = useState([])
+
+
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
   }
+
+  //ref
   const firstUpdate = useRef(true)
 
   const handleChange = (i, e) => {
@@ -71,8 +81,9 @@ const PassengerInfo = () => {
     count = count + 1
     setCount(count)
   }
-  const userId = window.localStorage.getItem(USER_ID)
 
+
+  //apollo query
   useQuery(trainQueries.SEARCHTRAINBYID, {
     variables: {
       id: trainId
@@ -118,8 +129,10 @@ const PassengerInfo = () => {
       )
     }
   }
-
+//apollo mutation
   const [createBuyTrainSecond] = useMutation(trainMutations.TRAINBUY)
+  const [createBuyTrain] = useMutation(trainMutations.TRAINBUY)
+
   const handleCreateBuyTrainSecond = (e) => {
     createBuyTrainSecond({
       variables: {
@@ -149,7 +162,6 @@ const PassengerInfo = () => {
       })
   }
 
-  const [createBuyTrain] = useMutation(trainMutations.TRAINBUY)
   const handleCreateBuyTrain = (e) => {
     if (clicked == true) {
       createBuyTrain({
@@ -180,15 +192,6 @@ const PassengerInfo = () => {
       toast.warning('اطلاعات را تایید نکرده‌اید')
     }
   }
-
-  // const data = [
-  //   { title: 'One', prix: 100 },
-  //   { title: 'Two', prix: 200 },
-  //   { title: 'Three', prix: 300 }
-  // ]
-
-
-  // GRAPHQL QUERY
 
   return (
     <>

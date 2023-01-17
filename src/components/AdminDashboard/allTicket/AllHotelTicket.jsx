@@ -7,12 +7,17 @@ import ReactTooltip from 'react-tooltip'
 import styles from '../../../assets/styles/Ticket.module.css'
 
 const AllHotelTicket = (props) => {
+  //states
     const [data,setData]=useState([])
+
+    //ref
     const ref = React.createRef()
 
     const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
     const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
     const date = '۱۴۰۱' + '/' + month + '/' + day
+
+    //apollo query
     useQuery(hotelQueries.GETALLHOTELTICKETBYDATE, {
         variables: {
           date: date
@@ -22,11 +27,10 @@ const AllHotelTicket = (props) => {
           setData(res.allHotelTicketbyDate)
         },
         onError: () => {
-          setData([''])
+          setData([])
         }
       })
 
-      console.log(data)
     
     return (
       <>

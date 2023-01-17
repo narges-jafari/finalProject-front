@@ -22,9 +22,6 @@ const TrainSearch = () => {
   const [showPassenger2, setShowPassenger2] = useState([])
   const [endDate, setEndDate] = useState(new Date())
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
-
-
-
   const [showClass, setShowClass] = useState([])
   const [col1, setCol1] = useState(false)
 
@@ -69,7 +66,6 @@ const TrainSearch = () => {
     }
   }
 
-  console.log(showPassenger, showPassenger1, '[[[[[[[[', showAllCapacity())
 
   const handleSearch = () => {
     SearchTrain({
@@ -99,7 +95,6 @@ const TrainSearch = () => {
     window.localStorage.setItem('TrainDateCome', JSON.stringify(endDate.toString()))
 
   }, [originName, destinationName, showClass, startDate,endDate, showPassenger, showPassenger1, showPassenger2])
-  console.log(allPassenger, 'l')
 
   const handleNameChange = () => {
     window.location.href = 'firsttrainresult'

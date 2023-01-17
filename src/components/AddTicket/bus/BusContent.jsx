@@ -64,8 +64,7 @@ const BusContent = () => {
   // REF
   const firstUpdate = useRef(true)
   const userid = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-
-console.log(userid)
+//apollo mutation
   const [createBuses] = useMutation(busMutations.CREATEBUS)
 
   const handleCreateBus = (e) => {
@@ -335,7 +334,6 @@ console.log(userid)
               calendar={persian}
               locale={persianfa}
               calendarPosition='bottom-right'
-              placeholder='تاریخ حرکت'
             />
           </div>
         </div>
@@ -435,7 +433,8 @@ console.log(userid)
         <div>
           <button 
               onClick={handleCreateBus}
-          className='btn btn-sm btn-danger my-2 py-2 rounded-3 mx-2 px-4 '>جستجو</button>
+              className='btn btn-sm btn-danger my-4 py-2 rounded-3 mx-2 px-4 '
+              >اضافه کردن</button>
                   <ToastContainer />
 
         </div>

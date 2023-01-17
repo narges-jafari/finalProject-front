@@ -8,23 +8,29 @@ import seatNumberMutations from '../../../Apollo/Mutation/seatNumberMutations'
 import flightMutations from '../../../Apollo/Mutation/flightMutations'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
 import flightQueries from '../../../Apollo/Query/flightQueries'
-const FlightFinish = () => {
-  // STATES
-  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
-  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
-  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
-  const [seatnumbers, setSeatnumbers] = useState([])
-  const [seatnumbers1, setSeatnumbers1] = useState([])
-  const [flightBuyId, setFlightBuyId] = useState([])
 
-  const date = '۱۴۰۱' + '/' + month + '/' + day
+
+const FlightFinish = () => {
+
+  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
   const flightId = window.localStorage.getItem('AIRPLAINID').replace(/"/g, '')
   const flightId1 = window.localStorage.getItem('AIRPLAINIDSECOND').replace(/"/g, '')
   const capacity0 = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
+  // STATES
+  const [seatnumbers, setSeatnumbers] = useState([])
+  const [seatnumbers1, setSeatnumbers1] = useState([])
+  const [flightBuyId, setFlightBuyId] = useState([])
+ 
+
+  const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
+  const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
+
+ 
+  const date = '۱۴۰۱' + '/' + month + '/' + day
+ 
   const allCapacity = capacity0 + capacity1 + capacity2
   const showAllCapacity = () => {
     if (!capacity2 && capacity0 && !capacity1) {
@@ -48,7 +54,7 @@ const FlightFinish = () => {
       return 1
     } else return showAllCapacity()
   }
-
+ //apollo query
   useQuery(flightQueries.GETLASTFLIGHTBUY, {
 
     onCompleted: (res) => {
@@ -60,6 +66,7 @@ const FlightFinish = () => {
   })
 
   const newflightBuyId = flightBuyId.map(item => item._id)
+  //apollo query
   useQuery(seatnumberQueries.GETFLIGHTSEATNUMBER, {
     variables: {
       flight: flightId,
@@ -70,7 +77,7 @@ const FlightFinish = () => {
       setSeatnumbers(res.getFlightSeatnumber)
     },
     onError: () => {
-      setSeatnumbers(['ll'])
+      setSeatnumbers([])
     }
   })
   useQuery(seatnumberQueries.GETFLIGHTSEATNUMBER, {
@@ -83,7 +90,7 @@ const FlightFinish = () => {
       setSeatnumbers1(res.getFlightSeatnumber)
     },
     onError: () => {
-      setSeatnumbers1(['ll'])
+      setSeatnumbers1([])
     }
   })
 
@@ -95,8 +102,15 @@ const FlightFinish = () => {
   const capacitysecond = seatnumbers1.map(item => item.flight.capacity)
 
   const seatnumberId1 = seatnumbers1.map(item => item._id)
-
+//apollo mutations
   const [updateFlightCapacity] = useMutation(flightMutations.UPDATEFLIGHTCAPACITY)
+  const [updateFlightCapacity1] = useMutation(flightMutations.UPDATEFLIGHTCAPACITY)
+  const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDSEATNUMBER)
+  const [deleteSeatnumber1] = useMutation(seatNumberMutations.RESERVEDSEATNUMBER)
+  const [createTicket1] = useMutation(flightMutations.FLIGHTTICKET)
+  const [createTicket] = useMutation(flightMutations.FLIGHTTICKET)
+
+
   const handleUpdateFlight = () => {
     updateFlightCapacity({
       variables: {
@@ -106,8 +120,6 @@ const FlightFinish = () => {
     })
       .then(({ data }) => {
         if (data.updateFlightCapacity !== null) {
-          // toast.success('ظرفیت به‌روزرسانی شد')
-          // window.location.reload()
         } else {
           toast.error(
             'خطایی در برقراری با سرور اتفاق افتاد'
@@ -115,8 +127,6 @@ const FlightFinish = () => {
         }
       })
   }
-
-  const [updateFlightCapacity1] = useMutation(flightMutations.UPDATEFLIGHTCAPACITY)
   const handleUpdateFlight1 = () => {
     updateFlightCapacity1({
       variables: {
@@ -135,10 +145,6 @@ const FlightFinish = () => {
         }
       })
   }
-
-  const [deleteSeatnumber] = useMutation(seatNumberMutations.RESERVEDSEATNUMBER)
-  const [deleteSeatnumber1] = useMutation(seatNumberMutations.RESERVEDSEATNUMBER)
-
   const handleDeleteSeatnumber = (e) => {
     deleteSeatnumber({
       variables: {
@@ -169,7 +175,6 @@ const FlightFinish = () => {
         }
       })
   }
-  const [createTicket1] = useMutation(flightMutations.FLIGHTTICKET)
   const handleCreateTicket1 = (e) => {
     createTicket1({
       variables: {
@@ -192,7 +197,6 @@ const FlightFinish = () => {
       })
   }
 
-  const [createTicket] = useMutation(flightMutations.FLIGHTTICKET)
   const handleCreateTicket = (e) => {
     createTicket({
       variables: {

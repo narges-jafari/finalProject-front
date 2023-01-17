@@ -1,8 +1,7 @@
-import React, { useState, useCallback } from 'react'
-import {Bar,Pie ,Doughnut} from "react-chartjs-2";
+import React from 'react'
+import {Doughnut} from "react-chartjs-2";
 import styles from '../../../assets/styles/Dashboard.module.css'
-import { useQuery } from '@apollo/client'
-import flightQueries from '../../../Apollo/Query/flightQueries'
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -32,8 +31,8 @@ import {
 
 
 
-function DoughnutChart(props) {
-
+const DoughnutChart= (props) => {
+ //get data from each flightcompany
   const flightName=props.flightName.map(item=>item.flightBuy.flight.destinationName)
   const result= flightName.filter((item, 
     index) => flightName.indexOf(item) === index);
@@ -79,7 +78,7 @@ function DoughnutChart(props) {
               var duplicateCount = {};
               flightName5.forEach(e => duplicateCount[e] = duplicateCount[e] ? duplicateCount[e] + 1 : 1);
               var countFlightName5= Object.keys(duplicateCount).map(e => {return (duplicateCount[e])});
-          
+   // data for each chart        
   const data = {
     labels: result,
     datasets: [{

@@ -83,7 +83,7 @@ const RoomInfo = (props) => {
       .then(({ data }) => {
         if (data.addRoomInfo !== null) {
           toast.success(' اتاق با موفقیت اضافه شد')
-          // resetFields()
+          resetFields()
         } else {
           toast.error(
             'خطایی در برقراری با سرور اتفاق افتاد'
@@ -111,8 +111,8 @@ const RoomInfo = (props) => {
       {count <= 0
         ? null
         : <>
-          <button  value='گروهی' onClick={handleValue}>گروهی </button>
-          <button value='تکی' onClick={handleValue}>تکی </button>
+          <button className='btn btn-sm btn-warning p-2 ' value='گروهی' onClick={handleValue}>گروهی </button>
+          <button className='btn btn-sm btn-outline-warning p-2  ' value='تکی' onClick={handleValue}>تکی </button>
         </>}
 
       {(() => {

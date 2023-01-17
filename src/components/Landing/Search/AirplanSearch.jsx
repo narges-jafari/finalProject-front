@@ -17,18 +17,18 @@ const AirplanSearch = () => {
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [currentActiveTab, setCurrentActiveTab] = useState('1')
+  const [col1, setCol1] = useState(false)
+  const [showPassenger, setShowPassenger] = useState([])
+  const [showPassenger1, setShowPassenger1] = useState([])
+  const [showPassenger2, setShowPassenger2] = useState([])
+  const [showClass, setShowClass] = useState([])
 
   // Toggle active state for Tab
   const toggle = tab => {
     if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
 
-  const [col1, setCol1] = useState(false)
-  const [showPassenger, setShowPassenger] = useState([])
-  const [showPassenger1, setShowPassenger1] = useState([])
-  const [showPassenger2, setShowPassenger2] = useState([])
 
-  const [showClass, setShowClass] = useState([])
   // ACCORDIAN TOGGLE FUNCTION
   const toggleCol1 = () => {
     setCol1(!col1)
@@ -67,6 +67,8 @@ const AirplanSearch = () => {
   }
 
   const allPassenger = showPassenger + showPassenger1 + showPassenger2
+
+  //function for count capacity
   const showAllCapacity = () => {
     if (showPassenger === 0) {
       return (

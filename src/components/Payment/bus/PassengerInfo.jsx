@@ -1,10 +1,6 @@
 import React, { useState, useRef } from 'react'
 import styles from '../../../assets/styles/PassengerInfo.module.css'
 import { useMutation, useQuery } from '@apollo/client'
-import seatnumberQueries from '../../../Apollo/Query/seatnumberQueries'
-import flightMutations from '../../../Apollo/Mutation/flightMutations'
-import flightQueries from '../../../Apollo/Query/flightQueries'
-
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { USER_ID, BUSBUY_ID } from '../../../constants/auth'
@@ -12,15 +8,24 @@ import { showGender } from '../../../constants/payment'
 import ReactTooltip from 'react-tooltip'
 import busQueries from '../../../Apollo/Query/busQueries'
 import busMutations from '../../../Apollo/Mutation/busMutations'
+
 const PassengerInfo = () => {
-  // const passenger = window.localStorage.getItem('Capacity').replace(/"/g, '')
+
   const capacity = parseInt(window.localStorage.getItem('Capacity').replace(/"/g, ''))
   const capacity1 = parseInt(window.localStorage.getItem('Capacity1').replace(/"/g, ''))
   const capacity2 = parseInt(window.localStorage.getItem('Capacity2').replace(/"/g, ''))
-  const allCapacity = capacity + capacity1 + capacity2
+  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
   const busId = window.localStorage.getItem('BUSID').replace(/"/g, '')
-  const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
+ //states
   const [error, setError] = useState('')
+  const [count, setCount] = useState(showAllCapacity() - 1)
+  const [clicked, setClicked] = useState(false)
+  const [price, setPrice] = useState([])
+  const [formValues, setFormValues] = useState([{ name: '', gen: '', nationalcode: '', birthDate: '', gen: '' }])
+
+  const allCapacity = capacity + capacity1 + capacity2
+
+
   const showAllCapacity = () => {
     if (!capacity2 && capacity && !capacity1) {
       return (
@@ -38,14 +43,12 @@ const PassengerInfo = () => {
       )
     }
   }
-  let [count, setCount] = useState(showAllCapacity() - 1)
-  const [clicked, setClicked] = useState(false)
-  const [seatnumbers, setSeatnumbers] = useState([])
-  const [price, setPrice] = useState([])
 
   function iaValidDate (code) {
     return /^1[34][0-9][0-9]\/((0[1-6]\/(0[1-9]|[1-2][0-9]|3[0-1]))|(0[7-9]\/(0[1-9]|[1-2][0-9]|30))|(1[0-1]\/(0[1-9]|[1-2][0-9]|30))|(12\/(0[1-9]|[1-2][0-9])))/.test(code)
   }
+
+  //ref
   const firstUpdate = useRef(true)
 
   const handleChange = (i, e) => {
@@ -72,9 +75,8 @@ const PassengerInfo = () => {
     count = count + 1
     setCount(count)
   }
-  const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
 
-
+//apollo query
   useQuery(busQueries.SEARCH, {
     variables: {
       id: busId
@@ -106,6 +108,7 @@ const PassengerInfo = () => {
     }
   }
 
+  //apollo mutation
   const [createBuyBus] = useMutation(busMutations.BUSBUY)
   const handleCreateBuyBus = (e) => {
     if (clicked == true) {
@@ -140,15 +143,6 @@ const PassengerInfo = () => {
     }
   }
 
-  // const data = [
-  //   { title: 'One', prix: 100 },
-  //   { title: 'Two', prix: 200 },
-  //   { title: 'Three', prix: 300 }
-  // ]
-
-  console.log(price, showAllPrice(), capacity, capacity1, capacity + capacity1, showAllCapacity(), (price * capacity) + (price * capacity1))
-
-  // GRAPHQL QUERY
 
   return (
     <>
@@ -210,7 +204,6 @@ const PassengerInfo = () => {
                       value={element.gen}
                       onChange={e => {
                         firstUpdate.current = false
-                        // setShowAirplaneCompany(e.target.value)
                         handleChange(index, e)
                       }}
                     >

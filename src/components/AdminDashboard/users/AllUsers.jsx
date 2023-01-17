@@ -7,6 +7,8 @@ import flightQueries from '../../../Apollo/Query/flightQueries'
 import trainQueries from '../../../Apollo/Query/trainQueries'
 import busQueries from '../../../Apollo/Query/busQueries'
 import hotelQueries from '../../../Apollo/Query/hotelQueries'
+import userQueries from '../../../Apollo/Query/userQueries'
+
 
 
 import { Line } from "react-chartjs-2";
@@ -42,11 +44,15 @@ import {
 
 
 const AllUsers=()=>{
+
+  //states
   const [busData,setBusData]=useState([])
   const [trainData,setTrainData]=useState([])
   const [flightData,setFlightData]=useState([])
   const [hotelData,setHotelData]=useState([])
+  const [userData,setUserData]=useState([])
 
+//apollo query
   useQuery(busQueries.SEARCHALLBUSTICKET, {
    
 
@@ -54,7 +60,7 @@ const AllUsers=()=>{
       setBusData(res.searchAllBusTicke)
     },
     onError: () => {
-      setBusData(['lllllllllllll'])
+      setBusData([])
     }
   })
   useQuery(hotelQueries.SEARCHALLHOTELTICKET, {
@@ -74,7 +80,7 @@ const AllUsers=()=>{
       setFlightData(res.searchAllFlightTicke)
     },
     onError: () => {
-      setFlightData(['lllllllllllll'])
+      setFlightData([])
     }
   })
   useQuery(trainQueries.SEARCHALLTRAINTICKET, {
@@ -85,6 +91,17 @@ const AllUsers=()=>{
     },
     onError: () => {
       setTrainData([])
+    }
+  })
+
+  useQuery(userQueries.GETALLUSERS, {
+   
+
+    onCompleted: (res) => {
+      setUserData(res.users)
+    },
+    onError: () => {
+      setUserData([])
     }
   })
 
@@ -149,8 +166,9 @@ const AllUsers=()=>{
     const resultHote4 = hotelData.map(item => item.date .includes(query4)) 
     const filterHotel4=resultHote4.filter(item=>item===true)
  
+ 
 
-
+//counter function
     function statusCounter (inputs) {
       let counter = 0
       for (const input of inputs) {
@@ -158,6 +176,8 @@ const AllUsers=()=>{
       }
       return counter
     }
+
+    //data for chart 
 const  data = {
     labels: ["مهر", "آبان", "آذر", "دی"],
     datasets: [
@@ -245,8 +265,8 @@ const  data = {
                     <FcMultipleInputs size={36}/>
                 </div>
                 <div className='d-flex flex-column mx-4'>
-                    <span> کل کاربران </span>
-                    <span>330</span>
+                    <span>  کاربران </span>
+                    <span>{statusCounter(userData)}</span>
                 </div>
             </div>
             <div className={styles.userContentItem}>
@@ -254,8 +274,8 @@ const  data = {
                     <FcMultipleInputs size={36}/>
                 </div>
                 <div className='d-flex flex-column mx-4'>
-                    <span> کاربران فعال </span>
-                    <span>330</span>
+                    <span>  وسایل حمل ونقل </span>
+                    <span></span>
                 </div>
             </div>
             <div className={styles.userContentItem}>
@@ -263,8 +283,8 @@ const  data = {
                     <FcMultipleInputs size={36}/>
                 </div>
                 <div className='d-flex flex-column mx-4'>
-                    <span> کاربران غیر فعال </span>
-                    <span>330</span>
+                    <span>  هتل </span>
+                    <span>40</span>
                 </div>
             </div>
         </div>

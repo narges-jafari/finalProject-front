@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import AllResult from './AllResult'
 import BestAirplane from './BestAirplane'
@@ -9,9 +9,11 @@ import flightQueries from '../../../Apollo/Query/flightQueries'
 
 
 const ShowAllResult=()=>{
+  //states
     const [flightData,setFlightData]=useState([])
     const [flightTicket,setFlightTicket]=useState([])
 
+    //apollo query
     useQuery(flightQueries.SEARCHALLFLIGHTTICKET, {
    
 

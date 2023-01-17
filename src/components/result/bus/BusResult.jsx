@@ -5,7 +5,6 @@ import { FcSalesPerformance } from 'react-icons/fc'
 import moment from 'moment'
 import { useQuery } from '@apollo/client'
 import busQueries from '../../../Apollo/Query/busQueries'
-
 import PriceTable from './PriceTable'
 import Filter from './Filter'
 import Header from './Header'
@@ -68,7 +67,7 @@ const BusResult = () => {
 
   const month1 = new Date(Num)
   const monthName = monthNames[month1.getMonth()]
-  console.log(busItem, 'lklk')
+  
   // apollo query
   useQuery(busQueries.SEARCHBUS, {
     variables: {

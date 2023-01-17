@@ -11,18 +11,17 @@ import HotelFast from './FastSearch/HotelFast'
 import TrainFast from './FastSearch/TrainFast'
 import Necessary from './Necessary/Necessary'
 import SuggestionList from './Suggestion/SuggestionList'
-import { AUTH_TOKEN, USER_ID, HOTELBUY_ID } from '../../constants/auth'
+import { AUTH_TOKEN, HOTELBUY_ID } from '../../constants/auth'
 
 const Landing = () => {
+  //state
   const [showActiveTab, setActiveTab] = useState([])
-
-  const userid = window.localStorage.getItem(HOTELBUY_ID)
-  const usertoken = window.localStorage.getItem(AUTH_TOKEN)
-  console.log(showActiveTab, 'lllhyhgdjhdfhfhj')
 
   const handleTab = useCallback((tab) => {
     setActiveTab(tab)
   }, [])
+
+  
   return (
     <div style={{ backgroundColor: '#92939211' }}>
       {(() => {

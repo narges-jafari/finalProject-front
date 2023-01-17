@@ -1,8 +1,8 @@
-
 import Footer from '../Footer/Footer'
-
 import SearchEntertainment from './SearchEntertainment'
 import Magazine from './Magazine'
+
+
 const MagazineResult = () => {
   return (
     <>

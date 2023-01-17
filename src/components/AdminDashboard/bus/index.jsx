@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import styles from '../../../assets/styles/Dashboard.module.css'
 import AllResult from './AllResult'
 import BestBus from './BestBus'
@@ -7,10 +7,10 @@ import { useQuery } from '@apollo/client'
 import busQueries from '../../../Apollo/Query/busQueries'
 
 const ShowAllResult=()=>{
-
+     //states
     const [busData,setBusData]=useState([])
     const [busTicket,setBusTicket]=useState([])
-
+//apollo query
     useQuery(busQueries.SEARCHALLBUSTICKET, {
    
 

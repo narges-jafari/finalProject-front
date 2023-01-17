@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import { FaBusAlt, FaSubway, FaHotel, FaPlane } from 'react-icons/fa'
 import {
   TabContent, TabPane, Nav,
@@ -20,7 +19,7 @@ function Search (props) {
   const toggle = tab => {
     if (currentActiveTab !== tab) setCurrentActiveTab(tab)
   }
-  console.log(currentActiveTab, 'lllll')
+  
   return (
     <>
       <div className={styles.fontCss}>

@@ -1,57 +1,22 @@
-import React, { useState, useLayoutEffect ,useRef } from 'react'
+import React, { useState } from 'react'
 import styles from '../../assets/styles/Dashboard.module.css'
 import AllTicket from './allTicket/AllTicket'
 import ShowAllResult from './airplane/index'
 import ShowAllResultTrain from './train/index'
 import ShowAllResultBus from './bus/index'
 import ShowAllResultHotel from './hotel/index'
-
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import HeaderLanding from '../Landing/Navbar/HeaderLanding';
 import AllUsers from './users/AllUsers'
 
 
 
 const Dashboard = () => {
-
-  // useLayoutEffect(() => {
-  //   console.log(div);
-  //   const divAnimate = div.current.getBoundingClientRect().top;
-  //   console.log(divAnimate);
-  //   const onScroll = () => {
-  //     if (divAnimate < window.scrollY) {
-  //       console.log("ok");
-  //       div.current.style.position = "fixed";
-  //       div.current.style.top = -20;
-  //       div.current.style.button = 0;
-
-  //       div.current.style.right = 0;
-  //     } else {
-  //       div.current.style.position = "relatives";
-  //     }
-  //   };
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
-
-  const [headerChange, setHeaderChange] = useState(false)
-  const changeNavbarColor = () => {
-    if (window.scrollY >= 10) {
-      setHeaderChange(true)
-    } else {
-      setHeaderChange(true)
-    }
-  }
-  window.addEventListener('scroll', changeNavbarColor)
-
+//states
     const [name,setName]=useState('')
     const handleNameChange = (e) => {
         setName(e.target.value)
       }
-      console.log(name)
     const day = new Date().toLocaleString('fa-IR', { day: '2-digit' })
     const month = new Date().toLocaleString('fa-IR', { month: '2-digit' })
     const date = '۱۴۰۱' + '/' + month + '/' + day
@@ -69,15 +34,16 @@ const Dashboard = () => {
  <div className={styles.content}>
 
    <div className={styles.dashboardContent}>
+ 
    <div className={styles.dashboardContentItem}>
-       <i className='fa fa-shopping-cart text-primary mt-1 fa-lg'/>
+       <i style={{color:'#34495E '}} className='fa fa-shopping-cart  mt-1 fa-lg'/>
        <button  
-         value='بلیط های خریداری شده'
+         value='بلیط‌ها'
          onClick={handleNameChange}
-       >بلیط های خریداری شده</button>
+       >بلیط‌ها  </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-users text-primary mt-1 fa-lg'/>
+   <i style={{color:'#34495E '}} className='fa fa-users  mt-1 fa-lg'/>
 
    <button 
     value=' کاربران'
@@ -85,29 +51,29 @@ const Dashboard = () => {
    >کاربران </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-hotel text-primary mt-1 fa-lg'/>
+   <i style={{color:'#34495E '}} className='fa fa-hotel  mt-1 fa-lg'/>
 
    <button
-     value=' هتل ها'
+     value=' هتل '
      onClick={handleNameChange}
    >   هتل ها</button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-plane text-primary mt-1 fa-lg'/>
+   <i style={{color:'#34495E '}} className='fa fa-plane  mt-1 fa-lg'/>
    <button
      value='  هواپیما'
      onClick={handleNameChange}
    >      هواپیما  </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-train text-primary mt-1 fa-lg'/>
+   <i style={{color:'#34495E '}} className='fa fa-train  mt-1 fa-lg'/>
    <button
      value='  قطار'
      onClick={handleNameChange}
    >      قطار  </button>
    </div>
    <div className={styles.dashboardContentItem}>
-   <i className='fa fa-bus text-primary mt-1 fa-lg'/>
+   <i style={{color:'#34495E '}} className='fa fa-bus  mt-1 fa-lg'/>
    <button
      value='  اتوبوس'
      onClick={handleNameChange}
@@ -116,11 +82,13 @@ const Dashboard = () => {
    <div className={styles.dashboardContentItem1}>
    {dayOfWeekName + newDay + monthName}
    </div>
+ 
+  
 </div>
 
  <div className={styles.showContent}>
  {(() => {
-    if(name ==='بلیط های خریداری شده'){
+    if(name ==='بلیط‌ها'){
         return (
             <AllTicket/>
         )
@@ -140,7 +108,7 @@ const Dashboard = () => {
   return (
       <ShowAllResultBus/>
   )
-}else if(name===' هتل ها'){
+}else if(name===' هتل '){
   return (
       <ShowAllResultHotel/>
   )

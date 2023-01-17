@@ -1,27 +1,30 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import styles from '../../../assets/styles/SuggestionList.module.css'
 
 const SuggestionList = () => {
+  //states
   const [flightName, setflightName] = useState()
+  const [trainName, setTrainName] = useState()
+  const [cityName, setCityName] = useState()
+  const [busName, setBusName] = useState()
+
+
   const handleNameChange = (e) => {
     setflightName(e.target.value)
     window.location.href = '/resultfastairplane'
   }
 
-  const [trainName, setTrainName] = useState()
   const handleTrainNameChange = (e) => {
     setTrainName(e.target.value)
     window.location.href = '/resultfasttrain'
   }
 
-  const [cityName, setCityName] = useState()
   const handleHotelCityChange = (e) => {
     setCityName(e.target.value)
     window.location.href = '/resultfasthotel'
   }
 
-  const [busName, setBusName] = useState()
   const handleBusNameChange = (e) => {
     setBusName(e.target.value)
     window.location.href = '/resultfastbus'
@@ -36,7 +39,6 @@ const SuggestionList = () => {
     }
   }, [flightName, trainName, cityName, busName])
 
-  console.log(trainName, ';;;')
 
   return (
     <>

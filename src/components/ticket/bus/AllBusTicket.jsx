@@ -10,8 +10,11 @@ import Pdf from 'react-to-pdf'
 import ReactTooltip from 'react-tooltip'
 
 const AllBusTicket = () => {
+  //state
   const [data, setData] = useState([])
 
+
+  //apollo query
   const userId = window.localStorage.getItem(USER_ID).replace(/"/g, '')
   useQuery(busQueries.SEARCHBUSICKETBYUSERID, {
     variables: {
@@ -52,8 +55,7 @@ const AllBusTicket = () => {
 
   const allUserData = userData.map(item => item.user)
   const allUserId = allUserData.map(item => item._id)
-  // console.log(originName)
-console.log(data,'data',allUserId)
+
   const ref = React.createRef()
   return (
     <>

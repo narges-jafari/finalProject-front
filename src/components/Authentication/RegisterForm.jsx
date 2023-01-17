@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Row, Col, CardBody, Card, Container, Label } from 'reactstrap'
 
 import styles from '../../assets/styles/Login.module.css'
-import { schema } from '../../Utils/ResisterValidation'
+import { schema } from '../../Utils/RegisterValidation'
 import { useMutation } from '@apollo/client'
 import userMutations from '../../Apollo/Mutation/userMutations'
 import registerimg from '../../assets/img/Capturedjdsk.JPG'

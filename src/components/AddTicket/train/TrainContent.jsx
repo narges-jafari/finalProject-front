@@ -54,14 +54,11 @@ const TrainContent = () => {
     const { value, checked } = e.target
     const { property } = userinfo
 
-    console.log(value)
-
     if (checked) {
       setUserInfo({
         property: [...property, value],
         response: [...property, value]
       })
-      console.log(value)
     } else {
       setUserInfo({
         property: property.filter((e) => e !== value),
@@ -70,22 +67,7 @@ const TrainContent = () => {
     }
   }
 
-  // reset function
-  const resetFields = () => {
-    setDestinationName('')
-    setOriginName('')
-    setShowCapacity('')
-    setStartDate('')
-    setShowRailwayOrigin('')
-    setShowRailwayDestination('')
-    setShowPrice('')
-    setStartTime('')
-    setEndTime('')
-    setShowTrainNumber('')
-    setShowTrainClass('')
-    setShowTrainCompany('')
-    setAllowedLoggage('')
-  }
+
   // apollo mutation
   const [createTrains] = useMutation(trainMutations.CREATETRAIN)
 
@@ -114,11 +96,10 @@ const TrainContent = () => {
       })
         .then(({ data }) => {
           if (data.createTrain !== null) {
-            toast.success('عملیات اضافه شدن بلیط قطار با موفقیت انجام شد')
+            toast.success(' بلیط قطار با موفقیت اضافه شد')
             window.localStorage.setItem(TRAIN_ID, JSON.stringify(data.createTrain._id))
             window.localStorage.setItem(TRAIN_CAPACITY, JSON.stringify(data.createTrain.capacity))
 
-            resetFields()
           } else {
             toast.error(
               'خطایی در برقراری با سرور اتفاق افتاد'
@@ -138,7 +119,7 @@ const TrainContent = () => {
   const handlename = event => {
     if (!isValidName(event.target.value)) {
       setError('باید زبان کیبورد را عوض کنید!')
-    } else if (originName.length < 3) {
+    } else if (originName.length < 2) {
       setError('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError(null)
@@ -151,7 +132,7 @@ const TrainContent = () => {
   const handleDesName = event => {
     if (!isValidName(event.target.value)) {
       setError1('باید زبان کیبورد را عوض کنید!')
-    } else if (destinationName.length < 3) {
+    } else if (destinationName.length < 2) {
       setError1('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError1(null)
@@ -164,7 +145,7 @@ const TrainContent = () => {
   const handleDesRailway = event => {
     if (!isValidName(event.target.value)) {
       setError3('باید زبان کیبورد را عوض کنید!')
-    } else if (showRailwayDestination.length < 3) {
+    } else if (showRailwayDestination.length < 2) {
       setError3('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError3(null)
@@ -176,7 +157,7 @@ const TrainContent = () => {
   const handleOriginRailway = event => {
     if (!isValidName(event.target.value)) {
       setError6('فقط حروف الفبای فارسی مجاز هست')
-    } else if (showRailwayOrigin.length < 3) {
+    } else if (showRailwayOrigin.length < 2) {
       setError6('حداقل باید سه حرف وارد کنید!  ')
     } else {
       setError6(null)
@@ -366,7 +347,6 @@ const TrainContent = () => {
               calendar={persian}
               locale={persianfa}
               calendarPosition='bottom-right'
-              placeholder='تاریخ پرواز'
               format='YYYY/MM/DD'
             />
             {startDate == null
